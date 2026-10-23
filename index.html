@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#554052"><title>Pink Premiere & Pearly Popcorn ♡</title>
+<link rel="icon" href="./favicon.ico?v=1" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=1">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=1">
+<link rel="manifest" href="./manifest.webmanifest?v=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Pink Premiere">
+
+<style>
+:root{--ink:#704861;--muted:#9c7990;--pink:#ee9fc5;--rose:#bd638f;--blush:#ffe4ed;--cream:#fffaf0;--lilac:#e8cefa;--gold:#dca975;--glass:rgba(255,255,255,.70);font-family:'Trebuchet MS',Arial,sans-serif;color:var(--ink)}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 11% 11%,#fff8f4 0%,transparent 33%),radial-gradient(circle at 94% 5%,#edd8fc 0%,transparent 40%),linear-gradient(155deg,#ffe5ec 0%,#fff0ea 51%,#f7e1f7 100%);overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:wait}.stage{min-height:100vh;position:relative}.shell{max-width:1260px;margin:auto;padding:30px 22px 70px;position:relative;z-index:2}.topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}.brand{font-family:Georgia,serif;font-weight:bold;letter-spacing:-1.1px;font-size:clamp(23px,3vw,37px);color:#a75184;text-shadow:1px 3px 0 #fff8}.brand small{display:block;font:11px 'Trebuchet MS',sans-serif;letter-spacing:3px;color:#c57e9f;text-transform:uppercase;margin-top:4px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.chip,.btn{border:1px solid rgba(255,255,255,.9);background:linear-gradient(145deg,#fffdfdf0,#fbd9e9e8);color:#855674;border-radius:100px;padding:11px 17px;font-weight:bold;box-shadow:inset 0 2px 2px #fff,0 7px 17px #bd8ca433;transition:transform .2s,background .2s}.chip:hover,.btn:hover{transform:translateY(-2px)}.chip.selected{background:linear-gradient(145deg,#df8ab3,#b96e9b);color:white}.btn.primary{background:linear-gradient(145deg,#f5b8d4,#e38ebd);color:#703a5c;font-size:15px}.glass{background:var(--glass);border:1px solid #fff;box-shadow:0 15px 50px #b780a526,inset 0 2px 0 #ffffffa3;backdrop-filter:blur(18px);border-radius:28px}.marquee{position:relative;margin:23px 0;min-height:230px;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 20px;overflow:hidden;border:9px solid #fce7de;outline:2px solid #e6b687;background:radial-gradient(ellipse at 50% 20%,#fffcf2 2%,#fbe0ed 80%);box-shadow:0 18px 50px #b47b9d44,inset 0 0 0 2px #fff;border-radius:35px}.marquee:before{content:"";position:absolute;inset:8px;border-radius:22px;pointer-events:none;border:4px dotted #deb17b;animation:glimmer 3s linear infinite}.marquee-inner{z-index:1}.eyebrow{text-transform:uppercase;letter-spacing:4px;font-size:11px;color:#bd7b96;font-weight:bold}.marquee h1{font-family:Georgia,serif;font-size:clamp(36px,6vw,67px);line-height:1.03;color:#a34f7a;margin:12px 0 9px;text-shadow:2px 4px 0 #fff}.marquee p{color:#926b80;font-size:15px;margin:0}.float-star{position:absolute;font-size:25px;pointer-events:none;animation:float 5s ease-in-out infinite}.s1{left:12%;top:27%}.s2{right:12%;top:20%;animation-delay:2s}.s3{right:23%;bottom:15%;animation-delay:1s}.velvet{position:fixed;inset:0;z-index:40;pointer-events:none;display:flex;overflow:hidden}.curtain{height:100%;width:51%;background:repeating-linear-gradient(90deg,#f3a2c5 0%,#ffddec 9%,#de81b0 17%,#ed95bf 27%,#f9d4e5 35%,#be6c9e 45%,#f6b9d3 56%);box-shadow:inset 0 0 45px #a2477733,10px 0 22px #ac53766b;transition:transform 1.7s cubic-bezier(.6,0,.2,1);position:relative}.curtain:after{content:"♡  ✧  ♡  ✧  ♡";position:absolute;top:16px;color:#fff5dd;font-size:28px;letter-spacing:19px;white-space:nowrap}.curtain.left{transform-origin:left}.curtain.right{transform-origin:right}.velvet.open .left{transform:translateX(-105%)}.velvet.open .right{transform:translateX(105%)}.curtain-button{position:fixed;z-index:41;top:50%;left:50%;transform:translate(-50%,-50%);padding:18px 32px;font-size:19px;box-shadow:0 10px 60px #733c6e66}.curtain-button.hidden{display:none}.tiny{font-size:12px;color:var(--muted)}.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:17px 0}.field-search{min-width:210px;flex:1}.field-search input,.controls select,.form input,.form select,.form textarea,.auth-panel input{width:100%;border:1px solid #edcee0;border-radius:16px;background:#fffafcf0;color:#79566b;padding:12px 14px;outline:none}.field-search input:focus,.form :is(input,select,textarea):focus,.auth-panel input:focus{border-color:#cf80ad;box-shadow:0 0 0 3px #f5d7ea}.controls select{width:auto;min-width:158px}.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:19px}.stat{padding:16px 18px;text-align:center}.stat strong{display:block;font-family:Georgia,serif;color:#b1628a;font-size:30px}.stat span{font-size:12px;color:#ab8197}.section-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:25px 0 15px}.section-header h2{font-family:Georgia,serif;font-size:29px;margin:0;color:#995479}.section-header p{margin:5px 0;color:#a38092;font-size:13px}.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:26px 20px;padding:12px 4px 26px}.polaroid{display:block;text-align:left;position:relative;background:#fffdf8;box-shadow:0 15px 28px #996e8c38,0 0 0 1px #ffffffb8;padding:12px 12px 18px;border:0;width:100%;border-radius:5px;transform:rotate(var(--tilt,0deg));transition:transform .22s ease,box-shadow .22s ease;animation:appear .5s both;cursor:pointer;color:var(--ink)}.polaroid:hover{transform:translateY(-8px) rotate(0deg) scale(1.025);box-shadow:0 20px 36px #976c854a}.poster{height:224px;background:linear-gradient(145deg,#ffe1ee,#e9d7ff);overflow:hidden;display:grid;place-items:center;position:relative}.poster img{width:100%;height:100%;object-fit:cover}.poster .placeholder{font-size:58px;opacity:.7}.corner-heart{position:absolute;top:9px;right:9px;background:#fff7;border-radius:100px;padding:5px 7px;color:#d75f93;font-size:16px;backdrop-filter:blur(6px)}.polaroid h3{font-family:Georgia,serif;font-size:19px;margin:14px 3px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rating-line{margin:0 2px;display:flex;align-items:center;gap:8px;color:#c16f96;font-size:13px}.score{font-weight:bold;background:#fff1f6;border-radius:25px;padding:5px 8px}.tagline{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}.tag{font-size:10px;color:#96718a;border-radius:20px;padding:5px 8px;background:#fce9f3}.empty{text-align:center;padding:48px 22px}.empty .pop{font-size:55px}.empty h3{font-family:Georgia,serif;font-size:23px;color:#b36290}.footer{text-align:center;color:#ae829e;font-size:12px;margin-top:42px}.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:#55365084;z-index:50;padding:18px;backdrop-filter:blur(5px)}.modal.show{display:flex}.dialog{width:min(750px,100%);max-height:94vh;overflow:auto;padding:25px;animation:rise .26s both}.dialog-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.dialog h2{font-family:Georgia,serif;color:#aa5d87;font-size:29px;margin:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form .group{margin:12px 0}.form label{font-weight:bold;font-size:12px;display:block;margin-bottom:7px;color:#985f7d}.form textarea{resize:vertical;min-height:80px}.form input[type=checkbox]{width:auto;accent-color:#cb7ea5}.photo-preview{width:170px;height:188px;object-fit:cover;background:#fce1f0;border:9px solid #fff;box-shadow:0 4px 17px #9c638744;display:block;margin:8px auto}.rating-picker{display:flex;flex-wrap:wrap;gap:4px}.heart-rating{background:transparent;border:0;color:#dbc4d1;font-size:26px;padding:0 2px;text-shadow:0 1px 2px #fff;transition:transform .13s}.heart-rating.on{color:#ea7daf;text-shadow:0 2px 5px #e978af5e}.heart-rating:hover{transform:scale(1.17)}.review{padding:15px;margin:13px 0;border-radius:16px;background:#fff9fcaa}.review strong{color:#ac6488}.review p{white-space:pre-wrap;line-height:1.55;margin:8px 0 0}.dialog-footer{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:20px}.auth-panel{padding:20px;margin:15px 0}.auth-panel h3{font-family:Georgia,serif;color:#9d5985;margin:0 0 5px}.auth-inputs{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.auth-inputs input{flex:1;min-width:200px}.toast{position:fixed;z-index:90;bottom:25px;left:50%;transform:translate(-50%,140px);background:#fff8fb;box-shadow:0 9px 35px #a66e9d66;border:1px solid white;border-radius:22px;padding:13px 24px;color:#9c567e;font-weight:bold;transition:transform .35s;max-width:min(90%,560px);text-align:center}.toast.show{transform:translate(-50%,0)}.confetti{position:fixed;pointer-events:none;z-index:100;animation:fall 1.2s ease-in forwards;font-size:21px}.feature-tip{font-size:12px;color:#a37f94;padding:7px 1px}.hidden{display:none!important}@keyframes float{50%{transform:translateY(-12px) rotate(9deg)}}@keyframes appear{from{opacity:0;transform:translateY(18px) rotate(0)}to{opacity:1;transform:rotate(var(--tilt,0deg))}}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}@keyframes fall{to{transform:translateY(120px) rotate(190deg);opacity:0}}@keyframes glimmer{50%{border-color:#fff9db}}@media(max-width:700px){.shell{padding:15px 13px 50px}.marquee{min-height:190px}.marquee h1{font-size:39px}.stats{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}.poster{height:clamp(120px,34vw,210px)}.polaroid{padding:8px 8px 14px}.polaroid h3{font-size:15px}.form-grid{grid-template-columns:1fr}.dialog{padding:17px}.section-header h2{font-size:24px}.controls select{flex:1}.brand{font-size:25px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.velvet{display:none!important}}
+
+html{background:#554355}
+/* V2 · Twilight cinema: a centered, quieter hierarchy and dim pearlescent velvet */
+:root{
+  --ink:#614b60; --muted:#897588; --pink:#d9a1b9; --rose:#9e718e;
+  --blush:#e9d0dc; --cream:#f6eee9; --lilac:#ba9ebe; --gold:#bfa184;
+  --glass:rgba(247,236,240,.88);
+}
+body{
+  background:
+    radial-gradient(ellipse 66% 38% at 50% 8%,rgba(174,129,158,.38),transparent 80%),
+    radial-gradient(ellipse 56% 45% at 0% 80%,rgba(125,105,146,.4),transparent 90%),
+    radial-gradient(ellipse 50% 40% at 98% 80%,rgba(117,81,112,.42),transparent 90%),
+    linear-gradient(160deg,#5f495e 0%,#7a6074 38%,#654f67 70%,#544657 100%);
+  background-attachment:scroll;
+  color:var(--ink);
+}
+.shell{max-width:1060px;padding:30px 22px 65px}
+.stage:before{content:"";position:fixed;inset:0;pointer-events:none;
+ background:radial-gradient(circle at 50% 4%,#fff4e61b 0%,transparent 42%);z-index:0}
+.topbar{background:rgba(251,239,241,.92);border:1px solid #fffa;box-shadow:0 9px 35px #301b323b;
+ padding:18px 24px;border-radius:24px;gap:12px}
+.brand{color:#765268;font-size:clamp(23px,2.8vw,29px);text-shadow:none;letter-spacing:-.6px;line-height:1.18}
+.brand small{color:#9b8192;letter-spacing:2px;font-size:10px;margin-top:6px}
+.top-actions{gap:8px}
+.chip,.btn{padding:10px 15px;border:1px solid #fff8;
+ background:linear-gradient(165deg,#fffdf9f2,#efdae4f2);color:#73556e;
+ box-shadow:inset 0 1px #fff,0 4px 13px #64455c25;transition:background .2s,transform .18s,box-shadow .2s}
+.chip:hover,.btn:hover{background:linear-gradient(145deg,#fff8f1,#f3d9e7);box-shadow:0 5px 13px #64455c3b}
+.chip.selected{background:linear-gradient(160deg,#aa7895,#8c698a);color:#fff9f7;box-shadow:0 3px 12px #4c3b543c}
+.btn.primary{background:linear-gradient(150deg,#ebc9d8,#cd9fbd);color:#5f3f57;font-size:14px}
+.glass{background:rgba(252,244,241,.91);border:1px solid rgba(255,251,246,.95);
+ box-shadow:0 12px 38px #2c213229,inset 0 1px #fff9;backdrop-filter:blur(14px);border-radius:22px}
+.marquee{margin:22px 0 17px;min-height:177px;padding:30px 25px;border:1px solid #d6b7b8;
+ outline:1px solid #edd8c1;outline-offset:-8px;
+ border-radius:24px;background:
+ radial-gradient(ellipse at 50% 6%,rgba(255,255,249,.75) 0%,transparent 67%),
+ linear-gradient(145deg,#e9d5dc,#d8bdd1 52%,#eadacc);
+ box-shadow:0 17px 46px #2a1b3140,inset 0 1px #fff6}
+.marquee:before{inset:13px;border:1px solid #bc9eac99;animation:none;border-radius:16px}
+.marquee:after{content:"✧  ·  ✧";position:absolute;bottom:11px;left:0;right:0;font-size:12px;letter-spacing:10px;color:#ac859a;opacity:.8;pointer-events:none}
+.marquee-inner{position:relative}
+.marquee h1{font-size:clamp(31px,4.6vw,48px);color:#805f78;text-shadow:0 1px #fffe;line-height:1.08;margin:8px 0 9px;letter-spacing:-1px}
+.marquee p{color:#846f7c;font-size:13px;line-height:1.5}
+.eyebrow{letter-spacing:2.4px;font-size:10px;color:#9c7792}
+.float-star{opacity:.55;animation:float 9s ease-in-out infinite;font-size:20px;color:#956f89}
+.s1{left:8%;top:34%}.s2{right:8%;top:23%}.s3{right:21%;bottom:12%}
+.marquee .btn{margin-top:15px!important}
+/* The dashboard now reads as a single calm film-strip, not four competing cards. */
+.stats{display:flex;gap:0;margin:0 0 18px;justify-content:space-around;
+ background:rgba(251,240,241,.9);border:1px solid #fff8;border-radius:18px;
+ box-shadow:0 7px 25px #281c3326;overflow:hidden}
+.stat{flex:1;min-width:0;padding:12px 9px;text-align:center;background:transparent;
+ border:0;border-radius:0;box-shadow:none;backdrop-filter:none}
+.stat+.stat{border-left:1px solid #d4beca77}
+.stat strong{display:inline-block;font:600 22px Georgia,serif;color:#815e7a;margin-right:6px}
+.stat span{display:inline;font-size:11px;line-height:1.4;color:#8a7382}
+.tabs{gap:5px;margin:16px 0 0;padding:7px;background:rgba(248,234,240,.92);
+ border-radius:19px;box-shadow:0 7px 27px #281c332b;justify-content:center}
+.tabs .chip{box-shadow:none;border:1px solid transparent;padding:11px 14px;flex:0 0 auto;
+ font-size:13px;background:transparent;color:#80687c}
+.tabs .chip:hover{background:#fff8}
+.tabs .chip.selected{background:linear-gradient(155deg,#a97c96,#90748d);color:#fff}
+.controls{margin:11px 0 8px;padding:11px;border-radius:18px;
+ background:rgba(250,238,239,.88);box-shadow:0 7px 27px #281c331d;gap:8px}
+.field-search input,.controls select,.form input,.form select,.form textarea,.auth-panel input{
+ background:#fffaf9;color:#715467;border:1px solid #d8c4cd;border-radius:12px;
+ padding:11px 12px;min-height:43px}
+.field-search{min-width:155px}.controls select{min-width:133px}
+.controls #newEntry{background:#d7adc6;color:#604a61;border:1px solid #f2d7e7}
+.feature-tip{font-size:11px;color:#efe2e8;line-height:1.5;text-align:center;margin:10px auto 0;
+ padding:3px 10px;max-width:650px;opacity:.86}
+.section-header{margin:24px 0 4px;color:#f4e9ed}
+.section-header h2{font-size:26px;color:#fcf0ec;font-weight:normal}
+.section-header p{color:#e3cfdc;font-size:12px;margin:7px 0 0}
+.section-header .tiny{color:#ead6df}
+.gallery{grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:21px 21px;padding:20px 6px 25px}
+.polaroid{background:#faf3ed;box-shadow:0 11px 25px #1c142b38,0 0 0 1px #fff9;
+ transform:rotate(0deg);padding:11px 11px 17px;border-radius:5px}
+.polaroid:hover{transform:translateY(-5px) rotate(-.4deg);box-shadow:0 17px 26px #231b2c59}
+.poster{height:215px;background:linear-gradient(150deg,#e2cddc,#d4bfd5)}
+.polaroid h3{font-size:17px}.score{background:#efdfeb;color:#9a648b}
+.tag{background:#eedeeb;color:#856d80}
+.empty{max-width:680px;margin:20px auto 55px;padding:35px 25px}
+.empty h3{color:#81607a}.empty .pop{font-size:43px}
+.footer{color:#f0dce7;opacity:.78;margin-top:35px;font-size:11px}
+.modal{background:rgba(30,20,34,.78);backdrop-filter:blur(8px)}
+.dialog{width:min(740px,100%);box-shadow:0 24px 90px #23192790}
+.dialog h2{color:#78536f}
+.review{background:rgba(255,252,251,.74);border:1px solid #fff8}
+.review strong{color:#926f88}
+.form label{color:#7f6077}.tiny{color:#907c8c}
+.heart-rating.on{color:#bd7ca7;text-shadow:0 1px 6px #b184b466}
+.toast{background:#f9eff2;color:#7e5671}
+/* Satin crystal curtains: low-saturation pearl folds and pendant beading. */
+.velvet{background:#3b2b40;perspective:1000px}
+.curtain{width:50.6%;height:104%;position:relative;top:-2%;
+ background:
+ linear-gradient(90deg,#3f2d40a1 0%,transparent 8%,#fff3f04d 15%,transparent 23%,#503c5280 30%,transparent 39%,#fff6f14d 50%,transparent 61%,#50354f91 71%,transparent 80%,#fff4ee42 91%,#463448c7 100%),
+ repeating-linear-gradient(90deg,#8c728c 0px,#b19bad 19px,#d6b8cb 38px,#b69bad 55px,#81677d 75px),
+ linear-gradient(#c2a4bb,#8a7086);
+ box-shadow:inset 0 0 95px #32253d99,inset 0 0 22px #fdf1f057;
+ border-bottom:12px solid #b79cb1;will-change:transform;
+ transition:transform 2.55s cubic-bezier(.48,.02,.16,1);backface-visibility:hidden}
+.curtain:before{content:"";position:absolute;top:0;left:0;right:0;height:115px;
+ background:radial-gradient(ellipse 18px 35px at 18px 10px,#e0cad6 0%,#bd9faf 50%,transparent 65%) 0 7px/36px 110px repeat-x,
+ linear-gradient(#9e829a,#a38caa 66%,transparent);border-bottom:1px solid #fff3;
+ box-shadow:0 16px 25px #49374755}
+.curtain:after{content:"";position:absolute;top:109px;left:0;right:0;height:13px;
+ background:radial-gradient(circle at 7px 6px,#fffaf5 0 2px,#c8aeba 3px,#d7bfcd 4px,transparent 5px) 0 0/27px 13px repeat-x;
+ filter:drop-shadow(0 3px 3px #fff4)}
+.curtain.left{border-right:2px solid #f4d9e69c;box-shadow:inset 0 0 95px #35243d85,9px 0 24px #20182a77}
+.curtain.right{border-left:2px solid #f4d9e69c;box-shadow:inset 0 0 95px #35243d85,-9px 0 24px #20182a77}
+.crystal-trim{position:absolute;top:115px;bottom:0;left:7%;right:7%;display:flex;justify-content:space-around;pointer-events:none}
+.crystal-trim i{display:block;position:relative;width:1px;height:calc(25% + 10px);opacity:.5;
+ background:linear-gradient(#fdf7f0aa,#ffedfa55 75%,transparent)}
+.crystal-trim i:nth-child(2n){height:calc(34% + 5px);opacity:.37}
+.crystal-trim i:nth-child(3n){height:calc(19% + 5px);opacity:.62}
+.crystal-trim i:after{content:"";position:absolute;bottom:-5px;left:-6px;width:12px;height:15px;
+ background:radial-gradient(ellipse at 25% 18%,#fff 0 11%,#fff3f0c9 13%,#e6d1e7a9 55%,#9b779cb0 98%);
+ transform:rotate(45deg);border:1px solid #fff7;border-radius:3px 80% 6px 80%;box-shadow:0 0 13px #ffedf877}
+.curtain-button{z-index:41;max-width:min(86vw,390px);background:linear-gradient(165deg,#f6eae8ed,#d6b7cfeb)!important;
+ color:#6f516e!important;border:1px solid #fffbdc;font-family:Georgia,serif;font-size:18px;
+ padding:20px 30px;box-shadow:0 11px 42px #271b398a,0 0 0 8px #fff2f21c;transition:opacity .2s,box-shadow .2s;
+ animation:introBreathe 3.8s ease-in-out infinite}
+.curtain-button:hover{transform:translate(-50%,-50%);box-shadow:0 12px 40px #291b3799,0 0 0 12px #fdf0ff30}
+.curtain-button:focus-visible{outline:3px solid #fff5c7}
+.velvet.open .left{transform:translate3d(-108%,0,0) rotateY(-5deg)}
+.velvet.open .right{transform:translate3d(108%,0,0) rotateY(5deg)}
+@keyframes introBreathe{50%{box-shadow:0 11px 42px #271b398a,0 0 0 12px #fff1f433}}
+@media(max-width:720px){
+ .shell{padding:14px 12px 55px}
+ .topbar{padding:17px 14px;justify-content:center;text-align:center}
+ .top-actions{justify-content:center}
+ .brand{font-size:24px}
+ .marquee{min-height:175px;padding:29px 15px;margin:14px 0}
+ .marquee h1{font-size:clamp(29px,8.5vw,36px)}.marquee .float-star{display:none}.eyebrow{font-size:9px;letter-spacing:1.1px}
+ .stats{flex-wrap:wrap}.stat{flex:1 1 50%;padding:10px 7px}
+ .stat:nth-child(3){border-left:0;border-top:1px solid #d4beca77}
+ .stat:nth-child(4){border-top:1px solid #d4beca77}
+ .stat strong{font-size:20px}
+ .tabs{justify-content:center}.tabs .chip{font-size:12px;padding:10px 11px}
+ .controls{padding:10px}.controls .field-search{flex:1 1 100%;min-width:0}
+ .controls select{flex:1 1 45%;min-width:120px}
+ .controls #newEntry{flex:1 1 100%}
+ .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
+ .poster{height:clamp(130px,35vw,220px)}
+ .polaroid{padding:8px 8px 12px}
+ .polaroid h3{font-size:15px}
+ .section-header{margin-top:21px}
+ .section-header h2{font-size:24px}
+ .curtain:before{height:90px}.curtain:after{top:85px}.crystal-trim{top:90px}
+ .form-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){.curtain-button{animation:none}.velvet{display:none!important}}
+
+
+/* In-page delete confirmation works where Safari/embedded previews block native confirm(). */
+.delete-confirm{margin-top:14px;padding:15px 17px;border-radius:17px;
+ background:linear-gradient(145deg,#fff7f6,#f2e3f1);border:1px solid #e8cedf;box-shadow:0 5px 16px #3b284019}
+.delete-confirm p{font-size:14px;line-height:1.55;color:#704c66;margin:0}
+.delete-confirm .dialog-footer{margin-top:12px;justify-content:flex-end}
+.delete-confirm .danger{background:linear-gradient(145deg,#a66d8a,#865775);color:#fff7f7;border:1px solid #d4abc6}
+.delete-confirm .danger:hover{background:linear-gradient(145deg,#975b7b,#724560)}
+
+.toast{opacity:0;pointer-events:none;transition:transform .35s,opacity .25s}.toast.show{opacity:1}
+</style></head><body>
+<div class="velvet" id="velvet" aria-hidden="true"><div class="curtain left"><div class="crystal-trim"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="curtain right"><div class="crystal-trim"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><button class="btn primary curtain-button" id="startCurtain" aria-label="Open the theater curtains">✧ Open our little cinema ✧</button>
+<div class="stage"><div class="shell"><header class="topbar"><div class="brand">Pink Premiere <span style="color:#dca777">&</span> Pearly Popcorn <small>our little picture palace ♡</small></div><div class="top-actions"><button class="chip" id="soundBtn" aria-pressed="false">♫ Sounds off</button><button class="chip" id="ambienceBtn" aria-pressed="false">🎞 Ambience off</button><button class="chip" id="cloudBtn">☁ Cloud & sharing</button></div></header>
+<section class="marquee"><span class="float-star s1">✧</span><span class="float-star s2">♡</span><span class="float-star s3">✦</span><div class="marquee-inner"><div class="eyebrow">♡ Pink Premiere & Pearly Popcorn ♡</div><h1>Our cozy little cinema</h1><p>A little movie night, a little magic, a lot of memories. ♡</p><button class="btn primary" id="newHero" style="margin-top:18px">＋ Add a Polaroid</button></div></section>
+<section class="stats" aria-label="Collection statistics"><div class="stat glass"><strong id="totalStat">0</strong><span>in our collection</span></div><div class="stat glass"><strong id="doneStat">0</strong><span>finished & reviewed</span></div><div class="stat glass"><strong id="nextStat">0</strong><span>on our watch next list</span></div><div class="stat glass"><strong id="favStat">0</strong><span>forever favorites</span></div></section>
+<nav class="tabs" aria-label="Collection filters"><button class="chip selected" data-tab="all">All memories</button><button class="chip" data-tab="movie">🎬 Movies</button><button class="chip" data-tab="show">📺 TV shows</button><button class="chip" data-tab="game">🎮 Games</button><button class="chip" data-tab="next">Watch next</button><button class="chip" data-tab="favorite">♡ Favorites</button></nav>
+<section class="controls"><label class="field-search"><input id="search" placeholder="⌕ Search our memories..." aria-label="Search collection"></label><select id="genreFilter" aria-label="Filter by genre"><option value="">All genres</option></select><select id="sort" aria-label="Sort collection"><option value="new">Newest first</option><option value="score10">Highest 10-heart rating</option><option value="score5">Highest 5-heart rating</option><option value="az">Title A to Z</option><option value="old">Oldest first</option></select><button class="chip" id="newEntry">＋ Add Polaroid</button></section>
+<div class="feature-tip" id="saveNotice">♡ Your memories save in this browser until you sign in to cloud. Sign in with the same account on both devices for sharing.</div>
+<section class="section-header"><div><h2 id="sectionTitle">The Grand Collection</h2><p id="sectionSubtitle">Each Polaroid holds a little moment from our story.</p></div><span class="tiny" id="count"></span></section><main class="gallery" id="gallery" aria-live="polite"></main><section class="empty glass hidden" id="empty"><div class="pop">🍿</div><h3>Our screen is waiting!</h3><p>Add a movie, show or game and make your first little Polaroid memory.</p><button class="btn primary" id="emptyAdd">♡ Add our first memory</button></section><footer class="footer">Made with love, pearl popcorn, pastel curtains & two hearts ♡ <span id="storageMode">Browser collection</span></footer></div></div>
+<div class="modal" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editHeading"><div class="dialog glass"><div class="dialog-head"><h2 id="editHeading">A new little premiere ♡</h2><button type="button" class="chip" id="closeEdit" aria-label="Close">✕</button></div><form id="entryForm" class="form"><input type="hidden" id="entryId"><div class="form-grid"><div class="group"><label for="entryTitle">Title (optional — you can add it later)</label><input id="entryTitle" maxlength="140" placeholder="A film we adored..."></div><div class="group"><label for="entryKind">What is it?</label><select id="entryKind"><option value="movie">🎬 Movie</option><option value="show">📺 TV show</option><option value="game">🎮 Video game</option></select></div><div class="group"><label for="entryStatus">Our progress</label><select id="entryStatus"><option value="watch_next">🎟 Watch / play next</option><option value="in_progress">✨ Watching / playing</option><option value="completed">💝 Finished</option><option value="on_hold">🌙 On hold</option></select></div><div class="group"><label for="entryGenres">Genres (separated by commas)</label><input id="entryGenres" maxlength="220" placeholder="Fantasy, Romance, Cozy"></div></div><div class="form-grid"><div class="group"><label for="entryPhoto">Upload our poster / screenshot (optional)</label><input id="entryPhoto" type="file" accept="image/png,image/jpeg,image/webp"><p class="tiny">PNG, JPEG or WebP, under 8 MB. The actual photo appears on your Polaroid.</p><img class="photo-preview hidden" id="imagePreview" alt="Polaroid photo preview"></div><div class="group"><label>Our shared ratings ♡</label><p class="tiny">Tap a row of glossy hearts. You can rate out of 5 AND 10.</p><div class="group"><label id="rating5Label">5-heart rating — not rated</label><div class="rating-picker" id="rating5" role="group" aria-label="Rate out of five"></div></div><div class="group"><label id="rating10Label">10-heart rating — not rated</label><div class="rating-picker" id="rating10" role="group" aria-label="Rate out of ten"></div></div></div></div><div class="group"><label for="entryDesc">Our little synopsis / description</label><textarea id="entryDesc" placeholder="What's this one about?"></textarea></div><div class="form-grid"><div class="group"><label for="entryLiked">♡ What we loved</label><textarea id="entryLiked" placeholder="The plot twists, cozy vibes, gorgeous scenes..."></textarea></div><div class="group"><label for="entryDisliked">☁ What wasn't our favorite</label><textarea id="entryDisliked" placeholder="Things we'd change..."></textarea></div></div><div class="group"><label style="font-size:15px"><input id="entryFavorite" type="checkbox"> ♡ Add to forever favorites</label></div><p class="tiny" id="formMessage" role="status" aria-live="polite">♡ Save adds the Polaroid to your collection. Cloud sign-in syncs between your devices.</p><div class="dialog-footer"><button class="chip" type="button" id="cancelEdit">Never mind</button><button class="btn primary" type="button" id="saveEntry">♡ Save our Polaroid</button></div></form></div></div>
+<div class="modal" id="viewModal" role="dialog" aria-modal="true" aria-labelledby="viewHeading"><div class="dialog glass"><div class="dialog-head"><h2 id="viewHeading">Our little review</h2><button class="chip" id="closeView">✕</button></div><div id="viewContent"></div><div class="dialog-footer"><button class="chip" id="deleteEntry" type="button">Delete Polaroid</button><button class="btn primary" id="editEntry" type="button">✎ Edit our review</button></div><div id="deleteConfirm" class="delete-confirm hidden" role="group" aria-labelledby="deleteQuestion"><p id="deleteQuestion">Are you sure you want to delete this Polaroid? This cannot be undone.</p><div class="dialog-footer"><button class="chip" type="button" id="cancelDelete">♡ Keep Polaroid</button><button class="chip danger" type="button" id="confirmDelete">Yes, delete Polaroid</button></div></div></div></div>
+<div class="modal" id="cloudModal" role="dialog" aria-modal="true" aria-labelledby="cloudHeading"><div class="dialog glass"><div class="dialog-head"><h2 id="cloudHeading">☁ Our shared cloud</h2><button class="chip" id="closeCloud">✕</button></div><div class="auth-panel glass"><h3 id="cloudHeadline">Our private movie diary</h3><p class="tiny" id="cloudInfo">Use the same account on both devices so you both see the same collection. Browser-only items do not sync automatically.</p><div id="signedOut"><div class="auth-inputs"><input id="cloudEmail" type="email" placeholder="Email address" autocomplete="email"><input id="cloudPassword" type="password" placeholder="Password" autocomplete="current-password"></div><div class="controls"><button class="btn primary" id="signIn">Sign in</button><button class="chip" id="register">Create account</button></div><p class="tiny">Email confirmation may be required. Never share your password.</p></div><div id="signedIn" class="hidden"><p id="signedEmail"></p><div class="controls"><button class="btn primary" id="migrateEntries">Copy browser Polaroids to cloud</button><button class="chip" id="signOut">Sign out</button></div></div><p class="tiny" id="cloudError" role="status"></p></div><div class="controls"><button class="chip" id="backupBtn">↓ Export browser backup</button><label class="chip" style="cursor:pointer">↑ Restore browser backup<input id="restoreInput" type="file" accept="application/json" hidden></label></div><p class="tiny">Cloud sync uses private storage in the connected Supabase project. Export an occasional backup too. This app uses a separate table from your closet.</p></div></div>
+<div class="toast" id="toast" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script><script>
+(()=>{'use strict';
+const PROJECT='https://pptbmupnpxigwfqkdpzt.supabase.co',KEY='sb_publishable_HBQoTJb2-tXAaOHifY9x4A_SXMDZLgr',LOCAL='pearly-popcorn-v1';
+const $=id=>document.getElementById(id);let collection=[],localItems=[],client=null,user=null,tab='all',editingPhoto=null,photoFile=null,viewId=null,rating5=null,rating10=null,sounds=false,ambience=false,noiseTimer=null,audioCtx=null,toastTimer=null,busy=false;
+function id(){
+ // UUIDv4 even in restricted previews, so Supabase always receives a valid UUID.
+ if(globalThis.crypto&&typeof crypto.randomUUID==='function')return crypto.randomUUID();
+ const bytes=new Uint8Array(16);
+ if(globalThis.crypto&&typeof crypto.getRandomValues==='function')crypto.getRandomValues(bytes);
+ else for(let i=0;i<bytes.length;i++)bytes[i]=Math.floor(Math.random()*256);
+ bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+ const hex=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+ return [hex.slice(0,8),hex.slice(8,12),hex.slice(12,16),hex.slice(16,20),hex.slice(20)].join('-');
+}
+function notify(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3600)}
+let ambientNoiseSource=null,ambientNoiseGain=null,ambientNoiseFilter=null;
+let audioIssueShown=false;
+async function ensureAudio(){
+ try{
+   const AudioClass=window.AudioContext||window.webkitAudioContext;
+   if(!AudioClass)throw Error('This browser does not support audio effects.');
+   if(!audioCtx)audioCtx=new AudioClass();
+   if(audioCtx.state==='suspended')await audioCtx.resume();
+   if(audioCtx.state!=='running')throw Error('Your browser has paused audio. Tap again to allow sound.');
+   return true;
+ }catch(e){
+   if(!audioIssueShown){notify('Sound unavailable: '+e.message);audioIssueShown=true}
+   return false;
+ }
+}
+async function sound(kind='chime'){
+ if(!sounds)return;
+ if(!await ensureAudio())return;
+ const now=audioCtx.currentTime+.018;
+ const tones=kind==='favorite'?[622,785,932]:kind==='save'?[466,588,740,932]:[587,740];
+ tones.forEach((freq,i)=>{
+   const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+   osc.type='sine';osc.frequency.setValueAtTime(freq,now+i*.11);
+   gain.gain.setValueAtTime(.0001,now+i*.11);
+   gain.gain.exponentialRampToValueAtTime(.095,now+i*.11+.018);
+   gain.gain.exponentialRampToValueAtTime(.0001,now+i*.11+.35);
+   osc.connect(gain);gain.connect(audioCtx.destination);
+   osc.start(now+i*.11);osc.stop(now+i*.11+.37);
+ });
+}
+function updateSounds(){
+ $('soundBtn').textContent=sounds?'♫ Sounds on':'♫ Sounds off';
+ $('soundBtn').setAttribute('aria-pressed',String(sounds));
+ $('soundBtn').classList.toggle('selected',sounds);
+ $('ambienceBtn').textContent=ambience?'🎞 Ambience on':'🎞 Ambience off';
+ $('ambienceBtn').setAttribute('aria-pressed',String(ambience));
+ $('ambienceBtn').classList.toggle('selected',ambience);
+}
+async function startAmbience(){
+ if(!await ensureAudio())return false;
+ if(ambientNoiseSource)return true;
+ const len=Math.floor(audioCtx.sampleRate*2),buffer=audioCtx.createBuffer(1,len,audioCtx.sampleRate),data=buffer.getChannelData(0);
+ // Warm muted film-projector texture, intentionally quiet: filtered pink-ish noise.
+ let prev=0;
+ for(let i=0;i<len;i++){const white=Math.random()*2-1;prev=(prev+.028*white)/1.028;data[i]=prev*.9}
+ ambientNoiseSource=audioCtx.createBufferSource();ambientNoiseSource.buffer=buffer;ambientNoiseSource.loop=true;
+ ambientNoiseFilter=audioCtx.createBiquadFilter();ambientNoiseFilter.type='lowpass';ambientNoiseFilter.frequency.value=540;
+ ambientNoiseGain=audioCtx.createGain();ambientNoiseGain.gain.value=.035;
+ ambientNoiseSource.connect(ambientNoiseFilter);ambientNoiseFilter.connect(ambientNoiseGain);ambientNoiseGain.connect(audioCtx.destination);
+ ambientNoiseSource.start();return true;
+}
+function stopAmbience(){
+ if(ambientNoiseSource){try{ambientNoiseSource.stop()}catch(_){};ambientNoiseSource.disconnect();ambientNoiseSource=null}
+ if(ambientNoiseFilter){ambientNoiseFilter.disconnect();ambientNoiseFilter=null}
+ if(ambientNoiseGain){ambientNoiseGain.disconnect();ambientNoiseGain=null}
+}
+$('soundBtn').onclick=async()=>{
+ if(sounds){sounds=false;updateSounds();return}
+ if(!await ensureAudio())return;
+ sounds=true;updateSounds();await sound('favorite');notify('♡ Sound effects are on');
+};
+$('ambienceBtn').onclick=async()=>{
+ if(ambience){ambience=false;stopAmbience();updateSounds();return}
+ if(!await startAmbience())return;
+ ambience=true;updateSounds();notify('🎞 Soft theater ambience is playing');
+};
+updateSounds();
+function celebrate(){
+ for(let i=0;i<9;i++){
+  const el=document.createElement('div');el.className='confetti';
+  el.textContent=['♡','✧','✦'][i%3];
+  el.style.left=(18+Math.random()*64)+'vw';el.style.top=(32+Math.random()*18)+'vh';
+  el.style.animationDelay=(Math.random()*.28)+'s';document.body.append(el);
+  setTimeout(()=>el.remove(),1700);
+ }
+}
+function openCurtain(){ $('velvet').classList.add('open');$('startCurtain').classList.add('hidden');sound('chime');setTimeout(()=>$('velvet').remove(),2780)}$('startCurtain').onclick=openCurtain;if(matchMedia('(prefers-reduced-motion: reduce)').matches)openCurtain();
+// Prefer IndexedDB: large poster images routinely exceed localStorage's small quota.
+const DB_NAME='pearly-popcorn-private-v2', DB_STORE='collections';
+function openLocalDB(){return new Promise((resolve,reject)=>{
+ if(!window.indexedDB){reject(Error('IndexedDB unavailable'));return}
+ let req;try{req=indexedDB.open(DB_NAME,1)}catch(e){reject(e);return}
+ req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(DB_STORE))req.result.createObjectStore(DB_STORE)};
+ req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||Error('Local database unavailable'));
+ req.onblocked=()=>reject(Error('Local database blocked'));
+})}
+async function readLocalDB(){const db=await openLocalDB();return new Promise((resolve,reject)=>{
+ const tx=db.transaction(DB_STORE,'readonly');const req=tx.objectStore(DB_STORE).get(LOCAL);
+ req.onsuccess=()=>{db.close();resolve(req.result)};
+ req.onerror=()=>{db.close();reject(req.error)};
+})}
+async function writeLocalDB(items){const db=await openLocalDB();return new Promise((resolve,reject)=>{
+ const tx=db.transaction(DB_STORE,'readwrite');tx.objectStore(DB_STORE).put(items,LOCAL);
+ tx.oncomplete=()=>{db.close();resolve(true)};
+ tx.onerror=()=>{db.close();reject(tx.error||Error('Local save failed'))};
+ tx.onabort=()=>{db.close();reject(tx.error||Error('Local save canceled'))};
+})}
+async function loadLocal(){
+ localItems=[];
+ // Existing v1 browser Polaroids are preserved and imported automatically.
+ try{const fromDb=await readLocalDB();if(Array.isArray(fromDb)){localItems=fromDb;return}}catch(e){}
+ try{const old=JSON.parse(localStorage.getItem(LOCAL)||'[]');if(Array.isArray(old)){localItems=old;if(old.length)try{await writeLocalDB(old)}catch(e){}}}catch(e){}
+}
+async function storeLocal(){
+ try{await writeLocalDB(localItems);return true}catch(e){}
+ try{localStorage.setItem(LOCAL,JSON.stringify(localItems));return true}catch(e){return false}
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function textLines(s){return esc(s||'Not written yet ♡')}
+function pictogram(kind){return kind==='movie'?'🎬':kind==='show'?'📺':'🎮'}
+function safeDataImage(s){return typeof s==='string'&&(/^data:image\/(?:png|jpeg|webp);base64,/.test(s)||/^blob:/.test(s))?s:''}
+function statUpdate(){let a=collection;$('totalStat').textContent=a.length;$('doneStat').textContent=a.filter(x=>x.status==='completed').length;$('nextStat').textContent=a.filter(x=>x.status==='watch_next').length;$('favStat').textContent=a.filter(x=>x.favorite).length}
+function genres(){let current=$('genreFilter').value;let vals=[...new Set(collection.flatMap(x=>Array.isArray(x.genres)?x.genres:[]))].sort();$('genreFilter').replaceChildren(new Option('All genres',''),...vals.map(x=>new Option(x,x)));$('genreFilter').value=vals.includes(current)?current:''}
+function render(){statUpdate();genres();const headings={all:['The Grand Collection','Every movie, show and game in our little universe.'],movie:['Movie Night Magic','All of our cinematic adventures.'],show:['Series & Sweet Stories','The shows we binge and adore.'],game:['Our Gaming Arcade','Every level and world we explored.'],next:['Coming Attractions','Our cozy watch-and-play-next plans.'],favorite:['The Forever Favorites','Our most-loved memories, all in one place.']};$('sectionTitle').textContent=headings[tab][0];$('sectionSubtitle').textContent=headings[tab][1];let q=$('search').value.trim().toLowerCase(),g=$('genreFilter').value;let arr=collection.filter(x=>{if(tab==='favorite'&&!x.favorite)return false;if(tab==='next'&&x.status!=='watch_next')return false;if(!['all','favorite','next'].includes(tab)&&x.kind!==tab)return false;if(g&&!(x.genres||[]).includes(g))return false;if(q&&!([x.title,x.description,x.liked,x.disliked,...(x.genres||[])].join(' ').toLowerCase().includes(q)))return false;return true});switch($('sort').value){case 'score10':arr.sort((a,b)=>(b.rating10??-1)-(a.rating10??-1));break;case 'score5':arr.sort((a,b)=>(b.rating5??-1)-(a.rating5??-1));break;case 'az':arr.sort((a,b)=>a.title.localeCompare(b.title));break;case 'old':arr.sort((a,b)=>a.created_at.localeCompare(b.created_at));break;default:arr.sort((a,b)=>b.created_at.localeCompare(a.created_at))}let grid=$('gallery');grid.replaceChildren();$('count').textContent=arr.length+' Polaroid'+(arr.length===1?'':'s');$('empty').classList.toggle('hidden',arr.length>0);for(let i=0;i<arr.length;i++){const x=arr[i],card=document.createElement('button');card.className='polaroid';card.style.setProperty('--tilt',((i%5)-2)*.9+'deg');const poster=document.createElement('div');poster.className='poster';if(x.photo_url){const img=document.createElement('img');img.alt='Poster for '+x.title;img.loading='lazy';img.src=x.photo_url;poster.append(img)}else{const span=document.createElement('span');span.className='placeholder';span.textContent=pictogram(x.kind);poster.append(span)}if(x.favorite){let f=document.createElement('span');f.className='corner-heart';f.textContent='♥';poster.append(f)}card.append(poster);const title=document.createElement('h3');title.textContent=x.title;card.append(title);const rating=document.createElement('div');rating.className='rating-line';const a=document.createElement('span');a.className='score';a.textContent=x.rating5===null||x.rating5===undefined?'♡ —/5':'♥ '+x.rating5+'/5';const b=document.createElement('span');b.className='score';b.textContent=x.rating10===null||x.rating10===undefined?'♡ —/10':'♥ '+x.rating10+'/10';rating.append(a,b);card.append(rating);const tags=document.createElement('div');tags.className='tagline';[x.status==='watch_next'?'Watch next':x.status==='in_progress'?'✨ In progress':x.status==='on_hold'?'🌙 On hold':'✓ Finished',...(x.genres||[]).slice(0,2)].forEach(t=>{const span=document.createElement('span');span.className='tag';span.textContent=t;tags.append(span)});card.append(tags);card.onclick=()=>openView(x.id);grid.append(card)}}
+function tabTo(t){tab=t;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('selected',b.dataset.tab===tab));render()}document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tabTo(b.dataset.tab);sound()});for(let n of ['search','genreFilter','sort'])$(n).addEventListener(n==='search'?'input':'change',render);
+function ratingUI(){for(const [container,count,value] of [['rating5',5,rating5],['rating10',10,rating10]]){let el=$(container);el.replaceChildren();for(let i=1;i<=count;i++){let btn=document.createElement('button');btn.type='button';btn.className='heart-rating'+(i<=(value||0)?' on':'');btn.setAttribute('aria-label','Rate '+i+' out of '+count);btn.textContent='♥';btn.onclick=()=>{if(count===5)rating5=rating5===i?null:i;else rating10=rating10===i?null:i;ratingUI();sound('favorite')};el.append(btn)}}$('rating5Label').textContent='5-heart rating — '+(rating5===null?'not rated':rating5+'/5');$('rating10Label').textContent='10-heart rating — '+(rating10===null?'not rated':rating10+'/10')}
+function closeModal(which){$(which).classList.remove('show');if(which==='viewModal')resetDeletePrompt()}function showModal(which){$(which).classList.add('show')}
+function openEdit(x=null){$('entryForm').reset();photoFile=null;editingPhoto=null;$('entryId').value=x?.id||'';$('editHeading').textContent=x?'Edit our Polaroid ♡':'A new little premiere ♡';$('formMessage').textContent='';$('entryKind').value=x?.kind||'movie';$('entryStatus').value=x?.status||(tab==='next'?'watch_next':'completed');$('entryTitle').value=x?.title||'';$('entryGenres').value=(x?.genres||[]).join(', ');$('entryDesc').value=x?.description||'';$('entryLiked').value=x?.liked||'';$('entryDisliked').value=x?.disliked||'';$('entryFavorite').checked=!!x?.favorite;rating5=x?.rating5??null;rating10=x?.rating10??null;ratingUI();const prev=$('imagePreview');prev.classList.toggle('hidden',!x?.photo_url);if(x?.photo_url)prev.src=x.photo_url;editingPhoto=x?.photo_url||null;showModal('editModal');setTimeout(()=>$('entryTitle').focus(),70)}
+for(let n of ['newHero','newEntry','emptyAdd'])$(n).onclick=()=>openEdit();for(let n of ['closeEdit','cancelEdit'])$(n).onclick=()=>closeModal('editModal');
+$('entryPhoto').onchange=async ev=>{const file=ev.target.files[0];if(!file)return;if(!/^image\/(png|jpeg|webp)$/.test(file.type)||file.size>8*1024*1024){$('formMessage').textContent='Choose a PNG, JPEG or WebP image under 8 MB.';ev.target.value='';return}photoFile=file;editingPhoto=await fileToData(file);$('imagePreview').src=editingPhoto;$('imagePreview').classList.remove('hidden');$('formMessage').textContent='♡ Your poster is ready.'};
+function fileToData(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not read the image'));reader.readAsDataURL(file)})}
+function localReady(){return !user}
+function fromDb(row){return {...row,photo_url:row.photo_path?'':null}}
+async function signedPhotos(rows){if(!client||!user)return rows;return Promise.all(rows.map(async row=>{if(row.poster_path||row.photo_path){let path=row.poster_path||row.photo_path;const {data,error}=await client.storage.from('premiere-posters').createSignedUrl(path,60*60);if(!error&&data?.signedUrl)row.photo_url=data.signedUrl}return row}))}
+async function refreshCloud(){if(!client||!user)return;const {data,error}=await client.from('premiere_entries').select('*').order('created_at',{ascending:false});if(error)throw error;collection=await signedPhotos((data||[]).map(row=>({...row,photo_url:null})));render()}
+async function save(){if(busy)return;const name=$('entryTitle').value.trim()||('Our '+({movie:'movie',show:'TV show',game:'game'}[$('entryKind').value]||'memory')+' ♡');busy=true;$('saveEntry').disabled=true;$('formMessage').textContent='Saving our memory…';const existing=collection.find(e=>e.id===$('entryId').value);let record={id:existing?.id||id(),title:name,kind:$('entryKind').value,status:$('entryStatus').value,genres:[...new Set($('entryGenres').value.split(',').map(s=>s.trim()).filter(Boolean))].slice(0,14),description:$('entryDesc').value.trim(),liked:$('entryLiked').value.trim(),disliked:$('entryDisliked').value.trim(),rating5,rating10,finished_on:null,favorite:$('entryFavorite').checked,created_at:existing?.created_at||new Date().toISOString(),updated_at:new Date().toISOString()};try{if(localReady()){record.photo_url=editingPhoto||null;record.poster_path=null;localItems=existing?localItems.map(x=>x.id===record.id?record:x):[record,...localItems];collection=localItems.slice();const persistent=await storeLocal();closeModal('editModal');render();celebrate();sound('save');notify(persistent?'♡ Saved our Polaroid!':'Added for this visit; export a backup to keep it.')}else{record.owner_id=user.id;record.poster_path=existing?.poster_path||null;if(photoFile){const ext=photoFile.type==='image/png'?'png':photoFile.type==='image/webp'?'webp':'jpg';const path=`${user.id}/${id()}.${ext}`;const up=await client.storage.from('premiere-posters').upload(path,photoFile,{contentType:photoFile.type,upsert:false});if(up.error)throw up.error;record.poster_path=path}const {error}=await client.from('premiere_entries').upsert(record,{onConflict:'id'});if(error)throw error;await refreshCloud();closeModal('editModal');celebrate();sound('save');notify('♡ Saved securely to our shared cloud!')}}catch(err){$('formMessage').textContent='Could not save: '+err.message;notify('Save failed. Your edits are still here.')}finally{busy=false;$('saveEntry').disabled=false}}
+$('entryForm').onsubmit=e=>{e.preventDefault();void save()};
+$('saveEntry').onclick=()=>{void save()};
+function openView(itemId){const x=collection.find(t=>t.id===itemId);if(!x)return;resetDeletePrompt();viewId=itemId;$('viewHeading').textContent=x.title;const root=$('viewContent');root.replaceChildren();const layout=document.createElement('div');layout.className='form-grid';const col=document.createElement('div'),desc=document.createElement('div');if(x.photo_url){const img=document.createElement('img');img.className='photo-preview';img.style.width='min(100%,260px)';img.style.height='300px';img.src=x.photo_url;img.alt='Poster';col.append(img)}else{const p=document.createElement('div');p.className='poster';p.style.height='220px';p.textContent=pictogram(x.kind);col.append(p)}const summary=document.createElement('div');summary.className='review';summary.innerHTML='<strong>Our rating</strong>';let line=document.createElement('p');line.textContent=`♥ ${x.rating5??'—'}/5  ·  ♥ ${x.rating10??'—'}/10`;summary.append(line);desc.append(summary);for(const [label,value] of [['Our story',x.description],['♡ What we loved',x.liked],['☁ What we would change',x.disliked],['The little details',(x.genres||[]).join(', ')]]){const panel=document.createElement('div');panel.className='review';let s=document.createElement('strong');s.textContent=label;let p=document.createElement('p');p.textContent=value||'Not written yet ♡';panel.append(s,p);desc.append(panel)}layout.append(col,desc);root.append(layout);showModal('viewModal');sound('chime')}
+$('closeView').onclick=()=>closeModal('viewModal');$('editEntry').onclick=()=>{let x=collection.find(x=>x.id===viewId);closeModal('viewModal');openEdit(x)};
+function resetDeletePrompt(){
+ $('deleteConfirm').classList.add('hidden');
+ $('confirmDelete').disabled=false;
+ $('confirmDelete').textContent='Yes, delete Polaroid';
+ $('deleteQuestion').textContent='Are you sure you want to delete this Polaroid? This cannot be undone.';
+}
+$('deleteEntry').onclick=()=>{
+ const item=collection.find(x=>x.id===viewId);
+ if(!item){notify('This Polaroid is no longer in your collection.');return}
+ $('deleteQuestion').textContent='Delete “'+item.title+'”? This cannot be undone.';
+ $('deleteConfirm').classList.remove('hidden');
+ $('deleteConfirm').scrollIntoView({block:'nearest',behavior:'smooth'});
+};
+$('cancelDelete').onclick=resetDeletePrompt;
+$('confirmDelete').onclick=async()=>{
+ const targetId=viewId;
+ const item=collection.find(x=>x.id===targetId);
+ if(!item){resetDeletePrompt();notify('This Polaroid is no longer in your collection.');return}
+ const button=$('confirmDelete');
+ if(button.disabled)return;
+ button.disabled=true;button.textContent='Deleting…';
+ try{
+  if(user){
+   if(!client)throw Error('Cloud connection unavailable. Please try again online.');
+   const {data,error}=await client.from('premiere_entries').delete().eq('id',targetId).eq('owner_id',user.id).select('id');
+   if(error)throw error;
+   if(!data?.length)throw Error('This Polaroid was not found in your cloud account.');
+   await refreshCloud();
+   closeModal('viewModal');notify('♡ Polaroid deleted from our cloud collection.');
+  }else{
+   localItems=localItems.filter(x=>x.id!==targetId);
+   collection=localItems.slice();
+   const persisted=await storeLocal();
+   render();closeModal('viewModal');
+   notify(persisted?'♡ Polaroid deleted.':'Removed for this visit only. This browser blocks permanent storage.');
+  }
+ }catch(e){
+  $('deleteQuestion').textContent='Could not delete: '+(e?.message||String(e))+'. Please try again.';
+  notify('Could not delete the Polaroid.');
+ }finally{button.disabled=false;button.textContent='Yes, delete Polaroid'}
+};
+for(let n of ['editModal','viewModal','cloudModal'])$(n).addEventListener('click',e=>{if(e.target===$(n))closeModal(n)});document.addEventListener('keydown',e=>{if(e.key==='Escape')for(let n of ['editModal','viewModal','cloudModal'])closeModal(n)});
+function cloudState(){const ok=!!user;$('signedOut').classList.toggle('hidden',ok);$('signedIn').classList.toggle('hidden',!ok);$('signedEmail').textContent=user?'Signed in as '+(user.email||'our shared account'):'';$('storageMode').textContent=ok?'☁ Shared cloud collection':'♡ Browser collection';$('saveNotice').textContent=ok?'☁ Cloud connected · Both devices can see the same entries when signed into this account.':'♡ Browser-only mode · Saved on this device. Sign into cloud with the same account on both devices to share your collection.';$('cloudHeadline').textContent=ok?'Our cloud is connected ♡':'Our private movie diary';$('cloudBtn').textContent=ok?'☁ Connected':'☁ Cloud & sharing'}
+$('cloudBtn').onclick=()=>{showModal('cloudModal');$('cloudError').textContent=client?'':'Cloud needs an internet connection (Supabase library did not load).'};$('closeCloud').onclick=()=>closeModal('cloudModal');
+async function auth(signup){if(!client){$('cloudError').textContent='Cloud library could not load. Check internet and refresh.';return}let email=$('cloudEmail').value.trim(),password=$('cloudPassword').value;if(!email||!password){$('cloudError').textContent='Enter your email and password.';return}try{$('cloudError').textContent='Connecting…';const r=signup?await client.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}}):await client.auth.signInWithPassword({email,password});if(r.error)throw r.error;$('cloudError').textContent=signup?'Account created. Check your email if confirmation is required, then sign in.':'Signed in ♡';}catch(e){$('cloudError').textContent=e.message}}
+$('signIn').onclick=()=>auth(false);$('register').onclick=()=>auth(true);$('signOut').onclick=async()=>{if(client){await client.auth.signOut();notify('Signed out of cloud. Browser memories remain available.')}};
+$('migrateEntries').onclick=async()=>{if(!user||!client)return;if(!localItems.length){notify('No browser Polaroids to copy.');return}if(!confirm('Copy '+localItems.length+' browser Polaroids to this shared cloud? We will keep browser copies too.'))return;let moved=0;try{for(const x of localItems){let entry={...x,owner_id:user.id,poster_path:null};delete entry.photo_url;if(x.photo_url?.startsWith('data:image/')){const response=await fetch(x.photo_url),blob=await response.blob(),ext=blob.type==='image/png'?'png':blob.type==='image/webp'?'webp':'jpg';const path=`${user.id}/${id()}.${ext}`;const up=await client.storage.from('premiere-posters').upload(path,blob,{contentType:blob.type});if(up.error)throw up.error;entry.poster_path=path}const {error}=await client.from('premiere_entries').upsert(entry,{onConflict:'id'});if(error)throw error;moved++}await refreshCloud();notify('♡ Copied '+moved+' Polaroids to cloud!');$('cloudError').textContent='Your original browser copies are still here.'}catch(e){$('cloudError').textContent='Copied '+moved+' before an error: '+e.message;await refreshCloud()}};
+$('backupBtn').onclick=()=>{const blob=new Blob([JSON.stringify({app:'pink-premiere-v1',items:localItems,exported:new Date().toISOString()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='pink-premiere-browser-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)};
+$('restoreInput').onchange=async e=>{let file=e.target.files[0];if(!file)return;try{const obj=JSON.parse(await file.text());if(obj.app!=='pink-premiere-v1'||!Array.isArray(obj.items))throw Error('Not a Pink Premiere backup');const safe=obj.items.filter(x=>x&&typeof x.id==='string'&&typeof x.title==='string'&&['movie','show','game'].includes(x.kind)).map(x=>({...x,photo_url:safeDataImage(x.photo_url)}));localItems=[...new Map([...localItems,...safe].map(x=>[x.id,x])).values()];if(!await storeLocal())throw Error('Browser storage refused the restore. Try fewer/smaller images.');if(!user){collection=localItems.slice();render()}notify('Restored '+safe.length+' browser Polaroids ♡')}catch(err){notify('Restore failed: '+err.message)}e.target.value=''};
+async function init(){await loadLocal();collection=localItems.slice();render();cloudState();try{if(!window.supabase?.createClient)throw Error('Cloud library unavailable');client=window.supabase.createClient(PROJECT,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});client.auth.onAuthStateChange((event,session)=>{const previous=!!user;user=session?.user||null;cloudState();if(user){setTimeout(()=>refreshCloud().catch(e=>notify('Cloud sync: '+e.message)),0)}else if(previous){collection=localItems.slice();render()}});const {data,error}=await client.auth.getSession();if(error)throw error;if(data.session?.user){user=data.session.user;cloudState();await refreshCloud()}}catch(e){$('cloudError').textContent=e.message;cloudState()}}
+init();
+})();
+</script></body></html>
