@@ -213,15 +213,170 @@ body{
  .section-header>div:first-child{min-width:0}
  .section-header h2{font-size:21px;line-height:1.15}
 }
+
+/* PALACE HEADER & EMBROIDERED SHIMMER — presentation-only revision.
+   Leaves auth, cloud, saved entries, time calculations, curtains and Polaroids intact. */
+:root{--palace-satin:
+ radial-gradient(ellipse at 9% 2%,rgba(255,252,234,.62),transparent 52%),
+ radial-gradient(ellipse at 92% 90%,rgba(190,153,202,.22),transparent 53%),
+ linear-gradient(113deg,#ead1db 0%,#e4c5d8 28%,#e6d6c5 53%,#d9bbcf 76%,#efd2db 100%)}
+.shell>.topbar,.shell>.stats,.shell>.tabs,.shell>.controls{
+ position:relative;background:var(--palace-satin);border:1px solid rgba(255,230,221,.83);
+ box-shadow:0 7px 24px rgba(37,20,40,.24),inset 0 1px 0 rgba(255,255,246,.78),inset 0 -1px 0 rgba(153,97,132,.13);
+ overflow:hidden;
+}
+.shell>.topbar::after,.shell>.stats::after,.shell>.tabs::after,.shell>.controls::after{
+ content:"";position:absolute;inset:4px;border-radius:inherit;
+ border:1px solid rgba(255,250,239,.43);box-shadow:inset 0 0 0 1px rgba(170,105,139,.10);
+ pointer-events:none;z-index:2;
+}
+.shell>.topbar::before,.shell>.stats::before,.shell>.tabs::before,.shell>.controls::before{
+ content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+ background:linear-gradient(110deg,transparent 10%,rgba(255,255,251,.10) 28%,rgba(255,255,239,.43) 42%,transparent 59%);
+ background-size:240% 100%;animation:palace-shimmer 13s ease-in-out infinite;
+}
+@keyframes palace-shimmer{0%,18%{background-position:115% 0}58%,100%{background-position:-100% 0}}
+.shell>.topbar>* , .shell>.stats>* , .shell>.tabs>* , .shell>.controls>*{position:relative;z-index:1}
+.shell>.topbar{padding:9px 12px;min-height:55px;border-radius:19px;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:8px;margin:0 0 11px}
+.palace-trigger{background:transparent;border:0;min-width:0;flex:0 1 auto;padding:5px 3px;
+ display:inline-flex;align-items:center;gap:7px;color:#77536e;cursor:pointer;text-align:left;
+ font:700 clamp(16px,2.45vw,23px)/1.12 Georgia,'Times New Roman',serif;
+ letter-spacing:-.55px;text-shadow:0 1px rgba(255,255,250,.88)}
+.palace-trigger:hover .palace-wordmark{color:#9e6487}
+.palace-trigger:focus-visible{outline:2px solid #a3628a;outline-offset:2px;border-radius:8px}
+.palace-wordmark{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.palace-heart{color:#b679a0;text-shadow:0 1px 2px rgba(255,255,255,.85)}
+.palace-status{font:700 14px/1 'Trebuchet MS',sans-serif;color:#815e79;flex:0 0 auto}
+.shell>.topbar .top-actions{display:flex;align-items:center;justify-content:flex-end;flex:0 0 auto;flex-wrap:nowrap;gap:5px}
+.shell>.topbar .top-actions .chip{padding:7px 10px;font-size:11px;line-height:1.2;white-space:nowrap;min-height:33px}
+/* Hand-polished linen with an iridescent border, without brightening the Polaroid wall. */
+.shell>.stats{margin:0 0 12px;border-radius:19px}
+.shell>.tabs{margin:11px 0 0;border-radius:19px}
+.shell>.controls{margin:10px 0 9px;border-radius:19px}
+.shell>.tabs .chip{position:relative}
+.shell>.controls input,.shell>.controls select{background:rgba(255,249,246,.88);border-color:#cdaabb}
+.shell>.controls #newEntry{background:linear-gradient(132deg,#d5a6c0,#dcb3c6 58%,#cba0c2);border:1px solid #fff8;
+ box-shadow:inset 0 1px 0 #fff9;color:#674660}
+.dialog.glass{background:var(--palace-satin);border:1px solid rgba(255,249,238,.8);box-shadow:0 26px 70px #1e11238c,inset 0 1px #fff9}
+.auth-panel.glass{background:linear-gradient(148deg,rgba(255,247,245,.68),rgba(225,195,215,.71) 54%,rgba(251,235,221,.67));border:1px solid #fffa}
+@media(max-width:700px){
+ .shell>.topbar{margin:0 0 10px;padding:7px 10px;min-height:48px;gap:4px;border-radius:17px}
+ .palace-trigger{font-size:clamp(14px,4.05vw,18px);gap:4px;padding:4px 1px;letter-spacing:-.47px}
+ .palace-status{font-size:11px}
+ .shell>.topbar .top-actions{gap:4px}
+ .shell>.topbar .top-actions .chip{width:32px;height:32px;min-height:0;padding:0;font-size:0;display:grid;place-items:center;line-height:1}
+ #soundBtn::before{content:'♫';font-size:18px;font-weight:bold}
+ #ambienceBtn::before{content:'🎞';font-size:16px}
+ .shell>.stats{margin-bottom:11px}
+ .shell>.tabs{margin:9px 0 0}
+ .shell>.controls{margin:9px 0 8px}
+}
+@media(max-width:350px){.palace-trigger{font-size:13px;letter-spacing:-.7px}.shell>.topbar .top-actions .chip{width:29px;height:29px}}
+@media(prefers-reduced-motion:reduce){.shell>.topbar::before,.shell>.stats::before,.shell>.tabs::before,.shell>.controls::before{animation:none}}
+
+
+
+/* V9 · compact picture palace refinement */
+:root{
+  --ink:#f2e7ee;
+  --muted:#d8c4d0;
+  --panelInk:#785a72;
+  --panelSub:#8f7287;
+  --panelGlass:rgba(255,246,248,.78);
+}
+html,body{background:#2f2230}
+body{
+  font-family:"Avenir Next","Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+  background:
+    radial-gradient(circle at 16% 12%, rgba(213,153,176,.28) 0%, rgba(213,153,176,0) 28%),
+    radial-gradient(circle at 87% 10%, rgba(196,156,198,.24) 0%, rgba(196,156,198,0) 24%),
+    radial-gradient(circle at 50% 100%, rgba(140,92,110,.34) 0%, rgba(140,92,110,0) 34%),
+    linear-gradient(165deg,#2f2230 0%, #50364a 39%, #6f5060 74%, #8a6573 100%);
+  color:#f7edf2;
+}
+button,input,select,textarea{font-family:inherit}
+.brand,.section-header h2,.polaroid h3,.dialog h2,.auth-panel h3,.empty h3,.palace-wordmark{
+  font-family:"Palatino Linotype","Book Antiqua",Georgia,serif;
+}
+.topbar{padding:14px 16px;border-radius:22px;background:linear-gradient(145deg,rgba(255,239,244,.74),rgba(240,221,231,.52));border:1px solid rgba(255,255,255,.62);box-shadow:0 12px 30px rgba(36,22,37,.18), inset 0 1px 0 rgba(255,255,255,.58);backdrop-filter:blur(12px)}
+.palace-trigger,.chip,.btn{
+  color:var(--panelInk);
+}
+.tabs,.controls,.dialog,.auth-panel,.delete-confirm,.review,.empty,.stats{
+  background:linear-gradient(145deg,rgba(255,245,248,.84),rgba(237,219,229,.68));
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 10px 28px rgba(37,21,38,.18), inset 0 1px 0 rgba(255,255,255,.5);
+  backdrop-filter:blur(14px);
+}
+.tabs,.controls,.stats{overflow:hidden}
+.stats{display:block;padding:10px 12px 12px;margin:0 0 14px;border-radius:22px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 10px;align-items:start}
+.stat{padding:0;background:none;border:0;box-shadow:none;text-align:center;min-width:0}
+.stat strong{display:block;font:700 22px/1 "Palatino Linotype","Book Antiqua",Georgia,serif;color:#7d5876;margin-bottom:2px}
+.stat span{display:block;font-size:11px;line-height:1.25;color:#8d7287}
+.stats-total{margin-top:9px;padding-top:9px;border-top:1px solid rgba(147,117,138,.24);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.stats-total-label{font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:#987b90;font-weight:700}
+#overallTimeStat{font:700 15px/1.15 "Avenir Next","Segoe UI",sans-serif;color:#7b5974}
+.tabs{gap:6px;margin:14px 0 0;padding:8px;border-radius:20px;background:linear-gradient(145deg,rgba(245,228,236,.86),rgba(236,216,227,.74))}
+.tabs .chip{font-size:13px;padding:10px 13px}
+.controls{margin:10px 0 8px;padding:10px}
+.field-search input,.controls select,.form input,.form select,.form textarea,.auth-panel input{background:#fff9fb;color:#6f5668;border:1px solid #dbc5cf}
+.feature-tip{color:#f1dfe9}
+.section-header{margin:20px 0 6px}
+.section-header h2{font-size:28px;color:#fff2eb;font-weight:400;letter-spacing:-.02em}
+.section-header p{color:#f0d8e2;font-size:12px}
+.section-count{gap:3px}
+.section-count #count{font-size:18px;line-height:1.18;font-weight:700;color:#fff1f7}
+.section-count #sectionTime{font-size:17px;line-height:1.15;font-weight:700;color:#fbe2b1}
+.gallery{padding-top:18px}
+.polaroid{background:#fbf2ec;box-shadow:0 13px 26px rgba(30,20,32,.32),0 0 0 1px rgba(255,255,255,.76);color:#725266}
+.poster{background:linear-gradient(150deg,#e7d2df,#d9c1d5)}
+.score{background:#f0dfea;color:#965f87}
+.tag{background:#efdeea;color:#86697e}
+.footer{color:#f0dce7}
+@media(max-width:720px){
+  .topbar{padding:12px 13px}
+  .stats{padding:10px 10px 11px}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 10px}
+  .stat strong{font-size:20px}
+  .stat span{font-size:10px}
+  .stats-total{margin-top:8px;padding-top:8px;gap:8px}
+  .stats-total-label{font-size:10px}
+  #overallTimeStat{font-size:14px}
+  .section-header{align-items:flex-start}
+  .section-header h2{font-size:24px}
+  .section-count{align-items:flex-start;text-align:left}
+}
+
+
+/* V10 · compact stats + move save notice to footer */
+.stats{padding:8px 10px 10px;margin:0 0 12px;border-radius:20px}
+.stats-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding-bottom:0}
+.stat strong{font-size:18px;margin-bottom:1px}
+.stat span{font-size:9.5px;line-height:1.15;max-width:72px;margin:0 auto}
+.stats-total{margin-top:7px;padding-top:7px;gap:7px}
+.stats-total-label{font-size:9.5px}
+#overallTimeStat{font-size:13px}
+.feature-tip{margin-top:10px;font-size:11px;line-height:1.45;color:#ead8e3;text-align:center}
+.footer{display:flex;flex-direction:column;gap:7px;align-items:center;margin-top:18px;padding-bottom:8px}
+.footer-line{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center}
+@media(max-width:720px){
+  .stats{padding:8px 9px 10px}
+  .stats-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+  .stat strong{font-size:17px}
+  .stat span{font-size:9px;max-width:58px}
+  .stats-total-label{font-size:9px}
+  #overallTimeStat{font-size:12.5px}
+}
 </style></head><body>
 <div class="velvet" id="velvet" aria-hidden="true"><div class="curtain left"><div class="crystal-trim"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="curtain right"><div class="crystal-trim"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><button class="btn primary curtain-button" id="startCurtain" aria-label="Open the theater curtains">✧ Open our little cinema ✧</button>
-<div class="stage"><div class="shell"><header class="topbar"><div class="brand">Pink Premiere <span style="color:#dca777">&</span> Pearly Popcorn <small>our little picture palace ♡</small></div><div class="top-actions"><button class="chip" id="soundBtn" aria-pressed="false">♫ Sounds off</button><button class="chip" id="ambienceBtn" aria-pressed="false">🎞 Ambience off</button><button class="chip" id="cloudBtn">☁ Cloud & sharing</button></div></header>
-<section class="marquee"><span class="float-star s1">✧</span><span class="float-star s2">♡</span><span class="float-star s3">✦</span><div class="marquee-inner"><div class="eyebrow">♡ Pink Premiere & Pearly Popcorn ♡</div><h1>Our cozy little cinema</h1><p>A little movie night, a little magic, a lot of memories. ♡</p><button class="btn primary" id="newHero" style="margin-top:18px">＋ Add a Polaroid</button></div></section>
-<section class="stats" aria-label="Collection statistics"><div class="stat glass"><strong id="totalStat">0</strong><span>in our collection · including Trash</span><span class="stat-time" id="totalTimeStat">⏱ 0m</span></div><div class="stat glass"><strong id="doneStat">0</strong><span>completed or reviewed</span><span class="stat-time" id="doneTimeStat">⏱ 0m</span></div><div class="stat glass"><strong id="nextStat">0</strong><span>on our watch / play next list</span><span class="stat-time" id="nextTimeStat">⏱ 0m</span></div><div class="stat glass"><strong id="favStat">0</strong><span>forever favorites</span><span class="stat-time" id="favTimeStat">⏱ 0m</span></div></section>
+<div class="stage"><div class="shell"><header class="topbar" aria-label="Theater header"><button class="palace-trigger" id="cloudBtn" type="button" aria-label="Our Little Picture Palace — open cloud, account and backup options" aria-haspopup="dialog" aria-controls="cloudModal"><span class="palace-wordmark">Our Little Picture Palace <span class="palace-heart">♡</span></span><span class="palace-status" id="palaceStatus" aria-hidden="true">◌</span></button><div class="top-actions"><button class="chip" id="soundBtn" aria-pressed="false" title="Toggle cute sounds">♫ Sounds off</button><button class="chip" id="ambienceBtn" aria-pressed="false" title="Toggle cinema ambience">🎞 Ambience off</button></div></header>
+<!-- Redundant welcome banner removed; the compact palace header opens existing cloud controls. -->
+<section class="stats glass" aria-label="Collection statistics"><div class="stats-grid"><div class="stat"><strong id="totalStat">0</strong><span>in our collection</span></div><div class="stat"><strong id="doneStat">0</strong><span>completed or reviewed</span></div><div class="stat"><strong id="nextStat">0</strong><span>on our watch / play next list</span></div><div class="stat"><strong id="favStat">0</strong><span>forever favorites</span></div></div><div class="stats-total"><span class="stats-total-label">Total time recorded</span><strong id="overallTimeStat">⏱ 0m</strong></div></section>
 <nav class="tabs" aria-label="Collection filters"><button class="chip selected" data-tab="all">All memories</button><button class="chip" data-tab="movie">🎬 Movies</button><button class="chip" data-tab="show">📺 TV shows</button><button class="chip" data-tab="game">🎮 Games</button><button class="chip" data-tab="next">Watch / Play Next</button><button class="chip" data-tab="favorite">♡ Favorites</button><button class="chip" data-tab="trash">✕ Trash</button></nav>
 <section class="controls"><label class="field-search"><input id="search" placeholder="⌕ Search our memories..." aria-label="Search collection"></label><select id="genreFilter" aria-label="Filter by genre"><option value="">All genres</option></select><select id="sort" aria-label="Sort collection"><option value="new">Newest first</option><option value="score10">Highest 10-heart rating</option><option value="score5">Highest 5-heart rating</option><option value="az">Title A to Z</option><option value="old">Oldest first</option></select><button class="chip" id="newEntry">＋ Add Polaroid</button></section>
-<div class="feature-tip" id="saveNotice">♡ Your memories save in this browser until you sign in to cloud. Sign in with the same account on both devices for sharing.</div>
-<section class="section-header"><div><h2 id="sectionTitle">The Grand Collection</h2><p id="sectionSubtitle">Each Polaroid holds a little moment from our story.</p></div><div class="section-count"><span id="count"></span><span id="sectionTime">⏱ 0m</span></div></section><main class="gallery" id="gallery" aria-live="polite"></main><section class="empty glass hidden" id="empty"><div class="pop">🍿</div><h3>Our screen is waiting!</h3><p>Add a movie, show or game and make your first little Polaroid memory.</p><button class="btn primary" id="emptyAdd">♡ Add our first memory</button></section><footer class="footer">Made with love, pearl popcorn, pastel curtains & two hearts ♡ <span id="storageMode">Browser collection</span></footer></div></div>
+
+<section class="section-header"><div><h2 id="sectionTitle">The Grand Collection</h2><p id="sectionSubtitle">Each Polaroid holds a little moment from our story.</p></div><div class="section-count"><span id="count"></span><span id="sectionTime">⏱ 0m</span></div></section><main class="gallery" id="gallery" aria-live="polite"></main><section class="empty glass hidden" id="empty"><div class="pop">🍿</div><h3>Our screen is waiting!</h3><p>Add a movie, show or game and make your first little Polaroid memory.</p><button class="btn primary" id="emptyAdd">♡ Add our first memory</button></section><footer class="footer"><div class="footer-line">Made with love, pearl popcorn, pastel curtains & two hearts ♡ <span id="storageMode">Browser collection</span></div><div class="feature-tip" id="saveNotice">♡ Your memories save in this browser until you sign in to cloud. Sign in with the same account on both devices for sharing.</div></footer></div></div>
 <div class="modal" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editHeading"><div class="dialog glass"><div class="dialog-head"><h2 id="editHeading">A new little premiere ♡</h2><button type="button" class="chip" id="closeEdit" aria-label="Close">✕</button></div><form id="entryForm" class="form"><input type="hidden" id="entryId"><div class="form-grid"><div class="group"><label for="entryTitle">Title (optional — you can add it later)</label><input id="entryTitle" maxlength="140" placeholder="A film we adored..."></div><div class="group"><label for="entryKind">What is it?</label><select id="entryKind"><option value="movie">🎬 Movie</option><option value="show">📺 TV show</option><option value="game">🎮 Video game</option></select></div><div class="group"><label for="entryStatus">Our progress</label><select id="entryStatus"><option value="watch_next">🎟 Watch Next</option><option value="play_next">🎮 Play Next</option><option value="in_progress">✨ Currently Watching</option><option value="currently_playing">✨ Currently Playing</option><option value="completed">💝 Completed</option><option value="trash">✕ Trash</option><option value="on_hold" hidden>🌙 On Hold (older entry)</option></select></div><div class="group"><label for="entryGenres">Genres (separated by commas)</label><input id="entryGenres" maxlength="220" placeholder="Fantasy, Romance, Cozy"></div></div><div class="form-grid"><div class="group"><label for="entryPhoto">Upload our poster / screenshot (optional)</label><input id="entryPhoto" type="file" accept="image/png,image/jpeg,image/webp"><p class="tiny">PNG, JPEG or WebP, under 8 MB. The actual photo appears on your Polaroid.</p><img class="photo-preview hidden" id="imagePreview" alt="Polaroid photo preview"></div><div class="group"><label>Our shared ratings ♡</label><p class="tiny">Tap a row of glossy hearts. You can rate out of 5 AND 10.</p><div class="group"><label id="rating5Label">5-heart rating — not rated</label><div class="rating-picker" id="rating5" role="group" aria-label="Rate out of five"></div></div><div class="group"><label id="rating10Label">10-heart rating — not rated</label><div class="rating-picker" id="rating10" role="group" aria-label="Rate out of ten"></div></div></div></div><div class="form-grid" id="timeTrackingFields"><div class="group"><label id="timeTrackingLabel" for="entryHours">Time watched (optional)</label><div class="time-amount"><input id="entryHours" type="number" min="0" max="99999" step="1" inputmode="numeric" placeholder="Hours" aria-label="Hours"><span>h</span><input id="entryMinutes" type="number" min="0" max="59" step="1" inputmode="numeric" placeholder="Minutes" aria-label="Minutes"><span>m</span></div><p class="tiny">Enter your total watched or played time. Leave blank until you're ready.</p></div><div class="group hidden" id="gameDaysField"><label for="entryDaysPlayed">Days played (optional)</label><input id="entryDaysPlayed" type="number" min="0" max="99999" step="1" inputmode="numeric" placeholder="e.g. 7"><p class="tiny">Days you played, not 24-hour blocks.</p></div></div><div class="group"><label for="entryDesc">Our little synopsis / description</label><textarea id="entryDesc" placeholder="What's this one about?"></textarea></div><div class="form-grid"><div class="group"><label for="entryLiked">♡ What we loved</label><textarea id="entryLiked" placeholder="The plot twists, cozy vibes, gorgeous scenes..."></textarea></div><div class="group"><label for="entryDisliked">☁ What wasn't our favorite</label><textarea id="entryDisliked" placeholder="Things we'd change..."></textarea></div></div><div class="group"><label style="font-size:15px"><input id="entryFavorite" type="checkbox"> ♡ Add to forever favorites</label></div><p class="tiny" id="formMessage" role="status" aria-live="polite">♡ Save adds the Polaroid to your collection. Cloud sign-in syncs between your devices.</p><div class="dialog-footer"><button class="chip" type="button" id="cancelEdit">Never mind</button><button class="btn primary" type="button" id="saveEntry">♡ Save our Polaroid</button></div></form></div></div>
 <div class="modal" id="viewModal" role="dialog" aria-modal="true" aria-labelledby="viewHeading"><div class="dialog glass"><div class="dialog-head"><h2 id="viewHeading">Our little review</h2><button class="chip" id="closeView">✕</button></div><div id="viewContent"></div><div class="dialog-footer"><button class="chip" id="quickTrash" type="button">✕ Move to Trash</button><button class="chip" id="deleteEntry" type="button">Delete Polaroid</button><button class="btn primary" id="editEntry" type="button">✎ Edit our review</button></div><div id="deleteConfirm" class="delete-confirm hidden" role="group" aria-labelledby="deleteQuestion"><p id="deleteQuestion">Are you sure you want to delete this Polaroid? This cannot be undone.</p><div class="dialog-footer"><button class="chip" type="button" id="cancelDelete">♡ Keep Polaroid</button><button class="chip danger" type="button" id="confirmDelete">Yes, delete Polaroid</button></div></div></div></div>
 <div class="modal" id="cloudModal" role="dialog" aria-modal="true" aria-labelledby="cloudHeading"><div class="dialog glass"><div class="dialog-head"><h2 id="cloudHeading">☁ Our shared cloud</h2><button class="chip" id="closeCloud">✕</button></div><div class="auth-panel glass"><h3 id="cloudHeadline">Our private movie diary</h3><p class="tiny" id="cloudInfo">Use the same account on both devices so you both see the same collection. Browser-only items do not sync automatically.</p><div id="signedOut"><div class="auth-inputs"><input id="cloudEmail" type="email" placeholder="Email address" autocomplete="email"><input id="cloudPassword" type="password" placeholder="Password" autocomplete="current-password"></div><div class="controls"><button class="btn primary" id="signIn">Sign in</button><button class="chip" id="register">Create account</button></div><p class="tiny">Email confirmation may be required. Never share your password.</p></div><div id="signedIn" class="hidden"><p id="signedEmail"></p><div class="controls"><button class="btn primary" id="migrateEntries">Copy browser Polaroids to cloud</button><button class="chip" id="signOut">Sign out</button></div></div><p class="tiny" id="cloudError" role="status"></p></div><div class="controls"><button class="chip" id="backupBtn">↓ Export browser backup</button><label class="chip" style="cursor:pointer">↑ Restore browser backup<input id="restoreInput" type="file" accept="application/json" hidden></label></div><p class="tiny">Cloud sync uses private storage in the connected Supabase project. Export an occasional backup too. This app uses a separate table from your closet.</p></div></div>
@@ -272,10 +427,10 @@ async function sound(kind='chime'){
 }
 function updateSounds(){
  $('soundBtn').textContent=sounds?'♫ Sounds on':'♫ Sounds off';
- $('soundBtn').setAttribute('aria-pressed',String(sounds));
+ $('soundBtn').setAttribute('aria-pressed',String(sounds));$('soundBtn').setAttribute('aria-label',sounds?'Cute sounds on':'Cute sounds off');
  $('soundBtn').classList.toggle('selected',sounds);
  $('ambienceBtn').textContent=ambience?'🎞 Ambience on':'🎞 Ambience off';
- $('ambienceBtn').setAttribute('aria-pressed',String(ambience));
+ $('ambienceBtn').setAttribute('aria-pressed',String(ambience));$('ambienceBtn').setAttribute('aria-label',ambience?'Cinema ambience on':'Cinema ambience off');
  $('ambienceBtn').classList.toggle('selected',ambience);
 }
 async function startAmbience(){
@@ -364,7 +519,7 @@ function safeDataImage(s){return typeof s==='string'&&(/^data:image\/(?:png|jpeg
 function statUpdate(){const a=collection; /* Keep every saved memory in lifetime stats, including Trash. */
  const done=a.filter(x=>x.status==='completed'||x.status==='trash'),next=a.filter(x=>x.status==='watch_next'||x.status==='play_next'),fav=a.filter(x=>x.favorite);
  $('totalStat').textContent=a.length;$('doneStat').textContent=done.length;$('nextStat').textContent=next.length;$('favStat').textContent=fav.length;
- for(const [element,items] of [['totalTimeStat',a],['doneTimeStat',done],['nextTimeStat',next],['favTimeStat',fav]])$(element).textContent='⏱ '+showTime(sumTrackedMinutes(items));} 
+ $('overallTimeStat').textContent='⏱ '+showTime(sumTrackedMinutes(a));}
 
 /* Stored in nullable Supabase columns. Older entries have no time and remain valid. */
 function trackedMinutes(item){const n=Number(item?.duration_minutes);return item?.duration_minutes==null||!Number.isFinite(n)||n<0?0:Math.floor(n)}
@@ -412,7 +567,7 @@ function openEdit(x=null){$('entryForm').reset();photoFile=null;editingPhoto=nul
  $('entryMinutes').value=valid?String(Number(recorded)%60):'';
  $('entryDaysPlayed').value=x?.days_played??'';
  timeInputVisibility();rating5=x?.rating5??null;rating10=x?.rating10??null;ratingUI();const prev=$('imagePreview');prev.classList.toggle('hidden',!x?.photo_url);if(x?.photo_url)prev.src=x.photo_url;editingPhoto=x?.photo_url||null;showModal('editModal');setTimeout(()=>$('entryTitle').focus(),70)}
-for(let n of ['newHero','newEntry','emptyAdd'])$(n).onclick=()=>openEdit();for(let n of ['closeEdit','cancelEdit'])$(n).onclick=()=>closeModal('editModal');
+for(let n of ['newEntry','emptyAdd'])$(n).onclick=()=>openEdit();for(let n of ['closeEdit','cancelEdit'])$(n).onclick=()=>closeModal('editModal');
 $('entryPhoto').onchange=async ev=>{const file=ev.target.files[0];if(!file)return;if(!/^image\/(png|jpeg|webp)$/.test(file.type)||file.size>8*1024*1024){$('formMessage').textContent='Choose a PNG, JPEG or WebP image under 8 MB.';ev.target.value='';return}photoFile=file;editingPhoto=await fileToData(file);$('imagePreview').src=editingPhoto;$('imagePreview').classList.remove('hidden');$('formMessage').textContent='♡ Your poster is ready.'};
 function fileToData(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not read the image'));reader.readAsDataURL(file)})}
 function localReady(){return !user}
@@ -476,7 +631,7 @@ $('confirmDelete').onclick=async()=>{
  }finally{button.disabled=false;button.textContent='Yes, delete Polaroid'}
 };
 for(let n of ['editModal','viewModal','cloudModal'])$(n).addEventListener('click',e=>{if(e.target===$(n))closeModal(n)});document.addEventListener('keydown',e=>{if(e.key==='Escape')for(let n of ['editModal','viewModal','cloudModal'])closeModal(n)});
-function cloudState(){const ok=!!user;$('signedOut').classList.toggle('hidden',ok);$('signedIn').classList.toggle('hidden',!ok);$('signedEmail').textContent=user?'Signed in as '+(user.email||'our shared account'):'';$('storageMode').textContent=ok?'☁ Shared cloud collection':'♡ Browser collection';$('saveNotice').textContent=ok?'☁ Cloud connected · Both devices can see the same entries when signed into this account.':'♡ Browser-only mode · Saved on this device. Sign into cloud with the same account on both devices to share your collection.';$('cloudHeadline').textContent=ok?'Our cloud is connected ♡':'Our private movie diary';$('cloudBtn').textContent=ok?'☁ Connected':'☁ Cloud & sharing'}
+function cloudState(){const ok=!!user;$('signedOut').classList.toggle('hidden',ok);$('signedIn').classList.toggle('hidden',!ok);$('signedEmail').textContent=user?'Signed in as '+(user.email||'our shared account'):'';$('storageMode').textContent=ok?'☁ Shared cloud collection':'♡ Browser collection';$('saveNotice').textContent=ok?'☁ Cloud connected · Both devices can see the same entries when signed into this account.':'♡ Browser-only mode · Saved on this device. Sign into cloud with the same account on both devices to share your collection.';$('cloudHeadline').textContent=ok?'Our cloud is connected ♡':'Our private movie diary';$('palaceStatus').textContent=ok?'☁':'◌';$('cloudBtn').setAttribute('aria-label',ok?'Our Little Picture Palace — cloud connected. Open account and backups':'Our Little Picture Palace — browser mode. Open account and backups')}
 $('cloudBtn').onclick=()=>{showModal('cloudModal');$('cloudError').textContent=client?'':'Cloud needs an internet connection (Supabase library did not load).'};$('closeCloud').onclick=()=>closeModal('cloudModal');
 async function auth(signup){if(!client){$('cloudError').textContent='Cloud library could not load. Check internet and refresh.';return}let email=$('cloudEmail').value.trim(),password=$('cloudPassword').value;if(!email||!password){$('cloudError').textContent='Enter your email and password.';return}try{$('cloudError').textContent='Connecting…';const r=signup?await client.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}}):await client.auth.signInWithPassword({email,password});if(r.error)throw r.error;$('cloudError').textContent=signup?'Account created. Check your email if confirmation is required, then sign in.':'Signed in ♡';}catch(e){$('cloudError').textContent=e.message}}
 $('signIn').onclick=()=>auth(false);$('register').onclick=()=>auth(true);$('signOut').onclick=async()=>{if(client){await client.auth.signOut({scope:'local'});notify('Signed out of cloud. Browser memories remain available.')}};
