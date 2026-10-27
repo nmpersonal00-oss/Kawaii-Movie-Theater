@@ -1216,4 +1216,64 @@ $('restoreInput').onchange=async e=>{let file=e.target.files[0];if(!file)return;
 async function init(){await loadLocal();collection=localItems.slice();render();cloudState();try{if(!window.supabase?.createClient)throw Error('Cloud library unavailable');client=window.supabase.createClient(PROJECT,KEY,{auth:{storageKey:'pearly-popcorn-theater-auth-v1',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});client.auth.onAuthStateChange((event,session)=>{const previous=!!user;user=session?.user||null;cloudState();if(user){setTimeout(()=>refreshCloud().catch(e=>notify('Cloud sync: '+e.message)),0)}else if(previous){collection=localItems.slice();render()}});const {data,error}=await client.auth.getSession();if(error)throw error;if(data.session?.user){user=data.session.user;cloudState();await refreshCloud()}}catch(e){$('cloudError').textContent=e.message;cloudState()}}
 init();
 })();
-</script></body></html>
+</script>
+<!-- Windows mouse-wheel refinement: preserve the original enclosed gallery and all app features. -->
+<script>
+(() => {
+  // No change to native Mac, touchpad, touch, keyboard, or scrollbar navigation.
+  const platform = (navigator.userAgentData && navigator.userAgentData.platform)
+    || navigator.platform || navigator.userAgent || '';
+  if (!/Windows|Win32|Win64|WinNT/i.test(platform)) return;
+  const gallery = document.getElementById('gallery');
+  if (!gallery) return;
+
+  let frame = 0;
+  let destination = 0;
+  let animating = false;
+  function stopWheelGlide() {
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
+    animating = false;
+  }
+  function glide() {
+    const limit = Math.max(0, gallery.scrollHeight - gallery.clientHeight);
+    destination = Math.min(limit, Math.max(0, destination));
+    const distance = destination - gallery.scrollTop;
+    if (Math.abs(distance) < 0.7) {
+      gallery.scrollTop = destination;
+      stopWheelGlide();
+      return;
+    }
+    gallery.scrollTop += distance * 0.34;
+    frame = requestAnimationFrame(glide);
+  }
+  gallery.addEventListener('wheel', (event) => {
+    if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey
+        || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
+    // Fractional/small pixel deltas are usually from a precision touchpad.
+    // Preserve its native, hardware-accelerated scrolling.
+    if (event.deltaMode === 0 && Math.abs(event.deltaY) < 80) {
+      if (animating) stopWheelGlide();
+      return;
+    }
+    const limit = gallery.scrollHeight - gallery.clientHeight;
+    if (limit <= 1) return;
+    // Only the existing Polaroid box scrolls, never the surrounding page.
+    event.preventDefault();
+    const pixels = event.deltaMode === 1 ? event.deltaY * 38
+      : event.deltaMode === 2 ? event.deltaY * gallery.clientHeight * 0.85
+      : event.deltaY;
+    const step = Math.min(260, Math.max(-260, pixels));
+    destination = Math.min(limit, Math.max(0,
+      (animating ? destination : gallery.scrollTop) + step));
+    if (!animating) {
+      animating = true;
+      frame = requestAnimationFrame(glide);
+    }
+  }, {passive: false});
+  gallery.addEventListener('pointerdown', stopWheelGlide, {passive: true});
+  gallery.addEventListener('touchstart', stopWheelGlide, {passive: true});
+  gallery.addEventListener('keydown', stopWheelGlide, true);
+})();
+</script>
+</body></html>
