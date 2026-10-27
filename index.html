@@ -1277,131 +1277,59 @@ init();
 })();
 </script>
 
-<!-- Windows mouse-wheel refinement for the Polaroid DETAILS popup only.
-     Keeps the existing gallery handler, layouts, CSS, cloud data, and Mac behavior unchanged. -->
+<!-- Windows mouse wheel: responsive, frame-batched scrolling inside existing popups.
+     Does not modify the gallery, design, saves, form logic, or non-Windows scrolling. -->
 <script>
 (() => {
-  // Match the Windows-only behavior already used for the working Polaroid gallery.
   const platform = (navigator.userAgentData && navigator.userAgentData.platform)
     || navigator.platform || navigator.userAgent || '';
   if (!/Windows|Win32|Win64|WinNT/i.test(platform)) return;
-  const modal = document.getElementById('viewModal');
-  const dialog = modal?.querySelector('.dialog');
-  if (!dialog) return;
 
-  let frame = 0;
-  let destination = 0;
-  let animating = false;
-  function stopWheelGlide() {
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    animating = false;
+  for (const id of ['viewModal', 'editModal', 'cloudModal']) {
+    const modal = document.getElementById(id);
+    const dialog = modal && modal.querySelector('.dialog');
+    if (!dialog) continue;
+
+    let accumulated = 0;
+    let frame = 0;
+
+    dialog.addEventListener('wheel', event => {
+      if (!modal.classList.contains('show') || event.defaultPrevented
+          || event.ctrlKey || event.metaKey || event.shiftKey
+          || !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+
+      // Keep native wheel interactions inside text fields, menus and scrollable inputs.
+      if (event.target instanceof Element
+          && event.target.closest('textarea,select,[contenteditable="true"]')) return;
+
+      // Leave precision touchpads alone: their native scrolling is already smooth.
+      if (event.deltaMode === 0 && Math.abs(event.deltaY) < 80) return;
+
+      const maximum = dialog.scrollHeight - dialog.clientHeight;
+      if (maximum < 1) return;
+
+      const delta = event.deltaMode === 1 ? event.deltaY * 38
+        : event.deltaMode === 2 ? event.deltaY * dialog.clientHeight * .85
+        : event.deltaY;
+
+      // Modest, predictable step; do not queue a slow easing animation.
+      const step = Math.max(-220, Math.min(220, delta));
+      event.preventDefault();
+      accumulated += step;
+
+      if (!frame) {
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          if (modal.classList.contains('show')) {
+            dialog.scrollTop = Math.min(dialog.scrollHeight - dialog.clientHeight,
+              Math.max(0, dialog.scrollTop + accumulated));
+          }
+          accumulated = 0;
+        });
+      }
+    }, {passive: false});
   }
-  function glide() {
-    // Nothing should keep running after a Polaroid review is closed.
-    if (!modal.classList.contains('show')) { stopWheelGlide(); return; }
-    const limit = Math.max(0, dialog.scrollHeight - dialog.clientHeight);
-    destination = Math.min(limit, Math.max(0, destination));
-    const distance = destination - dialog.scrollTop;
-    if (Math.abs(distance) < 0.7) {
-      dialog.scrollTop = destination;
-      stopWheelGlide();
-      return;
-    }
-    dialog.scrollTop += distance * 0.34;
-    frame = requestAnimationFrame(glide);
-  }
-  dialog.addEventListener('wheel', (event) => {
-    if (!modal.classList.contains('show') || event.defaultPrevented
-        || event.ctrlKey || event.metaKey || event.shiftKey
-        || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
-    // Precision touchpads already scroll smoothly using native browser handling.
-    if (event.deltaMode === 0 && Math.abs(event.deltaY) < 80) {
-      if (animating) stopWheelGlide();
-      return;
-    }
-    const limit = dialog.scrollHeight - dialog.clientHeight;
-    if (limit <= 1) return;
-    event.preventDefault();
-    const pixels = event.deltaMode === 1 ? event.deltaY * 38
-      : event.deltaMode === 2 ? event.deltaY * dialog.clientHeight * 0.85
-      : event.deltaY;
-    const step = Math.min(260, Math.max(-260, pixels));
-    destination = Math.min(limit, Math.max(0,
-      (animating ? destination : dialog.scrollTop) + step));
-    if (!animating) {
-      animating = true;
-      frame = requestAnimationFrame(glide);
-    }
-  }, {passive: false});
-  dialog.addEventListener('pointerdown', stopWheelGlide, {passive: true});
-  dialog.addEventListener('touchstart', stopWheelGlide, {passive: true});
-  dialog.addEventListener('keydown', stopWheelGlide, true);
 })();
 </script>
 
-<!-- Windows mouse-wheel refinement for the ADD/EDIT Polaroid form only.
-     Keeps the existing gallery and details handlers, form fields, CSS, cloud data, and Mac behavior unchanged. -->
-<script>
-(() => {
-  // Match the Windows-only behavior already used for the working Polaroid gallery.
-  const platform = (navigator.userAgentData && navigator.userAgentData.platform)
-    || navigator.platform || navigator.userAgent || '';
-  if (!/Windows|Win32|Win64|WinNT/i.test(platform)) return;
-  const modal = document.getElementById('editModal');
-  const dialog = modal?.querySelector('.dialog');
-  if (!dialog) return;
-
-  let frame = 0;
-  let destination = 0;
-  let animating = false;
-  function stopWheelGlide() {
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    animating = false;
-  }
-  function glide() {
-    // Nothing should keep running after the Add/Edit form is closed.
-    if (!modal.classList.contains('show')) { stopWheelGlide(); return; }
-    const limit = Math.max(0, dialog.scrollHeight - dialog.clientHeight);
-    destination = Math.min(limit, Math.max(0, destination));
-    const distance = destination - dialog.scrollTop;
-    if (Math.abs(distance) < 0.7) {
-      dialog.scrollTop = destination;
-      stopWheelGlide();
-      return;
-    }
-    dialog.scrollTop += distance * 0.34;
-    frame = requestAnimationFrame(glide);
-  }
-  dialog.addEventListener('wheel', (event) => {
-    if (!modal.classList.contains('show') || event.defaultPrevented
-        || event.ctrlKey || event.metaKey || event.shiftKey
-        || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
-    // Let scrollable form fields handle their own wheel input.
-    if (event.target?.closest?.('textarea, select, [contenteditable]')) return;
-    // Precision touchpads already scroll smoothly using native browser handling.
-    if (event.deltaMode === 0 && Math.abs(event.deltaY) < 80) {
-      if (animating) stopWheelGlide();
-      return;
-    }
-    const limit = dialog.scrollHeight - dialog.clientHeight;
-    if (limit <= 1) return;
-    event.preventDefault();
-    const pixels = event.deltaMode === 1 ? event.deltaY * 38
-      : event.deltaMode === 2 ? event.deltaY * dialog.clientHeight * 0.85
-      : event.deltaY;
-    const step = Math.min(260, Math.max(-260, pixels));
-    destination = Math.min(limit, Math.max(0,
-      (animating ? destination : dialog.scrollTop) + step));
-    if (!animating) {
-      animating = true;
-      frame = requestAnimationFrame(glide);
-    }
-  }, {passive: false});
-  dialog.addEventListener('pointerdown', stopWheelGlide, {passive: true});
-  dialog.addEventListener('touchstart', stopWheelGlide, {passive: true});
-  dialog.addEventListener('keydown', stopWheelGlide, true);
-})();
-</script>
 </body></html>
