@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 112" preserveAspectRatio="none">
+<defs>
+ <linearGradient id="slime" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#edff96"/><stop offset=".16" stop-color="#bfff36"/><stop offset=".53" stop-color="#69d900"/><stop offset="1" stop-color="#377b00"/></linearGradient>
+ <filter id="aura" x="-20%" y="-75%" width="140%" height="250%"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<!-- Goo grows naturally out of the TWO upper corners. The whole center stays transparent. -->
+<path d="M0 0H282V7Q247 17 225 9Q199 1 186 14Q179 24 177 51L174 81Q171 98 159 95Q147 93 151 76L155 20Q119 9 94 20Q88 25 87 41L83 57Q80 69 70 66Q62 63 66 48L69 15Q31 18 0 12Z" fill="#a9ff20" opacity=".6" filter="url(#aura)"/>
+<path d="M0 0H282V7Q247 17 225 9Q199 1 186 14Q179 24 177 51L174 81Q171 98 159 95Q147 93 151 76L155 20Q119 9 94 20Q88 25 87 41L83 57Q80 69 70 66Q62 63 66 48L69 15Q31 18 0 12Z" fill="url(#slime)" stroke="#b9ff4a" stroke-width="2"/>
+<path d="M0 3H274Q239 8 210 6Q183 4 157 9Q116 6 89 11Q46 8 0 7" fill="none" stroke="#f3ffb6" stroke-opacity=".76" stroke-width="4" stroke-linecap="round"/>
+<g transform="translate(1000 0) scale(-1 1)">
+<path d="M0 0H264V7Q233 16 208 9Q181 2 175 16Q168 22 165 45L161 70Q158 90 146 88Q135 85 140 66L144 19Q107 12 91 20Q84 26 81 39L75 69Q73 82 62 79Q52 76 58 59L63 15Q27 17 0 12Z" fill="#a9ff20" opacity=".6" filter="url(#aura)"/>
+<path d="M0 0H264V7Q233 16 208 9Q181 2 175 16Q168 22 165 45L161 70Q158 90 146 88Q135 85 140 66L144 19Q107 12 91 20Q84 26 81 39L75 69Q73 82 62 79Q52 76 58 59L63 15Q27 17 0 12Z" fill="url(#slime)" stroke="#b9ff4a" stroke-width="2"/>
+<path d="M0 3H257Q222 9 190 6Q159 5 146 11Q111 8 82 12Q44 8 0 7" fill="none" stroke="#f3ffb6" stroke-opacity=".76" stroke-width="4" stroke-linecap="round"/>
+</g>
+<g fill="#f6ffb0" opacity=".78"><circle cx="175" cy="93" r="3"/><circle cx="70" cy="64" r="2.5"/><circle cx="854" cy="85" r="3"/><circle cx="938" cy="79" r="2.8"/></g>
+</svg>
