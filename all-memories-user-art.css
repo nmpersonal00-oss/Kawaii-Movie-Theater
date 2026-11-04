@@ -233,6 +233,15 @@ body.memory-palace-all .section-header>.tabs .chip::after {
   display:block;color:inherit;text-align:center;
   font:700 clamp(9px,2.4vw,13px)/1.1 Georgia,serif;
 }
+/* Explicit labels stay alongside KY stickers even if legacy CSS changes. */
+body.memory-palace-all .section-header>.tabs [data-tab="all"]::after {content:"All memories"}
+body.memory-palace-all .section-header>.tabs [data-tab="movie"]::after {content:"Movies"}
+body.memory-palace-all .section-header>.tabs [data-tab="show"]::after {content:"TV shows"}
+body.memory-palace-all .section-header>.tabs [data-tab="game"]::after {content:"Games"}
+body.memory-palace-all .section-header>.tabs [data-tab="next"]::after {content:"Watch / Play Next"}
+body.memory-palace-all .section-header>.tabs [data-tab="current"]::after {content:"Currently Watching / Playing"}
+body.memory-palace-all .section-header>.tabs [data-tab="favorite"]::after {content:"Favorites"}
+body.memory-palace-all .section-header>.tabs [data-tab="trash"]::after {content:"Trash"}
 body.memory-palace-all .section-header>.tabs .chip::before {
   content:""!important;display:block;flex:none;
   width:clamp(26px,7vw,39px);height:clamp(26px,7vw,39px);
@@ -361,7 +370,7 @@ body.memory-palace-all #empty .pop::before {
   body.memory-palace-all .shell>.controls #newEntry {grid-column:1/-1}
   body.memory-palace-all .section-header {margin-top:125px}
   body.memory-palace-all #gallery {
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
     gap:36px 24px;
   }
   body.memory-palace-all #gallery .polaroid {padding:29px 15px 18px}
