@@ -444,3 +444,24 @@ body.ky-games-palace .modal .dialog .review{background:#fffaf0}
 @media(prefers-reduced-motion:reduce){
   body.ky-games-palace #gallery .polaroid{transition:none!important}
 }
+/* Custom original KY artwork instead of native emoji when no poster is present. */
+body.ky-games-palace .shell>.topbar .palace-status{
+  display:inline-block;flex:none;width:25px;height:25px;
+  font-size:0!important;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Cpath d='M11 27h17a6 6 0 0 0 0-12h-2a9 9 0 0 0-17-2 7 7 0 0 0 2 14Z' fill='%23d9eaff' stroke='%237ac4ff' stroke-width='1.7'/%3E%3Cpath d='M13 18q4-8 10-4' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 4px #90cfff);
+}
+body.ky-games-palace #gallery .poster .placeholder{
+  font-size:0!important;opacity:1;
+  display:flex;align-items:center;justify-content:center;
+}
+body.ky-games-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(60px,15vw,93px);height:clamp(60px,15vw,93px);
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 8px #4a98fc7d);
+}
+body.ky-games-palace #empty .pop{
+  font-size:0!important;
+  width:75px;height:75px;margin:auto;
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+}
