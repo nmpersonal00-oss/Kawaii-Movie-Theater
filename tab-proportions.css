@@ -1,0 +1,75 @@
+/* KY unified layout proportions: Games is the structural reference.
+   Presentation-only; all eight tabs keep their artwork, colors and data handlers.
+   Games selectors are deliberately excluded. Loaded last. */
+body:not(.ky-games-palace) .stage>.shell{box-sizing:border-box;width:100%;max-width:1100px;margin-inline:auto;padding:clamp(80px,16vw,126px) clamp(11px,3vw,32px) 38px}
+body:not(.ky-games-palace) .stage>.shell>.topbar{box-sizing:border-box;display:flex;justify-content:center;align-items:center;width:calc(100% - 12px);max-width:none;height:73px;min-height:73px;margin:0 6px 12px;padding:8px}
+body:not(.ky-games-palace) .stage>.shell>.topbar .palace-trigger{max-width:100%;min-width:0}
+body:not(.ky-games-palace) .stage>.shell>.stats{box-sizing:border-box;position:relative;display:flex;flex-direction:column;justify-content:center;width:calc(100% - 12px);max-width:none;height:131px;min-height:131px;margin:0 6px;padding:10px 8px 8px}
+body:not(.ky-games-palace) .stage>.shell>.stats .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+body:not(.ky-games-palace) .stage>.shell>.stats .stats-grid .stat{min-width:0;padding:3px 3px 5px}
+body:not(.ky-games-palace) .stage>.shell>.stats .stat strong{font-size:clamp(20px,4.3vw,27px);line-height:1}
+body:not(.ky-games-palace) .stage>.shell>.stats .stat span{font-size:clamp(9px,2.3vw,12px);line-height:1.2}
+body:not(.ky-games-palace) .stage>.shell>.stats .stats-total{margin-top:7px;padding-top:7px;gap:7px}
+body:not(.ky-games-palace) .stage>.shell>.stats .stats-total-label{font-size:clamp(9px,2.15vw,12px);line-height:1.2}
+body:not(.ky-games-palace) .stage>.shell>.stats #overallTimeStat{font-size:clamp(13px,3.4vw,19px);line-height:1.2}
+body:not(.ky-games-palace) .stage>.shell>.controls{box-sizing:border-box;position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;width:calc(100% - 12px);max-width:none;margin:clamp(123px,28vw,181px) 6px 15px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+body:not(.ky-games-palace) .stage>.shell>.controls .field-search{grid-column:1/-1;position:relative;min-width:0;width:100%}
+body:not(.ky-games-palace) .stage>.shell>.controls :is(input,select){box-sizing:border-box;display:block;width:100%;min-width:0;min-height:52px;height:52px;padding-block:7px}
+body:not(.ky-games-palace) .stage>.shell>.controls #newEntry{box-sizing:border-box;grid-column:1/-1;width:100%;min-width:0;min-height:58px;height:58px;padding-block:7px}
+body:not(.ky-games-palace) .stage>.shell>.section-header{box-sizing:border-box;position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:10px;align-items:center;width:calc(100% - 12px);max-width:none;margin:4px 6px 0}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.collection-heading{min-width:0;min-height:63px;display:flex;justify-content:center;flex-direction:column}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.section-count{min-width:0;max-width:146px}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.tabs{box-sizing:border-box;grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:100%;min-width:0;margin:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.tabs .chip{box-sizing:border-box;min-width:0;width:100%;min-height:68px;padding:5px 2px;margin:0}
+body:not(.ky-games-palace) .stage>.shell>#gallery{box-sizing:border-box;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 13px;width:100%;min-width:0;max-height:83dvh;padding:12px 6px 27px;overflow-y:auto;overflow-x:hidden}
+body:not(.ky-games-palace) .stage>.shell>#gallery .polaroid{box-sizing:border-box;width:100%;min-width:0}
+body:not(.ky-games-palace) .stage>.shell>#gallery .poster{height:auto;aspect-ratio:1.47/1}
+body.memory-palace-all .stage>.shell>.section-header::before{display:none!important}
+body.memory-palace-all .stage>.shell>.section-header h2::after{height:12px;margin-top:2px}
+body.memory-palace-all .stage>.shell>.controls::after{content:""!important;display:block!important;position:absolute;width:100%;height:106px;left:0;right:0;top:-111px;pointer-events:none;border:0;border-radius:0;background:url('./all-memories-staircase.svg') center bottom/contain no-repeat;box-shadow:none;filter:drop-shadow(0 0 5px #ff981c73)}
+body.ky-favorites-palace .stage>.shell>.controls::before{top:-103px}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs .chip{display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0!important;line-height:1.12;white-space:normal}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs .chip::before{content:""!important;display:block;flex:none;width:clamp(26px,7vw,39px);height:clamp(26px,7vw,39px);background-position:center;background-size:contain;background-repeat:no-repeat}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs .chip::after{display:block;font:700 clamp(9px,2.4vw,13px)/1.1 Georgia,serif;text-align:center}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="all"]::before{background-image:url('./assets/all-memories/ky-all.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="movie"]::before{background-image:url('./assets/all-memories/ky-movie.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="show"]::before{background-image:url('./assets/all-memories/ky-show.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="game"]::before{background-image:url('./assets/all-memories/ky-game.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="next"]::before{background-image:url('./assets/all-memories/ky-next.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="current"]::before{background-image:url('./assets/all-memories/ky-current.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="favorite"]::before{background-image:url('./assets/all-memories/ky-favorite.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="trash"]::before{background-image:url('./assets/all-memories/ky-trash.webp')}
+body:not(:is(.memory-palace-all,.ky-games-palace,.ky-next-palace,.ky-trash-palace,.ky-favorites-palace,.ky-tv-palace)) .stage>.shell>.section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+@media(min-width:701px){
+body:not(.ky-games-palace) .stage>.shell{padding-top:clamp(98px,8vw,138px)}
+body:not(.ky-games-palace) .stage>.shell>.controls{grid-template-columns:minmax(180px,1.4fr) minmax(135px,.8fr) minmax(145px,.8fr) minmax(180px,.9fr);margin-top:clamp(185px,17vw,255px)}
+body:not(.ky-games-palace) .stage>.shell>.controls .field-search,body:not(.ky-games-palace) .stage>.shell>.controls #newEntry{grid-column:auto}
+body:not(.ky-games-palace) .stage>.shell>#gallery{grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:18px;padding:14px 7px 24px}
+body.ky-favorites-palace .stage>.shell>.controls::before{top:-135px}
+}
+@media(min-width:701px) and (max-width:900px){
+body:not(.ky-games-palace) .stage>.shell>.section-header>.tabs .chip{min-height:74px}
+}
+@media(max-width:390px){
+body:not(.ky-games-palace) .stage>.shell{padding-top:78px;padding-inline:10px}
+body:not(.ky-games-palace) .stage>.shell>.topbar{height:61px;min-height:61px}
+body:not(.ky-games-palace) .stage>.shell>.stats{height:114px;min-height:114px;padding:8px 5px 7px}
+body:not(.ky-games-palace) .stage>.shell>.controls{gap:7px;margin-top:clamp(113px,28vw,128px)}
+body:not(.ky-games-palace) .stage>.shell>.controls :is(input,select){height:49px;min-height:49px;padding-block:6px}
+body:not(.ky-games-palace) .stage>.shell>.controls #newEntry{height:58px;min-height:58px}
+body:not(.ky-games-palace) .stage>.shell>.section-header{column-gap:9px;row-gap:7px}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.collection-heading{min-height:48px}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.tabs{gap:5px}
+body:not(.ky-games-palace) .stage>.shell>.section-header>.tabs .chip{min-height:60px}
+body:not(.ky-games-palace) .stage>.shell>#gallery{gap:15px 10px;padding:12px 5px 24px}
+body.memory-palace-all .stage>.shell>.controls::after{height:97px;top:-103px}
+body.ky-favorites-palace .stage>.shell>.controls::before{top:-101px}
+}
+body:is(.memory-palace-all,.ky-favorites-palace) .stage>.shell>#gallery{padding-top:30px}
