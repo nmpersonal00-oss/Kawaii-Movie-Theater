@@ -701,3 +701,64 @@ body.memory-palace-all .section-header>.tabs .chip[data-tab="all"].selected{
 @media(prefers-reduced-motion:reduce){
   body.memory-palace-all .section-header::before{transition:none!important}
 }
+
+
+/* Opening an existing memory keeps the exact same review/edit behavior;
+   only dialogs reached from All Memories inherit the palace palette. */
+body.memory-palace-all .modal .dialog.glass{
+  color:#64301e;
+  border:3px ridge #f2bd63;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(255,255,232,.75),transparent 73%),
+    linear-gradient(145deg,#ffe9ce,#fff4df 52%,#f6d3b4);
+  box-shadow:0 0 0 2px #9b450f,0 0 27px #ffb95674,
+    0 22px 65px #180004c9,inset 0 0 0 3px #fff6d4;
+}
+body.memory-palace-all .modal .dialog h2,
+body.memory-palace-all .modal .dialog .review strong{
+  color:#98180c;
+  text-shadow:0 1px #fff6d9;
+}
+body.memory-palace-all .modal .dialog .form label,
+body.memory-palace-all .modal .dialog .form p,
+body.memory-palace-all .modal .dialog .tiny,
+body.memory-palace-all .modal .dialog .form .group,
+body.memory-palace-all .modal .dialog #formMessage,
+body.memory-palace-all .modal .dialog #signedEmail,
+body.memory-palace-all .modal .dialog #cloudError{
+  color:#714029;
+}
+body.memory-palace-all .modal .dialog :is(input:not([type="checkbox"]):not([type="file"]),textarea,select){
+  color:#602e24;
+  background:#fffaf0;
+  border:1px solid #b67d56;
+}
+body.memory-palace-all .modal .dialog :is(input,textarea)::placeholder{
+  color:#947861;
+}
+body.memory-palace-all .modal .dialog .review{
+  background:linear-gradient(#fffaf0,#f7dfc7);
+  color:#552c20;
+  border:1px solid #d4a06d;
+}
+body.memory-palace-all .modal .dialog .review p{color:#552c20}
+body.memory-palace-all .modal .dialog .chip:not(.danger){
+  background:linear-gradient(#fff7e8,#f5d5b9);
+  color:#812b1b;
+  border:1px solid #e7af6c;
+  box-shadow:inset 0 1px #fff9ed,0 3px 8px #651d1147;
+}
+body.memory-palace-all .modal .dialog .btn.primary{
+  color:#fff1bd;
+  background:linear-gradient(#ad1d23,#700007 70%,#940c16);
+  border:2px ridge #f7c369;
+  text-shadow:0 1px #430006;
+}
+body.memory-palace-all .modal .dialog :is(input,select,textarea,button):focus-visible{
+  outline:3px solid #b87320;
+  outline-offset:2px;
+}
+body.memory-palace-all .modal .dialog .delete-confirm{
+  border:2px solid #b43e33;
+  background:#fff0e4;
+}
