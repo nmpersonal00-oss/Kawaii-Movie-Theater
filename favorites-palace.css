@@ -1,0 +1,515 @@
+/*
+  KY FOREVER FAVORITES • owner's original pink floral theater backgrounds
+  Scope: ONLY body.ky-favorites-palace while existing tab === 'favorite'.
+  Presentation only: no saved data, authentication, media, dialogs, handlers,
+  search, sorting, or category logic is changed.
+*/
+body.ky-favorites-palace {
+  --fav-ivory:#fff0df;
+  --fav-light:#ffc4d9;
+  --fav-pink:#f778a8;
+  --fav-rose:#b52c67;
+  --fav-ruby:#6d173f;
+  --fav-ink:#6b2345;
+  background:#672042;
+  color:var(--fav-ivory);
+}
+body.ky-favorites-palace .stage{
+  isolation:isolate;
+  min-height:100dvh;
+  background:none;
+}
+body.ky-favorites-palace .stage::before{
+  content:"";
+  display:block!important;
+  position:fixed;
+  inset:0;
+  height:100%;width:100%;z-index:-1;
+  border:0;border-radius:0;pointer-events:none;
+  opacity:1!important;filter:none!important;transform:none!important;
+  animation:none!important;
+  background:#722744 url('./assets/favorites/favorites-portrait.webp') center top/cover no-repeat;
+}
+body.ky-favorites-palace .stage::after{display:none!important}
+body.ky-favorites-palace .shell{
+  width:100%;max-width:1110px;margin-inline:auto;
+  padding:clamp(48px,12vw,82px) clamp(11px,3vw,34px) 55px;
+}
+body.ky-favorites-palace .shell::before{display:none}
+/* Heart-encrusted satin velvet marquee. Existing account/cloud trigger stays live. */
+body.ky-favorites-palace .shell>.topbar{
+  position:relative;isolation:isolate;overflow:visible;
+  display:flex;justify-content:center!important;align-items:center;
+  min-height:64px;margin:10px 8px 15px;padding:14px 18px 10px;
+  border:3px solid #ffe3b9;border-radius:35px;
+  background:radial-gradient(ellipse at 50% 0%,#fa94b7c7,transparent 73%),
+    linear-gradient(170deg,#8d2e56,#b74176 50%,#762444);
+  box-shadow:0 0 0 2px #a63e68,0 0 0 5px #ffcaaf,
+    0 0 27px #ff7faaa3,0 10px 19px #2c071d98,
+    inset 0 2px #fff4e8c7,inset 0 -4px 12px #5516318c;
+}
+body.ky-favorites-palace .shell>.topbar::before{
+  content:"";position:absolute;inset:auto;
+  top:-49px;left:50%;width:174px;height:87px;
+  transform:translateX(-50%);z-index:4;
+  background:url('./assets/favorites/ky-pink-bow.svg') center/contain no-repeat;
+  pointer-events:none;animation:none!important;
+}
+body.ky-favorites-palace .shell>.topbar::after{
+  content:"";position:absolute;inset:5px;z-index:2;
+  border:1px solid #fff6e4;border-radius:29px;pointer-events:none;
+  background:
+    radial-gradient(circle,#fff7ee 0 1.8px,#ffa2b3 2.1px 3.3px,transparent 4.1px)
+    left 5px top 1px/22px 9px repeat-x,
+    radial-gradient(circle,#fff7ee 0 1.8px,#ffa2b3 2.1px 3.3px,transparent 4.1px)
+    left 5px bottom 1px/22px 9px repeat-x;
+  box-shadow:inset 0 0 0 1px #ff8eb4a6;
+}
+body.ky-favorites-palace .shell>.topbar .palace-trigger{
+  width:100%;min-width:0;position:relative;z-index:3;
+  display:flex;justify-content:center;gap:6px;
+  text-align:center;padding:4px 2px;
+}
+body.ky-favorites-palace .shell>.topbar .palace-wordmark{
+  white-space:normal;overflow:visible;text-overflow:clip;
+  font:500 clamp(19px,5.2vw,30px)/1.12 "Iowan Old Style",Baskerville,Georgia,serif;
+  letter-spacing:-.025em;color:#fff0de;
+  text-shadow:0 1px 2px #641d3a,0 0 15px #ffbdd7c2;
+}
+body.ky-favorites-palace .shell>.topbar .palace-heart{
+  color:transparent!important;font-size:0!important;
+  display:inline-block;width:26px;height:26px;flex:none;
+  background:url('./assets/favorites/ky-pink-heart.svg') center/contain no-repeat;
+}
+body.ky-favorites-palace .shell>.topbar .palace-status{
+  display:inline-block;flex:none;font-size:0!important;
+  width:28px;height:25px;
+  background:url('./assets/watch-next/ky-cloud.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #ffd8f5);
+}
+body.ky-favorites-palace .shell>.topbar .palace-trigger:focus-visible{
+  outline:3px solid #fff4cb;outline-offset:4px;
+}
+/* Blush parchment stats: numbers remain computed by the original app. */
+body.ky-favorites-palace .shell>.stats{
+  position:relative;overflow:hidden;
+  margin:0 7px 0;padding:9px 10px 9px;
+  border:2px solid #ffe3cf;border-radius:32px;
+  background:radial-gradient(ellipse at 50% 0%,#fff8f1 0%,transparent 65%),
+    linear-gradient(135deg,#ffc9d8,#fbb8cf 53%,#e88baa);
+  color:#7d244a;
+  box-shadow:0 0 0 2px #c45184,0 0 0 4px #ffd5cf,
+    0 0 17px #ffa6c2a3,0 11px 23px #3c0924b0,
+    inset 0 2px #fff6ed,inset 0 -4px 12px #aa497aa3;
+}
+body.ky-favorites-palace .shell>.stats::before{content:none!important}
+body.ky-favorites-palace .shell>.stats::after{
+  content:"";position:absolute;inset:5px;border:1px solid #fff4e2;
+  border-radius:24px;pointer-events:none;background:none;
+  box-shadow:inset 0 0 0 1px #db6b9780;
+}
+body.ky-favorites-palace .stats-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+}
+body.ky-favorites-palace .stats-grid .stat{padding:4px 3px 6px;min-width:0;box-shadow:none}
+body.ky-favorites-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 0 #be618b70}
+body.ky-favorites-palace .stat strong{
+  display:block;margin:0 0 2px;color:#782141;
+  font:700 clamp(20px,4.7vw,29px)/1 Georgia,serif;
+  text-shadow:0 1px #fff1ea;
+}
+body.ky-favorites-palace .stat span{
+  display:block;max-width:103px;margin:auto;
+  font:500 clamp(9px,2.25vw,12px)/1.15 Georgia,serif;color:#7f244b;
+}
+body.ky-favorites-palace .stats-total{
+  border-top:1px solid #bb638db8;margin-top:6px;padding-top:7px;gap:7px;
+}
+body.ky-favorites-palace .stats-total-label{
+  color:#762443;font:700 clamp(9px,2.4vw,12px)/1.2 Georgia,serif;
+}
+body.ky-favorites-palace #overallTimeStat{
+  display:inline-flex;align-items:center;gap:4px;
+  color:#752349;text-shadow:0 1px #fff6ef;
+  font:700 clamp(14px,3.8vw,20px)/1.1 Georgia,serif;
+}
+body.ky-favorites-palace #overallTimeStat::before,
+body.ky-favorites-palace #sectionTime::before{
+  content:"";display:inline-block;flex:none;width:25px;height:25px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+}
+/* Empty space intentionally showcases the bunny blanket and heart-lit TV. */
+body.ky-favorites-palace .shell>.controls{
+  position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;margin:clamp(159px,42vw,218px) 6px 18px;
+  padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
+}
+body.ky-favorites-palace .shell>.controls::before{
+  content:"♡ Favorites ♡"!important;
+  position:absolute;z-index:1;pointer-events:none;
+  top:calc(-1 * clamp(115px,30vw,157px));left:50%;
+  transform:translateX(-50%);width:max-content;
+  color:#fff4d9;
+  font:italic 500 clamp(21px,5.4vw,38px)/1 "Brush Script MT","URW Chancery L",Georgia,cursive;
+  text-shadow:0 0 5px #ff6a9a,0 0 12px #ff8eb6,0 0 21px #ff477eb3;
+  animation:none!important;
+}
+body.ky-favorites-palace .shell>.controls::after{content:none!important}
+body.ky-favorites-palace .shell>.controls .field-search{
+  position:relative;grid-column:1/-1;min-width:0;width:100%;
+}
+body.ky-favorites-palace .shell>.controls .field-search::before{
+  content:"";pointer-events:none;position:absolute;z-index:3;
+  left:10px;top:50%;transform:translateY(-50%);
+  width:37px;height:37px;
+  background:url('./assets/all-memories/ky-search.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 3px #ffc5d5);
+}
+body.ky-favorites-palace .shell>.controls :is(input,select){
+  appearance:none;-webkit-appearance:none;
+  width:100%;min-width:0;min-height:51px;
+  padding:11px 35px 11px 52px;
+  border:2px solid #ffd3d9;border-radius:19px;
+  color:#ffecdf;
+  font:500 clamp(13px,3.3vw,19px)/1.2 Georgia,serif;
+  text-shadow:0 1px 1px #5c153d;
+  background:linear-gradient(137deg,rgba(146,58,98,.95),rgba(103,32,67,.94));
+  box-shadow:0 0 0 1px #ac4f7e,0 0 12px #ff9eb782,
+    0 6px 13px #350e258c,inset 0 1px #fff3f47d;
+}
+body.ky-favorites-palace .shell>.controls input::placeholder{color:#ffe4d5;opacity:1}
+body.ky-favorites-palace .shell>.controls input#search{
+  color:#fff2ea;background:linear-gradient(115deg,#a94e78ed,#8c426ee8);
+}
+body.ky-favorites-palace .shell>.controls select#genreFilter{
+  background:
+    url('./assets/all-memories/ky-movie.webp') left 8px center/37px 37px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 12px center/15px 10px no-repeat,
+    linear-gradient(145deg,#a34570,#7f2a58);
+}
+body.ky-favorites-palace .shell>.controls select#sort{
+  background:
+    url('./assets/favorites/ky-pink-heart.svg') left 8px center/36px 36px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 12px center/15px 10px no-repeat,
+    linear-gradient(145deg,#a34570,#7f2a58);
+}
+body.ky-favorites-palace .shell>.controls :is(input,select):focus-visible{
+  outline:3px solid #fff0d4;outline-offset:2px;
+}
+body.ky-favorites-palace .shell>.controls #newEntry{
+  grid-column:1/-1;position:relative;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  min-height:64px;width:100%;padding:10px 38px;
+  color:#fff5df;font:700 clamp(18px,4.5vw,24px)/1.15 Georgia,serif;
+  border:3px double #ffe5ca;border-radius:23px;
+  background:radial-gradient(ellipse at 50% 0%,#ffd3df78,transparent 75%),
+    linear-gradient(155deg,#d16b93,#b74276 60%,#99325e);
+  text-shadow:0 2px 3px #763452,0 0 8px #fff0df75;
+  box-shadow:0 0 0 1px #ba6085,0 0 18px #ff9cbaab,
+    0 7px 16px #2d0d22b3,inset 0 2px #fff0e6c6,inset 0 -4px 10px #6f194861;
+}
+body.ky-favorites-palace .shell>.controls #newEntry::before{
+  content:"";display:inline-block;flex:none;width:36px;height:36px;
+  background:url('./assets/all-memories/ky-add.webp') center/contain no-repeat;
+}
+body.ky-favorites-palace .shell>.controls #newEntry::after{
+  content:"";pointer-events:none;position:absolute;inset:-12px -6px;
+  background:url('./assets/favorites/ky-pink-bow.svg') left center/90px auto no-repeat,
+    url('./assets/favorites/ky-pink-bow.svg') right center/90px auto no-repeat;
+}
+body.ky-favorites-palace .shell>.controls #newEntry:is(:hover,:focus-visible){filter:brightness(1.07)}
+body.ky-favorites-palace .shell>.controls #newEntry:focus-visible{outline:3px solid #fff7db;outline-offset:4px}
+/* The Forever Favorites title is a script-like illuminated rose-gold sign. */
+body.ky-favorites-palace .section-header{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;column-gap:9px;row-gap:11px;
+  margin:7px 6px 0;
+}
+body.ky-favorites-palace .section-header>.collection-heading{min-width:0}
+body.ky-favorites-palace .section-header h2{
+  color:#ffeac8;font:italic 500 clamp(25px,5.6vw,43px)/1.14 "Brush Script MT","URW Chancery L",Georgia,cursive;
+  letter-spacing:-.035em;
+  text-shadow:0 0 7px #fa87b6,0 2px 3px #5b1e41,0 0 16px #ffcfad8a;
+}
+body.ky-favorites-palace .section-header h2::after{
+  content:"";display:block;width:100%;max-width:435px;
+  height:19px;margin-top:1px;border:0;border-radius:0;box-shadow:none;
+  background:
+    url('./assets/favorites/ky-pink-heart.svg') center/21px 21px no-repeat,
+    linear-gradient(90deg,#ffba9a 0 44%,transparent 47% 53%,#ffc1ac 56% 100%) center/100% 2px no-repeat;
+  filter:drop-shadow(0 0 4px #ffb1b4);
+}
+body.ky-favorites-palace .section-header>.section-count{max-width:142px;gap:3px;align-items:flex-end;text-align:right}
+body.ky-favorites-palace .section-count #count{
+  color:#fff0df;font:700 clamp(15px,3.5vw,25px)/1.14 Georgia,serif;
+  text-shadow:0 1px 4px #69233f,0 0 7px #ffd4d5;
+}
+body.ky-favorites-palace .section-count #sectionTime{
+  display:inline-flex;justify-content:flex-end;align-items:center;gap:4px;
+  color:#fff1dd;font:700 clamp(14px,3.5vw,23px)/1.13 Georgia,serif;
+  text-shadow:0 1px 4px #69233f,0 0 8px #ffd5d5;
+}
+body.ky-favorites-palace .section-header>.tabs{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;
+  margin:0;padding:0;border:0;border-radius:0;
+  overflow:visible;background:none;box-shadow:none;
+}
+body.ky-favorites-palace .section-header>.tabs .chip,
+body.ky-favorites-palace .section-header>.tabs .chip[data-tab="current"]{
+  display:flex;flex-direction:row;align-items:center;justify-content:center;
+  gap:2px;min-width:0;width:100%;min-height:60px;
+  padding:5px 3px;border:2px solid #ef99b3;border-radius:17px;
+  background:radial-gradient(ellipse at 50% 0%,#cf7398,#873056 88%);
+  color:#fff0da;text-align:center;text-shadow:0 1px #5e2142;
+  box-shadow:inset 0 1px #fff4dc82,0 5px 9px #27071fb0,
+    inset 0 -2px 9px #4d1836a3;
+  font-size:0!important;
+}
+body.ky-favorites-palace .section-header>.tabs .chip::before{
+  content:""!important;display:block;flex:none;
+  width:clamp(24px,6.7vw,36px);height:clamp(24px,6.7vw,36px);
+  background-position:center;background-repeat:no-repeat;background-size:contain;
+  filter:drop-shadow(0 0 3px #ffb9d5a8);
+}
+body.ky-favorites-palace .section-header>.tabs .chip::after{
+  content:"";display:block;min-width:0;color:inherit;
+  font:700 clamp(9px,2.35vw,13px)/1.1 Georgia,serif;text-align:center;
+}
+body.ky-favorites-palace .section-header>.tabs [data-tab="all"]::before{background-image:url('./assets/all-memories/ky-all.webp')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="movie"]::before{background-image:url('./assets/all-memories/ky-movie.webp')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="show"]::before{background-image:url('./assets/all-memories/ky-show.webp')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="game"]::before{background-image:url('./assets/all-memories/ky-game.webp')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="next"]::before{background-image:url('./assets/watch-next/ky-play.svg')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="current"]::before{background-image:url('./assets/all-memories/ky-current.webp')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="favorite"]::before{background-image:url('./assets/favorites/ky-pink-heart.svg')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="trash"]::before{background-image:url('./assets/all-memories/ky-trash.webp')}
+body.ky-favorites-palace .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.ky-favorites-palace .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+body.ky-favorites-palace .section-header>.tabs .chip.selected{
+  color:#762e4d;text-shadow:0 1px #fff9ec;
+  border:2px solid #fff0df;
+  background:radial-gradient(ellipse at 50% 0%,#fffcf8,#ffb6d0 75%,#ed88b4);
+  box-shadow:0 0 0 1px #c76891,0 0 21px #ffd0d8e3,
+    0 4px 10px #4b0a2d94,inset 0 2px #fffcef;
+}
+body.ky-favorites-palace .section-header>.tabs .chip:not(.selected):hover{filter:brightness(1.12)}
+body.ky-favorites-palace .section-header>.tabs .chip:focus-visible{outline:3px solid #fff0d6;outline-offset:2px}
+/* Live, interactive saved cards with embroidery, lace, ribbon, and pink parchment. */
+body.ky-favorites-palace #gallery{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px 13px;padding:30px 8px 38px;
+  max-height:83dvh;overflow-x:hidden;overflow-y:auto;
+  scrollbar-color:#e995b3 #5e2541;
+}
+body.ky-favorites-palace #gallery .polaroid{
+  position:relative;isolation:isolate;min-width:0;
+  padding:15px 10px 25px;
+  border:3px solid #f4b5be;border-radius:21px;
+  transform:none!important;
+  color:#5a233d;
+  background:radial-gradient(circle at 8% 90%,#fff9df 0 1.5px,transparent 7px),
+    radial-gradient(circle at 90% 80%,#fff7ed 0 1.5px,transparent 6px),
+    linear-gradient(140deg,#ffe4e7,#ffcdd8 47%,#ffb8c9);
+  box-shadow:0 0 0 2px #9e4774,0 0 0 4px #ffdbd1,
+    0 0 17px #ffbfd9b8,0 14px 24px #22071ab5,
+    inset 0 0 0 2px #fff9f3,inset 0 0 0 7px #ec91ab;
+  transition:filter .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+body.ky-favorites-palace #gallery .polaroid::before{
+  content:"";position:absolute;top:-31px;left:50%;z-index:4;
+  transform:translateX(-50%);width:145px;height:74px;
+  pointer-events:none;
+  background:url('./assets/favorites/ky-pink-bow.svg') center/contain no-repeat;
+}
+body.ky-favorites-palace #gallery .polaroid::after{
+  content:"";position:absolute;inset:-7px -5px -26px;z-index:3;
+  pointer-events:none;border:0;border-radius:0;
+  background:
+    url('./assets/favorites/ky-pink-bow.svg') center bottom/120px 70px no-repeat,
+    url('./assets/favorites/ky-lace-frame.svg') center top/100% calc(100% - 18px) no-repeat;
+  box-shadow:none;
+}
+body.ky-favorites-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px)!important;filter:brightness(1.045);
+  box-shadow:0 0 0 2px #af4e7c,0 0 0 4px #ffe9df,
+    0 0 21px #ffe3e3c9,0 16px 28px #24071eb8,
+    inset 0 0 0 2px #fff9f3,inset 0 0 0 7px #ec91ab;
+}
+body.ky-favorites-palace #gallery .polaroid:focus-visible{outline:3px solid #fff2dc;outline-offset:6px}
+body.ky-favorites-palace #gallery .poster{
+  position:relative;overflow:hidden;height:auto;
+  aspect-ratio:1.29/1;border:2px solid #e894b0;
+  border-radius:12px;background:linear-gradient(#f9e5ec,#a96990);
+  box-shadow:0 0 0 2px #fff1e9,0 5px 9px #7d3a617c;
+}
+body.ky-favorites-palace #gallery .poster img{width:100%;height:100%;object-fit:cover}
+body.ky-favorites-palace #gallery .poster::after{
+  content:"";position:absolute;inset:0;
+  pointer-events:none;background:linear-gradient(126deg,#fff6f32b,transparent 35%,transparent 78%,#ffdee72b);
+}
+body.ky-favorites-palace #gallery .corner-heart{
+  position:absolute;top:3px;right:1px;z-index:4;
+  width:47px;height:47px;padding:0;border:0;border-radius:0;
+  font-size:0!important;
+  background:url('./assets/favorites/ky-pink-heart.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 4px #fff1e4);
+}
+body.ky-favorites-palace #gallery .polaroid h3{
+  color:#59203d;
+  font:700 clamp(15px,3.4vw,22px)/1.17 Georgia,serif;
+  margin:10px 2px 8px;text-shadow:0 1px #fff8ee;
+}
+body.ky-favorites-palace #gallery .polaroid .rating-line{
+  display:flex;flex-wrap:wrap;gap:6px;margin:0;
+}
+body.ky-favorites-palace #gallery .score{
+  display:inline-flex;gap:4px;align-items:center;
+  padding:5px 7px;border:1px solid #e999ae;border-radius:22px;
+  background:linear-gradient(145deg,#ffecf0,#f7a8c2);
+  color:#59253e;font:700 clamp(11px,2.8vw,16px)/1.12 Georgia,serif;
+  box-shadow:inset 0 1px #fff8fa,0 2px 4px #ba61866b;
+}
+body.ky-favorites-palace #gallery .score .rating-heart-shape{
+  stroke:#ad315c;stroke-width:1.3;fill:#ffe1ea;
+}
+body.ky-favorites-palace #gallery .score .filled .rating-heart-shape{fill:#f02b71;stroke:#922348}
+body.ky-favorites-palace #gallery .score .rating-heart-shine{stroke:#ffe0ef}
+body.ky-favorites-palace #gallery .polaroid .time-line{
+  display:flex;align-items:center;gap:5px;
+  margin:8px 2px 0;color:#692341;
+  font:700 clamp(11px,2.55vw,15px)/1.15 Georgia,serif;
+  text-shadow:0 1px #fff4ea;
+}
+body.ky-favorites-palace #gallery .polaroid .time-line::before{
+  content:"";flex:none;display:inline-block;width:23px;height:23px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+}
+body.ky-favorites-palace #gallery .polaroid .tagline{margin-top:9px;gap:6px}
+body.ky-favorites-palace #gallery .polaroid .tag{
+  padding:5px 9px;border:1px solid #eba1b3;border-radius:24px;
+  color:#642943;background:linear-gradient(145deg,#ffe1e5,#f9b5c9);
+  font:500 clamp(10px,2.4vw,13px)/1.16 Georgia,serif;
+  box-shadow:inset 0 1px #fff4ec,0 2px 3px #b76f8c45;
+}
+body.ky-favorites-palace #gallery .poster .placeholder{
+  font-size:0!important;display:flex;align-items:center;justify-content:center;
+}
+body.ky-favorites-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(60px,15vw,91px);height:clamp(60px,15vw,91px);
+  background:url('./assets/favorites/ky-pink-heart.svg') center/contain no-repeat;
+}
+body.ky-favorites-palace #empty{
+  color:#5d2342;border:2px solid #ffe4e4;
+  background:linear-gradient(#ffe8ed,#e9a5c3);
+  box-shadow:0 11px 22px #38081fb5,0 0 19px #ffb6d4b8;
+}
+body.ky-favorites-palace #empty h3{color:#782846}
+body.ky-favorites-palace #empty .pop{
+  width:70px;height:70px;margin:auto;font-size:0!important;
+  background:url('./assets/favorites/ky-pink-heart.svg') center/contain no-repeat;
+}
+/* Retain usable modals for viewing, editing, rating and cloud operations. */
+body.ky-favorites-palace .modal .dialog.glass{
+  color:#6f3454;background:linear-gradient(145deg,#fff8f3,#f8d9e8 76%,#f7e9e4);
+  border:2px solid #d77fa4;
+}
+body.ky-favorites-palace .modal .dialog :is(input,select,textarea,button):focus-visible{outline:3px solid #e78bb5;outline-offset:2px}
+body.ky-favorites-palace .modal .dialog .review{background:#fff8f4}
+@media(min-width:701px){
+  body.ky-favorites-palace .stage::before{
+    background-image:url('./assets/favorites/favorites-landscape.webp');
+  }
+  body.ky-favorites-palace .shell{padding-top:clamp(38px,5vw,72px)}
+  body.ky-favorites-palace .shell>.controls{
+    grid-template-columns:minmax(190px,1.4fr) minmax(135px,.8fr) minmax(155px,.8fr) minmax(175px,.9fr);
+    margin-top:clamp(180px,16vw,250px);
+  }
+  body.ky-favorites-palace .shell>.controls .field-search,
+  body.ky-favorites-palace .shell>.controls #newEntry{grid-column:auto}
+  body.ky-favorites-palace .shell>.controls::before{top:calc(-1 * clamp(135px,12vw,190px))}
+  body.ky-favorites-palace .shell>.controls #newEntry{font-size:clamp(15px,1.5vw,21px);padding-inline:14px}
+  body.ky-favorites-palace .shell>.controls #newEntry::after{display:none}
+  body.ky-favorites-palace #gallery{
+    grid-template-columns:repeat(auto-fill,minmax(217px,1fr));gap:35px 23px;
+  }
+  body.ky-favorites-palace .section-header>.tabs .chip{min-height:69px}
+}
+@media(max-width:390px){
+  body.ky-favorites-palace .shell{padding-left:10px;padding-right:10px;padding-top:46px}
+  body.ky-favorites-palace .shell>.topbar{margin-inline:6px;padding-inline:5px;min-height:60px}
+  body.ky-favorites-palace .shell>.topbar .palace-wordmark{font-size:clamp(16px,4.9vw,20px)}
+  body.ky-favorites-palace .shell>.stats{padding:8px 6px}
+  body.ky-favorites-palace .shell>.controls{margin-top:clamp(142px,41vw,170px);gap:7px}
+  body.ky-favorites-palace .shell>.controls :is(input,select){padding-left:46px;padding-right:24px;min-height:49px}
+  body.ky-favorites-palace .shell>.controls #newEntry{padding-inline:20px}
+  body.ky-favorites-palace .shell>.controls #newEntry::after{background-size:68px auto,68px auto}
+  body.ky-favorites-palace .section-header>.tabs{gap:5px}
+  body.ky-favorites-palace .section-header>.tabs .chip{min-height:57px;padding-inline:2px}
+  body.ky-favorites-palace .section-header>.tabs .chip::before{width:23px;height:23px}
+  body.ky-favorites-palace .section-header>.tabs .chip::after{font-size:9px}
+  body.ky-favorites-palace #gallery{gap:30px 11px;padding:30px 7px 36px}
+  body.ky-favorites-palace #gallery .polaroid{padding:15px 7px 22px}
+  body.ky-favorites-palace #gallery .polaroid::before{width:115px;height:63px;top:-26px}
+  body.ky-favorites-palace #gallery .polaroid .score{padding:4px 5px;gap:3px}
+  body.ky-favorites-palace #gallery .polaroid .tag{padding:4px 7px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.ky-favorites-palace #gallery .polaroid{transition:none!important}
+}
+/* Fine-tuned scene placement: keep the owner's actual heart-lit television visible. */
+@media(max-width:700px){
+  body.ky-favorites-palace .shell{padding-top:clamp(32px,9vw,43px)}
+  body.ky-favorites-palace .shell>.topbar{
+    min-height:51px;margin:8px 7px 11px;padding:8px 11px 6px;
+  }
+  body.ky-favorites-palace .shell>.topbar::before{
+    top:-34px;width:138px;height:70px;
+  }
+  body.ky-favorites-palace .shell>.topbar .palace-wordmark{
+    font-size:clamp(17px,5.0vw,24px);
+  }
+  body.ky-favorites-palace .shell>.stats{
+    padding:6px 7px 6px;border-radius:25px;
+  }
+  body.ky-favorites-palace .stat strong{font-size:clamp(18px,4.3vw,22px)}
+  body.ky-favorites-palace .stat span{font-size:clamp(8.5px,2.15vw,11px)}
+  body.ky-favorites-palace .stats-total{margin-top:4px;padding-top:5px;gap:4px}
+  body.ky-favorites-palace #overallTimeStat{font-size:clamp(13px,3.5vw,18px)}
+  body.ky-favorites-palace .shell>.controls{
+    margin-top:clamp(146px,38vw,172px);margin-bottom:11px;
+    gap:7px;
+  }
+  body.ky-favorites-palace .shell>.controls::before{top:calc(-1 * clamp(113px,29vw,135px))}
+  body.ky-favorites-palace .shell>.controls :is(input,select){min-height:42px;padding-top:7px;padding-bottom:7px}
+  body.ky-favorites-palace .shell>.controls #newEntry{min-height:49px;padding:6px 24px}
+  body.ky-favorites-palace .shell>.controls #newEntry::after{
+    background-size:clamp(55px,16vw,76px) auto,clamp(55px,16vw,76px) auto;
+  }
+  body.ky-favorites-palace .section-header{row-gap:7px}
+  body.ky-favorites-palace .section-header>.tabs .chip{min-height:46px;padding:4px 2px}
+  body.ky-favorites-palace .section-header>.tabs .chip::before{width:25px;height:25px}
+  body.ky-favorites-palace #gallery{
+    padding-top:24px;gap:26px 12px;
+  }
+  body.ky-favorites-palace #gallery .polaroid{padding:13px 8px 20px}
+  body.ky-favorites-palace #gallery .poster{aspect-ratio:1.43/1}
+  body.ky-favorites-palace #gallery .polaroid .time-line{margin-top:5px}
+  body.ky-favorites-palace #gallery .polaroid .tagline{margin-top:5px;gap:4px}
+  body.ky-favorites-palace #gallery .polaroid .tag{padding:4px 7px}
+}
+@media(min-width:701px){
+  /* On a laptop, reveal the entire floral/heart lounge before the functional UI. */
+  body.ky-favorites-palace .shell{padding-top:clamp(310px,27vw,430px)}
+  body.ky-favorites-palace .shell>.controls{margin-top:20px}
+  body.ky-favorites-palace .shell>.controls::before{display:none}
+}
+/* Leave breathing space below genre chips so the lower ribbon never obscures data. */
+body.ky-favorites-palace #gallery .polaroid{padding-bottom:42px}
+@media(max-width:700px){body.ky-favorites-palace #gallery .polaroid{padding-bottom:40px}}
