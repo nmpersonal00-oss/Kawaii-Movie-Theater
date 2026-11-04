@@ -67,11 +67,11 @@ body.memory-palace-all .shell>.topbar{
 body.memory-palace-all .shell>.topbar::before{
   content:"";
   position:absolute;
+  inset:auto;
   top:-54px;
   left:50%;
   width:164px;
   height:90px;
-  inset:auto;
   transform:translateX(-50%);
   z-index:4;
   pointer-events:none;
@@ -330,6 +330,24 @@ body.memory-palace-all .section-header>.tabs .chip[data-tab="current"]{
   text-shadow:0 1px #330006;
   box-shadow:inset 0 1px 1px #faab5f8f,inset 0 -2px #300006,0 3px 7px #180006c7;
 }
+/* Keep each button's original accessible text and click behavior. The
+   visible shelf labels are generated solely inside this tab to avoid doubling
+   the emojis already embedded in several of the original button labels. */
+body.memory-palace-all .section-header>.tabs .chip{
+  font-size:0;
+}
+body.memory-palace-all .section-header>.tabs .chip::after{
+  display:block;
+  font:700 clamp(9px,2.1vw,13px)/1.12 Georgia,serif;
+}
+body.memory-palace-all .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.memory-palace-all .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.memory-palace-all .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.memory-palace-all .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.memory-palace-all .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.memory-palace-all .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.memory-palace-all .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.memory-palace-all .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
 body.memory-palace-all .section-header>.tabs .chip::before{
   display:block;
   font:normal clamp(18px,4.2vw,25px)/1.1 system-ui, sans-serif;
@@ -538,7 +556,8 @@ body.memory-palace-all #empty .btn.primary{
   body.memory-palace-all .shell>.topbar{margin-left:6px;margin-right:6px;padding-left:4px;padding-right:4px}
   body.memory-palace-all .shell>.topbar .palace-trigger{font-size:17px}
   body.memory-palace-all .section-header>.tabs{gap:5px}
-  body.memory-palace-all .section-header>.tabs .chip{font-size:9px;min-height:53px;padding:5px 2px}
+  body.memory-palace-all .section-header>.tabs .chip{font-size:0;min-height:53px;padding:5px 2px}
+  body.memory-palace-all .section-header>.tabs .chip::after{font-size:9px}
   body.memory-palace-all #gallery{gap:28px 11px;padding-left:7px;padding-right:7px}
   body.memory-palace-all #gallery .polaroid{padding-left:8px;padding-right:8px}
   body.memory-palace-all #gallery .polaroid::before{width:105px}
