@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 110" preserveAspectRatio="none" role="img" aria-label="Custom glowing lime slime drips">
+<defs>
+ <linearGradient id="slime" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#f0ffa5"/><stop offset=".17" stop-color="#c4ff31"/>
+  <stop offset=".52" stop-color="#7cde00"/><stop offset="1" stop-color="#397800"/>
+ </linearGradient>
+ <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+  <stop stop-color="#ffffd5" stop-opacity=".94"/><stop offset="1" stop-color="#e4ff60" stop-opacity=".1"/>
+ </linearGradient>
+ <filter id="halo" x="-.4" y="-.7" width="1.8" height="2.6"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<!-- Three disconnected pools emerging BELOW the button's lower rim; 
+     deliberately no continuous green horizontal stripe. -->
+<g fill="#a5ff12" opacity=".57" filter="url(#halo)">
+ <path d="M36 0Q77 7 112 2Q142 -3 160 8Q170 16 166 35L159 80Q157 95 146 95Q133 92 139 74L145 19Q125 22 110 18Q97 14 92 25L89 45Q85 58 77 55Q68 53 73 37L77 16Q56 16 36 10Z"/>
+ <path d="M358 0Q401 11 436 4Q459 0 473 10Q489 20 484 43L477 91Q474 105 463 104Q450 103 454 83L461 24Q450 17 435 22Q420 26 422 43L418 58Q415 69 406 68Q398 64 403 48L407 23Q384 24 358 12Z"/>
+ <path d="M739 0Q778 9 814 2Q844 -2 857 13Q868 23 861 43L854 68Q850 86 840 82Q830 79 837 61L840 23Q826 18 809 22Q796 28 797 50L792 91Q790 102 779 100Q768 98 773 82L778 28Q764 23 739 13Z"/>
+</g>
+<g fill="url(#slime)" stroke="#b0f434" stroke-width="2.5" stroke-linejoin="round">
+ <path d="M36 0Q77 7 112 2Q142 -3 160 8Q170 16 166 35L159 80Q157 95 146 95Q133 92 139 74L145 19Q125 22 110 18Q97 14 92 25L89 45Q85 58 77 55Q68 53 73 37L77 16Q56 16 36 10Z"/>
+ <path d="M358 0Q401 11 436 4Q459 0 473 10Q489 20 484 43L477 91Q474 105 463 104Q450 103 454 83L461 24Q450 17 435 22Q420 26 422 43L418 58Q415 69 406 68Q398 64 403 48L407 23Q384 24 358 12Z"/>
+ <path d="M739 0Q778 9 814 2Q844 -2 857 13Q868 23 861 43L854 68Q850 86 840 82Q830 79 837 61L840 23Q826 18 809 22Q796 28 797 50L792 91Q790 102 779 100Q768 98 773 82L778 28Q764 23 739 13Z"/>
+</g>
+<g fill="none" stroke="url(#shine)" stroke-width="4" stroke-linecap="round" opacity=".88">
+ <path d="M49 7Q83 11 116 7Q142 4 156 13"/>
+ <path d="M372 7Q410 15 437 8Q461 5 474 18"/>
+ <path d="M751 7Q785 15 814 7Q838 4 850 17"/>
+</g>
+<g fill="#e8ff7b" opacity=".85">
+ <circle cx="147" cy="96" r="2.8"/><circle cx="84" cy="54" r="2.2"/>
+ <circle cx="468" cy="105" r="3"/><circle cx="412" cy="65" r="2.2"/>
+ <circle cx="783" cy="100" r="2.7"/><circle cx="845" cy="86" r="2.3"/>
+</g>
+</svg>
