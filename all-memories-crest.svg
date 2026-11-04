@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 106">
+<defs>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff5b5"/><stop offset=".22" stop-color="#ca7516"/><stop offset=".46" stop-color="#fff4a4"/><stop offset=".76" stop-color="#a94a09"/><stop offset="1" stop-color="#ffe589"/></linearGradient>
+ <radialGradient id="ruby" cx=".35" cy=".22" r=".9"><stop stop-color="#ffb1a2"/><stop offset=".22" stop-color="#ee2632"/><stop offset=".63" stop-color="#b00018"/><stop offset="1" stop-color="#570008"/></radialGradient>
+ <filter id="shine"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#130000" flood-opacity=".85"/><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ffd455" flood-opacity=".75"/></filter>
+</defs>
+<g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round" filter="url(#shine)">
+ <path d="M116 55 C88 13 55 15 46 35 C42 49 51 58 64 55 C80 50 75 33 63 35 C56 36 56 44 60 45 M124 55 C152 13 185 15 194 35 C198 49 189 58 176 55 C160 50 165 33 177 35 C184 36 184 44 180 45" stroke-width="4"/>
+ <path d="M91 48 C71 65 42 69 26 54 C13 40 17 29 27 30 C39 30 37 44 31 43 M149 48 C169 65 198 69 214 54 C227 40 223 29 213 30 C201 30 203 44 209 43" stroke-width="3.5"/>
+ <path d="M90 67C58 57 43 79 23 71 M150 67C182 57 197 79 217 71 M91 39Q80 18 65 21 M149 39Q160 18 175 21" stroke-width="3"/>
+ <path d="M25 70q-11 17-20 5 M215 70q11 17 20 5" stroke-width="2.8"/>
+</g>
+<g fill="#f6c45d" stroke="#873100" stroke-width="1.5"><circle cx="28" cy="52" r="5"/><circle cx="212" cy="52" r="5"/><circle cx="60" cy="19" r="4"/><circle cx="180" cy="19" r="4"/><circle cx="121" cy="9" r="4.5"/></g>
+<path d="M120 89 C102 74 84 58 84 39 C84 18 107 11 120 29 C133 11 156 18 156 39 C156 58 138 74 120 89Z" fill="url(#ruby)" stroke="#6e1605" stroke-width="11" stroke-linejoin="round" filter="url(#shine)"/>
+<path d="M120 89 C102 74 84 58 84 39 C84 18 107 11 120 29 C133 11 156 18 156 39 C156 58 138 74 120 89Z" fill="url(#ruby)" stroke="url(#gold)" stroke-width="5" stroke-linejoin="round"/>
+<path d="M98 31Q109 23 115 34" fill="none" stroke="#fff3d1" stroke-width="5" opacity=".75" stroke-linecap="round"/>
+<path d="M106 57Q120 72 133 53" fill="none" stroke="#ff7971" stroke-width="2" opacity=".68"/>
+<path d="M109 92l11 9 11-9" fill="none" stroke="url(#gold)" stroke-width="3"/>
+</svg>
