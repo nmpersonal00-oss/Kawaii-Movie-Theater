@@ -1,8 +1,8 @@
 /*
- * KY TV SHOW LOUNGE • approved bow-free, chocolate-and-snacks mockup
- * Only active while the app's ORIGINAL `tab === "show"`.
- * The real collection, time, ratings, posters, buttons, cloud, search and
- * edit/save/delete functions are unchanged. No Apple emoji UI decorations.
+ * KY TV SHOWS — owner's exact portrait + landscape full-room wallpapers.
+ * SINGLE active stylesheet: no boxed hero or duplicate immersive override.
+ * Uses the same fixed full-page background strategy as the Games tab.
+ * Styling only; original working data, search, ratings and other tabs intact.
  */
 body.ky-tv-palace{
   --tv-ink:#351a57;
@@ -14,16 +14,30 @@ body.ky-tv-palace{
   background:#1d0a34;
   color:var(--tv-ivory);
 }
-body.ky-tv-palace .stage{isolation:isolate;min-height:100dvh;background:none}
+body.ky-tv-palace .stage{position:relative;isolation:isolate;min-height:100dvh;background:none!important}
+/* True full-viewport room wallpaper. Never a panel inside .controls. */
 body.ky-tv-palace .stage::before{
-  content:"";display:block!important;
-  position:fixed;inset:0;z-index:-1;
-  width:100%;height:100%;pointer-events:none;
-  opacity:1!important;filter:none!important;transform:none!important;
-  animation:none!important;border-radius:0;
-  background:#220f39 url('./assets/tv/tv-lounge-wallpaper-portrait.webp') center top/cover no-repeat;
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  border:0!important;
+  border-radius:0!important;
+  background-color:#41174e!important;
+  background-image:url('./assets/tv/tv-owner-lounge-portrait.webp')!important;
+  background-position:center top!important;
+  background-size:auto 125%!important;
+  background-repeat:no-repeat!important;
 }
-body.ky-tv-palace .stage::after{display:none!important}
+body.ky-tv-palace .stage::after{content:none!important;display:none!important}
 body.ky-tv-palace .shell{position:relative;z-index:2;width:100%;max-width:1130px;
   margin:auto;padding:clamp(35px,9vw,76px) clamp(9px,2.7vw,26px) 65px}
 body.ky-tv-palace .shell::before{display:none!important}
@@ -105,23 +119,14 @@ body.ky-tv-palace #overallTimeStat::before,body.ky-tv-palace #sectionTime::befor
   background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
   filter:drop-shadow(0 0 5px #c381ff);
 }
-/* The approved image's LOUNGE ONLY. It is not a screenshot of inputs/cards:
-   current app controls and the user's photos render as real elements below. */
+/* The opening room remains visible in the vertical breathing space: no added image layer. */
 body.ky-tv-palace .shell>.controls{
-  --tv-hero-height:clamp(171px,41.5vw,454px);
   position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   column-gap:10px;row-gap:10px;
-  margin:calc(var(--tv-hero-height) + 19px) 3px 13px;
+  margin:clamp(255px,72vw,370px) 3px 13px;
   padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
 }
-body.ky-tv-palace .shell>.controls::before{
-  content:"";display:block!important;
-  position:absolute;z-index:0;
-  left:-4px;right:-4px;top:calc(0px - var(--tv-hero-height) - 12px);
-  height:var(--tv-hero-height);pointer-events:none;
-  border:0;border-radius:16px;box-shadow:none;opacity:1;
-  background:url('./assets/tv/tv-lounge-scene.webp') center/contain no-repeat;
-}
+body.ky-tv-palace .shell>.controls::before{content:none!important;display:none!important}
 body.ky-tv-palace .shell>.controls::after{content:none!important}
 body.ky-tv-palace .shell>.controls .field-search{
   grid-column:1/-1;min-width:0;position:relative;width:100%;
@@ -364,13 +369,18 @@ body.ky-tv-palace .modal .dialog.glass{color:#53375d;background:#f9eafa}
 body.ky-tv-palace .modal .dialog .review{background:#fff9fe}
 body.ky-tv-palace .footer{color:#f0d7fd}
 @media(min-width:701px){
-  body.ky-tv-palace .stage::before{background-image:url('./assets/tv/tv-lounge-wallpaper-landscape.webp')}
+  body.ky-tv-palace .stage::before{
+    /* Existing landscape asset contains this same exact artwork plus a
+       210px top extension; crop that extension in CSS for a full background. */
+    background-image:url('./assets/tv/tv-immersive-landscape.webp')!important;
+    background-position:center calc(-26.6vh)!important;
+    background-size:auto 145.5%!important;
+  }
   body.ky-tv-palace .shell{padding-top:clamp(45px,6.5vw,80px)}
   body.ky-tv-palace .shell>.topbar{min-height:68px}
   body.ky-tv-palace .shell>.controls{
     grid-template-columns:minmax(180px,1.4fr) minmax(140px,.9fr) minmax(140px,.9fr) minmax(160px,1fr);
-    --tv-hero-height:clamp(300px,34vw,456px);
-    margin-top:calc(var(--tv-hero-height) + 20px);
+    margin-top:clamp(360px,34vw,540px);
   }
   body.ky-tv-palace .shell>.controls .field-search,
   body.ky-tv-palace .shell>.controls #newEntry{grid-column:auto}
@@ -386,7 +396,7 @@ body.ky-tv-palace .footer{color:#f0d7fd}
   body.ky-tv-palace .shell>.topbar::before{width:46px;height:46px;top:-12px;left:-5px}
   body.ky-tv-palace .shell>.topbar .palace-wordmark{font-size:clamp(14px,4.1vw,17px)}
   body.ky-tv-palace .shell>.stats{padding:9px 4px}
-  body.ky-tv-palace .shell>.controls{--tv-hero-height:clamp(151px,42vw,180px);gap:8px}
+  body.ky-tv-palace .shell>.controls{margin-top:clamp(245px,75vw,306px);gap:8px}
   body.ky-tv-palace .shell>.controls :is(input,select){min-height:43px;padding-left:42px;padding-right:24px}
   body.ky-tv-palace .section-header h2{font-size:clamp(22px,5.9vw,27px)}
   body.ky-tv-palace .section-header>.tabs{gap:5px}
