@@ -1,0 +1,118 @@
+/*
+ * KY TV Shows — FULL IMMERSIVE LOUNGE, approved by owner (2026-11-04)
+ * The previous TV lounge artwork was placed in .controls::before, creating
+ * a boxed hero cutout. This override removes that picture entirely and puts
+ * the approved portrait/landscape room art behind the ENTIRE TV Shows tab.
+ * Only body.ky-tv-palace is touched. No JS, Supabase or stored data changes.
+ */
+body.ky-tv-palace {
+  background:#351345;
+}
+body.ky-tv-palace .stage {
+  isolation:isolate;
+  min-height:100dvh;
+  background:transparent!important;
+}
+/* One seamless room from the title, through the lounge, behind every card.
+   `cover` crops the edges proportionally instead of squeezing the illustration.
+   `fixed` keeps the bunny, cat and purple floor consistent while scrolling. */
+body.ky-tv-palace .stage::before {
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:100dvh;
+  z-index:-1!important;
+  opacity:1!important;
+  border:0!important;
+  border-radius:0!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  pointer-events:none!important;
+  background-color:#512260!important;
+  background-image:url('./assets/tv/tv-immersive-portrait.webp')!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+}
+/* Gentle floating light: confined to the edges, never a rectangular panel. */
+body.ky-tv-palace .stage::after {
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  opacity:.23!important;
+  border:0!important;
+  border-radius:0!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(circle at 3% 35%,#ffa7fb9a 0 2px,transparent 8px),
+    radial-gradient(circle at 98% 15%,#ffe2ffb0 0 2px,transparent 7px),
+    radial-gradient(circle at 7% 78%,#ffd7fa8b 0 2px,transparent 9px),
+    radial-gradient(circle at 96% 84%,#ffb7fa97 0 2px,transparent 8px),
+    linear-gradient(180deg,#18082530,transparent 23%,transparent 73%,#2f103a33);
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  animation:ky-tv-immersive-sparkle 7s ease-in-out infinite alternate!important;
+}
+@keyframes ky-tv-immersive-sparkle {
+  from{opacity:.12}
+  to{opacity:.37}
+}
+body.ky-tv-palace .shell {
+  position:relative;
+  z-index:2;
+}
+/* Reserve OPEN WALLPAPER space so the animals aren't covered by input rows.
+   This isn't an element or box—just room for the real full-page background. */
+body.ky-tv-palace .shell>.controls {
+  --tv-hero-height:clamp(254px,72vw,360px);
+  margin-top:calc(var(--tv-hero-height) + 12px);
+  overflow:visible;
+  background:none!important;
+}
+/* The square/pasted scene was this pseudo-element: remove it completely. */
+body.ky-tv-palace .shell>.controls::before {
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+/* No large frosted rectangle placed over the bunnies or TV. */
+body.ky-tv-palace .shell>.controls::after {content:none!important;display:none!important}
+/* Keep actual inputs distinct and legible on the luminous room background. */
+body.ky-tv-palace .shell>.controls :is(input,select),
+body.ky-tv-palace .shell>.controls #newEntry {
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+/* New artwork has a warmer magenta tint; continue it through card glows. */
+body.ky-tv-palace #gallery .polaroid {
+  box-shadow:0 0 0 2px #a964d4bd,0 0 19px #ffb6ffbc,
+    0 12px 23px #21062dd1,inset 0 1px #fff,inset 0 0 17px #fff6;
+}
+@media(min-width:701px) {
+  body.ky-tv-palace .stage::before {
+    background-image:url('./assets/tv/tv-immersive-landscape.webp')!important;
+    background-position:center center!important;
+  }
+  body.ky-tv-palace .shell>.controls {
+    --tv-hero-height:clamp(355px,34vw,535px);
+    margin-top:calc(var(--tv-hero-height) + 15px);
+  }
+}
+@media(max-width:390px) {
+  body.ky-tv-palace .shell>.controls {
+    --tv-hero-height:clamp(243px,75vw,305px);
+    margin-top:calc(var(--tv-hero-height) + 11px);
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.ky-tv-palace .stage::after {animation:none!important;opacity:.17!important}
+}
