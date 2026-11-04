@@ -1,0 +1,481 @@
+/*
+ * KY TRASH ROOM — TRASH CATEGORY ONLY • 2026-11-04
+ * The portrait/landscape game-night artwork is the owner's exact supplied art,
+ * converted losslessly in composition to mobile-friendly WebP (no UI screenshot).
+ * All backgrounds and ornaments are decorative; the existing live controls,
+ * saved posters, statistics, cloud functions, and edit/restore/delete handlers
+ * remain the same. Activated only by body.ky-trash-palace (tab === 'trash').
+ */
+body.ky-trash-palace{
+  --ky-trash-lime:#c8ff07;
+  --ky-trash-cream:#fff1cf;
+  --ky-trash-gold:#d8b67c;
+  --ky-trash-paper:#1d2016;
+  color:var(--ky-trash-cream);
+  background:#0b0d02;
+}
+body.ky-trash-palace .stage{isolation:isolate;min-height:100dvh;background:none}
+body.ky-trash-palace .stage::before{
+  content:"";
+  display:block!important;
+  position:fixed;inset:0;
+  width:100%;height:100%;z-index:-1;
+  opacity:1!important;filter:none!important;transform:none!important;
+  pointer-events:none;animation:none!important;border-radius:0;
+  background-color:#101201;
+  background-image:url('./assets/trash/trash-portrait.webp');
+  background-size:cover;background-position:center top;background-repeat:no-repeat;
+}
+body.ky-trash-palace .stage::after{display:none!important}
+body.ky-trash-palace .shell{
+  width:100%;max-width:1120px;
+  margin:0 auto;
+  padding:clamp(45px,12vw,96px) clamp(10px,3vw,31px) 40px;
+}
+body.ky-trash-palace .shell::before{display:none}
+body.ky-trash-palace :is(.palace-wordmark,.stat strong,.section-header h2,.polaroid h3,.section-count){
+  font-family:"Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;
+}
+/* Slime-crowned black velvet palace marquee (cloud account remains clickable). */
+body.ky-trash-palace .shell>.topbar{
+  position:relative;isolation:isolate;overflow:visible;
+  display:flex;justify-content:center!important;
+  margin:0 5px 7px;min-height:57px;
+  padding:13px 8px 9px;
+  border:2px solid #d2ac75;border-radius:21px;
+  background:
+    linear-gradient(105deg,rgba(201,255,3,.11),transparent 18%,transparent 82%,rgba(201,255,3,.10)),
+    linear-gradient(150deg,#20241b,#10130e 62%,#29291c);
+  box-shadow:0 0 0 1px #544c2b,0 0 14px #d2f8126e,
+     0 8px 17px #050800e6,inset 0 1px #fff1bf58,inset 0 -9px 15px #050604;
+}
+body.ky-trash-palace .shell>.topbar::before{
+  content:"";inset:auto;position:absolute;z-index:4;
+  width:88px;height:72px;left:-35px;top:-35px;
+  transform:rotate(-17deg);pointer-events:none;
+  background:url('./assets/trash/ky-trash-emblem.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 7px #baff00a1);animation:none!important;
+}
+body.ky-trash-palace .shell>.topbar::after{
+  content:"";position:absolute;inset:0;z-index:2;
+  border:0;border-radius:inherit;pointer-events:none;
+  background:url('./assets/trash/ky-slime-edge.svg') top center/100% 25px no-repeat;
+  box-shadow:inset 0 0 0 1px #c8a67888;
+}
+body.ky-trash-palace .shell>.topbar .palace-trigger{
+  position:relative;z-index:5;display:flex;justify-content:center;
+  width:100%;min-width:0;text-align:center;
+  padding:4px 14px 2px;
+  color:#fff4cc;
+}
+body.ky-trash-palace .shell>.topbar .palace-wordmark{
+  white-space:normal;overflow:visible;text-overflow:clip;
+  font:700 clamp(17px,4.3vw,31px)/1.14 "Iowan Old Style",Georgia,serif;
+  color:#fff1cf;text-shadow:0 2px #0c0b04,0 0 12px #ddfa3b35;
+}
+body.ky-trash-palace .shell>.topbar .palace-heart{
+  color:#d6ff3a;text-shadow:0 0 7px #bcff00;
+}
+body.ky-trash-palace .shell>.topbar .palace-status{
+  display:inline-block;flex:none;width:24px;height:24px;font-size:0!important;
+  background:url('./assets/watch-next/ky-cloud.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #ebf99387);
+}
+body.ky-trash-palace .shell>.topbar .palace-trigger:focus-visible,
+body.ky-trash-palace :is(button,select,input):focus-visible{
+  outline:3px solid #dcff51;outline-offset:3px;
+}
+/* Original dynamic collection numbers, on embossed black woven leather. */
+body.ky-trash-palace .shell>.stats{
+  position:relative;overflow:visible;
+  margin:0 3px;
+  padding:11px 8px 10px;
+  border:2px solid #b3a16b;border-radius:18px;
+  background:
+    repeating-linear-gradient(114deg,#c4d7830b 0 1px,transparent 2px 7px),
+    linear-gradient(145deg,#222719f5,#10140bf5 63%,#242719f7);
+  box-shadow:0 0 0 1px #5b572c,0 0 18px #b6ff005d,
+    0 11px 21px #060600dc,inset 0 1px #f0edbd63,inset 0 -8px 14px #0e110d;
+}
+body.ky-trash-palace .shell>.stats::before{display:none!important}
+body.ky-trash-palace .shell>.stats::after{
+  content:"";position:absolute;inset:-9px -3px -3px;z-index:2;pointer-events:none;
+  border:0;border-radius:14px;
+  background:url('./assets/trash/ky-slime-edge.svg') top center/100% 46px no-repeat,
+    url('./assets/trash/ky-slime-edge.svg') bottom center/100% 22px no-repeat;
+  box-shadow:none;
+}
+body.ky-trash-palace .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+body.ky-trash-palace .stats-grid .stat{padding:5px 3px 7px;min-width:0}
+body.ky-trash-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 0 #baaf7770}
+body.ky-trash-palace .stat strong{
+  font:700 clamp(20px,4.7vw,31px)/1 Georgia,serif;
+  color:#e0f562;text-shadow:0 0 10px #ccff0b60,0 1px #fff2aa55;
+  margin:0 0 3px;
+}
+body.ky-trash-palace .stat span{
+  max-width:106px;margin:0 auto;
+  font:500 clamp(9px,2.2vw,12px)/1.14 Georgia,serif;
+  color:#fff2bd;
+}
+body.ky-trash-palace .stats-total{margin-top:6px;padding-top:7px;gap:7px;border-color:#b2aa6a}
+body.ky-trash-palace .stats-total-label{
+  font:700 clamp(9px,2.15vw,12px)/1.2 Georgia,serif;color:#f2e5b3;
+}
+body.ky-trash-palace #overallTimeStat{
+  display:inline-flex;align-items:center;gap:4px;
+  font:700 clamp(13px,3.8vw,22px)/1 Georgia,serif;
+  color:#c5ff11;text-shadow:0 0 9px #aeec1478;
+}
+body.ky-trash-palace #overallTimeStat::before,
+body.ky-trash-palace #sectionTime::before{
+  content:"";display:inline-block;flex:none;width:26px;height:26px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #bbff00);
+}
+/* Reveal the exact supplied raccoon / opossum hero artwork, never obscure it. */
+body.ky-trash-palace .shell>.controls{
+  position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;margin:clamp(120px,32vw,185px) 3px 14px;
+  padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
+}
+body.ky-trash-palace .shell>.controls::before,
+body.ky-trash-palace .shell>.controls::after{display:none!important}
+body.ky-trash-palace .shell>.controls .field-search{
+  grid-column:1/-1;position:relative;min-width:0;width:100%;
+}
+body.ky-trash-palace .shell>.controls .field-search::before{
+  content:"";position:absolute;z-index:2;left:10px;top:50%;
+  transform:translateY(-50%);width:31px;height:31px;pointer-events:none;
+  background:url('./assets/all-memories/ky-search.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #d1ff27);
+}
+body.ky-trash-palace .shell>.controls .field-search::after{
+  content:"";position:absolute;z-index:1;right:10px;top:50%;
+  transform:translateY(-50%);width:22px;height:22px;pointer-events:none;
+  background:url('./assets/trash/ky-neon-sparkle.svg') center/contain no-repeat;
+}
+body.ky-trash-palace .shell>.controls :is(input,select){
+  appearance:none;-webkit-appearance:none;
+  width:100%;min-width:0;min-height:45px;
+  padding:10px 31px 10px 47px;
+  border:1px solid #91845c;border-radius:14px;
+  color:#fff4d0;
+  background-color:#1c2312;
+  font:500 clamp(13px,3.2vw,18px)/1.2 Georgia,serif;
+  box-shadow:0 0 0 1px #22230d,0 0 11px #b7f51b3d,
+    0 4px 13px #040600d9,inset 0 1px #faf5be38;
+}
+body.ky-trash-palace .shell>.controls #search{
+  background:linear-gradient(150deg,#262b1dec,#15190eec);
+}
+body.ky-trash-palace .shell>.controls input::placeholder{color:#f2e7c7;opacity:1}
+body.ky-trash-palace .shell>.controls #genreFilter{
+  background:
+    url('./assets/trash/ky-trash-emblem.svg') left 9px center/34px 34px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 10px center/14px 12px no-repeat,
+    linear-gradient(#242719,#13180b);
+}
+body.ky-trash-palace .shell>.controls #sort{
+  background:
+    url('./assets/trash/ky-slime-heart.svg') left 10px center/33px 33px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 10px center/14px 12px no-repeat,
+    linear-gradient(#25291a,#12160b);
+}
+body.ky-trash-palace .shell>.controls #newEntry{
+  grid-column:1/-1;display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:53px;padding:7px 13px;gap:9px;
+  border:2px solid #b5b061;border-radius:98px;
+  color:#fff4d0;
+  background:
+    linear-gradient(180deg,#d9ff3233 0%,transparent 35%),
+    linear-gradient(140deg,#333b14,#161c09 52%,#363e14);
+  font:700 clamp(17px,4.3vw,25px)/1.1 Georgia,serif;
+  text-shadow:0 1px #0b1005,0 0 12px #d9ff6d38;
+  box-shadow:0 0 0 2px #4b5921,0 0 14px #bdff136b,0 6px 14px #050700bd,
+    inset 0 1px #fff7a56f,inset 0 -5px #0f1407;
+}
+body.ky-trash-palace .shell>.controls #newEntry::before{
+  content:"";display:inline-block;flex:none;width:37px;height:37px;
+  background:url('./assets/all-memories/ky-add.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #beff0f);
+}
+body.ky-trash-palace .shell>.controls #newEntry::after{
+  content:"";position:absolute;inset:auto 0 -8px;z-index:2;
+  height:22px;pointer-events:none;
+  background:url('./assets/trash/ky-slime-edge.svg') center/100% 100% no-repeat;
+}
+body.ky-trash-palace .shell>.controls #newEntry:is(:hover,:focus-visible){filter:brightness(1.14)}
+/* Title and counts: true text, actual live metrics, neon-green slime lettering. */
+body.ky-trash-palace .section-header{
+  position:relative;display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  column-gap:8px;row-gap:11px;align-items:center;
+  margin:5px 3px 4px;
+}
+body.ky-trash-palace .section-header>.collection-heading{min-width:0}
+body.ky-trash-palace .section-header h2{
+  color:#dbff48;
+  font:700 clamp(24px,5.7vw,42px)/1.08 "Iowan Old Style",Georgia,serif;
+  letter-spacing:-.035em;
+  text-shadow:0 0 3px #c5ff00,0 0 13px #c0ff0480,0 2px #213500;
+}
+body.ky-trash-palace .section-header h2::after{
+  content:"";display:block;width:100%;max-width:420px;
+  height:15px;margin-top:4px;border:0;border-radius:0;box-shadow:none;
+  background:url('./assets/trash/ky-slime-edge.svg') center top/100% 20px no-repeat;
+  filter:drop-shadow(0 1px 5px #c8ff00a0);
+}
+body.ky-trash-palace .section-header>.collection-heading::after{
+  content:"";display:block;width:25px;height:25px;margin:-31px 0 0 calc(100% - 29px);
+  background:url('./assets/trash/ky-slime-heart.svg') center/contain no-repeat;
+  pointer-events:none;
+}
+body.ky-trash-palace .section-header>.section-count{max-width:141px;text-align:right;align-items:flex-end;gap:2px}
+body.ky-trash-palace .section-count #count{
+  color:#e8ff87;font:700 clamp(14px,3.9vw,24px)/1.12 Georgia,serif;
+  text-shadow:0 0 9px #b7ff0466;
+}
+body.ky-trash-palace .section-count #sectionTime{
+  display:inline-flex;align-items:center;justify-content:flex-end;gap:3px;
+  color:#c8ff07;font:700 clamp(15px,3.8vw,23px)/1.15 Georgia,serif;
+  text-shadow:0 0 9px #c5ff0099;
+}
+/* ORIGINAL clickable tabs: CSS-generated KY sticker + label, hide underlying
+   emoji glyphs without changing button text or keyboard/screenreader behavior. */
+body.ky-trash-palace .section-header>.tabs{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;
+  margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+  overflow:visible;
+}
+body.ky-trash-palace .section-header>.tabs .chip,
+body.ky-trash-palace .section-header>.tabs .chip[data-tab="current"]{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:0;width:100%;min-height:58px;padding:5px 2px;
+  border:1px solid #8e815b;border-radius:13px;
+  color:#fff0ce;background:linear-gradient(145deg,#272c1d,#12160d 65%,#272e19);
+  box-shadow:inset 0 1px #fbdf8c44,0 3px 9px #050900c2;
+  text-align:center;text-shadow:0 1px #000;
+  font-size:0!important;
+}
+body.ky-trash-palace .section-header>.tabs .chip::before{
+  content:""!important;
+  display:block;flex:none;
+  width:clamp(24px,6.1vw,38px);height:clamp(24px,6.1vw,38px);
+  background-size:contain;background-position:center;background-repeat:no-repeat;
+  filter:drop-shadow(0 0 3px #d1ff2e55);
+}
+body.ky-trash-palace .section-header>.tabs .chip::after{
+  display:block;color:inherit;font:700 clamp(9px,2.35vw,13px)/1.11 Georgia,serif;
+  text-align:center;
+}
+body.ky-trash-palace .section-header>.tabs [data-tab="all"]::before{background-image:url('./assets/all-memories/ky-all.webp')}
+body.ky-trash-palace .section-header>.tabs [data-tab="movie"]::before{background-image:url('./assets/all-memories/ky-movie.webp')}
+body.ky-trash-palace .section-header>.tabs [data-tab="show"]::before{background-image:url('./assets/all-memories/ky-show.webp')}
+body.ky-trash-palace .section-header>.tabs [data-tab="game"]::before{background-image:url('./assets/all-memories/ky-game.webp')}
+body.ky-trash-palace .section-header>.tabs [data-tab="next"]::before{background-image:url('./assets/trash/ky-play-neon.svg')}
+body.ky-trash-palace .section-header>.tabs [data-tab="current"]::before{background-image:url('./assets/all-memories/ky-current.webp')}
+body.ky-trash-palace .section-header>.tabs [data-tab="favorite"]::before{background-image:url('./assets/trash/ky-slime-heart.svg')}
+body.ky-trash-palace .section-header>.tabs [data-tab="trash"]::before{background-image:url('./assets/trash/ky-trash-emblem.svg')}
+body.ky-trash-palace .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.ky-trash-palace .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.ky-trash-palace .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.ky-trash-palace .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.ky-trash-palace .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.ky-trash-palace .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.ky-trash-palace .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.ky-trash-palace .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+body.ky-trash-palace .section-header>.tabs .chip.selected{
+  position:relative;color:#1b2207;text-shadow:0 1px #f6ffbb;
+  background:linear-gradient(#e6ff4b,#b4f000 64%,#74bb00);
+  border:2px solid #eaff65;
+  box-shadow:0 0 0 1px #425907,0 0 16px #c7ff0dbb,
+     0 5px 12px #050900cc,inset 0 1px #f9ffcb;
+}
+body.ky-trash-palace .section-header>.tabs .chip.selected::after{font-weight:800}
+body.ky-trash-palace .section-header>.tabs .chip[data-tab="trash"].selected::before{filter:drop-shadow(0 0 4px #ecff70)}
+body.ky-trash-palace .section-header>.tabs .chip[data-tab="trash"].selected{
+  background:
+    url('./assets/trash/ky-slime-edge.svg') bottom center/100% 16px no-repeat,
+    linear-gradient(#ebff59,#c4fa09 55%,#83bb00);
+}
+body.ky-trash-palace .section-header>.tabs .chip:not(.selected):hover{filter:brightness(1.17)}
+/* Saved entries: dark embossed leather & stitched gold edges, user photo stays. */
+body.ky-trash-palace #gallery{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:26px 13px;padding:21px 8px 25px;
+  max-height:83dvh;overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:thin;scrollbar-color:#b5df40 #1d2510;
+}
+body.ky-trash-palace #gallery .polaroid{
+  position:relative;isolation:isolate;min-width:0;
+  padding:15px 10px 24px;
+  border:3px ridge #b6aa74;border-radius:17px;
+  transform:none;
+  color:#ffefcf;
+  background:
+    url('./assets/trash/ky-slime-edge.svg') bottom center/100% 16px no-repeat,
+    repeating-linear-gradient(134deg,#e8d7aa0a 0 1px,transparent 1px 8px),
+    radial-gradient(ellipse at 50% 0%,#343b28 0%,transparent 75%),
+    linear-gradient(145deg,#252b20,#151b12 59%,#22291b);
+  box-shadow:0 0 0 1px #57492a,0 0 0 3px #ceba85a0,
+    0 0 15px #b6ff0075,0 13px 22px #030600dc,
+    inset 0 0 0 2px #7a704b,inset 0 0 12px #0d140d;
+  text-align:left;
+  transition:transform .16s,filter .16s,box-shadow .16s;
+}
+body.ky-trash-palace #gallery .polaroid::before{
+  content:"";position:absolute;left:-4px;right:-4px;top:-8px;
+  width:auto;height:59px;transform:none;z-index:3;pointer-events:none;
+  background:url('./assets/trash/ky-slime-edge.svg') top center/100% 100% no-repeat;
+  filter:drop-shadow(0 0 5px #bfff00b0);
+}
+body.ky-trash-palace #gallery .polaroid::after{
+  content:"";position:absolute;inset:5px;z-index:3;pointer-events:none;
+  border:1px dashed #d0a96f;border-radius:12px;
+  background:
+    radial-gradient(circle at 0% 0%,#f3d596 0 3px,transparent 4px),
+    radial-gradient(circle at 100% 0%,#f3d596 0 3px,transparent 4px),
+    radial-gradient(circle at 0% 100%,#f3d596 0 3px,transparent 4px),
+    radial-gradient(circle at 100% 100%,#f3d596 0 3px,transparent 4px);
+  box-shadow:inset 0 0 0 1px #382b1b5e;
+}
+body.ky-trash-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px);filter:brightness(1.07);
+  box-shadow:0 0 0 1px #d6be74,0 0 0 3px #d0c395,0 0 24px #baff0999,
+    0 17px 25px #050700dc,inset 0 0 0 2px #7a704b;
+}
+body.ky-trash-palace #gallery .polaroid:focus-visible{outline:3px solid #e8ff58;outline-offset:5px}
+body.ky-trash-palace #gallery .poster{
+  height:auto;aspect-ratio:1.13/1;overflow:hidden;position:relative;
+  border:2px solid #bba273;border-radius:5px;
+  background:linear-gradient(#2e3a25,#141912);
+  box-shadow:0 0 0 2px #d4c19a77,0 4px 10px #030800;
+}
+body.ky-trash-palace #gallery .poster img{height:100%;width:100%;object-fit:cover}
+body.ky-trash-palace #gallery .poster::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    url('./assets/trash/ky-slime-edge.svg') bottom center/100% 21px no-repeat,
+    linear-gradient(110deg,#fffcec2a,transparent 40%,#a5ff0014 92%);
+  box-shadow:inset 0 0 0 1px #d8d6ab5c;
+}
+body.ky-trash-palace #gallery .poster .placeholder{
+  font-size:0!important;opacity:1;
+  display:flex;align-items:center;justify-content:center;
+}
+body.ky-trash-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(60px,14vw,90px);height:clamp(60px,14vw,90px);
+  background:url('./assets/trash/ky-trash-emblem.svg') center/contain no-repeat;
+}
+body.ky-trash-palace #gallery .polaroid h3{
+  margin:10px 0 8px;color:#fff4d3;
+  font:700 clamp(16px,3.55vw,22px)/1.14 Georgia,serif;
+  text-shadow:0 2px #080a02,0 0 10px #b8ff0039;
+}
+body.ky-trash-palace #gallery .polaroid .rating-line{display:flex;gap:6px;margin:0;flex-wrap:wrap}
+body.ky-trash-palace #gallery .polaroid .score{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 7px;
+  border:1px solid #baaa78;border-radius:30px;
+  background:linear-gradient(145deg,#363b2c,#171e15);
+  color:#f9f1d6;font:700 clamp(11px,2.65vw,15px)/1.1 Georgia,serif;
+  box-shadow:inset 0 1px #f3eac22e,0 2px 6px #030600d0;
+}
+body.ky-trash-palace #gallery .score .score-heart .rating-heart-shape{
+  fill:#d1f52c;stroke:#97c80b;
+}
+body.ky-trash-palace #gallery .score .score-heart.filled .rating-heart-shape{
+  fill:#b6f300;stroke:#7ca400;
+}
+body.ky-trash-palace #gallery .score .score-heart .rating-heart-shine{stroke:#f8ffb3}
+body.ky-trash-palace #gallery .polaroid .time-line{
+  display:flex;align-items:center;gap:4px;margin:7px 0 0;
+  color:#d7ff32;font:700 clamp(12px,2.8vw,17px)/1.15 Georgia,serif;
+  letter-spacing:0;text-shadow:0 0 9px #bdf60064;
+}
+body.ky-trash-palace #gallery .time-line::before{
+  content:"";display:inline-block;flex:none;width:22px;height:22px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+}
+body.ky-trash-palace #gallery .polaroid .tagline{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+body.ky-trash-palace #gallery .polaroid .tag{
+  padding:5px 9px;border:1px solid #908b6d;border-radius:30px;
+  background:linear-gradient(145deg,#393d2e,#1c2119);
+  color:#f5edcf;font:500 clamp(10px,2.3vw,12px)/1.12 Georgia,serif;
+  box-shadow:inset 0 1px #ffffff22;
+}
+body.ky-trash-palace #gallery .polaroid .tag:first-child{color:#caff2c;border-color:#8b9848}
+body.ky-trash-palace #gallery .corner-heart{
+  color:#cbf41f;background:#1d2510ed;border:1px solid #c6ef22;
+}
+/* Empty state: existing behavior, matching the page visually. */
+body.ky-trash-palace #empty{
+  border:2px solid #a7ac71;
+  background:linear-gradient(135deg,#242b1eee,#10170bed);color:#f6eccb;
+  box-shadow:0 0 20px #b8ff0051,0 11px 27px #030800d6;
+}
+body.ky-trash-palace #empty h3{color:#e0ff6d}
+body.ky-trash-palace #empty .pop{
+  font-size:0!important;width:75px;height:75px;margin-inline:auto;
+  background:url('./assets/trash/ky-trash-emblem.svg') center/contain no-repeat;
+}
+body.ky-trash-palace #empty .btn.primary{
+  background:linear-gradient(145deg,#d6fd39,#93c900);color:#172700;
+}
+/* Light parchment dialogs remain readable; original buttons and logic untouched. */
+body.ky-trash-palace .modal .dialog.glass{
+  color:#543d44;border:2px solid #b6a473;
+  background:linear-gradient(145deg,#fbf2df,#e9ded0 68%,#faf3dd);
+}
+body.ky-trash-palace .modal .dialog .review{background:#fff8e9}
+body.ky-trash-palace .modal .dialog :is(input,select,textarea,button):focus-visible{
+  outline:3px solid #9bd400;outline-offset:2px;
+}
+/* LAPTOP: use the owner's exact landscape version, wider cards, room for art. */
+@media(min-width:701px){
+  body.ky-trash-palace .stage::before{
+    background-image:url('./assets/trash/trash-landscape.webp');
+    background-position:center top;
+  }
+  body.ky-trash-palace .shell{padding-top:clamp(60px,6.9vw,112px)}
+  body.ky-trash-palace .shell>.topbar{min-height:70px;margin:0 7px 14px}
+  body.ky-trash-palace .shell>.topbar .palace-wordmark{font-size:clamp(24px,2.9vw,35px)}
+  body.ky-trash-palace .shell>.stats{padding:11px 12px}
+  body.ky-trash-palace .shell>.controls{
+    grid-template-columns:minmax(170px,1.35fr) minmax(130px,.79fr) minmax(140px,.85fr) minmax(160px,1fr);
+    margin:clamp(195px,18vw,280px) 7px 17px;
+  }
+  body.ky-trash-palace .shell>.controls .field-search,
+  body.ky-trash-palace .shell>.controls #newEntry{grid-column:auto}
+  body.ky-trash-palace .shell>.controls #newEntry{min-height:52px;font-size:clamp(14px,1.5vw,19px)}
+  body.ky-trash-palace .shell>.controls #newEntry::before{width:33px;height:33px}
+  body.ky-trash-palace #gallery{
+    grid-template-columns:repeat(auto-fill,minmax(214px,1fr));
+    gap:25px 20px;padding:22px 8px 27px;
+  }
+  body.ky-trash-palace .section-header>.tabs .chip{min-height:69px}
+  body.ky-trash-palace #gallery .polaroid{padding:17px 12px 18px}
+}
+/* Small iPhones: keep all four stats, 4x2 tabs and two poster cards usable. */
+@media(max-width:390px){
+  body.ky-trash-palace .shell{padding-top:clamp(38px,11vw,48px);padding-left:9px;padding-right:9px}
+  body.ky-trash-palace .shell>.topbar{min-height:49px;padding:10px 6px 8px;margin-left:5px;margin-right:5px}
+  body.ky-trash-palace .shell>.topbar .palace-wordmark{font-size:clamp(16px,4.2vw,19px)}
+  body.ky-trash-palace .shell>.topbar::before{left:-19px;width:62px;height:63px;top:-27px}
+  body.ky-trash-palace .shell>.stats{padding:8px 4px}
+  body.ky-trash-palace .stats-grid .stat{padding:4px 2px}
+  body.ky-trash-palace .shell>.controls{margin:clamp(112px,29.5vw,145px) 3px 12px;gap:7px}
+  body.ky-trash-palace .shell>.controls :is(input,select){min-height:43px;padding-left:41px;padding-right:25px}
+  body.ky-trash-palace .section-header h2{font-size:clamp(22px,5.9vw,27px)}
+  body.ky-trash-palace .section-header>.tabs{gap:5px}
+  body.ky-trash-palace .section-header>.tabs .chip{min-height:55px;padding:4px 1px}
+  body.ky-trash-palace .section-header>.tabs .chip::after{font-size:9px}
+  body.ky-trash-palace #gallery{gap:23px 10px;padding:20px 6px 24px}
+  body.ky-trash-palace #gallery .polaroid{padding:14px 7px 24px}
+  body.ky-trash-palace #gallery .polaroid .score{padding:4px 5px;gap:3px}
+  body.ky-trash-palace #gallery .polaroid .tag{padding:4px 6px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.ky-trash-palace :is(.polaroid,.chip,.btn){transition:none!important}
+}
