@@ -1,0 +1,606 @@
+/*
+ * KY Midnight Gaming Lounge — GAMES SHELF ONLY
+ * Activated exclusively with body.game-palace when tab === 'game'.
+ * All existing entries, Supabase/IndexedDB data, handlers, genres, sorting,
+ * editable reviews and the other seven collection shelves are untouched.
+ * The owner's exact gaming room artwork is used for the two backgrounds.
+ * Existing hand-created KY stickers are reused instead of Apple emoji.
+ */
+body.game-palace {
+  --game-ivory:#fff0d8;
+  --game-gold:#efbb79;
+  --game-blue:#4c9dff;
+  --game-glow:#207aff;
+  background:#020611!important;
+  color:#f5e6d4;
+}
+body.game-palace .stage{
+  isolation:isolate;
+  background:transparent;
+  min-height:100dvh;
+}
+body.game-palace .stage::before {
+  content:"";
+  display:block!important;
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  width:100%;height:100%;
+  border:0;border-radius:0;
+  opacity:1!important;
+  pointer-events:none;
+  filter:none!important;
+  transform:none!important;
+  animation:none!important;
+  background:#020613 url("./assets/games/gaming-room-portrait.webp") center top/cover no-repeat;
+}
+body.game-palace .stage::after{display:none!important}
+body.game-palace .shell{
+  width:100%;
+  max-width:1140px;
+  margin-inline:auto;
+  padding:clamp(62px,10vw,92px) clamp(12px,3vw,34px) 45px;
+}
+body.game-palace .shell::before{display:none}
+body.game-palace .shell>.topbar,
+body.game-palace .shell>.stats{
+  color:var(--game-ivory);
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+/* Carved dark metal plaque, backlit by the lounge's gold / blue candles. */
+body.game-palace .shell>.topbar {
+  isolation:isolate;
+  position:relative;
+  overflow:visible;
+  min-height:57px;
+  margin:8px 3px 9px;
+  padding:12px 12px 9px;
+  border:1px solid #b87c53;
+  border-radius:19px;
+  justify-content:center;
+  background:
+    radial-gradient(ellipse at 50% 110%,rgba(28,79,154,.35),transparent 73%),
+    linear-gradient(160deg,rgba(2,8,19,.93),rgba(6,10,18,.97));
+  box-shadow:0 0 0 2px #080b18,0 0 0 3px #775339,
+    0 0 12px #f0a95b5c,0 8px 22px #000c;
+}
+body.game-palace .shell>.topbar::before{
+  content:"";
+  position:absolute;
+  inset:auto;
+  top:-48px;
+  left:50%;
+  transform:translateX(-50%);
+  width:91px;height:58px;
+  z-index:3;
+  pointer-events:none;
+  animation:none!important;
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 9px #4e9aff);
+}
+body.game-palace .shell>.topbar::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:13px;
+  border:1px solid rgba(241,178,104,.72);
+  pointer-events:none;
+  background:none;
+  box-shadow:inset 0 1px #ffdfa75c;
+}
+body.game-palace .topbar .palace-trigger{
+  position:relative;
+  z-index:2;
+  justify-content:center;
+  text-align:center;
+  flex:0 1 auto;
+  padding:5px 2px 2px;
+}
+body.game-palace .palace-wordmark{
+  color:#fff3db;
+  font:600 clamp(18px,4.7vw,31px)/1.12 "Iowan Old Style",Georgia,serif;
+  letter-spacing:.015em;
+  text-shadow:0 1px #000,0 0 12px #de91585c;
+  overflow:visible;
+  text-overflow:clip;
+  white-space:normal;
+}
+body.game-palace .topbar .palace-heart{color:#c7b6a6}
+body.game-palace .topbar .palace-status{color:#e5d3b7}
+
+/* The same real live four statistics, on black-glass gold-trimmed metal. */
+body.game-palace .shell>.stats{
+  margin:0 3px 0;
+  padding:11px 9px 9px;
+  overflow:hidden;
+  border:1px solid #98735c;
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(3,6,13,.97),rgba(13,20,33,.92) 64%,rgba(2,8,19,.97));
+  box-shadow:0 0 0 2px #060b17,0 0 0 3px #9c6848,0 0 15px #d588535e,
+   inset 0 1px #ffe0a86b,0 10px 22px #0009;
+}
+body.game-palace .shell>.stats::before{display:none!important}
+body.game-palace .shell>.stats::after{
+  inset:4px;
+  border:1px solid #76583d8a;
+  border-radius:11px;
+  background:none;
+  box-shadow:none;
+  pointer-events:none;
+}
+body.game-palace .stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+}
+body.game-palace .stats-grid .stat{
+  min-width:0;
+  padding:2px 4px 4px;
+  box-shadow:none;
+  background:none;
+}
+body.game-palace .stats-grid .stat:not(:first-child){
+  box-shadow:inset 1px 0 #ac86584d;
+}
+body.game-palace .stat strong{
+  display:block;
+  margin:0 0 2px;
+  color:#ffe5b8;
+  font:700 clamp(18px,5vw,27px)/1.04 Georgia,serif;
+  text-shadow:0 0 8px #ffc26e70;
+}
+body.game-palace .stat span{
+  display:block;
+  max-width:100px;
+  color:#e1c6a7;
+  font:500 clamp(9px,2.35vw,12px)/1.15 Georgia,serif;
+}
+body.game-palace .stats-total{
+  margin-top:7px;
+  padding-top:7px;
+  gap:7px;
+  border-top:1px solid #986d435e;
+}
+body.game-palace .stats-total-label{
+  color:#ddc4a8;
+  font:600 clamp(9px,2.35vw,12px)/1.16 Georgia,serif;
+  text-transform:uppercase;
+}
+body.game-palace #overallTimeStat{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  color:#f8dfb8;
+  font:700 clamp(13px,3.5vw,20px)/1.13 Georgia,serif;
+  text-shadow:0 0 6px #ffd99b80;
+}
+body.game-palace #overallTimeStat::before{
+  content:"";
+  display:inline-block;
+  width:24px;height:24px;
+  flex:none;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+/* Reserve the space occupied by the owner's TV, gaming consoles, 
+   candle shelves and the bunny/cat in the background artwork. */
+body.game-palace .shell>.controls{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  overflow:visible;
+  padding:9px 8px 10px;
+  margin:0 3px 16px;
+  border:1px solid rgba(117,139,190,.58);
+  border-radius:18px;
+  background:linear-gradient(155deg,rgba(7,14,33,.93),rgba(6,10,23,.95));
+  box-shadow:0 0 0 2px #040714,0 0 17px #3278e35e,inset 0 1px #a9c3ef52;
+  backdrop-filter:none!important;
+}
+body.game-palace .shell>.controls::before{
+  content:"";
+  display:block;
+  position:relative;
+  inset:auto;
+  grid-column:1/-1;
+  height:clamp(156px,27vw,325px);
+  background:none;
+  box-shadow:none;
+  pointer-events:none;
+  animation:none!important;
+}
+body.game-palace .shell>.controls::after{display:none!important}
+body.game-palace .shell>.controls .field-search{
+  position:relative;
+  grid-column:1/-1;
+  width:100%;min-width:0;
+}
+body.game-palace .shell>.controls .field-search::before{
+  content:"";
+  position:absolute;
+  width:31px;height:31px;
+  top:50%;left:11px;
+  z-index:2;
+  transform:translateY(-50%);
+  background:url("./assets/all-memories/ky-search.webp") center/contain no-repeat;
+  pointer-events:none;
+}
+body.game-palace .shell>.controls :is(input,select){
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:48px;
+  border:1px solid #63799a;
+  border-radius:12px;
+  color:#fff1e0;
+  background-color:#101829;
+  box-shadow:inset 0 1px #94bfff34,0 2px 9px #000a;
+  outline:none;
+  font:500 clamp(12px,3vw,17px)/1.2 Georgia,serif;
+}
+body.game-palace .shell>.controls input{
+  padding:10px 13px 10px 53px;
+  background:linear-gradient(150deg,#1a2944,#111b31);
+}
+body.game-palace .shell>.controls input::placeholder{
+  color:#d3c6c8;opacity:1;
+}
+body.game-palace .shell>.controls select{
+  -webkit-appearance:none;
+  appearance:none;
+  padding:10px 25px 10px 48px;
+  background-image:
+    url("./assets/all-memories/ky-game.webp"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='9'%3E%3Cpath d='M1 1l5 6 5-6' stroke='%23f0e4d6' stroke-width='2' fill='none'/%3E%3C/svg%3E"),
+    linear-gradient(145deg,#111a30,#060d1c);
+  background-repeat:no-repeat;
+  background-position:9px center,calc(100% - 11px) center,center;
+  background-size:30px 30px,12px 9px,cover;
+}
+body.game-palace .shell>.controls #sort{
+  background-image:
+    url("./assets/all-memories/ky-sort.webp"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='9'%3E%3Cpath d='M1 1l5 6 5-6' stroke='%23f0e4d6' stroke-width='2' fill='none'/%3E%3C/svg%3E"),
+    linear-gradient(145deg,#111a30,#060d1c);
+}
+body.game-palace .shell>.controls :is(input,select):focus-visible{
+  border-color:#94beff;
+  box-shadow:0 0 0 3px #2d83ff7a,inset 0 1px #cfedff5d;
+}
+body.game-palace .shell>.controls #newEntry{
+  grid-column:1/-1;
+  min-height:53px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:6px 12px;
+  border:2px solid #63b9ff;
+  border-radius:100px;
+  color:#fff4e8;
+  background:radial-gradient(ellipse at 50% 105%,#174bb2a8,transparent 83%),linear-gradient(165deg,#06112d,#071932 57%,#010818);
+  box-shadow:0 0 0 2px #09214d,0 0 14px #3295ffcf,inset 0 0 12px #1384ff73;
+  text-shadow:0 1px #020617,0 0 5px #77afff;
+  font:600 clamp(17px,3.9vw,23px)/1.1 Georgia,serif;
+}
+body.game-palace .shell>.controls #newEntry::before{
+  content:"";
+  display:inline-block;
+  width:35px;height:35px;
+  flex:none;
+  background:url("./assets/all-memories/ky-add.webp") center/contain no-repeat;
+}
+body.game-palace .shell>.controls #newEntry:is(:hover,:focus-visible){
+  filter:brightness(1.12);
+  box-shadow:0 0 0 2px #0e3171,0 0 24px #5fbbff,inset 0 0 14px #147bfc;
+}
+/* Bright collection title and category count from actual saved data. */
+body.game-palace .section-header{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:7px 9px;
+  align-items:start;
+  margin:0 4px 9px;
+}
+body.game-palace .section-header h2{
+  margin:0;
+  color:#ffead0;
+  font:500 clamp(25px,5.5vw,38px)/1.1 "Iowan Old Style",Georgia,serif;
+  letter-spacing:-.025em;
+  text-shadow:0 2px 3px #000,0 0 10px #ef9f5b5d;
+}
+body.game-palace .section-header h2::after{
+  width:min(315px,95%);
+  height:9px;
+  margin-top:6px;
+  border:0;
+  border-radius:0;
+  background:
+    radial-gradient(ellipse at 50% 50%,#dbb38a 0 13%,transparent 14%),
+    linear-gradient(90deg,transparent,#e0c4a9 8%,#e1c19f 92%,transparent) center/100% 1px no-repeat;
+  box-shadow:none;
+}
+body.game-palace .section-header>.section-count{
+  max-width:145px;
+  align-items:flex-end;
+  text-align:right;
+  gap:3px;
+}
+body.game-palace .section-count #count{
+  font:600 clamp(14px,3.1vw,23px)/1.1 Georgia,serif;
+  color:#ffebcf;
+  text-shadow:0 1px #000,0 0 8px #efa9785c;
+}
+body.game-palace .section-count #sectionTime{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:3px;
+  font:600 clamp(14px,3.2vw,20px)/1.1 Georgia,serif;
+  color:#e1c7ad;
+  text-shadow:0 0 7px #e5a46556;
+}
+body.game-palace #sectionTime::before{
+  content:"";
+  display:inline-block;
+  flex:none;
+  width:22px;height:22px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+/* Eight existing accessible tab buttons, given all-original KY sticker faces. */
+body.game-palace .section-header>.tabs{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+  margin:5px 0 0;
+  padding:0;
+  overflow:visible;
+  background:none;
+  border:0;border-radius:0;box-shadow:none;
+}
+body.game-palace .section-header>.tabs .chip,
+body.game-palace .section-header>.tabs .chip[data-tab="current"]{
+  min-width:0;
+  min-height:53px;
+  width:100%;
+  margin:0;
+  padding:6px 3px;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #566a8c;
+  border-radius:13px;
+  color:#f9e8d8;
+  background:linear-gradient(145deg,#101726,#060c19 75%,#18223c);
+  box-shadow:0 3px 8px #0009,inset 0 1px #8093aa35;
+  font-size:0;
+  line-height:1;
+  text-shadow:none;
+  white-space:normal;
+}
+body.game-palace .section-header>.tabs .chip::before{
+  content:"";
+  width:clamp(23px,5.8vw,38px);
+  height:clamp(23px,5.8vw,38px);
+  display:block;
+  flex:none;
+  background:var(--game-sticker) center/contain no-repeat;
+  filter:drop-shadow(0 0 3px #9bafff48);
+}
+body.game-palace .section-header>.tabs .chip::after{
+  content:var(--game-label);
+  font:600 clamp(9px,2.2vw,13px)/1.13 Georgia,serif;
+  color:inherit;
+  text-align:center;
+  text-shadow:0 1px #000;
+}
+body.game-palace .section-header>.tabs [data-tab="all"]{--game-sticker:url("./assets/all-memories/ky-all.webp");--game-label:"All memories"}
+body.game-palace .section-header>.tabs [data-tab="movie"]{--game-sticker:url("./assets/all-memories/ky-movie.webp");--game-label:"Movies"}
+body.game-palace .section-header>.tabs [data-tab="show"]{--game-sticker:url("./assets/all-memories/ky-show.webp");--game-label:"TV shows"}
+body.game-palace .section-header>.tabs [data-tab="game"]{--game-sticker:url("./assets/all-memories/ky-game.webp");--game-label:"Games"}
+body.game-palace .section-header>.tabs [data-tab="next"]{--game-sticker:url("./assets/all-memories/ky-next.webp");--game-label:"Watch / Play Next"}
+body.game-palace .section-header>.tabs [data-tab="current"]{--game-sticker:url("./assets/all-memories/ky-current.webp");--game-label:"Currently Watching / Playing"}
+body.game-palace .section-header>.tabs [data-tab="favorite"]{--game-sticker:url("./assets/all-memories/ky-favorite.webp");--game-label:"Favorites"}
+body.game-palace .section-header>.tabs [data-tab="trash"]{--game-sticker:url("./assets/all-memories/ky-trash.webp");--game-label:"Trash"}
+body.game-palace .section-header>.tabs .chip.selected,
+body.game-palace .section-header>.tabs .chip[data-tab="current"].selected{
+  border:2px solid #52baff;
+  color:#fffdf5;
+  background:radial-gradient(ellipse at 50% 60%,#164fa58e,transparent 83%),linear-gradient(#0a1639,#071b47);
+  box-shadow:0 0 0 1px #0a285b,0 0 13px #3c9fff,0 0 22px #1563f385,inset 0 0 10px #3085ff58;
+}
+body.game-palace .section-header>.tabs .chip:not(.selected):hover{
+  background:linear-gradient(145deg,#1c2e50,#0c1428);
+}
+body.game-palace .section-header>.tabs .chip:focus-visible{
+  outline:3px solid #a7dbff;
+  outline-offset:2px;
+}
+/* The actual saved game cards — never images flattened into the background. */
+body.game-palace #gallery{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px 14px;
+  padding:11px 5px 26px;
+  max-height:83dvh;
+  scroll-padding-top:14px;
+  scrollbar-color:#4272bc #080c18;
+}
+body.game-palace #gallery .polaroid{
+  isolation:isolate;
+  position:relative;
+  min-width:0;
+  padding:8px 9px 13px;
+  transform:none;
+  overflow:hidden;
+  text-align:left;
+  border:1px solid #7389a8;
+  border-radius:13px;
+  color:#fff2e1;
+  background:linear-gradient(155deg,rgba(8,13,26,.97),rgba(17,24,41,.97) 65%,rgba(5,9,20,.98));
+  box-shadow:0 0 0 2px #030816,0 0 13px #284e8b7a,0 10px 20px #000a,
+    inset 0 1px #ffddad8c,inset 0 0 0 2px #23344d;
+  transition:transform .2s,box-shadow .2s;
+}
+body.game-palace #gallery .polaroid::before{
+  content:"";
+  position:absolute;
+  inset:3px;
+  border:1px solid #ad8e7561;
+  border-radius:9px;
+  z-index:2;
+  pointer-events:none;
+  background:none;
+}
+body.game-palace #gallery .polaroid::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:1px solid #8c9dbb;
+  border-radius:12px;
+  background:none;
+  z-index:2;
+  pointer-events:none;
+  box-shadow:inset 0 0 0 1px #d2ab8175;
+}
+body.game-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px);
+  box-shadow:0 0 0 2px #365f9c,0 0 16px #3688e6b8,0 14px 25px #000d;
+}
+body.game-palace #gallery .polaroid:focus-visible{
+  outline:3px solid #8edaff;
+  outline-offset:3px;
+}
+body.game-palace #gallery .poster{
+  width:100%;
+  height:auto;
+  aspect-ratio:1.43/1;
+  overflow:hidden;
+  border:1px solid #536579;
+  border-radius:6px;
+  background:linear-gradient(145deg,#0b1632,#122343);
+  box-shadow:0 3px 8px #000a;
+}
+body.game-palace #gallery .poster img{width:100%;height:100%;object-fit:cover}
+body.game-palace #gallery .poster::after{
+  background:linear-gradient(135deg,#d1e0ff24,transparent 35%,#0000001a);
+  box-shadow:inset 0 0 0 1px #e1e5ff1a;
+}
+body.game-palace #gallery .polaroid h3{
+  color:#fff3e6;
+  margin:9px 0 7px;
+  font:600 clamp(13px,3.15vw,20px)/1.15 "Iowan Old Style",Georgia,serif;
+  text-shadow:0 1px #000,0 0 8px #d89a6244;
+  letter-spacing:-.018em;
+}
+body.game-palace #gallery .polaroid .rating-line{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+body.game-palace #gallery .polaroid .score{
+  gap:5px;
+  padding:4px 7px;
+  min-height:26px;
+  border:1px solid #37435b;
+  border-radius:100px;
+  color:#efdfd5;
+  background:linear-gradient(155deg,#1c2436,#0d1427);
+  box-shadow:inset 0 1px #d4ceca20;
+  font:600 clamp(10px,2.4vw,13px)/1 Georgia,serif;
+}
+body.game-palace #gallery .score-heart .rating-heart-shape{stroke:#c26788;fill:#fff2f9}
+body.game-palace #gallery .score-heart.filled .rating-heart-shape{stroke:#99002d;fill:#d9285c}
+body.game-palace #gallery .polaroid .time-line{
+  margin:8px 0 0;
+  color:#efe2ca;
+  font:600 clamp(11px,2.9vw,14px)/1.17 Georgia,serif;
+}
+body.game-palace #gallery .polaroid .tagline{gap:5px;margin-top:9px}
+body.game-palace #gallery .polaroid .tag{
+  color:#edddcf;
+  border:1px solid #212b41;
+  border-radius:99px;
+  padding:6px 8px;
+  background:linear-gradient(150deg,#262f40,#1c2432);
+  box-shadow:inset 0 1px #e3e1e61a;
+  font:500 clamp(10px,2.3vw,12px)/1.1 Georgia,serif;
+}
+body.game-palace #gallery .corner-heart{
+  color:#d82759;
+  background:#020c19dd;
+  border:1px solid #677eab;
+}
+/* Games-mode empty state and dialogs keep their original functions. */
+body.game-palace #empty{
+  background:linear-gradient(145deg,#0d162a,#07101f);
+  border:1px solid #637fa6;
+  color:#f4e1cb;
+  box-shadow:0 0 12px #4986dd70,0 15px 30px #000a;
+}
+body.game-palace #empty h3{color:#f0d2ad}
+body.game-palace #empty p{color:#e7d9c9}
+body.game-palace #empty .btn.primary{
+  color:#f5f4ff;
+  border:1px solid #6ca6ff;
+  background:linear-gradient(145deg,#13346d,#10214d);
+}
+body.game-palace .modal .dialog.glass{
+  background:linear-gradient(150deg,#dfe9f4,#c6d8e8 62%,#f5e7db);
+  border:1px solid #ba946f;
+  color:#243954;
+  box-shadow:0 20px 65px #000c;
+}
+body.game-palace .modal .dialog :is(h2,h3){color:#203958}
+body.game-palace .modal .dialog :is(.form label,.tiny,.review p,#cloudInfo,#formMessage,#signedEmail,#cloudError){
+  color:#344761;
+}
+body.game-palace .modal .dialog :is(input:not([type="checkbox"]):not([type="file"]),textarea,select){
+  color:#24354d;
+  background:#f8f6f2;
+  border:1px solid #849ebd;
+}
+body.game-palace .modal .dialog .review{
+  color:#2d4258;
+  background:#f2f1ef;
+  border-color:#b9c9d9;
+}
+body.game-palace .modal .dialog .btn.primary{
+  color:#fff;
+  border-color:#829ed3;
+  background:linear-gradient(145deg,#345c9b,#173870);
+}
+@media(min-width:760px) {
+ body.game-palace .stage::before{
+   background-image:url("./assets/games/gaming-room-landscape.webp");
+   background-position:center top;
+   background-size:cover;
+ }
+ body.game-palace .shell{padding-top:83px}
+ body.game-palace .shell>.controls{
+   grid-template-columns:minmax(250px,2fr) minmax(150px,1fr) minmax(155px,1fr) minmax(180px,1.2fr);
+ }
+ body.game-palace .shell>.controls .field-search,
+ body.game-palace .shell>.controls #newEntry{grid-column:auto}
+ body.game-palace .shell>.controls::before{height:clamp(170px,25vw,340px)}
+ body.game-palace .section-header>.tabs .chip{min-height:69px}
+ body.game-palace #gallery{
+   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+   gap:20px;
+   max-height:min(79dvh,1120px);
+ }
+ body.game-palace #gallery .polaroid{padding:11px 12px 15px}
+}
+@media(max-width:370px) {
+ body.game-palace .shell{padding-left:9px;padding-right:9px}
+ body.game-palace .shell>.topbar{margin-left:2px;margin-right:2px}
+ body.game-palace .section-header>.tabs{gap:4px}
+ body.game-palace .section-header>.tabs .chip{min-height:51px;padding:5px 2px}
+ body.game-palace .section-header>.tabs .chip::after{font-size:9px}
+ body.game-palace #gallery{gap:14px 9px;padding-inline:4px}
+ body.game-palace #gallery .polaroid{padding-inline:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.game-palace #gallery .polaroid{transition:none!important}
+}
