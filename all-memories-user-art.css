@@ -1,0 +1,385 @@
+/*
+ * KY GRAND PICTURE PALACE - ALL MEMORIES ONLY.
+ * Built with the exact portrait/landscape cinema backgrounds and 12 custom
+ * original KY stickers supplied by the owner. Every selector is gated behind
+ * .memory-palace-all, which the existing app switches on for tab === 'all'.
+ * No stored data, cloud configuration, form behavior or other tab is altered.
+ */
+body.memory-palace-all {
+  --ky-cream:#fff1d8;
+  --ky-gold:#ffda74;
+  --ky-ruby:#760006;
+  color:var(--ky-cream);
+  background:#290003;
+}
+body.memory-palace-all .stage {
+  isolation:isolate;
+  min-height:100dvh;
+  background:none;
+}
+/* Fixed non-interactive decor prevents the user's cinema artwork stretching
+   when the number of memories changes. It works on iOS Safari (no fixed
+   background-attachment requirement), and does not affect touch events. */
+body.memory-palace-all .stage::before {
+  content:"";
+  display:block!important;
+  position:fixed;
+  inset:0;
+  width:100%;height:100%;
+  z-index:-1;
+  opacity:1!important;
+  border-radius:0;
+  pointer-events:none;
+  filter:none!important;
+  transform:none!important;
+  animation:none!important;
+  background:#420006 url("./assets/all-memories/theater-portrait.webp") center center/cover no-repeat;
+}
+body.memory-palace-all .stage::after {display:none!important}
+body.memory-palace-all .shell {
+  width:100%;max-width:1110px;
+  margin-inline:auto;
+  padding:clamp(84px,21vw,110px) clamp(11px,3vw,32px) 40px;
+}
+body.memory-palace-all .shell::before {display:none}
+
+/* 3-D ruby marquee: original cloud/account button is retained and clickable. */
+body.memory-palace-all .shell>.topbar {
+  min-height:clamp(56px,9vw,78px);
+  margin:2px 7px 14px;
+  padding:14px 10px 8px;
+  border:3px solid #ffc36b;
+  border-radius:22px;
+  background:
+    radial-gradient(ellipse at 50% 0%,#b51a1b 0%,transparent 82%),
+    linear-gradient(180deg,#510009,#870008 58%,#450005);
+  box-shadow:0 0 0 2px #9c400d,0 0 0 5px #f7ae46,
+    0 0 18px #ffc15d9a,0 12px 18px #180003c4,
+    inset 0 1px #fff4bc,inset 0 -5px 13px #220003;
+}
+body.memory-palace-all .shell>.topbar::after {
+  inset:4px;border:1px solid #ffc36c;border-radius:15px;
+  background:
+    radial-gradient(circle,#fffac8 0 2px,#ffc060 2.4px 4px,transparent 5px)
+    left 4px top 1px/23px 10px repeat-x,
+    radial-gradient(circle,#fffac8 0 2px,#ffc060 2.4px 4px,transparent 5px)
+    left 4px bottom 1px/23px 10px repeat-x,
+    radial-gradient(circle,#fffac8 0 2px,#ffc060 2.4px 4px,transparent 5px)
+    left 1px top 3px/10px 24px repeat-y,
+    radial-gradient(circle,#fffac8 0 2px,#ffc060 2.4px 4px,transparent 5px)
+    right 1px top 3px/10px 24px repeat-y;
+  pointer-events:none;
+}
+body.memory-palace-all .shell>.topbar::before {
+  inset:auto;top:-60px;left:50%;width:176px;height:97px;
+  transform:translateX(-50%);
+  z-index:3;
+  background:url("./all-memories-crest.svg") center/contain no-repeat;
+  pointer-events:none;
+}
+body.memory-palace-all .shell>.topbar .palace-trigger {position:relative;z-index:3;min-width:0;justify-content:center;gap:5px}
+body.memory-palace-all .shell>.topbar .palace-wordmark {
+  color:#fff0b4;
+  font:700 clamp(19px,5.25vw,31px)/1.13 "Iowan Old Style",Georgia,serif;
+  text-align:center;white-space:normal;
+  text-shadow:0 2px #5c0006,0 0 11px #ffbd6d;
+}
+body.memory-palace-all .shell>.topbar .palace-heart {color:#ffa6a2;text-shadow:0 0 8px #ffc95c}
+body.memory-palace-all .shell>.topbar .palace-status {color:#ffedb2}
+
+/* Four statistics on embossed cream parchment with a real KY time sticker. */
+body.memory-palace-all .shell>.stats {
+  margin:0 7px 17px;
+  padding:11px 10px 9px;
+  border:3px double #eaaa52;
+  border-radius:19px;
+  background:radial-gradient(ellipse at 45% 0%,#fff9e9 0%,transparent 80%),linear-gradient(145deg,#ffedd0,#f6caa5 65%,#ffe6c5);
+  box-shadow:0 0 0 2px #8c2b07,0 0 0 4px #ffdc85,0 0 18px #ffac3b7f,
+    0 10px 23px #1a0008c4,inset 0 2px #fffbe6,inset 0 -3px 9px #a95f4c6b;
+}
+body.memory-palace-all .shell>.stats::before {display:none}
+body.memory-palace-all .shell>.stats::after {inset:4px;border:1px solid #e2a263;background:none;box-shadow:inset 0 0 0 1px #fff4d2}
+body.memory-palace-all .stats-grid {grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+body.memory-palace-all .stats-grid .stat {padding:4px 4px 6px}
+body.memory-palace-all .stats-grid .stat:not(:first-child) {box-shadow:inset 1px 0 0 #d79e73}
+body.memory-palace-all .stat strong {
+  color:#aa1b12;font:700 clamp(19px,5vw,29px)/1 Georgia,serif;
+  text-shadow:0 1px #fff6e6; margin:0 0 3px;
+}
+body.memory-palace-all .stat span {max-width:100px;color:#9b2a20;font:500 clamp(9px,2.4vw,12px)/1.14 Georgia,serif}
+body.memory-palace-all .stats-total {gap:7px;margin-top:6px;padding-top:6px;border-top:1px solid #d18d60}
+body.memory-palace-all .stats-total-label {color:#982315;font:700 clamp(9px,2.4vw,13px)/1.2 Georgia,serif}
+body.memory-palace-all #overallTimeStat {
+  display:inline-flex;align-items:center;gap:5px;color:#8e2112;
+  font:700 clamp(14px,3.9vw,21px)/1.15 Georgia,serif;
+  text-shadow:0 1px #fff6e4;
+}
+body.memory-palace-all #overallTimeStat::before {
+  content:"";display:inline-block;flex:none;width:27px;height:27px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+
+/* Real search/select/button controls; never substitute inert graphics. */
+body.memory-palace-all .shell>.controls {
+  margin:10px 7px 14px;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+  border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
+}
+body.memory-palace-all .shell>.controls::before,
+body.memory-palace-all .shell>.controls::after {display:none}
+body.memory-palace-all .shell>.controls .field-search {grid-column:1/-1;position:relative;min-width:0}
+body.memory-palace-all .shell>.controls .field-search::before {
+  content:""!important;position:absolute;z-index:2;left:10px;top:50%;
+  transform:translateY(-50%);width:36px;height:36px;
+  pointer-events:none;
+  background:url("./assets/all-memories/ky-search.webp") center/contain no-repeat;
+}
+body.memory-palace-all .shell>.controls :is(input,select) {
+  appearance:none;-webkit-appearance:none;
+  width:100%;min-height:53px;min-width:0;
+  padding:11px 36px 11px 50px;border:3px double #da9e54;border-radius:14px;
+  color:#782319;
+  font:500 clamp(13px,3.3vw,18px)/1.2 Georgia,serif;
+  box-shadow:0 0 0 1px #ffe6ac,0 5px 12px #230003a6,
+    inset 0 2px #fffbed,inset 0 -3px 10px #d58a586b;
+}
+body.memory-palace-all .shell>.controls input#search {
+  background:linear-gradient(#fff2dd,#ffe1c0);
+}
+body.memory-palace-all .shell>.controls input::placeholder {color:#8b5a42;opacity:1}
+body.memory-palace-all .shell>.controls select#genreFilter {
+  background:
+    url("./assets/all-memories/ky-all.webp") 10px center/35px 35px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='10'%3E%3Cpath d='M2 2l5 5 5-5' stroke='%238e2916' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") right 11px center/15px 10px no-repeat,
+    linear-gradient(#fff1dd,#ffddb7);
+}
+body.memory-palace-all .shell>.controls select#sort {
+  background:
+    url("./assets/all-memories/ky-sort.webp") 10px center/35px 35px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='10'%3E%3Cpath d='M2 2l5 5 5-5' stroke='%238e2916' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") right 11px center/15px 10px no-repeat,
+    linear-gradient(#fff1dd,#ffddb7);
+}
+body.memory-palace-all .shell>.controls :is(input,select):focus-visible {outline:3px solid #fff3a4;outline-offset:2px}
+body.memory-palace-all .shell>.controls #newEntry {
+  grid-column:1/-1;display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:60px;padding:9px 16px;
+  border:3px double #ffcd78;border-radius:99px;
+  color:#fff0bc;background:radial-gradient(ellipse at 50% 0%,#b9151f,transparent 80%),linear-gradient(#95000c,#560007 65%,#a50c1b);
+  box-shadow:0 0 0 2px #8c330b,0 0 17px #ffbd5fae,
+    0 7px 15px #190004b7,inset 0 2px #fff1b285,inset 0 -4px 8px #250005;
+  text-shadow:0 2px #3e0004,0 0 10px #e58b3f;
+  font:700 clamp(18px,4.6vw,25px)/1.1 Georgia,serif;
+}
+body.memory-palace-all .shell>.controls #newEntry::before {
+  content:""!important;display:inline-block;flex:none;
+  width:38px;height:38px;margin-right:8px;
+  background:url("./assets/all-memories/ky-add.webp") center/contain no-repeat;
+}
+body.memory-palace-all .shell>.controls #newEntry:is(:hover,:focus-visible) {filter:brightness(1.12)}
+
+/* Visible stairs are part of the user's exact theater background. We preserve
+   a separate clear band so they remain visible, like the reference design. */
+body.memory-palace-all .section-header {
+  margin:clamp(101px,25vw,157px) 6px 5px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;column-gap:9px;row-gap:11px;
+}
+/* The old drawing of stairs must not cover the supplied original stairs. */
+body.memory-palace-all .section-header::before {display:none!important}
+body.memory-palace-all .section-header h2 {
+  color:#ffdfa3;
+  font:500 clamp(25px,6vw,43px)/1.1 "Iowan Old Style",Georgia,serif;
+  text-shadow:0 2px #4f000a,0 0 13px #ffb45470;
+  letter-spacing:-.025em;
+}
+body.memory-palace-all .section-header h2::after {
+  content:"";display:block;width:100%;max-width:400px;height:25px;
+  margin:5px 0 0;filter:drop-shadow(0 0 5px #ffc25b88);
+  background:url("./all-memories-crest.svg") center/auto 100% no-repeat,
+     linear-gradient(90deg,#ffca66 0%,#eb8c45 44%,transparent 49%,transparent 51%,#ffbd65 57%,#ffc765) center/100% 2px no-repeat;
+}
+body.memory-palace-all .section-header>.section-count {max-width:149px;gap:2px;align-items:flex-end}
+body.memory-palace-all .section-count #count {
+  color:#ffedb0;font:700 clamp(16px,4vw,27px)/1.2 Georgia,serif;
+  text-shadow:0 2px #4d0008,0 0 8px #ffbc52;
+}
+body.memory-palace-all .section-count #sectionTime {
+  display:inline-flex;align-items:center;justify-content:flex-end;gap:4px;
+  color:#ffe3a4;font:700 clamp(15px,3.7vw,25px)/1.2 Georgia,serif;
+  text-shadow:0 2px #4d0008,0 0 10px #ffad51;
+}
+body.memory-palace-all #sectionTime::before {
+  content:"";display:inline-block;flex:none;width:28px;height:28px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+body.memory-palace-all .section-header>.tabs {
+  grid-column:1/-1;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;
+  margin:0;padding:0;border:0;border-radius:0;
+  background:none;box-shadow:none;overflow:visible;
+}
+body.memory-palace-all .section-header>.tabs .chip,
+body.memory-palace-all .section-header>.tabs .chip[data-tab="current"] {
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:0;width:100%;min-height:61px;
+  padding:5px 2px;border:1px solid #ca7430;border-radius:13px;
+  color:#ffe5b3;background:radial-gradient(ellipse at 50% 0%,#94101a,transparent 80%),linear-gradient(135deg,#600008,#470008 62%,#8e0810);
+  text-align:center;text-shadow:0 1px #3c0005;
+  box-shadow:inset 0 1px #ffcd7799,inset 0 -2px 7px #290003,
+    0 3px 7px #150004b8;
+  font-size:0!important;
+}
+body.memory-palace-all .section-header>.tabs .chip::after {
+  display:block;color:inherit;text-align:center;
+  font:700 clamp(9px,2.4vw,13px)/1.1 Georgia,serif;
+}
+body.memory-palace-all .section-header>.tabs .chip::before {
+  content:""!important;display:block;flex:none;
+  width:clamp(26px,7vw,39px);height:clamp(26px,7vw,39px);
+  background-position:center;background-repeat:no-repeat;background-size:contain;
+  filter:drop-shadow(0 0 3px #ffad43b0);
+}
+body.memory-palace-all .section-header>.tabs [data-tab="all"]::before {background-image:url("./assets/all-memories/ky-all.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="movie"]::before {background-image:url("./assets/all-memories/ky-movie.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="show"]::before {background-image:url("./assets/all-memories/ky-show.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="game"]::before {background-image:url("./assets/all-memories/ky-game.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="next"]::before {background-image:url("./assets/all-memories/ky-next.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="current"]::before {background-image:url("./assets/all-memories/ky-current.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="favorite"]::before {background-image:url("./assets/all-memories/ky-favorite.webp")}
+body.memory-palace-all .section-header>.tabs [data-tab="trash"]::before {background-image:url("./assets/all-memories/ky-trash.webp")}
+body.memory-palace-all .section-header>.tabs .chip.selected {
+  border:2px solid #fff0b7;color:#862219;text-shadow:0 1px #fffbee;
+  background:linear-gradient(#fff8e4,#fbd2aa);
+  box-shadow:0 0 0 1px #a65617,0 0 17px #ffcc70b0,
+    0 4px 9px #2700069e,inset 0 2px #fffdf1;
+}
+body.memory-palace-all .section-header>.tabs .chip:not(.selected):hover {filter:brightness(1.15)}
+body.memory-palace-all .section-header>.tabs .chip:focus-visible {outline:3px solid #fff3b8;outline-offset:2px}
+
+/* Live memory buttons with carved embroidery, gold bulb trim and ruby hearts. */
+body.memory-palace-all #gallery {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px 13px;padding:28px 9px 32px;
+  max-height:83dvh;overflow-y:auto;overflow-x:hidden;
+  scrollbar-color:#e0a350 #3b0007;
+}
+body.memory-palace-all #gallery .polaroid {
+  min-width:0;padding:27px 10px 15px;
+  border:3px ridge #e7a34e;border-radius:14px;
+  transform:none;color:#a01d11;
+  background:
+    radial-gradient(circle at 92% 89%,#fffad2 0 2px,transparent 6px),
+    radial-gradient(circle at 13% 97%,#fff7cc 0 1px,transparent 6px),
+    linear-gradient(155deg,#ffedd5,#fff4d8 54%,#f8cea7);
+  box-shadow:0 0 0 2px #963c0a,0 0 0 4px #ffdf83,
+    0 0 17px #ffb44a8f,0 15px 23px #140002cf,
+    inset 0 0 0 2px #fff7da,inset 0 0 0 6px #c77a37;
+}
+body.memory-palace-all #gallery .polaroid::before {
+  content:"";top:-28px;left:50%;width:118px;height:56px;
+  transform:translateX(-50%);
+  background:url("./all-memories-crest.svg") center/contain no-repeat;
+  z-index:3;pointer-events:none;
+}
+body.memory-palace-all #gallery .polaroid::after {
+  content:"";inset:-5px;border:0;border-radius:14px;z-index:2;
+  background:url("./all-memories-card-frame.svg") center/100% 100% no-repeat;
+  box-shadow:none;pointer-events:none;
+}
+body.memory-palace-all #gallery .polaroid .poster {
+  height:auto;aspect-ratio:1.28/1;border:2px solid #d49342;border-radius:4px;
+  background:linear-gradient(155deg,#bb882f,#fff0c1);
+  outline:2px solid #fff7db;outline-offset:1px;
+  box-shadow:0 5px 11px #5523145a;
+}
+body.memory-palace-all #gallery .poster img {object-fit:cover}
+body.memory-palace-all #gallery .poster::after {
+  box-shadow:inset 0 0 0 1px #ffe4ac;
+  background:linear-gradient(120deg,#fff9dd42,transparent 23%,transparent 84%,#fff1cb15);
+}
+/* Reuse the real kind of an unsupplied poster as a KY sticker, not an Apple glyph. */
+body.memory-palace-all #gallery .poster .placeholder {font-size:0!important;display:grid;place-items:center}
+body.memory-palace-all #gallery .poster .placeholder::before {
+  content:"";display:block;width:68px;height:68px;
+  background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat;
+}
+body.memory-palace-all #gallery .poster[data-kind="show"] .placeholder::before {background-image:url("./assets/all-memories/ky-show.webp")}
+body.memory-palace-all #gallery .poster[data-kind="game"] .placeholder::before {background-image:url("./assets/all-memories/ky-game.webp")}
+body.memory-palace-all #gallery .polaroid h3 {
+  color:#a91710;font:700 clamp(15px,3.4vw,22px)/1.15 Georgia,serif;
+  margin:11px 0 8px;text-shadow:0 1px #fff6dc;
+}
+body.memory-palace-all #gallery .polaroid .score {
+  display:inline-flex;align-items:center;gap:4px;padding:5px 8px;
+  color:#942a1c;border:1px solid #d79658;border-radius:30px;
+  background:linear-gradient(#fff2db,#fbd3b6);
+  font:700 clamp(10px,2.55vw,13px)/1.2 Georgia,serif;
+  box-shadow:inset 0 1px #fff7e5,0 1px 4px #ad4e3d38;
+}
+body.memory-palace-all #gallery .score .score-heart.filled .rating-heart-shape {fill:#d71e2e;stroke:#8b0710}
+body.memory-palace-all #gallery .score .score-heart .rating-heart-shape {stroke:#a1191e;fill:#fff4dd}
+body.memory-palace-all #gallery .polaroid .time-line {
+  display:flex;align-items:center;gap:5px;
+  margin:6px 1px 0;
+  color:#96170d;font:700 clamp(12px,2.8vw,15px)/1.2 Georgia,serif;
+}
+body.memory-palace-all #gallery .polaroid .time-line::before {
+  content:"";flex:none;width:26px;height:26px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+body.memory-palace-all #gallery .polaroid .tagline {gap:5px;margin-top:7px;padding-bottom:2px}
+body.memory-palace-all #gallery .polaroid .tag {
+  padding:5px 9px;border:1px solid #f2b495;border-radius:25px;
+  color:#982b21;background:linear-gradient(#ffe0cc,#f9c5b1);
+  font:500 clamp(10px,2.4vw,13px)/1.15 Georgia,serif;
+}
+body.memory-palace-all #gallery .polaroid:is(:hover,:focus-visible) {transform:translateY(-3px);filter:brightness(1.035)}
+body.memory-palace-all #gallery .polaroid:focus-visible {outline:3px solid #fff1a0;outline-offset:6px}
+body.memory-palace-all #gallery .corner-heart {font-variant-emoji:text;color:#ae0215}
+
+/* Empty state and modals inherit the existing working app. All other tabs
+   are visually unaffected because their body class is absent. */
+body.memory-palace-all #empty .pop {font-size:0}
+body.memory-palace-all #empty .pop::before {
+  content:"";display:inline-block;width:70px;height:70px;
+  background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat;
+}
+
+/* Wide laptop: original landscape image, flexible controls, 3/4-column cards. */
+@media(min-width:760px) and (min-aspect-ratio:4/3) {
+  body.memory-palace-all .stage::before {
+    background-image:url("./assets/all-memories/theater-landscape.webp");
+  }
+  body.memory-palace-all .shell {padding-top:105px;padding-inline:36px;max-width:1170px}
+  body.memory-palace-all .shell>.topbar {max-width:920px;margin-inline:auto}
+  body.memory-palace-all .shell>.stats {max-width:920px;margin-inline:auto}
+  body.memory-palace-all .shell>.controls {
+    grid-template-columns:minmax(0,1.8fr) minmax(160px,1fr) minmax(160px,1fr);
+    max-width:920px;margin:20px auto 22px;
+  }
+  body.memory-palace-all .shell>.controls .field-search {grid-column:auto}
+  body.memory-palace-all .shell>.controls #newEntry {grid-column:1/-1}
+  body.memory-palace-all .section-header {margin-top:125px}
+  body.memory-palace-all #gallery {
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:36px 24px;
+  }
+  body.memory-palace-all #gallery .polaroid {padding:29px 15px 18px}
+  body.memory-palace-all .section-header>.tabs .chip {min-height:72px}
+}
+@media(max-width:390px) {
+  body.memory-palace-all .shell {padding-left:10px;padding-right:10px;padding-top:82px}
+  body.memory-palace-all .shell>.topbar {margin-left:6px;margin-right:6px}
+  body.memory-palace-all .shell>.topbar .palace-wordmark {font-size:18px}
+  body.memory-palace-all .section-header {margin-top:110px}
+  body.memory-palace-all .section-header>.tabs {gap:5px}
+  body.memory-palace-all .section-header>.tabs .chip {min-height:56px;padding:4px 2px}
+  body.memory-palace-all .section-header>.tabs .chip::before {height:28px;width:28px}
+  body.memory-palace-all .section-header>.tabs .chip::after {font-size:9px}
+  body.memory-palace-all #gallery {gap:29px 11px;padding-left:7px;padding-right:7px}
+  body.memory-palace-all #gallery .polaroid {padding-left:8px;padding-right:8px}
+  body.memory-palace-all #gallery .polaroid::before {width:100px;height:53px;top:-26px}
+}
+@media(prefers-reduced-motion:reduce) {
+  body.memory-palace-all :is(.polaroid,.chip,.btn) {transition:none!important}
+}
