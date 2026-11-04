@@ -567,3 +567,137 @@ body.memory-palace-all #empty .btn.primary{
 @media(prefers-reduced-motion:reduce){
   body.memory-palace-all #gallery .polaroid{transition:none!important}
 }
+
+
+/*
+ * SCREENSHOT-FIDELITY PASS — all additions are strictly body-scoped.
+ * These are decorative assets layered over the original interactive DOM.
+ */
+body.memory-palace-all .shell>.topbar{
+  background:
+    radial-gradient(ellipse at 50% 4%,rgba(255,104,37,.45),transparent 77%),
+    repeating-linear-gradient(90deg,rgba(255,224,142,.05) 0 2px,transparent 3px 21px),
+    linear-gradient(180deg,#4e0005,#a30b10 45%,#470006);
+}
+body.memory-palace-all .shell>.topbar::after{
+  background:
+    radial-gradient(circle,#fff8bd 0 2.1px,#ffb541 2.5px 4.5px,transparent 6px)
+    left 5px top 1px/23px 11px repeat-x,
+    radial-gradient(circle,#fff8bd 0 2.1px,#ffb541 2.5px 4.5px,transparent 6px)
+    left 5px bottom 1px/23px 11px repeat-x,
+    radial-gradient(circle,#fff8bd 0 2.1px,#ffb541 2.5px 4.5px,transparent 6px)
+    left 1px top 5px/11px 23px repeat-y,
+    radial-gradient(circle,#fff8bd 0 2.1px,#ffb541 2.5px 4.5px,transparent 6px)
+    right 1px top 5px/11px 23px repeat-y;
+}
+body.memory-palace-all .shell>.stats::after{
+  background:
+    radial-gradient(circle,#fff9cb 0 1.8px,#ffb848 2.3px 4.2px,transparent 5.4px)
+    left 2px bottom 0/22px 10px repeat-x;
+}
+body.memory-palace-all .shell>.controls .field-search{
+  position:relative;
+}
+body.memory-palace-all .shell>.controls .field-search::before{
+  content:"⌕";
+  position:absolute;
+  left:13px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  color:#9b400d;
+  text-shadow:0 1px #fff2c3;
+  font:700 35px/1 Georgia,serif;
+  pointer-events:none;
+}
+body.memory-palace-all .shell>.controls #search{
+  padding-left:52px;
+  background:linear-gradient(160deg,#fff3df,#ffe3c2 76%,#f3c99e);
+}
+body.memory-palace-all .shell>.controls #newEntry::before{
+  content:"🖼️";
+  font:normal clamp(19px,4.6vw,26px)/1 sans-serif;
+  margin-right:9px;
+  filter:drop-shadow(0 0 4px #ffc568);
+}
+body.memory-palace-all .section-header{
+  margin-top:151px;
+}
+body.memory-palace-all .section-header::before{
+  content:"";
+  position:absolute;
+  inset:auto 0 100%;
+  height:142px;
+  margin-bottom:9px;
+  background:
+    linear-gradient(180deg,rgba(55,0,7,0),rgba(55,0,7,.12)),
+    url("./all-memories-staircase.svg") center bottom/100% 100% no-repeat;
+  filter:drop-shadow(0 0 5px #ff981c73);
+  pointer-events:none;
+}
+body.memory-palace-all .section-header h2::after{
+  height:26px;
+  margin-top:2px;
+  background:
+    url("./all-memories-crest.svg") center/auto 100% no-repeat,
+    linear-gradient(90deg,transparent 0%,#ffc762 14%,transparent 46%,transparent 54%,#ffcf7d 86%,transparent 100%)
+    center/100% 2px no-repeat;
+  filter:drop-shadow(0 0 4px #ffaf55aa);
+}
+body.memory-palace-all #gallery .polaroid{
+  padding-top:29px;
+  border-color:#efac43;
+  background:
+    radial-gradient(circle at 20% 98%,rgba(255,255,239,.88) 0 1px,transparent 7px),
+    radial-gradient(circle at 87% 89%,rgba(255,251,224,.9) 0 1px,transparent 5px),
+    linear-gradient(150deg,#ffe8c6,#fff4d9 52%,#ffdaa9 100%);
+}
+body.memory-palace-all #gallery .polaroid::after{
+  inset:-5px;
+  border:0;
+  border-radius:14px;
+  z-index:2;
+  background:url("./all-memories-card-frame.svg") center/100% 100% no-repeat;
+  box-shadow:none;
+}
+body.memory-palace-all #gallery .polaroid::before{
+  z-index:3;
+  top:-24px;
+  width:113px;
+  height:54px;
+}
+body.memory-palace-all #gallery .poster{
+  border:3px solid #df8d2b;
+  outline:1px solid #fff4b0;
+  outline-offset:1px;
+}
+body.memory-palace-all #gallery .tagline{
+  padding-bottom:2px;
+}
+body.memory-palace-all .section-header>.tabs .chip[data-tab="all"].selected{
+  box-shadow:
+    0 0 0 1px #b1571c,0 0 23px #ffd16ebd,
+    0 5px 11px #26000c9c,inset 0 2px #fffdf2;
+}
+@media(min-width:720px){
+  body.memory-palace-all .section-header{margin-top:158px}
+  body.memory-palace-all .section-header::before{
+    height:145px;
+    background-size:contain;
+  }
+}
+@media(max-width:420px){
+  body.memory-palace-all .shell{padding-top:74px}
+  body.memory-palace-all .section-header{margin-top:128px}
+  body.memory-palace-all .section-header::before{
+    height:115px;
+    margin-bottom:10px;
+  }
+  body.memory-palace-all #gallery .polaroid::before{
+    top:-23px;
+    width:100px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.memory-palace-all .section-header::before{transition:none!important}
+}
