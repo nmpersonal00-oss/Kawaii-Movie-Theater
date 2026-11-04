@@ -1,0 +1,429 @@
+/*
+  KY Watch / Play Next — original owner's charcoal & champagne-gold cinema.
+  VISUAL ONLY: scoped exclusively to body.ky-next-palace (tab === 'next').
+  Keeps the original live DOM, posters, controls, saved entries and handlers.
+  The user's two original theater artworks are responsive BACKGROUNDS, never a
+  screenshot replacing live content. KY stickers were previously made for this app.
+*/
+body.ky-next-palace {
+  --next-ivory:#ffedcd;
+  --next-gold:#e8b978;
+  --next-edge:#a37f63;
+  --next-night:#171513;
+  background:#151313;
+  color:var(--next-ivory);
+}
+body.ky-next-palace .stage{isolation:isolate;min-height:100dvh;background:none}
+body.ky-next-palace .stage::before{
+  content:"";
+  display:block!important;
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  width:100%;height:100%;
+  opacity:1!important;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  border-radius:0;
+  pointer-events:none;
+  background:#161414 url('./assets/watch-next/watch-next-portrait.webp') center top / 100% 100% no-repeat;
+}
+body.ky-next-palace .stage::after{display:none!important}
+body.ky-next-palace .shell{
+  position:relative;
+  width:100%;max-width:1130px;
+  margin:0 auto;
+  padding:clamp(66px,15vw,108px) clamp(11px,3vw,28px) 50px;
+}
+body.ky-next-palace .shell::before{display:none!important}
+/* Touchable original palace/cloud/account trigger, now embroidered dark leather. */
+body.ky-next-palace .shell>.topbar{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  display:flex;justify-content:center!important;
+  min-height:70px;
+  margin:0 7px 11px;
+  padding:17px 11px 12px;
+  border:2px solid #a88d73;
+  border-radius:21px;
+  background:linear-gradient(150deg,#292420f5,#181717f5 55%,#33281ef0);
+  box-shadow:0 0 0 2px #342921,0 0 0 5px #d6a76a46,
+    0 7px 20px #000d,inset 0 1px #ffddaa7f,inset 0 -5px 16px #0009;
+}
+body.ky-next-palace .shell>.topbar::after{
+  content:"";position:absolute;inset:5px;z-index:2;pointer-events:none;
+  border:1px dashed #d7b18b;border-radius:15px;
+  background:none;box-shadow:inset 0 0 0 1px #57483888;
+}
+body.ky-next-palace .shell>.topbar::before{
+  content:"";position:absolute;inset:auto;top:-47px;left:50%;z-index:4;
+  width:123px;height:65px;transform:translateX(-50%);
+  pointer-events:none;animation:none!important;
+  background:url('./assets/watch-next/ky-bow.svg') center / contain no-repeat;
+  filter:drop-shadow(0 3px 6px #000c);
+}
+body.ky-next-palace .shell>.topbar .palace-trigger{
+  position:relative;z-index:3;justify-content:center;
+  min-width:0;gap:6px;width:100%;padding:4px 3px;
+  text-align:center;color:#ffefd5;
+}
+body.ky-next-palace .shell>.topbar .palace-wordmark{
+  overflow:visible;white-space:normal;text-overflow:clip;
+  color:#fbe8ca;
+  font:500 clamp(19px,5vw,33px)/1.13 "Iowan Old Style",Baskerville,Georgia,serif;
+  letter-spacing:-.025em;text-shadow:0 1px 2px #000,0 0 8px #f5bf8e40;
+}
+body.ky-next-palace .shell>.topbar .palace-heart{color:#eee4dd;text-shadow:0 0 10px #ffd6b1}
+body.ky-next-palace .shell>.topbar .palace-status{
+  display:inline-block;flex:0 0 auto;width:21px;height:21px;
+  font-size:0!important;
+  background:url('./assets/watch-next/ky-cloud.svg') center/contain no-repeat;
+}
+body.ky-next-palace .shell>.topbar .palace-trigger:focus-visible{
+  outline:3px solid #ffd7a2;outline-offset:3px;
+}
+/* All four live statistics and the real tracked-time value. */
+body.ky-next-palace .shell>.stats{
+  position:relative;overflow:hidden;
+  margin:0 7px;
+  padding:10px 8px 9px;
+  border:2px solid #9b8069;border-radius:18px;
+  color:#ffebcb;
+  background:linear-gradient(145deg,#201b19f5,#302722f7 49%,#151515f6);
+  box-shadow:0 0 0 1px #e8b47c91,0 7px 20px #000a,inset 0 0 22px #0007;
+}
+body.ky-next-palace .shell>.stats::before{display:none!important}
+body.ky-next-palace .shell>.stats::after{
+  content:"";position:absolute;inset:4px;z-index:2;
+  border:1px dashed #b49578;border-radius:12px;
+  background:none;box-shadow:none;pointer-events:none;
+}
+body.ky-next-palace .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+body.ky-next-palace .stats-grid .stat{padding:3px 3px 5px;min-width:0;box-shadow:none}
+body.ky-next-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 0 #a68a6a70}
+body.ky-next-palace .stat strong{
+  display:block;margin:0 0 3px;
+  color:#ffe9c6;
+  font:700 clamp(20px,4.4vw,29px)/1 Georgia,serif;
+  text-shadow:0 0 9px #ffd6b05f;
+}
+body.ky-next-palace .stat span{
+  max-width:105px;color:#f4ddc5;
+  font:500 clamp(9px,2.3vw,12px)/1.15 Georgia,serif;
+}
+body.ky-next-palace .stats-total{
+  margin-top:7px;padding-top:7px;gap:8px;
+  border-top:1px solid #aa846b82;
+}
+body.ky-next-palace .stats-total-label{
+  color:#f4dfc4;font:700 clamp(9px,2.25vw,12px)/1.15 Georgia,serif;
+}
+body.ky-next-palace #overallTimeStat{
+  display:inline-flex;gap:5px;align-items:center;
+  color:#ffdda8;font:700 clamp(14px,3.8vw,22px)/1.12 Georgia,serif;
+  text-shadow:0 0 7px #eeae69a0;
+}
+body.ky-next-palace #overallTimeStat::before,
+body.ky-next-palace #sectionTime::before{
+  content:"";display:inline-block;flex:none;width:28px;height:28px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+  filter:sepia(.45) drop-shadow(0 0 4px #f8d0a6);
+}
+/* Leave room to appreciate the owner's TV and woven blankets in the artwork. */
+body.ky-next-palace .shell>.controls{
+  position:relative;display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
+  overflow:visible;
+  margin:clamp(240px,65vw,320px) 7px 15px;
+  padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+}
+body.ky-next-palace .shell>.controls::before,
+body.ky-next-palace .shell>.controls::after{display:none!important}
+body.ky-next-palace .shell>.controls .field-search{
+  position:relative;grid-column:1/-1;min-width:0;width:100%;
+}
+body.ky-next-palace .shell>.controls .field-search::before{
+  content:""!important;position:absolute;top:50%;left:10px;z-index:2;
+  width:34px;height:34px;transform:translateY(-50%);
+  pointer-events:none;
+  background:url('./assets/all-memories/ky-search.webp') center/contain no-repeat;
+  filter:sepia(.4) drop-shadow(0 0 5px #f4c58f88);
+}
+body.ky-next-palace .shell>.controls :is(input,select){
+  -webkit-appearance:none;appearance:none;
+  width:100%;min-width:0;min-height:54px;
+  padding:11px 33px 11px 48px;
+  border:2px solid #a89481;border-radius:16px;
+  color:#fff0db;
+  font:500 clamp(13px,3.25vw,18px)/1.2 Georgia,serif;
+  box-shadow:0 0 0 1px #3b352f,0 5px 12px #000a,
+    inset 0 1px #fff9ea36,inset 0 -2px #0007;
+}
+body.ky-next-palace .shell>.controls #search{
+  background:linear-gradient(130deg,#37322feb,#262625f2);
+}
+body.ky-next-palace .shell>.controls input::placeholder{color:#d9d0c4;opacity:1}
+body.ky-next-palace .shell>.controls #genreFilter{
+  background:
+    url('./assets/all-memories/ky-game.webp') left 10px center/34px 34px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 10px center/16px 12px no-repeat,
+    linear-gradient(160deg,#292525,#121514);
+}
+body.ky-next-palace .shell>.controls #sort{
+  background:
+    url('./assets/watch-next/ky-joystick.svg') left 10px center/33px 33px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 10px center/16px 12px no-repeat,
+    linear-gradient(160deg,#292525,#121514);
+}
+body.ky-next-palace .shell>.controls :is(input,select):focus-visible{
+  outline:3px solid #f4c186;outline-offset:2px;
+}
+body.ky-next-palace .shell>.controls #newEntry{
+  display:flex;grid-column:1/-1;
+  align-items:center;justify-content:center;gap:8px;
+  min-height:59px;width:100%;padding:9px 13px;
+  border:2px dashed #dec2a4;border-radius:100px;
+  color:#fff2df;
+  background:radial-gradient(ellipse at 50% 0%,#51423a,#1b1b1a 78%);
+  box-shadow:0 0 0 2px #796550,0 4px 15px #000b,
+    inset 0 1px #fff9e844,inset 0 -5px #0005;
+  font:700 clamp(17px,4.5vw,23px)/1.15 Georgia,serif;
+  text-shadow:0 1px #000;
+}
+body.ky-next-palace .shell>.controls #newEntry::before{
+  content:""!important;display:inline-block;flex:none;width:38px;height:38px;
+  background:url('./assets/all-memories/ky-add.webp') center/contain no-repeat;
+}
+body.ky-next-palace .shell>.controls #newEntry:is(:hover,:focus-visible){filter:brightness(1.12)}
+/* The reference's embroidered charcoal title placard and two-row navigation. */
+body.ky-next-palace .section-header{
+  position:relative;display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:11px 8px;align-items:center;
+  margin:8px 7px 3px;
+}
+body.ky-next-palace .section-header>.collection-heading{min-width:0}
+body.ky-next-palace .section-header h2{
+  margin:0;min-width:0;color:#f5e5cf;
+  font:500 clamp(23px,5.8vw,40px)/1.08 "Iowan Old Style",Baskerville,Georgia,serif;
+  letter-spacing:-.02em;
+  text-shadow:0 1px 2px #000,0 0 8px #efb67565;
+}
+body.ky-next-palace .section-header h2::after{
+  content:"";display:block;margin-top:6px;
+  width:min(360px,100%);height:13px;border:0;border-radius:0;
+  background:linear-gradient(90deg,#cfab7c,transparent 38%,transparent 58%,#cfab7c)
+    center/100% 2px no-repeat,
+    radial-gradient(circle at center,#d7a872 0 3px,transparent 4px);
+  box-shadow:none;
+}
+body.ky-next-palace .section-header>.section-count{
+  max-width:137px;align-items:flex-end;text-align:right;gap:3px;
+}
+body.ky-next-palace .section-count #count{
+  color:#ffedd0;font:700 clamp(15px,3.8vw,24px)/1.13 Georgia,serif;
+  text-shadow:0 1px 3px #000;
+}
+body.ky-next-palace .section-count #sectionTime{
+  display:inline-flex;align-items:center;justify-content:flex-end;gap:4px;
+  color:#efbb73;font:700 clamp(15px,3.8vw,24px)/1.1 Georgia,serif;
+  text-shadow:0 0 10px #d0a05b6b;
+}
+body.ky-next-palace .section-header>.tabs{
+  grid-column:1/-1;display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;
+  margin:0;padding:0;border:0;border-radius:0;
+  overflow:visible;background:none;box-shadow:none;
+}
+body.ky-next-palace .section-header>.tabs .chip,
+body.ky-next-palace .section-header>.tabs .chip[data-tab="current"]{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0;min-width:0;width:100%;min-height:62px;
+  padding:4px 2px;border:2px solid #796a60;border-radius:14px;
+  color:#fff0d6;text-align:center;
+  background:linear-gradient(145deg,#2f2925,#1a1b1c 73%);
+  box-shadow:0 3px 10px #0009,inset 0 1px #f7d8a15b;
+  text-shadow:0 1px #000;font-size:0!important;
+}
+body.ky-next-palace .section-header>.tabs .chip::before{
+  content:""!important;display:block;flex:none;
+  width:clamp(25px,7vw,39px);height:clamp(25px,7vw,39px);
+  background-size:contain;background-position:center;background-repeat:no-repeat;
+  filter:sepia(.25) drop-shadow(0 0 2px #deb37c8a);
+}
+body.ky-next-palace .section-header>.tabs .chip::after{
+  content:"";display:block;text-align:center;color:inherit;
+  font:700 clamp(9px,2.35vw,13px)/1.13 Georgia,serif;
+}
+body.ky-next-palace .section-header>.tabs [data-tab="all"]::before{background-image:url('./assets/all-memories/ky-all.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="movie"]::before{background-image:url('./assets/all-memories/ky-movie.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="show"]::before{background-image:url('./assets/all-memories/ky-show.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="game"]::before{background-image:url('./assets/all-memories/ky-game.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="next"]::before{background-image:url('./assets/watch-next/ky-play.svg')}
+body.ky-next-palace .section-header>.tabs [data-tab="current"]::before{background-image:url('./assets/all-memories/ky-current.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="favorite"]::before{background-image:url('./assets/all-memories/ky-favorite.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="trash"]::before{background-image:url('./assets/all-memories/ky-trash.webp')}
+body.ky-next-palace .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.ky-next-palace .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.ky-next-palace .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.ky-next-palace .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.ky-next-palace .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.ky-next-palace .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.ky-next-palace .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.ky-next-palace .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+body.ky-next-palace .section-header>.tabs .chip.selected,
+body.ky-next-palace .section-header>.tabs .chip[data-tab="current"].selected{
+  color:#292623;text-shadow:0 1px #fff;
+  background:linear-gradient(145deg,#f9f0e7,#d9d2c9);
+  border-color:#fff6eb;
+  box-shadow:0 0 0 1px #7b6e65,0 0 13px #eed7be69,
+    0 4px 8px #0009,inset 0 2px #fff;
+}
+body.ky-next-palace .section-header>.tabs .chip:not(.selected):hover{filter:brightness(1.17)}
+body.ky-next-palace .section-header>.tabs .chip:focus-visible{
+  outline:3px solid #fad6a2;outline-offset:2px;
+}
+/* The existing clickable memory cards: woven charcoal, gold embroidery & stitch trim. */
+body.ky-next-palace #gallery{
+  position:relative;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px 13px;padding:19px 7px 26px;
+  max-height:83dvh;overflow-y:auto;overflow-x:hidden;
+  scrollbar-color:#ad8c69 #1a1817;
+}
+body.ky-next-palace #gallery .polaroid{
+  isolation:isolate;position:relative;
+  min-width:0;padding:12px 10px 17px;
+  border:3px solid #a9967b;border-radius:20px;
+  transform:none;text-align:left;color:#ffeaca;
+  background:
+    repeating-linear-gradient(45deg,#ffffff04 0 1px,transparent 1px 4px),
+    linear-gradient(135deg,#37322d 0%,#242322 55%,#35302b 100%);
+  box-shadow:0 0 0 2px #1b1917,0 0 0 4px #94775493,
+    0 8px 16px #000b,inset 0 0 25px #0b0a0a9c;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+body.ky-next-palace #gallery .polaroid::before{
+  content:"";position:absolute;top:5px;left:5px;right:5px;bottom:5px;z-index:2;
+  pointer-events:none;transform:none;
+  border:1px dashed #d9b38b;border-radius:13px;
+  background:url('./assets/watch-next/ky-card-embroidery.svg') center/100% 100% no-repeat;
+  box-shadow:inset 0 0 0 1px #111b;
+}
+body.ky-next-palace #gallery .polaroid::after{content:none!important}
+body.ky-next-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px);
+  box-shadow:0 0 0 2px #d6a96f,0 0 15px #e9c79352,0 13px 21px #000b;
+}
+body.ky-next-palace #gallery .polaroid:focus-visible{outline:3px solid #ffe2af;outline-offset:5px}
+body.ky-next-palace #gallery .poster{
+  position:relative;overflow:hidden;height:auto;
+  aspect-ratio:1.34/1;
+  background:linear-gradient(145deg,#27231e,#3b3329);
+  border:2px solid #b78e5f;border-radius:8px;
+  box-shadow:0 0 0 2px #544436,0 5px 11px #0007;
+}
+body.ky-next-palace #gallery .poster img{width:100%;height:100%;object-fit:cover}
+body.ky-next-palace #gallery .poster::after{background:linear-gradient(135deg,#ffffff24,transparent 26%,#20160526 100%)}
+body.ky-next-palace #gallery .poster .placeholder{
+  font-size:0!important;opacity:1;
+}
+body.ky-next-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(63px,15vw,105px);height:clamp(63px,15vw,105px);
+  background:url('./assets/watch-next/ky-play.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 9px #e1ac69);
+}
+body.ky-next-palace #gallery .polaroid h3{
+  margin:11px 2px 8px;color:#fff0d8;
+  font:700 clamp(15px,3.45vw,22px)/1.12 "Iowan Old Style",Georgia,serif;
+  text-shadow:0 1px #090808;
+}
+body.ky-next-palace #gallery .polaroid .rating-line{display:flex;flex-wrap:wrap;gap:5px;margin:0 1px}
+body.ky-next-palace #gallery .polaroid .score{
+  display:inline-flex;align-items:center;gap:3px;
+  padding:4px 7px;border:1px solid #81716a;border-radius:26px;
+  color:#f7e3cb;font:700 clamp(11px,2.6vw,14px)/1.14 Georgia,serif;
+  background:linear-gradient(155deg,#5b514a,#292725);
+  box-shadow:inset 0 1px #fffcf243;
+}
+body.ky-next-palace #gallery .score .score-heart .rating-heart-shape{stroke:#ebc0ad;fill:#f9e3d4}
+body.ky-next-palace #gallery .score .score-heart.filled .rating-heart-shape{stroke:#760e28;fill:#ff4874}
+body.ky-next-palace #gallery .polaroid .time-line{
+  margin:9px 2px 0;color:#ffe9cb;
+  font:700 clamp(11px,2.8vw,14px)/1.18 Georgia,serif;
+}
+body.ky-next-palace #gallery .polaroid .tagline{margin-top:10px;gap:6px}
+body.ky-next-palace #gallery .polaroid .tag{
+  padding:5px 10px;border:1px solid #95877b;border-radius:20px;
+  color:#f7e4cc;background:linear-gradient(#4b4542,#302c2a);
+  font:500 clamp(10px,2.3vw,12px)/1.2 Georgia,serif;
+  box-shadow:inset 0 1px #ffebcb37;
+}
+body.ky-next-palace #gallery .corner-heart{
+  color:#f66f87;border:1px solid #d4b281;background:#2c2322d9;
+}
+body.ky-next-palace #empty{
+  color:#f7e5ca;border:2px solid #ab9179;border-radius:20px;
+  background:linear-gradient(#39312ce8,#1b1a1af2);
+  box-shadow:0 10px 30px #000b;
+}
+body.ky-next-palace #empty h3{color:#fff0ce}
+body.ky-next-palace #empty .pop{
+  font-size:0!important;width:65px;height:65px;margin:auto;
+  background:url('./assets/watch-next/ky-play.svg') center/contain no-repeat;
+}
+body.ky-next-palace #empty .btn.primary{
+  color:#ffeed8;border:1px solid #d4ae83;
+  background:linear-gradient(#49423c,#211c1b);
+}
+/* Keep existing edit, review and cloud dialogs readable and operable. */
+body.ky-next-palace .modal .dialog.glass{
+  color:#634638;border:2px solid #b79875;
+  background:linear-gradient(145deg,#fff2df,#ead7c4);
+}
+body.ky-next-palace .modal .dialog :is(input,select,textarea,button):focus-visible{
+  outline:3px solid #cc8b54;outline-offset:2px;
+}
+body.ky-next-palace .modal .dialog .review{background:#fffbf4}
+/* WIDE LAPTOP: use owner's wide art, keep the original app layout readable. */
+@media(min-width:701px){
+  body.ky-next-palace .stage::before{
+    background-image:url('./assets/watch-next/watch-next-landscape.webp');
+    background-position:center top;background-size:100% 100%;
+  }
+  body.ky-next-palace .shell{padding-top:clamp(70px,7vw,112px)}
+  body.ky-next-palace .shell>.controls{
+    grid-template-columns:minmax(170px,1.4fr) minmax(130px,.8fr) minmax(145px,.8fr) minmax(185px,1fr);
+    margin-top:clamp(165px,18vw,245px);
+  }
+  body.ky-next-palace .shell>.controls .field-search,
+  body.ky-next-palace .shell>.controls #newEntry{grid-column:auto}
+  body.ky-next-palace .shell>.controls #newEntry{font-size:clamp(15px,1.65vw,20px)}
+  body.ky-next-palace #gallery{
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:22px 17px;padding:16px 8px 27px;
+  }
+  body.ky-next-palace .section-header>.tabs .chip{min-height:72px}
+}
+@media(max-width:390px){
+  body.ky-next-palace .shell{padding:67px 9px 32px}
+  body.ky-next-palace .shell>.topbar{margin-inline:6px;padding:13px 5px;min-height:59px}
+  body.ky-next-palace .shell>.topbar .palace-wordmark{font-size:clamp(17px,4.7vw,22px)}
+  body.ky-next-palace .shell>.stats{margin-inline:6px;padding:9px 5px}
+  body.ky-next-palace .shell>.controls{
+    margin:clamp(221px,61vw,245px) 6px 13px;gap:8px;
+  }
+  body.ky-next-palace .shell>.controls :is(input,select){min-height:49px;padding-left:45px;padding-right:24px}
+  body.ky-next-palace .section-header{margin-inline:5px}
+  body.ky-next-palace .section-header>.tabs{gap:5px}
+  body.ky-next-palace .section-header>.tabs .chip{min-height:58px;padding:3px 1px}
+  body.ky-next-palace .section-header>.tabs .chip::after{font-size:9px}
+  body.ky-next-palace #gallery{gap:21px 10px;padding:18px 6px 23px}
+  body.ky-next-palace #gallery .polaroid{padding:9px 7px 14px}
+  body.ky-next-palace #gallery .polaroid .score{padding:4px 5px;gap:2px}
+  body.ky-next-palace #gallery .polaroid .tag{padding:4px 8px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.ky-next-palace #gallery .polaroid{transition:none!important}
+}
