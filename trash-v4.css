@@ -1,0 +1,106 @@
+/*
+ * KY Trash V4 — precise header centering and real hanging Add Polaroid drips.
+ * Scoped exclusively to the Trash body class. No data or behavior changes.
+ * This must load AFTER trash-v2.css and trash-v3.css.
+ */
+
+/* Center the actual WORDMARK (including heart) in the full bar.
+   The cloud status badge is independently positioned on the right so it
+   cannot shift the title group toward the left. */
+body.ky-trash-palace .shell>.topbar{
+  display:flex;
+  align-items:center!important;
+  justify-content:center!important;
+}
+body.ky-trash-palace .shell>.topbar .palace-trigger{
+  position:relative;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center!important;
+  width:100%;
+  min-width:0;
+  min-height:42px;
+  gap:0!important;
+  padding:5px clamp(37px,9vw,58px)!important;
+  text-align:center!important;
+}
+body.ky-trash-palace .shell>.topbar .palace-wordmark{
+  display:block;
+  flex:1 1 auto;
+  min-width:0;
+  width:100%;
+  margin:0 auto;
+  text-align:center!important;
+  white-space:normal!important;
+  overflow-wrap:normal;
+  font-size:clamp(15px,4.08vw,30px);
+  line-height:1.15;
+}
+body.ky-trash-palace .shell>.topbar .palace-status{
+  position:absolute!important;
+  right:clamp(3px,2.2vw,19px)!important;
+  top:50%!important;
+  left:auto!important;
+  margin:0!important;
+  transform:translateY(-50%)!important;
+  pointer-events:none;
+}
+
+/* Attach the slime's START just behind the button's lower rim and let the
+   separated organic drops extend DOWN into the gap underneath the button.
+   No green horizontal band; the middle of the custom SVG is transparent. */
+body.ky-trash-palace .shell>.controls #newEntry{
+  position:relative;
+  isolation:isolate;
+  overflow:visible!important;
+  margin-bottom:14px;
+}
+body.ky-trash-palace .shell>.controls #newEntry::after{
+  content:"";
+  position:absolute;
+  top:auto!important;
+  bottom:-23px!important;
+  left:clamp(15px,4vw,26px)!important;
+  right:clamp(15px,4vw,26px)!important;
+  width:auto!important;
+  height:26px!important;
+  margin:0!important;
+  z-index:4;
+  border:0!important;
+  box-shadow:none!important;
+  transform:none!important;
+  pointer-events:none!important;
+  background-color:transparent!important;
+  background-image:url("./assets/trash/ky-button-hanging-drips-v4.svg")!important;
+  background-position:center top!important;
+  background-size:100% 100%!important;
+  background-repeat:no-repeat!important;
+  filter:drop-shadow(0 2px 3px rgba(128,255,0,.55))!important;
+}
+
+/* Tiny screens retain symmetric text and have safe space for the drips.
+   Desktop gets slightly shorter drips to match its narrower Add button. */
+@media(max-width:390px){
+  body.ky-trash-palace .shell>.topbar .palace-trigger{
+    padding-inline:clamp(31px,9vw,39px)!important;
+  }
+  body.ky-trash-palace .shell>.topbar .palace-wordmark{
+    font-size:clamp(14.5px,4.15vw,17px);
+  }
+  body.ky-trash-palace .shell>.controls #newEntry::after{
+    height:23px!important;
+    bottom:-20px!important;
+  }
+}
+@media(min-width:701px){
+  body.ky-trash-palace .shell>.topbar .palace-wordmark{
+    font-size:clamp(22px,2.9vw,34px);
+  }
+  body.ky-trash-palace .shell>.controls #newEntry::after{
+    height:22px!important;
+    bottom:-19px!important;
+    left:12px!important;
+    right:12px!important;
+  }
+}
