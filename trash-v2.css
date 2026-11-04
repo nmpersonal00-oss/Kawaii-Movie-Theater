@@ -1,0 +1,428 @@
+/*
+ * KY TRASH V2 — NEON TOXIC VELVET
+ *
+ * Cosmetic overrides only. Body class ky-trash-palace is applied ONLY while
+ * the original app's Trash tab is active. We deliberately do not change
+ * HTML IDs, card data, collection, queries, event handlers, or stored records.
+ *
+ * Decor stays behind interactive controls, while slime clings to real edges.
+ * Uses owner-supplied raccoon/opossum photo backgrounds already in trash-palace.css.
+ */
+
+/* Green and near-black curling fumes, tucked around the outer margins.
+   Two original illustrated SVGs; no fixed blur animations or Apple emoji. */
+body.ky-trash-palace .stage{
+  isolation:isolate;
+  background:none;
+}
+body.ky-trash-palace .stage::after{
+  content:"";
+  display:block!important;
+  position:fixed;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:0;
+  opacity:.95!important;
+  pointer-events:none;
+  transform:none!important;
+  filter:none!important;
+  animation:none!important;
+  background-image:
+    url("./assets/trash/ky-toxic-fumes-v2-portrait.svg"),
+    radial-gradient(ellipse 23% 25% at 2% 52%,rgba(100,243,5,.13),transparent 100%),
+    radial-gradient(ellipse 24% 28% at 98% 65%,rgba(119,246,0,.14),transparent 100%);
+  background-position:center center,center center,center center;
+  background-repeat:no-repeat;
+  background-size:cover,cover,cover;
+}
+body.ky-trash-palace .shell{
+  position:relative;
+  z-index:2;
+}
+
+/* Keep generous breathing room inside panels; attach the goo at their
+   *bottom outer edges*, not on top of words, metrics, or icons. */
+body.ky-trash-palace .shell>.topbar{
+  border:2px solid #b3d65b;
+  background:
+    radial-gradient(ellipse 78% 120% at 50% 0%,rgba(118,204,20,.17),transparent 83%),
+    linear-gradient(145deg,#101610,#070b08 63%,#19200e);
+  box-shadow:
+    0 0 0 1px #1a270d,0 0 0 3px #b5ec4b55,
+    0 0 19px #9dff1675,0 9px 20px #020701d9,
+    inset 0 1px #f0ffb06b,inset 0 -9px 18px #020701;
+}
+body.ky-trash-palace .shell>.topbar::after{
+  content:"";
+  position:absolute;
+  inset:auto 10px -16px;
+  height:22px;
+  z-index:3;
+  border:0;
+  border-radius:0;
+  background:url("./assets/trash/ky-toxic-drips-v2.svg") center top/100% 100% no-repeat;
+  box-shadow:none;
+  filter:drop-shadow(0 1px 5px #a4ff0b80);
+  pointer-events:none;
+}
+body.ky-trash-palace .shell>.topbar .palace-wordmark{
+  color:#faffdb;
+  text-shadow:0 1px 2px #020501,0 0 13px #9bff3b83;
+}
+body.ky-trash-palace .shell>.stats{
+  border:2px solid #91bb49;
+  background:
+    repeating-linear-gradient(128deg,#e2ff7609 0 1px,transparent 1px 11px),
+    radial-gradient(ellipse at 50% 0%,#1c3220,#070a08 80%);
+  box-shadow:
+    0 0 0 1px #263e18,0 0 0 3px #b9ed3970,
+    0 0 19px #b2ff1b8c,0 11px 22px #000c,
+    inset 0 1px #f2ffb06b,inset 0 -9px 17px #000b;
+}
+body.ky-trash-palace .shell>.stats::after{
+  content:"";
+  position:absolute;
+  inset:auto 11px -17px;
+  height:22px;
+  z-index:3;
+  border:0;
+  border-radius:0;
+  background:url("./assets/trash/ky-toxic-drips-v2.svg") center top/100% 100% no-repeat;
+  box-shadow:none;
+  filter:drop-shadow(0 2px 4px #a3ff1a8d);
+  pointer-events:none;
+}
+body.ky-trash-palace .stat strong{
+  color:#ddff56;
+  text-shadow:0 0 8px #b5ff0a9c,0 1px #f5ffc777;
+}
+body.ky-trash-palace #overallTimeStat{color:#d7ff4b;text-shadow:0 0 11px #afff098e}
+
+/* Only real controls; no extra clickable overlays. */
+body.ky-trash-palace .shell>.controls :is(input,select){
+  color:#f7ffdb;
+  border:1px solid #9bd246;
+  background-color:#080e08;
+  box-shadow:0 0 0 1px #27441a,0 0 14px #84ed135c,
+    0 5px 14px #000b,inset 0 1px #e5ff9642;
+}
+body.ky-trash-palace .shell>.controls #search{
+  background:linear-gradient(145deg,#1a2817,#090e0a 73%);
+}
+body.ky-trash-palace .shell>.controls #genreFilter{
+  background:
+    url("./assets/trash/ky-trash-emblem.svg") left 9px center/34px 34px no-repeat,
+    url("./assets/watch-next/ky-chevron.svg") right 10px center/14px 12px no-repeat,
+    linear-gradient(#1a2815,#090e08);
+}
+body.ky-trash-palace .shell>.controls #sort{
+  background:
+    url("./assets/trash/ky-slime-heart.svg") left 10px center/33px 33px no-repeat,
+    url("./assets/watch-next/ky-chevron.svg") right 10px center/14px 12px no-repeat,
+    linear-gradient(#1a2815,#090e08);
+}
+body.ky-trash-palace .shell>.controls #newEntry{
+  /* Fix: the dripping pseudo-element must anchor to THIS button, not .controls. */
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  min-width:0;
+  border:2px solid #beff38;
+  color:#efffc9;
+  background:
+    radial-gradient(ellipse at 50% -25%,#98f60f44,transparent 78%),
+    linear-gradient(155deg,#264619,#080f08 56%,#1d3315);
+  box-shadow:
+    0 0 0 2px #1a3410,0 0 0 4px #85ef1a4d,
+    0 0 22px #a4ff19c4,0 7px 15px #000c,
+    inset 0 1px #f1ffc291,inset 0 -4px 10px #0009;
+}
+body.ky-trash-palace .shell>.controls #newEntry::after{
+  content:"";
+  position:absolute;
+  inset:auto 13px -11px;
+  height:19px;
+  z-index:2;
+  pointer-events:none;
+  background:url("./assets/trash/ky-toxic-drips-v2.svg") center top/100% 100% no-repeat;
+  filter:drop-shadow(0 1px 5px #a0ff158a);
+}
+body.ky-trash-palace .shell>.controls #newEntry:is(:hover,:focus-visible){
+  box-shadow:0 0 0 2px #29541a,0 0 0 4px #a2fa3899,
+    0 0 28px #b3ff3aed,0 9px 19px #000c,inset 0 1px #fcffd1;
+}
+
+/* Collection heading: bright letterforms, a tidy luminous underline.
+   The previous floating heart sat on top of the heading on narrow phones. */
+body.ky-trash-palace .section-header h2{
+  color:#e1ff61;
+  text-shadow:0 0 4px #c8ff29,0 0 17px #b1ff0a91,0 2px #020b02;
+}
+body.ky-trash-palace .section-header h2::after{
+  content:"";
+  display:block;
+  width:min(100%,420px);
+  height:3px;
+  margin-top:8px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(90deg,#f3ff97,#a9f426 40%,#426519a8 85%,transparent);
+  box-shadow:0 0 10px #a7ff328f;
+  filter:none;
+}
+body.ky-trash-palace .section-header>.collection-heading::after{
+  display:none!important;
+}
+body.ky-trash-palace .section-count #count,
+body.ky-trash-palace .section-count #sectionTime{
+  color:#dfff6b;
+  text-shadow:0 0 12px #aaff31ad;
+}
+
+/* Every tab button still contains the exact same existing text and click
+   handler. Only the active Trash button gets the stronger acid-green ring. */
+body.ky-trash-palace .section-header>.tabs .chip{
+  border:1px solid #516b31;
+  color:#f7f7df;
+  background:linear-gradient(145deg,#192219,#050a07 65%,#17271a);
+  box-shadow:inset 0 1px #ddff7a38,0 0 8px #80e80e22,0 3px 8px #000d;
+}
+body.ky-trash-palace .section-header>.tabs .chip[data-tab="trash"].selected{
+  color:#0a1905;
+  border:2px solid #f0ffab;
+  background:linear-gradient(145deg,#f1ff89,#b6fc25 57%,#62ca02);
+  box-shadow:0 0 0 1px #446a08,0 0 0 3px #acff3555,
+    0 0 21px #abff17d9,0 5px 12px #000c,inset 0 1px #fffbd9;
+}
+body.ky-trash-palace .section-header>.tabs .chip[data-tab="trash"].selected::before{
+  filter:drop-shadow(0 0 5px #7dbb0088);
+}
+
+/* Toxic-velvet Polaroids: near-black embroidered paper, acid-green filigree
+   and controlled goo only on outer edges. Real posters and text remain live. */
+body.ky-trash-palace #gallery{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:29px 14px;
+  padding:25px 8px 35px;
+  scroll-padding-top:25px;
+  scrollbar-color:#a9e743 #101b10;
+}
+body.ky-trash-palace #gallery .polaroid{
+  position:relative;
+  isolation:isolate;
+  min-width:0;
+  padding:29px 10px 19px;
+  border:2px solid #b2f34b;
+  border-radius:17px;
+  color:#f7f6df;
+  background:
+    radial-gradient(circle at 95% 92%,#c9ff4a 0 1px,transparent 6px),
+    radial-gradient(circle at 6% 96%,#beff62 0 1px,transparent 6px),
+    repeating-linear-gradient(128deg,#befb4e0a 0 1px,transparent 1px 9px),
+    radial-gradient(ellipse at 46% 0%,#29411d 0%,transparent 65%),
+    linear-gradient(150deg,#121e14 0%,#030705 50%,#101b12 100%);
+  box-shadow:
+    0 0 0 1px #1b360d,0 0 0 3px #d6ff697d,
+    0 0 17px #b1ff19a8,0 15px 25px #000e,
+    inset 0 0 0 2px #4a6824,inset 0 0 17px #000a;
+  transform:none;
+  text-align:left;
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
+}
+body.ky-trash-palace #gallery .polaroid::before{
+  content:"";
+  position:absolute;
+  inset:0 8px auto;
+  width:auto;
+  height:27px;
+  z-index:3;
+  transform:none;
+  pointer-events:none;
+  background:url("./assets/trash/ky-toxic-drips-v2.svg") top center/100% 100% no-repeat;
+  filter:drop-shadow(0 2px 5px #a8ff19a6);
+}
+body.ky-trash-palace #gallery .polaroid::after{
+  content:"";
+  position:absolute;
+  inset:6px;
+  z-index:3;
+  border:1px dashed #a2d965a6;
+  border-radius:10px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 0 0,#d5ff70 0 2px,transparent 3px),
+    radial-gradient(circle at 100% 0,#d5ff70 0 2px,transparent 3px),
+    radial-gradient(circle at 0 100%,#d5ff70 0 2px,transparent 3px),
+    radial-gradient(circle at 100% 100%,#d5ff70 0 2px,transparent 3px);
+  box-shadow:inset 0 0 0 1px #283f168c;
+}
+body.ky-trash-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px);
+  filter:brightness(1.055);
+  box-shadow:
+    0 0 0 1px #457a14,0 0 0 3px #edff86b8,
+    0 0 25px #b8ff1bdd,0 18px 27px #000e,
+    inset 0 0 0 2px #637a34;
+}
+body.ky-trash-palace #gallery .poster{
+  height:auto;
+  aspect-ratio:1.14/1;
+  min-width:0;
+  position:relative;
+  overflow:hidden;
+  border:2px solid #a6dd54;
+  border-radius:7px;
+  background:linear-gradient(150deg,#1a321d,#030705);
+  box-shadow:
+    0 0 0 2px #c8ff6d9c,0 0 14px #87e82442,
+    0 5px 10px #000a;
+}
+body.ky-trash-palace #gallery .poster::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    url("./assets/trash/ky-toxic-drips-v2.svg") bottom center/100% 14px no-repeat,
+    linear-gradient(128deg,#ecffc824,transparent 31%,#a9fa0b17 96%);
+  box-shadow:inset 0 0 0 1px #e6ff8c70;
+}
+body.ky-trash-palace #gallery .polaroid h3{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  white-space:normal;
+  min-height:2.25em;
+  margin:11px 1px 8px;
+  color:#fbf9df;
+  font:700 clamp(14px,3.75vw,21px)/1.12 Georgia,serif;
+  text-shadow:0 1px 2px #000,0 0 7px #9af61958;
+  overflow-wrap:anywhere;
+}
+body.ky-trash-palace #gallery .polaroid .rating-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+body.ky-trash-palace #gallery .polaroid .score{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:5px 7px;
+  border:1px solid #83c43e;
+  border-radius:28px;
+  background:linear-gradient(135deg,#253520,#0d160f 80%);
+  color:#f1ffcc;
+  font:700 clamp(10px,2.6vw,14px)/1.13 Georgia,serif;
+  box-shadow:inset 0 1px #ddff6a40,0 2px 7px #000c;
+}
+body.ky-trash-palace #gallery .score .score-heart .rating-heart-shape{
+  fill:#e6ff9e;
+  stroke:#7eaf3a;
+}
+body.ky-trash-palace #gallery .score .score-heart.filled .rating-heart-shape{
+  fill:#b9ff17;
+  stroke:#478e06;
+}
+body.ky-trash-palace #gallery .score .score-heart .rating-heart-shine{
+  stroke:#fbffe2;
+}
+body.ky-trash-palace #gallery .polaroid .time-line{
+  margin:9px 0 1px;
+  color:#ceff57;
+  font:700 clamp(11px,2.7vw,15px)/1.18 Georgia,serif;
+  text-shadow:0 0 9px #91ff1c75;
+}
+body.ky-trash-palace #gallery .polaroid .tagline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:10px;
+  padding-bottom:1px;
+}
+body.ky-trash-palace #gallery .polaroid .tag{
+  padding:5px 7px;
+  border:1px solid #5a8534;
+  border-radius:22px;
+  background:linear-gradient(135deg,#26341e,#0f1b11);
+  color:#f0f5dd;
+  font:500 clamp(10px,2.3vw,12px)/1.18 Georgia,serif;
+}
+body.ky-trash-palace #gallery .polaroid .tag:first-child{
+  color:#cbff65;
+  border-color:#82ca27;
+  box-shadow:0 0 7px #86ed1959;
+}
+body.ky-trash-palace #gallery .corner-heart{
+  background:#090f09ee;
+  color:#c8ff4e;
+  border:1px solid #b4ff4c;
+  box-shadow:0 0 9px #95ff278a;
+}
+
+/* Keep the empty Trash screen consistent, but preserve its real buttons. */
+body.ky-trash-palace #empty{
+  border:2px solid #87ca3d;
+  background:linear-gradient(145deg,#162517f5,#050b06f5);
+  color:#f9fbd9;
+  box-shadow:0 0 0 2px #36601c,0 0 18px #a9ff287c,0 14px 29px #000d;
+}
+body.ky-trash-palace #empty h3{color:#dfff79}
+
+/* At laptop widths the wide illustration matches the provided landscape
+   photograph; fumes remain in the peripheral wallpaper, never over cards. */
+@media(min-width:701px){
+  body.ky-trash-palace .stage::after{
+    background-image:
+      url("./assets/trash/ky-toxic-fumes-v2-landscape.svg"),
+      radial-gradient(ellipse 24% 30% at 3% 54%,rgba(105,252,0,.15),transparent 100%),
+      radial-gradient(ellipse 25% 32% at 97% 60%,rgba(98,237,4,.15),transparent 100%);
+  }
+  body.ky-trash-palace #gallery{
+    grid-template-columns:repeat(auto-fill,minmax(214px,1fr));
+    gap:28px 22px;
+    padding:27px 9px 35px;
+  }
+  body.ky-trash-palace #gallery .polaroid{
+    padding:31px 13px 22px;
+  }
+  body.ky-trash-palace #gallery .polaroid::before{
+    height:31px;
+  }
+}
+@media(max-width:390px){
+  body.ky-trash-palace .shell>.topbar::after{height:17px;bottom:-13px}
+  body.ky-trash-palace .shell>.stats::after{height:17px;bottom:-13px}
+  body.ky-trash-palace .shell>.controls #newEntry::after{height:15px;bottom:-9px}
+  body.ky-trash-palace #gallery{
+    gap:27px 10px;
+    padding:24px 6px 32px;
+  }
+  body.ky-trash-palace #gallery .polaroid{
+    padding:25px 8px 16px;
+    border-radius:14px;
+  }
+  body.ky-trash-palace #gallery .polaroid::before{
+    inset:0 6px auto;
+    height:23px;
+  }
+  body.ky-trash-palace #gallery .polaroid h3{
+    font-size:clamp(13px,3.9vw,15px);
+  }
+  body.ky-trash-palace #gallery .polaroid .score{
+    padding:4px 5px;
+    gap:3px;
+  }
+  body.ky-trash-palace #gallery .polaroid .tag{
+    padding:4px 6px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.ky-trash-palace #gallery .polaroid{
+    transition:none!important;
+  }
+}
