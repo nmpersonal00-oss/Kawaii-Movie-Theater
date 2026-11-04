@@ -1,0 +1,550 @@
+/*
+ * ALL MEMORIES — gilded red-velvet Picture Palace.
+ * This stylesheet is opt-in: the body gets .memory-palace-all only while
+ * the existing "All memories" category is selected.
+ * It changes presentation ONLY. It does not change cloud, storage, cards,
+ * search, filtering, controls, or how entries are opened/edited.
+ */
+
+/* The provided screenshot is a design reference, never a replacement for real data. */
+body.memory-palace-all{
+  --memory-ruby:#8a0710;
+  --memory-wine:#530007;
+  --memory-gold:#ffdf81;
+  --memory-ink:#8c1816;
+  color:#ffeabb;
+  background-color:#310005;
+  background-image:
+    linear-gradient(90deg,rgba(21,0,0,.15),transparent 15%,transparent 85%,rgba(21,0,0,.15)),
+    url("./all-memories-theater.svg"),
+    linear-gradient(155deg,#3c0006,#780a10 43%,#2b0007);
+  background-position:center top,center top,center top;
+  background-size:100% 100%,100% 100%,cover;
+  background-repeat:no-repeat;
+  background-attachment:scroll!important;
+}
+body.memory-palace-all .stage{
+  background:
+    radial-gradient(ellipse at 50% 19%,rgba(251,140,28,.11),transparent 40%),
+    linear-gradient(90deg,rgba(18,0,0,.07),transparent 24%,transparent 76%,rgba(18,0,0,.07));
+}
+body.memory-palace-all .shell{
+  max-width:1130px;
+  padding:65px clamp(12px,3.8vw,35px) 45px;
+}
+body.memory-palace-all .shell::before{
+  background:
+    radial-gradient(circle at 8% 34%,#ffe0a3 0 1px,transparent 5px),
+    radial-gradient(circle at 90% 13%,#ffd45a 0 1px,transparent 5px),
+    radial-gradient(circle at 18% 81%,#ffb448 0 1px,transparent 6px);
+  opacity:.85;
+}
+body.memory-palace-all :is(.section-header h2,.polaroid h3,.palace-wordmark,.stat strong,.section-count){
+  font-family:"Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;
+}
+
+/* Gold bulb marquee, retaining the original cloud/account button. */
+body.memory-palace-all .shell>.topbar{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  min-height:78px;
+  margin:14px 8px 14px;
+  padding:18px 18px 12px;
+  justify-content:center!important;
+  text-align:center;
+  border-radius:24px;
+  border:4px ridge #ffdc7c;
+  background:
+    radial-gradient(ellipse at 50% 8%,#9e1b16 0%,transparent 75%),
+    linear-gradient(180deg,#450005,#850512 45%,#410006);
+  box-shadow:
+    0 0 0 2px #792603,0 0 0 5px #e89a31,
+    0 0 25px rgba(255,144,37,.7),
+    0 15px 26px rgba(14,0,0,.62),
+    inset 0 0 0 2px #5c1300,inset 0 0 25px rgba(255,113,15,.3);
+}
+body.memory-palace-all .shell>.topbar::before{
+  content:"";
+  position:absolute;
+  top:-54px;
+  left:50%;
+  width:164px;
+  height:90px;
+  inset:auto;
+  transform:translateX(-50%);
+  z-index:4;
+  pointer-events:none;
+  background:url("./all-memories-crest.svg") center/contain no-repeat;
+  animation:none!important;
+}
+body.memory-palace-all .shell>.topbar::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border-radius:16px;
+  border:2px solid #f8c05b;
+  background:
+    radial-gradient(circle,#fff5ae 0 2px,#ffbd3d 2.3px 3.7px,transparent 4.6px)
+    left 4px top 1px/25px 10px repeat-x,
+    radial-gradient(circle,#fff5ae 0 2px,#ffbd3d 2.3px 3.7px,transparent 4.6px)
+    left 4px bottom 1px/25px 10px repeat-x;
+  box-shadow:inset 0 0 0 1px #692408,0 0 11px #ffaf3988;
+  z-index:2;
+  pointer-events:none;
+}
+body.memory-palace-all .shell>.topbar .palace-trigger{
+  position:relative;
+  z-index:3;
+  justify-content:center;
+  font:700 clamp(19px,4.9vw,33px)/1.15 "Iowan Old Style",Baskerville,Georgia,serif;
+  letter-spacing:.1px;
+  text-align:center;
+  padding:8px 4px 2px;
+  color:#ffebad;
+}
+body.memory-palace-all .shell>.topbar .palace-wordmark{
+  color:#ffefb8;
+  font-weight:700;
+  overflow:visible;
+  white-space:normal;
+  text-overflow:clip;
+  text-shadow:0 2px 1px #5c0007,0 0 12px #ffad4277;
+}
+body.memory-palace-all .shell>.topbar .palace-heart{
+  color:#ff6262;
+  text-shadow:0 0 5px #ffbc37,0 1px #470008;
+}
+body.memory-palace-all .shell>.topbar .palace-status{
+  color:#ffe9a6;
+  text-shadow:0 0 8px #ffe691;
+}
+
+/* Parchment statistics inset in a gilded theater placard. */
+body.memory-palace-all .shell>.stats{
+  position:relative;
+  overflow:hidden;
+  margin:0 6px 15px;
+  padding:13px 10px 11px;
+  border:3px solid #c57420;
+  border-radius:19px;
+  color:#8f1611;
+  background:
+    radial-gradient(ellipse at 50% 0%,#fff9d9 10%,transparent 80%),
+    linear-gradient(150deg,#ffefd1,#f8cfaa 62%,#fbe7c8);
+  box-shadow:
+    0 0 0 2px #ffda76,0 0 0 5px #6d2107,
+    0 0 20px #ffaf3475,0 11px 22px #170000a8,
+    inset 0 2px 4px #fff6dc,inset 0 -3px 9px #a94d3555;
+}
+body.memory-palace-all .shell>.stats::before{content:none}
+body.memory-palace-all .shell>.stats::after{
+  inset:5px;
+  border:1px solid #df993e;
+  border-radius:12px;
+  background:none;
+  box-shadow:inset 0 0 0 1px #fff5c6;
+  pointer-events:none;
+}
+body.memory-palace-all .stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+}
+body.memory-palace-all .stats-grid .stat{
+  padding:4px 4px 5px;
+  box-shadow:none;
+}
+body.memory-palace-all .stats-grid .stat:not(:first-child){
+  box-shadow:inset 1px 0 0 #d49d70;
+}
+body.memory-palace-all .stat strong{
+  font-size:clamp(20px,4.7vw,27px);
+  color:#aa1510;
+  text-shadow:0 1px #fff6df,0 0 5px #ffad9d88;
+  margin:0 0 2px;
+}
+body.memory-palace-all .stat span{
+  max-width:100px;
+  font-size:clamp(9px,2.15vw,12px);
+  line-height:1.14;
+  font-weight:500;
+  color:#9a251d;
+}
+body.memory-palace-all .stats-total{
+  margin-top:10px;
+  padding-top:7px;
+  border-color:#c77e46;
+  gap:9px;
+}
+body.memory-palace-all .stats-total-label{
+  color:#981c15;
+  font:700 10px/1.1 Georgia,serif;
+  text-transform:uppercase;
+}
+body.memory-palace-all #overallTimeStat{
+  color:#99140d;
+  font:700 clamp(14px,3.7vw,20px)/1.1 Georgia,serif;
+  letter-spacing:0;
+  text-shadow:0 1px #fff9e2;
+}
+
+/* Search, genre, sort and Add Polaroid are the ORIGINAL functional controls. */
+body.memory-palace-all .shell>.controls{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;
+  gap:10px;
+  position:relative;
+  overflow:visible;
+  padding:0;
+  margin:10px 6px 21px;
+  border:0;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+}
+body.memory-palace-all .shell>.controls::before,
+body.memory-palace-all .shell>.controls::after{content:none}
+body.memory-palace-all .shell>.controls .field-search{
+  grid-column:1/-1;
+  min-width:0;
+  width:100%;
+}
+body.memory-palace-all .shell>.controls :is(input,select){
+  width:100%;
+  min-width:0;
+  min-height:53px;
+  padding:12px 15px;
+  border:3px double #dc8b3b;
+  border-radius:13px;
+  color:#842419;
+  font:500 clamp(12px,3vw,17px)/1.2 Georgia,serif;
+  background:
+    radial-gradient(ellipse at 50% 1%,#fff9e9,transparent 80%),
+    linear-gradient(#ffedd5,#f8ceaa);
+  box-shadow:0 0 0 1px #ffe39b,0 5px 12px #1b000a88,inset 0 1px #fff8e4,inset 0 0 9px #dd966065;
+}
+body.memory-palace-all .shell>.controls input::placeholder{
+  color:#946045;
+  opacity:1;
+}
+body.memory-palace-all .shell>.controls :is(input,select):focus-visible{
+  outline:3px solid #ffdf7f;
+  outline-offset:2px;
+  border-color:#a8440e;
+}
+body.memory-palace-all .shell>.controls #newEntry{
+  grid-column:1/-1;
+  justify-self:stretch;
+  min-height:60px;
+  border:3px double #ffca67;
+  border-radius:100px;
+  color:#ffecbc;
+  background:
+    radial-gradient(ellipse at 50% 0%,#c52120,transparent 85%),
+    linear-gradient(180deg,#99020e,#610008 63%,#a30e18);
+  font:700 clamp(18px,4.1vw,23px)/1.1 Georgia,serif;
+  text-shadow:0 2px #4e0006,0 0 8px #ffb654;
+  box-shadow:0 0 0 2px #872400,0 0 14px #ff8b3da6,
+    inset 0 2px #ffb45a,inset 0 -3px 8px #2c0007,
+    0 7px 16px #210007b3;
+}
+body.memory-palace-all .shell>.controls #newEntry:is(:hover,:focus-visible){
+  filter:brightness(1.1);
+  box-shadow:0 0 0 2px #b65c19,0 0 24px #ffbb58aa,0 7px 16px #210007b3;
+}
+
+/* Grand Collection heading and embossed four-by-two shelf navigation. */
+body.memory-palace-all .section-header{
+  position:relative;
+  margin:0 6px 5px;
+  column-gap:10px;
+  row-gap:13px;
+  align-items:center;
+  grid-template-columns:minmax(0,1fr) auto;
+}
+body.memory-palace-all .section-header h2{
+  color:#ffe3a0;
+  font-size:clamp(26px,5.8vw,39px);
+  font-weight:500;
+  line-height:1.12;
+  letter-spacing:-.03em;
+  text-shadow:0 2px #3f0006,0 0 12px #e7863977;
+}
+body.memory-palace-all .section-header h2::after{
+  content:"";
+  width:min(340px,100%);
+  height:10px;
+  margin-top:11px;
+  border:0;
+  border-radius:0;
+  background:
+    radial-gradient(ellipse at 50% 50%,#ffd177 0 10%,transparent 11%),
+    linear-gradient(90deg,transparent,#ffcf76 12%,#f9b959 88%,transparent) center/100% 2px no-repeat;
+  box-shadow:none;
+}
+body.memory-palace-all .section-header>.section-count{max-width:145px;gap:3px}
+body.memory-palace-all .section-count #count{
+  color:#ffefbb;
+  font-size:clamp(15px,3.5vw,25px);
+  font-weight:700;
+  text-shadow:0 2px #320006,0 0 9px #ffad4780;
+}
+body.memory-palace-all .section-count #sectionTime{
+  color:#ffe3a2;
+  font-size:clamp(15px,3.7vw,23px);
+  text-shadow:0 2px #320006,0 0 9px #ff9e3a;
+}
+body.memory-palace-all .section-header>.tabs{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  margin:0;
+  padding:0;
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+}
+body.memory-palace-all .section-header>.tabs .chip,
+body.memory-palace-all .section-header>.tabs .chip[data-tab="current"]{
+  min-width:0;
+  min-height:54px;
+  width:100%;
+  padding:6px 3px;
+  border:1px solid #b65b23;
+  border-radius:13px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  white-space:normal;
+  color:#ffe5b2;
+  background:linear-gradient(150deg,#76020b 0%,#4a0008 60%,#9e1a16);
+  font:700 clamp(9px,2.1vw,13px)/1.12 Georgia,serif;
+  text-shadow:0 1px #330006;
+  box-shadow:inset 0 1px 1px #faab5f8f,inset 0 -2px #300006,0 3px 7px #180006c7;
+}
+body.memory-palace-all .section-header>.tabs .chip::before{
+  display:block;
+  font:normal clamp(18px,4.2vw,25px)/1.1 system-ui, sans-serif;
+  filter:drop-shadow(0 1px 3px #ff9d4a88);
+}
+body.memory-palace-all .section-header>.tabs [data-tab="all"]::before{content:"🎞️"}
+body.memory-palace-all .section-header>.tabs [data-tab="movie"]::before{content:"🍿"}
+body.memory-palace-all .section-header>.tabs [data-tab="show"]::before{content:"📺"}
+body.memory-palace-all .section-header>.tabs [data-tab="game"]::before{content:"🎮"}
+body.memory-palace-all .section-header>.tabs [data-tab="next"]::before{content:"🎟️"}
+body.memory-palace-all .section-header>.tabs [data-tab="current"]::before{content:"🛋️"}
+body.memory-palace-all .section-header>.tabs [data-tab="favorite"]::before{content:"💖"}
+body.memory-palace-all .section-header>.tabs [data-tab="trash"]::before{content:"🗑️"}
+body.memory-palace-all .section-header>.tabs .chip.selected,
+body.memory-palace-all .section-header>.tabs .chip[data-tab="current"].selected{
+  color:#8b1b0e;
+  border:2px solid #fff0ae;
+  text-shadow:0 1px #fff4da;
+  background:radial-gradient(ellipse at 50% 0%,#fffcdf,#ffe2b2 60%,#ffd1a5);
+  box-shadow:0 0 0 1px #9d4014,0 0 15px #ffc45fa8,
+    0 3px 7px #26000996,inset 0 2px #fffdf2;
+}
+body.memory-palace-all .section-header>.tabs .chip:not(.selected):hover{
+  background:linear-gradient(#a21319,#65000a);
+}
+body.memory-palace-all .section-header>.tabs .chip:focus-visible{
+  outline:3px solid #fff4b5;
+  outline-offset:2px;
+}
+
+/* Ornamented, glowing, embroidered frames around LIVE posters and saved entries. */
+body.memory-palace-all #gallery{
+  position:relative;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:28px 13px;
+  padding:26px 8px 24px;
+  max-height:83dvh;
+  scroll-padding-top:25px;
+  scrollbar-color:#f5b34c #460009;
+}
+body.memory-palace-all #gallery .polaroid{
+  position:relative;
+  isolation:isolate;
+  min-width:0;
+  padding:24px 10px 14px;
+  border:3px ridge #f7bc59;
+  border-radius:15px;
+  transform:none;
+  color:#97190c;
+  background:
+    radial-gradient(circle at 14% 95%,#fff0a3 0 1px,transparent 5px),
+    radial-gradient(circle at 83% 91%,#ffdd87 0 1px,transparent 6px),
+    radial-gradient(circle at 92% 13%,#ffffff 0 1px,transparent 5px),
+    linear-gradient(154deg,#ffe9c9,#fff5da 55%,#f7c99c 100%);
+  box-shadow:
+    0 0 0 2px #9e3d0d,0 0 0 4px #ffd678,
+    0 0 14px rgba(255,185,69,.7),
+    0 15px 22px rgba(16,0,0,.63),
+    inset 0 0 0 2px #fff5cb,inset 0 0 0 6px #cb762e,
+    inset 0 0 24px #ffc26c8a;
+  text-align:left;
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
+}
+body.memory-palace-all #gallery .polaroid::before{
+  content:"";
+  position:absolute;
+  top:-27px;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:58px;
+  z-index:3;
+  pointer-events:none;
+  background:url("./all-memories-crest.svg") center/contain no-repeat;
+}
+body.memory-palace-all #gallery .polaroid::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  z-index:2;
+  border:1px solid #f5b74c;
+  border-radius:9px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle,#fff5af 0 1.6px,#ffc35c 2px 3px,transparent 4px) left 1px top 0/19px 8px repeat-x,
+    radial-gradient(circle,#fff5af 0 1.6px,#ffc35c 2px 3px,transparent 4px) left 1px bottom 0/19px 8px repeat-x,
+    radial-gradient(circle,#fff5af 0 1.6px,#ffc35c 2px 3px,transparent 4px) left 0 top 2px/8px 19px repeat-y,
+    radial-gradient(circle,#fff5af 0 1.6px,#ffc35c 2px 3px,transparent 4px) right 0 top 2px/8px 19px repeat-y;
+  box-shadow:inset 0 0 0 1px #fff1c0,0 0 7px #fda83a;
+}
+body.memory-palace-all #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px);
+  filter:brightness(1.035);
+  box-shadow:0 0 0 2px #b35413,0 0 0 4px #ffe597,0 0 23px #ffce80,
+    0 19px 25px #190000bb,inset 0 0 0 2px #fff5cb,inset 0 0 0 6px #cb762e;
+}
+body.memory-palace-all #gallery .polaroid:focus-visible{
+  outline:3px solid #fff4b5;
+  outline-offset:6px;
+}
+body.memory-palace-all #gallery .poster{
+  height:auto;
+  aspect-ratio:1.27/1;
+  position:relative;
+  overflow:hidden;
+  border:2px solid #d18a3e;
+  border-radius:4px;
+  background:linear-gradient(150deg,#d4a978,#f8ddab);
+  box-shadow:0 0 0 2px #fff5d8,0 5px 10px #69351e4d;
+}
+body.memory-palace-all #gallery .poster img{object-fit:cover}
+body.memory-palace-all #gallery .poster::after{
+  background:linear-gradient(130deg,#fffef64d,transparent 27%,transparent 75%,#fff1c622);
+  box-shadow:inset 0 0 0 1px #ffecc3;
+}
+body.memory-palace-all #gallery .polaroid h3{
+  margin:11px 0 8px;
+  color:#ae170f;
+  font-size:clamp(15px,3.3vw,21px);
+  font-weight:700;
+  line-height:1.1;
+  text-shadow:0 1px #fff9dc;
+}
+body.memory-palace-all #gallery .polaroid .rating-line{
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+body.memory-palace-all #gallery .polaroid .score{
+  display:inline-flex;
+  padding:4px 7px;
+  gap:4px;
+  font-size:clamp(10px,2.45vw,13px);
+  color:#9e2114;
+  border:1px solid #d8944a;
+  border-radius:30px;
+  background:linear-gradient(135deg,#fff0d3,#f7c9ab);
+  box-shadow:inset 0 1px #fff9de,0 1px 4px #bc6c4247;
+}
+body.memory-palace-all #gallery .score .score-heart .rating-heart-shape{
+  stroke:#ad191b;
+  fill:#fff0d6;
+}
+body.memory-palace-all #gallery .score .score-heart.filled .rating-heart-shape{
+  fill:#dc233a;
+  stroke:#87030b;
+}
+body.memory-palace-all #gallery .polaroid .time-line{
+  margin:8px 1px 0;
+  color:#951509;
+  font-size:clamp(11px,2.7vw,14px);
+  font-weight:700;
+  text-shadow:0 1px #fff2d4;
+}
+body.memory-palace-all #gallery .polaroid .tagline{
+  margin-top:8px;
+  gap:5px;
+}
+body.memory-palace-all #gallery .polaroid .tag{
+  border:1px solid #f0ba9b;
+  border-radius:30px;
+  padding:5px 9px;
+  color:#9d2b23;
+  background:linear-gradient(#ffdbcb,#f8c3b1);
+  font:500 clamp(10px,2.3vw,12px)/1.2 Georgia,serif;
+  box-shadow:inset 0 1px #fff4da;
+}
+body.memory-palace-all #gallery .corner-heart{
+  color:#c70d28;
+  border:1px solid #f4bf67;
+  background:#ffefd6df;
+  box-shadow:0 0 8px #fbd08b;
+}
+/* Empty state is visual-only; its original add button still works. */
+body.memory-palace-all #empty{
+  color:#7e2119;
+  border:3px ridge #d38a36;
+  background:linear-gradient(#fff3db,#f7cbad);
+  box-shadow:0 0 20px #ffc16a8c,0 12px 28px #230006;
+}
+body.memory-palace-all #empty h3{color:#97200b}
+body.memory-palace-all #empty .btn.primary{
+  color:#ffe3b0;
+  background:linear-gradient(#a5191e,#680006);
+  border:2px solid #e5a34b;
+}
+
+/* A wider palace keeps usable image sizes and does not alter breakpoints elsewhere. */
+@media(min-width:720px){
+  body.memory-palace-all .shell{padding-top:82px}
+  body.memory-palace-all .shell>.controls{
+    grid-template-columns:minmax(0,2fr) minmax(140px,1fr) minmax(155px,1fr) minmax(190px,1fr);
+  }
+  body.memory-palace-all .shell>.controls .field-search,
+  body.memory-palace-all .shell>.controls #newEntry{grid-column:auto}
+  body.memory-palace-all #gallery{
+    grid-template-columns:repeat(auto-fill,minmax(218px,1fr));
+    gap:34px 24px;
+  }
+  body.memory-palace-all #gallery .polaroid{padding:28px 15px 19px}
+  body.memory-palace-all .section-header>.tabs .chip{min-height:69px}
+}
+@media(max-width:370px){
+  body.memory-palace-all .shell{padding-left:10px;padding-right:10px}
+  body.memory-palace-all .shell>.topbar{margin-left:6px;margin-right:6px;padding-left:4px;padding-right:4px}
+  body.memory-palace-all .shell>.topbar .palace-trigger{font-size:17px}
+  body.memory-palace-all .section-header>.tabs{gap:5px}
+  body.memory-palace-all .section-header>.tabs .chip{font-size:9px;min-height:53px;padding:5px 2px}
+  body.memory-palace-all #gallery{gap:28px 11px;padding-left:7px;padding-right:7px}
+  body.memory-palace-all #gallery .polaroid{padding-left:8px;padding-right:8px}
+  body.memory-palace-all #gallery .polaroid::before{width:105px}
+  body.memory-palace-all #gallery .polaroid .score{padding:3px 4px;gap:2px}
+}
+/* Keep the existing reduced-motion and high-density performance safeguards. */
+@media(prefers-reduced-motion:reduce){
+  body.memory-palace-all #gallery .polaroid{transition:none!important}
+}
