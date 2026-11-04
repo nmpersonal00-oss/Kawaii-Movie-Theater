@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130">
+<defs>
+ <linearGradient id="steel" x2="1" y2="1"><stop stop-color="#f7d880"/><stop offset=".3" stop-color="#867044"/><stop offset=".55" stop-color="#262621"/><stop offset=".9" stop-color="#c6ac72"/></linearGradient>
+ <radialGradient id="lime"><stop stop-color="#e9ff42"/><stop offset=".63" stop-color="#bbff00"/><stop offset="1" stop-color="#68a500"/></radialGradient>
+ <filter id="glow" x="-.6" y="-.4" width="2.2" height="1.9"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<path d="M20 34H100L92 116Q90 125 76 125H43Q31 125 29 116Z" fill="#171a12" stroke="url(#steel)" stroke-width="5"/>
+<path d="M22 31H98Q107 28 107 39L99 48Q93 55 86 45Q77 38 72 50L70 65Q67 79 59 70L54 44Q48 39 43 54L39 66Q36 73 31 63L25 44Z" fill="url(#lime)" stroke="#dfff12" stroke-width="2.5"/>
+<path d="M27 29H93V23H27ZM48 17H72" fill="none" stroke="url(#steel)" stroke-width="7" stroke-linecap="round"/>
+<path d="M44 69L47 111M60 77V112M78 65L75 111" stroke="#d0e884" stroke-width="7" opacity=".85" stroke-linecap="round"/>
+<path d="M28 51L33 87M86 43L85 65" stroke="#efff61" stroke-width="7" filter="url(#glow)"/>
+<path d="M36 36Q42 29 49 36M67 35Q76 28 83 36" fill="none" stroke="#fff4a3" stroke-width="3" opacity=".75"/>
+<g fill="#ebff37"><circle cx="15" cy="48" r="3"/><circle cx="108" cy="61" r="4"/><circle cx="103" cy="103" r="2"/></g>
+</svg>
