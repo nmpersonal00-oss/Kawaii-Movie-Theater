@@ -604,3 +604,49 @@ body.game-palace .modal .dialog .btn.primary{
 @media(prefers-reduced-motion:reduce){
  body.game-palace #gallery .polaroid{transition:none!important}
 }
+
+/* Replace system pictograms in the Games gallery with our own KY assets. */
+body.game-palace #gallery .poster .placeholder {
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  font-size:0!important;
+}
+body.game-palace #gallery .poster .placeholder::before {
+  content:"";
+  display:block;
+  width:clamp(50px,13vw,100px);
+  height:clamp(50px,13vw,100px);
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 10px #4c9dff8c);
+}
+body.game-palace #gallery .polaroid .time-line {
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+body.game-palace #gallery .polaroid .time-line::before {
+  content:"";
+  display:inline-block;
+  flex:none;
+  width:22px;
+  height:22px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+body.game-palace #empty .pop{
+  display:block;
+  height:66px;
+  width:66px;
+  margin:0 auto;
+  font-size:0!important;
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+}
+body.game-palace #viewModal .dialog .poster:has(+ *) {font-variant-emoji:text}
+body.game-palace #viewModal .dialog .poster:not(:has(img)) {font-size:0!important}
+body.game-palace #viewModal .dialog .poster:not(:has(img))::before{
+  content:"";
+  width:78px;
+  height:78px;
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+}
