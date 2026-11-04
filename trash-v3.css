@@ -1,0 +1,100 @@
+/*
+ * KY Trash V3 — owner's requested corrections, November 4, 2026.
+ * 1) Do not put our smoke OVER the raccoon, opossum, or TV.
+ * 2) Never put decorative slime across a poster image.
+ * 3) Attach small, proportionate drips to the panel or card EDGES.
+ * Visual-only overrides of Trash V2. No JavaScript or storage changes.
+ */
+
+/* The previous full-screen smoke layer hid the user's original animals.
+ * Keep the existing fumes and their texture only at the outermost edges;
+ * leave the middle 70% absolutely clear so the animals and TV are visible.
+ * Safari needs the prefixed mask in addition to the standards property. */
+body.ky-trash-palace .stage::after {
+  opacity:.32!important;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.6) 5%,transparent 15%,transparent 85%,rgba(0,0,0,.6) 95%,#000 100%);
+  mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.6) 5%,transparent 15%,transparent 85%,rgba(0,0,0,.6) 95%,#000 100%);
+  background-color:transparent!important;
+  pointer-events:none!important;
+}
+
+/* Slime now belongs to edges, not to random horizontal strips. The custom
+ * corner SVG is empty in its center, so no solid green line covers content. */
+body.ky-trash-palace .shell>.topbar::after {
+  inset:auto 9px -11px;
+  height:19px;
+  background:url('./assets/trash/ky-toxic-corner-drips-v3.svg') top center/100% 100% no-repeat;
+  filter:drop-shadow(0 1px 3px #84ef2575);
+}
+body.ky-trash-palace .shell>.stats::after {
+  inset:auto 9px -12px;
+  height:20px;
+  background:url('./assets/trash/ky-toxic-corner-drips-v3.svg') top center/100% 100% no-repeat;
+  filter:drop-shadow(0 1px 3px #84ef257a);
+}
+body.ky-trash-palace .shell>.controls #newEntry {
+  position:relative;
+  isolation:isolate;
+}
+body.ky-trash-palace .shell>.controls #newEntry::after {
+  inset:auto 12px -10px;
+  height:18px;
+  background:url('./assets/trash/ky-toxic-corner-drips-v3.svg') top center/100% 100% no-repeat;
+  filter:drop-shadow(0 1px 3px #8aff347d);
+}
+
+/* Poster images must be completely visible: NO lime slime stripe running
+ * across their lower edges and hiding the movie/game title artwork. */
+body.ky-trash-palace #gallery .poster::after {
+  background:linear-gradient(140deg,rgba(229,255,188,.10),transparent 36%,rgba(135,218,32,.07) 96%)!important;
+  box-shadow:inset 0 0 0 1px #d7ff9194;
+}
+
+/* Cards keep their dark velvet/glow, but the top drips attach precisely to
+ * their two top corners. The center is transparent. More space for posters. */
+body.ky-trash-palace #gallery .polaroid {
+  padding-top:17px;
+  border-color:#a4e959;
+  box-shadow:0 0 0 1px #284c1b,0 0 0 3px #d9ff6273,
+    0 0 16px #b2ff168a,0 15px 24px #000e,
+    inset 0 0 0 2px #4b6825,inset 0 0 17px #000a;
+}
+body.ky-trash-palace #gallery .polaroid::before {
+  content:"";
+  inset:0 6px auto;
+  height:25px;
+  background:url('./assets/trash/ky-toxic-corner-drips-v3.svg') top center/100% 100% no-repeat;
+  filter:drop-shadow(0 1px 3px #9aff367a);
+  pointer-events:none;
+}
+body.ky-trash-palace #gallery .poster {
+  border-color:#96d94a;
+  box-shadow:0 0 0 2px #bff66872,0 0 9px #96e42242,0 5px 10px #000b;
+}
+
+/* The glowing frame should surround the card, not form an extra thick
+ * green bar inside the photo area. Keep all titles, ratings, and tags clear. */
+body.ky-trash-palace #gallery .polaroid h3 {
+  margin-top:12px;
+  text-shadow:0 1px 2px #000,0 0 7px #91ed2b4d;
+}
+body.ky-trash-palace #gallery {
+  scrollbar-color:#a9e74368 transparent;
+}
+
+@media (min-width:701px) {
+  body.ky-trash-palace .stage::after {
+    opacity:.29!important;
+    -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.5) 6%,transparent 16%,transparent 84%,rgba(0,0,0,.5) 94%,#000 100%);
+    mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.5) 6%,transparent 16%,transparent 84%,rgba(0,0,0,.5) 94%,#000 100%);
+  }
+  body.ky-trash-palace #gallery .polaroid {padding-top:21px}
+  body.ky-trash-palace #gallery .polaroid::before {height:29px}
+}
+@media (max-width:390px) {
+  body.ky-trash-palace #gallery .polaroid {padding-top:15px}
+  body.ky-trash-palace #gallery .polaroid::before {height:21px;inset:0 5px auto}
+  body.ky-trash-palace .shell>.topbar::after {height:16px;bottom:-9px}
+  body.ky-trash-palace .shell>.stats::after {height:16px;bottom:-10px}
+  body.ky-trash-palace .shell>.controls #newEntry::after {height:15px;bottom:-9px}
+}
