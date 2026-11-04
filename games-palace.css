@@ -1,0 +1,467 @@
+/*
+ * KY GAMING ROOM — GAMES TAB ONLY (2026-11-04)
+ * The landscape/portrait images are user-supplied art. Each remaining asset is
+ * already a hand-created KY sticker used elsewhere in this app, not Apple emoji.
+ * CSS cannot read, write, or migrate collection data. No other tabs are restyled.
+ */
+body.ky-games-palace{
+  --ky-blue:#52adff;
+  --ky-midnight:#050c1b;
+  --ky-gold:#f8c98b;
+  --ky-pale:#fff0d5;
+  color:var(--ky-pale);
+  background:#050a16;
+}
+body.ky-games-palace .stage{
+  isolation:isolate;
+  min-height:100dvh;
+  background:none;
+}
+/* Use the owner's supplied GAME ROOM as the visible real background. On iPhone
+   a fixed positioned layer is more reliable than background-attachment:fixed. */
+body.ky-games-palace .stage::before{
+  content:"";
+  display:block!important;
+  position:fixed;
+  inset:0;
+  width:100%;height:100%;
+  z-index:-1;
+  pointer-events:none;
+  opacity:1!important;
+  filter:none!important;
+  transform:none!important;
+  animation:none!important;
+  border-radius:0;
+  background-color:#050a16;
+  background-image:linear-gradient(180deg,rgba(0,3,14,.12),transparent 34%,rgba(0,3,14,.06) 72%,rgba(0,3,14,.3)),url("./assets/games/gaming-room-portrait.webp");
+  background-size:cover,cover;
+  background-position:center center,center top;
+  background-repeat:no-repeat;
+}
+body.ky-games-palace .stage::after{display:none!important}
+body.ky-games-palace .shell{
+  width:100%;max-width:1100px;
+  margin:0 auto;
+  padding:clamp(80px,16vw,126px) clamp(11px,3vw,32px) 38px;
+}
+body.ky-games-palace .shell::before{display:none}
+/* Midnight-blue/gold header, original cloud/login control remains clickable. */
+body.ky-games-palace .shell>.topbar{
+  position:relative;
+  isolation:isolate;
+  justify-content:center!important;
+  min-height:64px;
+  margin:0 6px 12px;
+  padding:13px 16px;
+  border:2px solid rgba(241,180,99,.96);
+  border-radius:21px;
+  overflow:visible;
+  background:radial-gradient(ellipse at 50% 0%,rgba(31,61,106,.92),transparent 78%),linear-gradient(145deg,#050b18,#09172b 65%,#030715);
+  box-shadow:0 0 0 1px #513d36,0 0 0 4px rgba(174,111,55,.35),
+    0 0 16px rgba(255,170,90,.42),0 10px 28px #000a,
+    inset 0 1px rgba(255,234,203,.45),inset 0 -8px 20px #000b;
+}
+body.ky-games-palace .shell>.topbar::before{
+  content:"";position:absolute;inset:auto;
+  z-index:3;top:-52px;left:50%;width:145px;height:61px;
+  transform:translateX(-50%);
+  pointer-events:none;
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 9px #5aa9fff0) drop-shadow(0 3px 4px #0009);
+  animation:none!important;
+}
+body.ky-games-palace .shell>.topbar::after{
+  content:"";position:absolute;inset:5px;z-index:2;
+  border:1px solid rgba(250,198,121,.83);
+  border-radius:13px;pointer-events:none;
+  background:
+    radial-gradient(circle,#fff0bb 0 1.4px,#eeba71 1.8px 3px,transparent 3.8px) top left 1px/20px 6px repeat-x,
+    radial-gradient(circle,#fff0bb 0 1.4px,#eeba71 1.8px 3px,transparent 3.8px) bottom left 1px/20px 6px repeat-x;
+  box-shadow:inset 0 0 0 1px rgba(26,73,144,.4);
+}
+body.ky-games-palace .shell>.topbar .palace-trigger{
+  position:relative;z-index:4;
+  justify-content:center;align-items:center;
+  width:100%;min-width:0;gap:6px;
+  padding:4px 2px;text-align:center;
+}
+body.ky-games-palace .shell>.topbar .palace-wordmark{
+  white-space:normal;overflow:visible;
+  text-overflow:clip;
+  font:500 clamp(18px,4.8vw,31px)/1.12 "Iowan Old Style",Baskerville,Georgia,serif;
+  letter-spacing:-.025em;color:#ffe2b1;
+  text-shadow:0 1px #080c1a,0 0 12px #d3a37283;
+}
+body.ky-games-palace .shell>.topbar .palace-heart{
+  color:#dfeeff;text-shadow:0 0 9px #66b7ff;
+}
+body.ky-games-palace .shell>.topbar .palace-status{color:#cde5ff;text-shadow:0 0 7px #7abbfa}
+body.ky-games-palace .shell>.topbar .palace-trigger:focus-visible{
+  outline:3px solid #93cdff;outline-offset:3px;
+}
+/* Transparent midnight scoreboard with live app statistics. */
+body.ky-games-palace .shell>.stats{
+  position:relative;
+  margin:0 6px 0;
+  padding:10px 8px 8px;
+  border:2px solid #986a50;
+  border-radius:17px;
+  overflow:hidden;
+  color:#ffe0ad;
+  background:linear-gradient(135deg,rgba(3,10,23,.93),rgba(9,20,42,.94) 48%,rgba(3,8,20,.95));
+  box-shadow:0 0 0 1px #deb67b88,0 0 13px #ffb66770,
+    0 12px 22px #000b,inset 0 0 18px #091f43;
+}
+body.ky-games-palace .shell>.stats::before{display:none}
+body.ky-games-palace .shell>.stats::after{
+  inset:4px;border-radius:11px;border:1px solid #b68c5a88;
+  background:none;box-shadow:none;pointer-events:none;
+}
+body.ky-games-palace .stats-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+}
+body.ky-games-palace .stats-grid .stat{padding:3px 3px 5px;min-width:0}
+body.ky-games-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 0 rgba(192,142,101,.32)}
+body.ky-games-palace .stat strong{
+  margin:0 0 2px;color:#ffe7b5;
+  font:700 clamp(20px,4.3vw,27px)/1 Georgia,serif;
+  text-shadow:0 0 9px #d09b7b77;
+}
+body.ky-games-palace .stat span{
+  max-width:110px;font:500 clamp(9px,2.3vw,12px)/1.2 Georgia,serif;
+  color:#e9d1af;
+}
+body.ky-games-palace .stats-total{
+  margin-top:7px;padding-top:7px;gap:7px;
+  border-top:1px solid #ac84558b;
+}
+body.ky-games-palace .stats-total-label{
+  color:#eccba5;font:700 clamp(9px,2.15vw,12px)/1.2 Georgia,serif;
+}
+body.ky-games-palace #overallTimeStat{
+  display:inline-flex;align-items:center;gap:5px;
+  color:#ffebc4;text-shadow:0 0 7px #d9a46f66;
+  font:700 clamp(13px,3.4vw,19px)/1.2 Georgia,serif;
+}
+body.ky-games-palace #overallTimeStat::before,
+body.ky-games-palace #sectionTime::before{
+  content:"";display:inline-block;flex:none;width:27px;height:27px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 4px #73b7f9);
+}
+/* Deliberate open space showcases the original screen, couch and game-room art. */
+body.ky-games-palace .shell>.controls{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;margin:clamp(123px,28vw,181px) 6px 15px;
+  padding:0;border:0;border-radius:0;background:none;
+  box-shadow:none;overflow:visible;
+}
+body.ky-games-palace .shell>.controls::before,
+body.ky-games-palace .shell>.controls::after{display:none}
+body.ky-games-palace .shell>.controls .field-search{
+  position:relative;grid-column:1/-1;
+  min-width:0;width:100%;
+}
+body.ky-games-palace .shell>.controls .field-search::before{
+  content:"";position:absolute;left:10px;top:50%;
+  z-index:2;pointer-events:none;
+  transform:translateY(-50%);width:33px;height:33px;
+  background:url("./assets/all-memories/ky-search.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 4px #7dc8ff);
+}
+body.ky-games-palace .shell>.controls :is(input,select){
+  appearance:none;-webkit-appearance:none;
+  width:100%;min-width:0;min-height:52px;
+  padding:10px 36px 10px 50px;
+  border:1px solid #59749b;
+  border-radius:13px;
+  color:#fff1e2;
+  font:500 clamp(13px,3.25vw,17px)/1.2 Georgia,serif;
+  box-shadow:0 1px #ffffff27 inset,0 0 0 1px #19253c,0 4px 12px #000a,
+    0 0 15px #3e82ff35;
+}
+body.ky-games-palace .shell>.controls input#search{
+  background:linear-gradient(130deg,rgba(26,42,71,.96),rgba(13,24,45,.97));
+}
+body.ky-games-palace .shell>.controls input::placeholder{color:#c4c8d5;opacity:1}
+body.ky-games-palace .shell>.controls select#genreFilter{
+  background:
+    url("./assets/all-memories/ky-game.webp") left 9px center/35px 35px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10'%3E%3Cpath d='M2 2l5 5 5-5' stroke='%23e0e8f6' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") right 12px center/14px 10px no-repeat,
+    linear-gradient(145deg,#182b45,#0a1429 75%);
+}
+body.ky-games-palace .shell>.controls select#sort{
+  background:
+    url("./assets/all-memories/ky-sort.webp") left 9px center/35px 35px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10'%3E%3Cpath d='M2 2l5 5 5-5' stroke='%23e0e8f6' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") right 12px center/14px 10px no-repeat,
+    linear-gradient(145deg,#182b45,#0a1429 75%);
+}
+body.ky-games-palace .shell>.controls :is(input,select):focus-visible{
+  outline:3px solid #91c7ff;outline-offset:2px;
+}
+body.ky-games-palace .shell>.controls #newEntry{
+  grid-column:1/-1;display:flex;align-items:center;justify-content:center;
+  gap:8px;min-height:58px;width:100%;
+  padding:8px 12px;border:2px solid #91d2ff;
+  border-radius:100px;
+  color:#f5e7e0;
+  font:700 clamp(18px,4.4vw,23px)/1.1 Georgia,serif;
+  text-shadow:0 1px 3px #000,0 0 8px #c3e5ff7a;
+  background:radial-gradient(ellipse at 50% 0%,#0e3b71,transparent 74%),linear-gradient(#061633,#030b20 80%,#0d2e5b);
+  box-shadow:0 0 0 2px #0a2c55,0 0 0 4px #80c8ff45,
+    0 0 17px #4da9fff0,0 8px 15px #000b,
+    inset 0 1px #e0f2ff97,inset 0 -6px #001228;
+}
+body.ky-games-palace .shell>.controls #newEntry::before{
+  content:"";flex:none;width:38px;height:38px;
+  background:url("./assets/all-memories/ky-add.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 4px #6fbeff);
+}
+body.ky-games-palace .shell>.controls #newEntry:is(:hover,:focus-visible){filter:brightness(1.13)}
+body.ky-games-palace .shell>.controls #newEntry:focus-visible{
+  outline:3px solid #bbdcff;outline-offset:3px;
+}
+/* Collection heading and category filters, using ORIGINAL clickable buttons. */
+body.ky-games-palace .section-header{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  column-gap:10px;row-gap:10px;
+  align-items:center;
+  margin:4px 6px 0;
+}
+body.ky-games-palace .section-header>.collection-heading{min-width:0}
+body.ky-games-palace .section-header h2{
+  font:500 clamp(24px,6vw,40px)/1.07 "Iowan Old Style",Baskerville,Georgia,serif;
+  letter-spacing:-.027em;color:#ffe8c6;
+  text-shadow:0 2px #090d1d,0 0 12px #ffc68b45;
+}
+body.ky-games-palace .section-header h2::after{
+  content:"";width:min(390px,100%);height:11px;margin-top:9px;
+  border:0;border-radius:0;box-shadow:none;
+  background:radial-gradient(circle at center,#b4dfff 0 3px,transparent 4px),
+    linear-gradient(90deg,#92b3d7,transparent 45%,transparent 55%,#92b3d7) center/100% 2px no-repeat;
+}
+body.ky-games-palace .section-header>.section-count{max-width:146px;gap:3px;align-items:flex-end;text-align:right}
+body.ky-games-palace .section-count #count{
+  color:#ffebcc;text-shadow:0 0 8px #ffbd9b55;
+  font:700 clamp(15px,4vw,23px)/1.14 Georgia,serif;
+}
+body.ky-games-palace .section-count #sectionTime{
+  display:inline-flex;align-items:center;justify-content:flex-end;gap:4px;
+  color:#ffdfad;text-shadow:0 0 10px #d38b5a55;
+  font:700 clamp(14px,3.8vw,22px)/1.14 Georgia,serif;
+}
+body.ky-games-palace .section-header>.tabs{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;
+  overflow:visible;margin:0;padding:0;
+  border:0;border-radius:0;background:none;box-shadow:none;
+}
+body.ky-games-palace .section-header>.tabs .chip,
+body.ky-games-palace .section-header>.tabs .chip[data-tab="current"]{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:100%;min-width:0;min-height:63px;padding:5px 2px;
+  border:1px solid #455676;border-radius:12px;
+  color:#f5e4cf;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,#21395a,#08101f 77%);
+  box-shadow:inset 0 1px #cfd6e833,0 3px 10px #0008;
+  text-shadow:0 1px 2px #000;
+  font-size:0!important;
+}
+body.ky-games-palace .section-header>.tabs .chip::before{
+  content:""!important;
+  display:block;flex:none;width:clamp(26px,7vw,39px);height:clamp(26px,7vw,39px);
+  background-size:contain;background-position:center;background-repeat:no-repeat;
+  filter:drop-shadow(0 0 4px #d0a1769c);
+}
+body.ky-games-palace .section-header>.tabs .chip::after{
+  display:block;color:inherit;
+  font:700 clamp(9px,2.4vw,13px)/1.1 Georgia,serif;
+  text-align:center;
+}
+body.ky-games-palace .section-header>.tabs [data-tab="all"]::before{background-image:url("./assets/all-memories/ky-all.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="movie"]::before{background-image:url("./assets/all-memories/ky-movie.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="show"]::before{background-image:url("./assets/all-memories/ky-show.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="game"]::before{background-image:url("./assets/all-memories/ky-game.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="next"]::before{background-image:url("./assets/all-memories/ky-next.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="current"]::before{background-image:url("./assets/all-memories/ky-current.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="favorite"]::before{background-image:url("./assets/all-memories/ky-favorite.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="trash"]::before{background-image:url("./assets/all-memories/ky-trash.webp")}
+body.ky-games-palace .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.ky-games-palace .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.ky-games-palace .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.ky-games-palace .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.ky-games-palace .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.ky-games-palace .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.ky-games-palace .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.ky-games-palace .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+body.ky-games-palace .section-header>.tabs .chip[data-tab="game"].selected{
+  border:2px solid #89ceff;color:#fff2dd;
+  background:radial-gradient(ellipse at 50% 20%,#1b60ba,#062d67 75%,#04142a);
+  box-shadow:0 0 0 2px #0b335e,0 0 16px #66b5ffed,0 3px 9px #000a,
+    inset 0 1px #c8e7ff98;
+  text-shadow:0 1px #001129,0 0 8px #b2dfff;
+}
+body.ky-games-palace .section-header>.tabs .chip:not(.selected):hover{filter:brightness(1.14)}
+body.ky-games-palace .section-header>.tabs .chip:focus-visible{outline:3px solid #9fd9ff;outline-offset:2px}
+/* Real clickable game cards and original uploaded artwork. No sample/game data. */
+body.ky-games-palace #gallery{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:17px 13px;
+  max-height:83dvh;padding:12px 6px 27px;
+  overflow-y:auto;overflow-x:hidden;
+  scrollbar-color:#3986c2 #080f23;
+}
+body.ky-games-palace #gallery .polaroid{
+  min-width:0;
+  text-align:left;
+  padding:9px 9px 14px;
+  transform:none!important;
+  color:#f5e7d7;
+  border:2px solid #8f9fb7;
+  border-radius:13px;
+  background:linear-gradient(160deg,rgba(22,31,52,.97),rgba(6,13,28,.98) 62%,rgba(18,28,47,.98));
+  box-shadow:0 0 0 1px #d2a78155,0 0 0 3px #061025,
+    0 0 12px #a4caff40,0 12px 19px #000b,
+    inset 0 1px #ffffff40,inset 0 0 18px #142f5947;
+  transition:transform .18s ease,box-shadow .2s ease;
+}
+body.ky-games-palace #gallery .polaroid::before{
+  content:"";position:absolute;inset:4px auto auto 4px;z-index:3;
+  width:13px;height:13px;pointer-events:none;
+  border:1px solid #ffeacb;border-right:0;border-bottom:0;
+  background:none;filter:drop-shadow(0 0 5px #dbeaff);
+}
+body.ky-games-palace #gallery .polaroid::after{
+  content:"";position:absolute;inset:4px 4px auto auto;z-index:3;
+  width:13px;height:13px;pointer-events:none;
+  border:1px solid #ffeacb;border-left:0;border-bottom:0;
+  background:none;box-shadow:none;filter:drop-shadow(0 0 5px #dbeaff);
+}
+body.ky-games-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-3px)!important;
+  box-shadow:0 0 0 1px #c8e8ff,0 0 0 3px #14365c,
+    0 0 18px #71bbff93,0 13px 23px #000b,inset 0 1px #ffffff57;
+}
+body.ky-games-palace #gallery .polaroid:focus-visible{outline:3px solid #9bdaff;outline-offset:4px}
+body.ky-games-palace #gallery .poster{
+  height:auto;aspect-ratio:1.47/1;
+  border-radius:6px;
+  overflow:hidden;
+  background:linear-gradient(150deg,#283954,#0a1326);
+  box-shadow:inset 0 0 0 1px #c5dbff4a,0 4px 10px #0006;
+}
+body.ky-games-palace #gallery .poster::after{
+  background:linear-gradient(145deg,#ffffff1f,transparent 32%,transparent 70%,#77bfff12);
+  box-shadow:inset 0 0 0 1px #ffffff26;
+}
+body.ky-games-palace #gallery .poster img{width:100%;height:100%;object-fit:cover}
+body.ky-games-palace #gallery .polaroid h3{
+  margin:10px 1px 7px;
+  color:#fff0dc;text-shadow:0 1px #000;
+  font:500 clamp(14px,3.3vw,19px)/1.18 Georgia,serif;
+}
+body.ky-games-palace #gallery .polaroid .rating-line{margin:0;gap:5px;flex-wrap:wrap}
+body.ky-games-palace #gallery .polaroid .score{
+  padding:4px 7px;
+  border:1px solid #526080;
+  border-radius:30px;
+  background:linear-gradient(145deg,#253046,#141c30);
+  color:#ffebcb;
+  box-shadow:inset 0 1px #ffffff24,0 1px 5px #0004;
+  font-size:clamp(10px,2.4vw,13px);
+}
+body.ky-games-palace #gallery .score .score-heart .rating-heart-shape{stroke:#e66e84}
+body.ky-games-palace #gallery .score .score-heart.filled .rating-heart-shape{fill:#ff4265;stroke:#d22551}
+body.ky-games-palace #gallery .polaroid .time-line{
+  display:flex;align-items:center;gap:4px;
+  margin:8px 1px 0;
+  color:#ffe0b9;text-shadow:0 1px #000;
+  font:700 clamp(11px,2.6vw,14px)/1.3 Georgia,serif;
+}
+body.ky-games-palace #gallery .polaroid .time-line::before{
+  content:"";display:inline-block;flex:none;width:24px;height:24px;
+  background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
+}
+body.ky-games-palace #gallery .polaroid .tagline{margin-top:9px;gap:6px}
+body.ky-games-palace #gallery .polaroid .tag{
+  padding:5px 9px;
+  border:1px solid #384258;
+  border-radius:24px;
+  color:#f0e2d5;
+  background:linear-gradient(#283345,#172032);
+  font:500 clamp(10px,2.35vw,12px)/1.15 Georgia,serif;
+}
+body.ky-games-palace #gallery .corner-heart{color:#ff6b88;background:#132f57de;border:1px solid #6ebeff}
+body.ky-games-palace #empty{
+  color:#f5e5d1;background:linear-gradient(#233047ee,#091323f5);
+  border:1px solid #618bb8;box-shadow:0 0 16px #3e7bb45a,0 12px 22px #0009;
+}
+body.ky-games-palace #empty h3{color:#fff0d5}
+/* The existing edit/view/cloud forms remain accessible and legible. */
+body.ky-games-palace .modal .dialog.glass{
+  background:linear-gradient(150deg,#fbefdc,#e8d8ce 67%,#f9e8d8);
+  border:2px solid #c4996b;color:#533b42;
+}
+body.ky-games-palace .modal .dialog :is(input,select,textarea,button):focus-visible{
+  outline:3px solid #539dff;outline-offset:2px;
+}
+body.ky-games-palace .modal .dialog .review{background:#fffaf0}
+/* Laptop: the supplied LANDSCAPE artwork is used automatically. */
+@media(min-width:701px){
+  body.ky-games-palace .stage::before{
+    background-image:linear-gradient(180deg,#00051a10,transparent 55%,#03081777),url("./assets/games/gaming-room-landscape.webp");
+    background-position:center center,center top;
+  }
+  body.ky-games-palace .shell{padding-top:clamp(98px,8vw,138px)}
+  body.ky-games-palace .shell>.controls{
+    grid-template-columns:minmax(180px,1.4fr) minmax(135px,.8fr) minmax(145px,.8fr) minmax(180px,.9fr);
+    margin-top:clamp(185px,17vw,255px);
+  }
+  body.ky-games-palace .shell>.controls .field-search,
+  body.ky-games-palace .shell>.controls #newEntry{grid-column:auto}
+  body.ky-games-palace .shell>.controls #newEntry{font-size:clamp(14px,1.4vw,19px)}
+  body.ky-games-palace #gallery{
+    grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
+    gap:18px;padding:14px 7px 24px;
+  }
+  body.ky-games-palace .section-header>.tabs .chip{min-height:68px}
+}
+@media(max-width:390px){
+  body.ky-games-palace .shell{padding-left:10px;padding-right:10px;padding-top:78px}
+  body.ky-games-palace .shell>.topbar{margin-left:5px;margin-right:5px;padding:12px 7px;min-height:57px}
+  body.ky-games-palace .shell>.topbar .palace-wordmark{font-size:clamp(16px,4.7vw,19px)}
+  body.ky-games-palace .shell>.stats{padding:8px 5px 7px}
+  body.ky-games-palace .shell>.controls{margin-top:clamp(113px,28vw,128px);gap:7px}
+  body.ky-games-palace .shell>.controls :is(input,select){padding-left:45px;padding-right:25px;min-height:49px}
+  body.ky-games-palace .section-header>.tabs{gap:5px}
+  body.ky-games-palace .section-header>.tabs .chip{min-height:57px}
+  body.ky-games-palace .section-header>.tabs .chip::after{font-size:9px}
+  body.ky-games-palace #gallery{gap:15px 10px;padding:12px 5px 24px}
+  body.ky-games-palace #gallery .polaroid{padding:8px 7px 12px}
+  body.ky-games-palace #gallery .polaroid .score{gap:2px;padding:4px 5px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.ky-games-palace #gallery .polaroid{transition:none!important}
+}
+/* Custom original KY artwork instead of native emoji when no poster is present. */
+body.ky-games-palace .shell>.topbar .palace-status{
+  display:inline-block;flex:none;width:25px;height:25px;
+  font-size:0!important;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 38'%3E%3Cpath d='M11 27h17a6 6 0 0 0 0-12h-2a9 9 0 0 0-17-2 7 7 0 0 0 2 14Z' fill='%23d9eaff' stroke='%237ac4ff' stroke-width='1.7'/%3E%3Cpath d='M13 18q4-8 10-4' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 4px #90cfff);
+}
+body.ky-games-palace #gallery .poster .placeholder{
+  font-size:0!important;opacity:1;
+  display:flex;align-items:center;justify-content:center;
+}
+body.ky-games-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(60px,15vw,93px);height:clamp(60px,15vw,93px);
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+  filter:drop-shadow(0 0 8px #4a98fc7d);
+}
+body.ky-games-palace #empty .pop{
+  font-size:0!important;
+  width:75px;height:75px;margin:auto;
+  background:url("./assets/all-memories/ky-game.webp") center/contain no-repeat;
+}
