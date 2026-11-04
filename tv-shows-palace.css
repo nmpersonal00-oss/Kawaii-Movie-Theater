@@ -1,0 +1,400 @@
+/*
+ * KY TV SHOW LOUNGE • approved bow-free, chocolate-and-snacks mockup
+ * Only active while the app's ORIGINAL `tab === "show"`.
+ * The real collection, time, ratings, posters, buttons, cloud, search and
+ * edit/save/delete functions are unchanged. No Apple emoji UI decorations.
+ */
+body.ky-tv-palace{
+  --tv-ink:#351a57;
+  --tv-deep:#241039;
+  --tv-glow:#e7a5ff;
+  --tv-lilac:#e2bdff;
+  --tv-violet:#a95bf2;
+  --tv-ivory:#fff0fe;
+  background:#1d0a34;
+  color:var(--tv-ivory);
+}
+body.ky-tv-palace .stage{isolation:isolate;min-height:100dvh;background:none}
+body.ky-tv-palace .stage::before{
+  content:"";display:block!important;
+  position:fixed;inset:0;z-index:-1;
+  width:100%;height:100%;pointer-events:none;
+  opacity:1!important;filter:none!important;transform:none!important;
+  animation:none!important;border-radius:0;
+  background:#220f39 url('./assets/tv/tv-lounge-wallpaper-portrait.webp') center top/cover no-repeat;
+}
+body.ky-tv-palace .stage::after{display:none!important}
+body.ky-tv-palace .shell{position:relative;z-index:2;width:100%;max-width:1130px;
+  margin:auto;padding:clamp(35px,9vw,76px) clamp(9px,2.7vw,26px) 65px}
+body.ky-tv-palace .shell::before{display:none!important}
+body.ky-tv-palace :is(.palace-wordmark,.stat strong,.section-header h2,.polaroid h3,.section-count){
+  font-family:'Iowan Old Style',Baskerville,'Palatino Linotype',Georgia,serif;
+}
+/* Violet neon entrance plaque: centred wordmark and a separate KY cloud. */
+body.ky-tv-palace .shell>.topbar{
+  position:relative;isolation:isolate;display:flex;justify-content:center!important;align-items:center;
+  min-height:61px;margin:0 8px 12px;padding:10px 8px;
+  border:2px solid #ebb7ff;border-radius:100px;
+  background:linear-gradient(140deg,#73318acc,#35134ce8 57%,#7a369bbd);
+  box-shadow:0 0 0 2px #ca78ec66,0 0 17px #df7aff9c,
+    0 7px 24px #0c0415da,inset 0 1px #ffe4ffb3,inset 0 -4px 11px #2d063789;
+}
+body.ky-tv-palace .shell>.topbar::before{
+  content:"";position:absolute;z-index:3;top:-16px;left:-7px;
+  height:61px;width:63px;pointer-events:none;
+  background:url('./assets/all-memories/ky-show.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 8px #e59bffb5);
+}
+body.ky-tv-palace .shell>.topbar::after{
+  content:"";position:absolute;inset:6px;border:1px dotted #ffdfffac;
+  border-radius:inherit;pointer-events:none;box-shadow:none;
+}
+body.ky-tv-palace .shell>.topbar .palace-trigger{
+  display:flex;justify-content:center!important;align-items:center;position:relative;z-index:4;
+  width:100%;min-width:0;min-height:40px;padding:3px clamp(34px,7vw,60px)!important;
+  gap:0!important;text-align:center!important;color:#fff4fc;
+}
+body.ky-tv-palace .shell>.topbar .palace-wordmark{
+  display:block;flex:1 1 auto;min-width:0;width:100%;margin:0 auto;
+  text-align:center!important;white-space:normal!important;
+  font:700 clamp(16px,4.25vw,32px)/1.16 Georgia,serif;color:#fff3ff;
+  text-shadow:0 1px #271035,0 0 10px #f6b1ffaf;
+}
+body.ky-tv-palace .shell>.topbar .palace-heart{color:#ffd6fa;text-shadow:0 0 9px #f89cff}
+body.ky-tv-palace .shell>.topbar .palace-status{
+  display:block;position:absolute!important;right:clamp(0px,2vw,14px);left:auto!important;
+  top:50%;transform:translateY(-50%)!important;
+  width:23px;height:23px;flex:none;font-size:0!important;pointer-events:none;
+  background:url('./assets/watch-next/ky-cloud.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #fff2ffb1);
+}
+/* Four real app totals, presented in one glowing lilac cushion-like strip. */
+body.ky-tv-palace .shell>.stats{
+  position:relative;display:block;overflow:visible;margin:0 4px;
+  padding:12px 8px 10px;border:2px solid #ffe1ff;border-radius:23px;
+  background:linear-gradient(145deg,#f3ddffef,#d6a6f7f5 51%,#ecd0ffed);
+  box-shadow:0 0 0 2px #b35dd775,0 0 19px #e18dff8a,
+    0 13px 22px #1a082cca,inset 0 2px #fff9;
+}
+body.ky-tv-palace .shell>.stats::before{content:none!important}
+body.ky-tv-palace .shell>.stats::after{
+  content:"";position:absolute;bottom:4px;left:25%;right:25%;height:1px;
+  background:linear-gradient(90deg,transparent,#fff9ff,transparent);pointer-events:none;
+}
+body.ky-tv-palace .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+body.ky-tv-palace .stats-grid .stat{
+  padding:4px 3px 8px;min-width:0;border:0;border-radius:0;background:none;box-shadow:none;
+}
+body.ky-tv-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 #945baa52}
+body.ky-tv-palace .stat strong{
+  display:block;margin:0 0 2px;color:#4a166c;
+  font:700 clamp(20px,4.8vw,30px)/1 Georgia,serif;text-shadow:0 1px #fff7;
+}
+body.ky-tv-palace .stat span{
+  display:block;max-width:120px;margin:auto;color:#582e6d;
+  font:500 clamp(9px,2.2vw,12px)/1.14 Georgia,serif;
+}
+body.ky-tv-palace .stats-total{margin-top:5px;padding-top:6px;border-top:1px solid #a666b05b;gap:6px}
+body.ky-tv-palace .stats-total-label{
+  color:#56276a;font:700 clamp(9px,2vw,12px)/1.2 Georgia,serif;text-transform:uppercase;
+}
+body.ky-tv-palace #overallTimeStat{display:inline-flex;align-items:center;gap:4px;
+  color:#481968;font:700 clamp(13px,3.5vw,20px)/1.1 Georgia,serif}
+body.ky-tv-palace #overallTimeStat::before,body.ky-tv-palace #sectionTime::before{
+  content:"";display:inline-block;flex:none;width:24px;height:24px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #c381ff);
+}
+/* The approved image's LOUNGE ONLY. It is not a screenshot of inputs/cards:
+   current app controls and the user's photos render as real elements below. */
+body.ky-tv-palace .shell>.controls{
+  --tv-hero-height:clamp(171px,41.5vw,454px);
+  position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:10px;row-gap:10px;
+  margin:calc(var(--tv-hero-height) + 19px) 3px 13px;
+  padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
+}
+body.ky-tv-palace .shell>.controls::before{
+  content:"";display:block!important;
+  position:absolute;z-index:0;
+  left:-4px;right:-4px;top:calc(0px - var(--tv-hero-height) - 12px);
+  height:var(--tv-hero-height);pointer-events:none;
+  border:0;border-radius:16px;box-shadow:none;opacity:1;
+  background:url('./assets/tv/tv-lounge-scene.webp') center/contain no-repeat;
+}
+body.ky-tv-palace .shell>.controls::after{content:none!important}
+body.ky-tv-palace .shell>.controls .field-search{
+  grid-column:1/-1;min-width:0;position:relative;width:100%;
+}
+body.ky-tv-palace .shell>.controls .field-search::before{
+  content:"";position:absolute;z-index:2;left:12px;top:50%;transform:translateY(-50%);
+  width:31px;height:31px;pointer-events:none;
+  background:url('./assets/all-memories/ky-search.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #d87dff);
+}
+body.ky-tv-palace .shell>.controls .field-search::after{
+  content:"";position:absolute;z-index:2;right:12px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;pointer-events:none;
+  background:url('./assets/all-memories/ky-show.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #e99dff);
+}
+body.ky-tv-palace .shell>.controls :is(input,select){
+  appearance:none;-webkit-appearance:none;
+  width:100%;min-width:0;min-height:48px;padding:10px 34px 10px 47px;
+  border:2px solid #e8adfc;border-radius:22px;color:#ffe8ff;
+  background:#4c2166;
+  font:500 clamp(13px,3.5vw,18px)/1.2 Georgia,serif;
+  box-shadow:0 0 0 1px #8146a6,0 0 14px #d68bf7a1,
+    0 4px 14px #1a063bba,inset 0 1px #ffeaff63;
+}
+body.ky-tv-palace .shell>.controls #search{
+  background:linear-gradient(145deg,#bd83daeb,#8154b9f5 85%);color:#fff4ff;
+}
+body.ky-tv-palace .shell>.controls input::placeholder{color:#ffe5ff;opacity:1}
+body.ky-tv-palace .shell>.controls #genreFilter{
+  background:url('./assets/all-memories/ky-show.webp') left 9px center/34px 34px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 11px center/14px 12px no-repeat,
+    linear-gradient(#75318dbd,#4b2165ee);
+}
+body.ky-tv-palace .shell>.controls #sort{
+  background:url('./assets/all-memories/ky-sort.webp') left 10px center/32px 32px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 11px center/14px 12px no-repeat,
+    linear-gradient(#75318dbd,#4b2165ee);
+}
+body.ky-tv-palace .shell>.controls #newEntry{
+  grid-column:1/-1;position:relative;display:flex;align-items:center;justify-content:center;
+  width:100%;min-width:0;min-height:52px;padding:7px 14px;gap:8px;
+  border:2px dotted #ffe2fc;border-radius:22px;color:#fff0ff;
+  background:linear-gradient(140deg,#aa64cde9,#723faeea 56%,#9b5fc5e8);
+  font:700 clamp(17px,4.3vw,24px)/1.1 Georgia,serif;
+  text-shadow:0 1px #45235a,0 0 9px #ffe0f86a;
+  box-shadow:0 0 0 2px #b46be571,0 0 19px #df93ffb1,
+    0 5px 16px #220735b1,inset 0 1px #fff7;
+}
+body.ky-tv-palace .shell>.controls #newEntry::before{
+  content:"";display:block;flex:none;width:34px;height:34px;
+  background:url('./assets/all-memories/ky-add.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #e8baff);
+}
+body.ky-tv-palace .shell>.controls #newEntry::after{
+  content:"♡  ✦  ♡";position:absolute;inset:auto 14px -10px;pointer-events:none;
+  text-align:center;color:#fce9ff;font:14px/1 Georgia,serif;letter-spacing:14px;
+  text-shadow:0 0 8px #ffb1ff;
+}
+body.ky-tv-palace .shell>.controls #newEntry:is(:hover,:focus-visible){filter:brightness(1.1)}
+body.ky-tv-palace :is(button,select,input):focus-visible{outline:3px solid #ffe8ff;outline-offset:3px}
+/* True collection heading and real counts; not hard-coded sample figures. */
+body.ky-tv-palace .section-header{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  column-gap:8px;row-gap:12px;align-items:center;
+  margin:21px 3px 10px;
+}
+body.ky-tv-palace .section-header>.collection-heading{min-width:0}
+body.ky-tv-palace .section-header h2{
+  font:italic 600 clamp(24px,5.6vw,39px)/1.05 Georgia,serif;
+  letter-spacing:-.025em;color:#ffdcff;
+  text-shadow:0 0 4px #f6c2ff,0 0 15px #cc83ffac;
+}
+body.ky-tv-palace .section-header h2::after{
+  content:"";display:block;width:min(95%,420px);height:2px;margin-top:10px;
+  border-radius:2px;background:linear-gradient(90deg,#fff1ff,#d997fc 70%,transparent);
+  box-shadow:0 0 8px #e1a1ff;
+}
+body.ky-tv-palace .section-count{max-width:148px;align-items:flex-end;text-align:right;gap:3px}
+body.ky-tv-palace .section-count #count{color:#ffe5ff;font:700 clamp(13px,3.2vw,19px)/1.15 Georgia,serif;text-shadow:0 0 9px #e1a2ff}
+body.ky-tv-palace .section-count #sectionTime{display:inline-flex;align-items:center;gap:4px;
+  color:#eed5ff;font:700 clamp(13px,3.2vw,18px)/1.1 Georgia,serif}
+/* Existing eight filter buttons: original text remains for assistive tech;
+   new KY icons and labels are visual, eliminating platform emojis. */
+body.ky-tv-palace .section-header>.tabs{
+  grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;
+  margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+}
+body.ky-tv-palace .section-header>.tabs .chip,
+body.ky-tv-palace .section-header>.tabs .chip[data-tab="current"]{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  min-width:0;width:100%;min-height:61px;padding:5px 2px;margin:0;
+  border:1px solid #dc9cfa;border-radius:15px;color:#fff0ff;
+  background:linear-gradient(147deg,#7a399beb,#34164feb 76%,#603080ec);
+  box-shadow:0 0 8px #c37de875,inset 0 1px #ffe8ff6d,0 3px 9px #18082abb;
+  text-align:center;text-shadow:0 1px #221036;font-size:0!important;
+}
+body.ky-tv-palace .section-header>.tabs .chip::before{
+  content:""!important;display:block;flex:none;
+  width:clamp(24px,5.6vw,35px);height:clamp(24px,5.6vw,35px);
+  background-position:center;background-size:contain;background-repeat:no-repeat;
+  filter:drop-shadow(0 0 4px #ffdcff7f);
+}
+body.ky-tv-palace .section-header>.tabs .chip::after{
+  display:block;color:inherit;text-align:center;
+  font:700 clamp(9px,2.2vw,12px)/1.15 Georgia,serif;
+}
+body.ky-tv-palace .section-header>.tabs [data-tab="all"]::before{background-image:url('./assets/all-memories/ky-all.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="movie"]::before{background-image:url('./assets/all-memories/ky-movie.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="show"]::before{background-image:url('./assets/all-memories/ky-show.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="game"]::before{background-image:url('./assets/all-memories/ky-game.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="next"]::before{background-image:url('./assets/all-memories/ky-next.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="current"]::before{background-image:url('./assets/all-memories/ky-current.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="favorite"]::before{background-image:url('./assets/all-memories/ky-favorite.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="trash"]::before{background-image:url('./assets/all-memories/ky-trash.webp')}
+body.ky-tv-palace .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.ky-tv-palace .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.ky-tv-palace .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.ky-tv-palace .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.ky-tv-palace .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.ky-tv-palace .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.ky-tv-palace .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.ky-tv-palace .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+body.ky-tv-palace .section-header>.tabs [data-tab="show"].selected{
+  color:#351447;text-shadow:0 1px #fff9;
+  border:2px solid #fff1ff;
+  background:linear-gradient(145deg,#ffe0ff,#eab9ff 58%,#d58aff);
+  box-shadow:0 0 0 2px #a853c388,0 0 19px #e49affde,
+    0 5px 11px #23083fc8,inset 0 1px #fff;
+}
+body.ky-tv-palace .section-header>.tabs .chip:not(.selected):hover{filter:brightness(1.12)}
+/* Actual clickable posters, ratings, time and genres preserved. No bows. */
+body.ky-tv-palace #gallery{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px 13px;padding:20px 6px 33px;
+  max-height:85dvh;overflow-x:hidden;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:#d6a6ff #321b4d;
+}
+body.ky-tv-palace #gallery .polaroid{
+  position:relative;isolation:isolate;min-width:0;
+  display:block;width:100%;padding:11px 9px 15px;
+  transform:none;border:2px solid #f4c5ff;border-radius:23px;
+  background:
+    radial-gradient(circle at 94% 6%,#fff8ffbd 0 2px,transparent 4px),
+    radial-gradient(circle at 5% 94%,#fff8ff93 0 2px,transparent 4px),
+    repeating-linear-gradient(138deg,#f8e0ff19 0px 1px,transparent 2px 10px),
+    linear-gradient(160deg,#f0ceff 0%,#d6b0f4 60%,#ebc7ff 100%);
+  color:#421b58;text-align:left;
+  box-shadow:0 0 0 2px #a964d4bd,0 0 16px #ecaeff9c,
+    0 12px 23px #21062dd1,inset 0 1px #fff,inset 0 0 17px #fff6;
+  transition:transform .18s,filter .18s,box-shadow .18s;
+}
+body.ky-tv-palace #gallery .polaroid::before{
+  content:"";position:absolute;inset:4px;z-index:3;pointer-events:none;
+  border:1px dashed #fef1fff0;border-radius:18px;
+  box-shadow:inset 0 0 0 1px #d48ff56b;
+  background:radial-gradient(circle at 4% 4%,#fff 0 3px,transparent 5px),
+    radial-gradient(circle at 96% 4%,#fff 0 3px,transparent 5px),
+    radial-gradient(circle at 4% 96%,#fff 0 3px,transparent 5px),
+    radial-gradient(circle at 96% 96%,#fff 0 3px,transparent 5px);
+}
+body.ky-tv-palace #gallery .polaroid::after{
+  content:"✦";position:absolute;right:13px;bottom:7px;z-index:4;
+  color:#fff1ff;font:19px/1 Georgia,serif;text-shadow:0 0 7px #cb60e6;
+  pointer-events:none;
+}
+body.ky-tv-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-4px);filter:brightness(1.05);
+  box-shadow:0 0 0 2px #ab6ce0,0 0 22px #edc5ff,
+    0 18px 27px #21072dec,inset 0 1px #fff;
+}
+body.ky-tv-palace #gallery .poster{
+  height:auto;aspect-ratio:1.28/1;overflow:hidden;position:relative;
+  border:2px solid #fff3ff;border-radius:14px;
+  background:linear-gradient(145deg,#d395ed,#7553a2);
+  box-shadow:0 0 0 1px #8e5eb5,0 0 11px #a050c264;
+}
+body.ky-tv-palace #gallery .poster img{width:100%;height:100%;object-fit:cover}
+body.ky-tv-palace #gallery .poster::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(135deg,#ffffff1c,transparent 31%,#d59bff14 96%);
+  box-shadow:inset 0 0 0 1px #fff8;
+}
+body.ky-tv-palace #gallery .poster .placeholder{
+  font-size:0!important;display:flex;align-items:center;justify-content:center;opacity:1;
+}
+body.ky-tv-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(58px,12vw,92px);height:clamp(58px,12vw,92px);
+  background:url('./assets/all-memories/ky-show.webp') center/contain no-repeat;
+}
+body.ky-tv-palace #gallery .corner-heart{
+  color:#f3bcff;background:#57186fd9;border:1px solid #f5ceff;
+  border-radius:100px;box-shadow:0 0 8px #de84ff;
+}
+body.ky-tv-palace #gallery .polaroid h3{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;white-space:normal;overflow-wrap:anywhere;
+  min-height:2.18em;margin:11px 2px 8px;
+  font:700 clamp(15px,3.7vw,21px)/1.1 Georgia,serif;
+  color:#401752;text-shadow:0 1px #fff9;
+}
+body.ky-tv-palace #gallery .polaroid .rating-line{display:flex;flex-wrap:wrap;gap:5px;margin:0}
+body.ky-tv-palace #gallery .polaroid .score{
+  display:inline-flex;align-items:center;gap:4px;padding:4px 7px;
+  border:1px solid #b974d4;border-radius:26px;
+  color:#4c185f;background:linear-gradient(#f9dfff,#d5a1ef);
+  font:700 clamp(11px,2.6vw,14px)/1.1 Georgia,serif;
+  box-shadow:inset 0 1px #fff8,0 1px 4px #6d379d67;
+}
+body.ky-tv-palace #gallery .score .score-heart .rating-heart-shape{fill:#f1baff;stroke:#ab5bd3}
+body.ky-tv-palace #gallery .score .score-heart.filled .rating-heart-shape{fill:#dd66d5;stroke:#7e329f}
+body.ky-tv-palace #gallery .score .score-heart .rating-heart-shine{stroke:#fff4ff}
+body.ky-tv-palace #gallery .polaroid .time-line{
+  display:flex;align-items:center;gap:4px;margin-top:8px;
+  color:#60277c;font:700 clamp(11px,2.6vw,15px)/1.13 Georgia,serif;
+}
+body.ky-tv-palace #gallery .time-line::before{
+  content:"";display:inline-block;flex:none;width:22px;height:22px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+}
+body.ky-tv-palace #gallery .polaroid .tagline{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+body.ky-tv-palace #gallery .polaroid .tag{
+  padding:5px 7px;border:1px solid #b783d5;border-radius:25px;
+  color:#58216d;background:linear-gradient(#ecd0fa,#ce9ce8);
+  font:500 clamp(10px,2.25vw,12px)/1.15 Georgia,serif;
+}
+body.ky-tv-palace #empty{
+  color:#fff2ff;border:2px solid #d998f3;
+  background:linear-gradient(155deg,#773c94e9,#32124de9);
+  box-shadow:0 0 18px #cf88ed96,0 14px 24px #10061ac9;
+}
+body.ky-tv-palace #empty h3{color:#ffddff}
+body.ky-tv-palace #empty .pop{
+  font-size:0!important;width:70px;height:70px;margin:auto;
+  background:url('./assets/all-memories/ky-show.webp') center/contain no-repeat;
+}
+body.ky-tv-palace #empty .btn.primary{background:linear-gradient(145deg,#eecfff,#c688ee);color:#451d62}
+/* Keep edit/cloud modals clear and their original buttons untouched. */
+body.ky-tv-palace .modal .dialog.glass{color:#53375d;background:#f9eafa}
+body.ky-tv-palace .modal .dialog .review{background:#fff9fe}
+body.ky-tv-palace .footer{color:#f0d7fd}
+@media(min-width:701px){
+  body.ky-tv-palace .stage::before{background-image:url('./assets/tv/tv-lounge-wallpaper-landscape.webp')}
+  body.ky-tv-palace .shell{padding-top:clamp(45px,6.5vw,80px)}
+  body.ky-tv-palace .shell>.topbar{min-height:68px}
+  body.ky-tv-palace .shell>.controls{
+    grid-template-columns:minmax(180px,1.4fr) minmax(140px,.9fr) minmax(140px,.9fr) minmax(160px,1fr);
+    --tv-hero-height:clamp(300px,34vw,456px);
+    margin-top:calc(var(--tv-hero-height) + 20px);
+  }
+  body.ky-tv-palace .shell>.controls .field-search,
+  body.ky-tv-palace .shell>.controls #newEntry{grid-column:auto}
+  body.ky-tv-palace .shell>.controls #newEntry{min-height:49px;font-size:clamp(14px,1.5vw,19px)}
+  body.ky-tv-palace .shell>.controls #newEntry::before{width:29px;height:29px}
+  body.ky-tv-palace .section-header>.tabs .chip{min-height:67px}
+  body.ky-tv-palace #gallery{grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:24px 20px;padding:20px 8px 35px}
+  body.ky-tv-palace #gallery .polaroid{padding:13px 12px 19px}
+}
+@media(max-width:390px){
+  body.ky-tv-palace .shell{padding-top:35px;padding-left:9px;padding-right:9px}
+  body.ky-tv-palace .shell>.topbar{min-height:53px;margin-left:5px;margin-right:5px}
+  body.ky-tv-palace .shell>.topbar::before{width:46px;height:46px;top:-12px;left:-5px}
+  body.ky-tv-palace .shell>.topbar .palace-wordmark{font-size:clamp(14px,4.1vw,17px)}
+  body.ky-tv-palace .shell>.stats{padding:9px 4px}
+  body.ky-tv-palace .shell>.controls{--tv-hero-height:clamp(151px,42vw,180px);gap:8px}
+  body.ky-tv-palace .shell>.controls :is(input,select){min-height:43px;padding-left:42px;padding-right:24px}
+  body.ky-tv-palace .section-header h2{font-size:clamp(22px,5.9vw,27px)}
+  body.ky-tv-palace .section-header>.tabs{gap:5px}
+  body.ky-tv-palace .section-header>.tabs .chip{min-height:56px;padding:4px 1px}
+  body.ky-tv-palace .section-header>.tabs .chip::after{font-size:9px}
+  body.ky-tv-palace #gallery{gap:22px 10px;padding:20px 5px 30px}
+  body.ky-tv-palace #gallery .polaroid{padding:9px 7px 13px}
+  body.ky-tv-palace #gallery .polaroid .score{padding:4px 5px;gap:3px}
+  body.ky-tv-palace #gallery .polaroid .tag{padding:4px 5px}
+}
+@media(prefers-reduced-motion:reduce){body.ky-tv-palace #gallery .polaroid{transition:none!important}}
