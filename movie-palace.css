@@ -498,7 +498,7 @@ body.ky-movie-palace .footer{color:#ffe3db}
   body.ky-movie-palace .stage>.shell>.controls #newEntry{padding-left:44px}
   body.ky-movie-palace .stage>.shell>.controls #newEntry::before{left:8px;width:28px;height:28px}
   body.ky-movie-palace .section-header h2{font-size:clamp(20px,5.2vw,26px)}
-  body.ky-movie-palace #gallery{gap:18px 12px;padding:22px 5px 32px}
+  body.ky-movie-palace .stage>.shell>#gallery{gap:18px 12px;padding:22px 5px 32px}
   body.ky-movie-palace #gallery .polaroid{padding:10px 9px 14px;border-width:2px}
   body.ky-movie-palace #gallery .polaroid h3{font-size:clamp(13px,3.5vw,17px)}
   body.ky-movie-palace #gallery .polaroid::before{inset:3px;border-radius:15px}
