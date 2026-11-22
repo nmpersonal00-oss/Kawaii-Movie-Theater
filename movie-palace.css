@@ -63,7 +63,7 @@ body.ky-movie-palace .stage>.shell>.topbar{
 body.ky-movie-palace .stage>.shell>.topbar::before{
   content:""!important;display:block!important;
   position:absolute;top:-37px;left:50%;width:65px;height:65px;
-  inset:auto auto auto 50%;transform:translateX(-50%);
+  transform:translateX(-50%);
   z-index:3;pointer-events:none;
   background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat!important;
   filter:drop-shadow(0 0 7px #fbc2ff);
