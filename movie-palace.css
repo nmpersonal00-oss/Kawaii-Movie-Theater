@@ -1,0 +1,522 @@
+/*
+ * KAWAII MOVIE NIGHT — a strawberry-starlight cinema just for Movies.
+ * Opt-in via body.ky-movie-palace, tab === 'movie'. Pure presentation:
+ * no changes to collections, uploads, filtering, sound, storage or dialogs.
+ * Keeps the existing tab proportions and real clickable Polaroid cards.
+ */
+body.ky-movie-palace{
+  --movie-plum:#4a244a;
+  --movie-rose:#b45d8e;
+  --movie-pink:#ffc9e1;
+  --movie-pearl:#fff5ec;
+  --movie-gold:#ffdc9f;
+  color:var(--movie-pearl);
+  background:#4a244a;
+}
+body.ky-movie-palace .stage{
+  isolation:isolate;
+  position:relative;
+  min-height:100dvh;
+  background:none!important;
+}
+body.ky-movie-palace .stage::before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  pointer-events:none!important;
+  z-index:-1!important;
+  border:0!important;
+  border-radius:0!important;
+  filter:none!important;
+  opacity:1!important;
+  transform:none!important;
+  animation:none!important;
+  background:#54294f url("./assets/movies/movie-palace-portrait.svg") center top / cover no-repeat!important;
+}
+/* Pearl lights drift gently over the wallpaper, never over the controls. */
+body.ky-movie-palace .stage::after{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  border:0!important;
+  border-radius:0!important;
+  opacity:.67!important;
+  transform:none!important;
+  filter:none!important;
+  background-image:
+    radial-gradient(circle,#fff7d8 0 1.5px,transparent 3px),
+    radial-gradient(circle,#ffd6f1 0 1px,transparent 2.6px);
+  background-size:171px 197px,247px 229px;
+  background-position:12px 26px,108px 93px;
+  background-repeat:repeat;
+  animation:movie-pearl-drift 24s linear infinite!important;
+}
+@keyframes movie-pearl-drift{
+  from{background-position:12px 26px,108px 93px}
+  to{background-position:183px -171px,-139px 322px}
+}
+@media(min-width:701px){
+  body.ky-movie-palace .stage::before{
+    background-image:url("./assets/movies/movie-palace-landscape.svg")!important;
+    background-size:cover!important;
+    background-position:center top!important;
+  }
+}
+body.ky-movie-palace .stage>.shell{
+  position:relative;
+  z-index:2;
+}
+body.ky-movie-palace .shell::before{display:none!important}
+body.ky-movie-palace :is(.palace-wordmark,.stat strong,.section-header h2,#gallery .polaroid h3,.section-count){
+  font-family:"Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;
+}
+
+/* A glowing rosy movie marquee, not the old opening-curtain screen. */
+body.ky-movie-palace .stage>.shell>.topbar{
+  position:relative;
+  isolation:isolate;
+  overflow:visible;
+  justify-content:center!important;
+  text-align:center;
+  border:3px solid #ffe5af;
+  border-radius:29px;
+  background:linear-gradient(150deg,rgba(126,50,100,.96),rgba(165,73,120,.95) 48%,rgba(95,42,91,.96));
+  box-shadow:0 0 0 2px #853d6b,0 0 0 5px #f8c895,
+    0 0 24px #ffc9d78c,0 12px 24px #28112d96,
+    inset 0 2px #fff9ecb3,inset 0 -7px 18px #4f21588a;
+}
+body.ky-movie-palace .stage>.shell>.topbar::before{
+  content:""!important;
+  display:block!important;
+  position:absolute;
+  width:84px;height:84px;
+  inset:auto auto auto 50%;
+  top:-58px;
+  transform:translateX(-50%);
+  z-index:4;
+  pointer-events:none;
+  background:url("./assets/all-memories/ky-movie.webp") center / contain no-repeat;
+  filter:drop-shadow(0 2px 7px #ffd4b8b2);
+  animation:movie-reel-float 5s ease-in-out infinite!important;
+}
+@keyframes movie-reel-float{
+  0%,100%{transform:translate(-50%,0) rotate(-4deg)}
+  50%{transform:translate(-50%,-5px) rotate(4deg)}
+}
+body.ky-movie-palace .stage>.shell>.topbar::after{
+  content:""!important;
+  display:block!important;
+  position:absolute;
+  inset:5px;
+  z-index:0;
+  pointer-events:none;
+  border:1px solid #ffe8c5c9;
+  border-radius:21px;
+  background:
+    radial-gradient(circle,#fff9dc 0 2px,#f1b97c 2.4px 3.3px,transparent 4.5px)
+    top left 8px / 24px 9px repeat-x,
+    radial-gradient(circle,#fff9dc 0 2px,#f1b97c 2.4px 3.3px,transparent 4.5px)
+    bottom left 8px / 24px 9px repeat-x;
+  animation:movie-marquee-glint 5.2s ease-in-out infinite!important;
+}
+@keyframes movie-marquee-glint{0%,100%{opacity:.76}50%{opacity:1}}
+body.ky-movie-palace .shell>.topbar .palace-trigger{
+  position:relative;z-index:1;
+  color:#fff4df;
+  background:none;
+  border:0;
+  box-shadow:none;
+  text-shadow:0 1px 2px #40173e,0 0 9px #ffd1d790;
+}
+body.ky-movie-palace .shell>.topbar .palace-wordmark{
+  color:#fff2dc;
+  text-shadow:0 2px 2px #51254c,0 0 12px #ffe1a97a;
+  font-size:clamp(16px,3.1vw,28px);
+}
+body.ky-movie-palace .palace-heart,
+body.ky-movie-palace .palace-status{
+  color:#ffd69b;
+  text-shadow:0 0 9px #ffe8b6;
+}
+
+/* Light-up pearl counters */
+body.ky-movie-palace .stage>.shell>.stats{
+  border:2px solid #ffe1b1;
+  border-radius:24px;
+  color:#fff6e6;
+  background:linear-gradient(145deg,rgba(100,43,94,.94),rgba(157,68,114,.90) 55%,rgba(87,39,94,.94));
+  box-shadow:0 0 0 3px #aa628c,0 0 20px #ffd9b65c,
+    0 10px 20px #251025ad,inset 0 1px #fff7ed8f;
+}
+body.ky-movie-palace .stage>.shell>.stats::before{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+body.ky-movie-palace .stage>.shell>.stats::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border:1px dashed #ffe6c989;
+  border-radius:17px;
+  pointer-events:none;
+  background:none;
+}
+body.ky-movie-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 #ffddca54}
+body.ky-movie-palace .stat strong{
+  color:#ffe7a9;
+  text-shadow:0 0 12px #ffb0d49c,0 2px #3b153d;
+}
+body.ky-movie-palace .stat span,
+body.ky-movie-palace .stats-total-label{
+  color:#ffe4ee;
+  text-shadow:0 1px 2px #421c45;
+}
+body.ky-movie-palace .stats-total{border-top:1px solid #ffe4bf6f}
+body.ky-movie-palace #overallTimeStat{color:#ffe9b9;text-shadow:0 0 7px #ffb7c1}
+
+/* Search / sort and Add Polaroid become little cream-pink ticket controls. */
+body.ky-movie-palace .stage>.shell>.controls{
+  background:none;
+  border:0;
+  box-shadow:none;
+  overflow:visible;
+}
+body.ky-movie-palace .stage>.shell>.controls::before,
+body.ky-movie-palace .stage>.shell>.controls::after{
+  content:none!important;
+  display:none!important;
+}
+body.ky-movie-palace .stage>.shell>.controls .field-search{min-width:0}
+body.ky-movie-palace .stage>.shell>.controls :is(input,select){
+  border:2px solid #fbe1b7;
+  border-radius:17px;
+  background:linear-gradient(152deg,#fff9f1f5,#f6d9eafb);
+  color:#662d58;
+  font-weight:700;
+  box-shadow:0 0 0 2px #8b4e7db5,0 4px 12px #3b18396b,inset 0 2px #fffefa;
+}
+body.ky-movie-palace .stage>.shell>.controls input::placeholder{color:#8a5476;opacity:1}
+body.ky-movie-palace .stage>.shell>.controls #newEntry{
+  position:relative;
+  border:2px solid #ffe4b9;
+  border-radius:18px;
+  padding-left:clamp(40px,4.5vw,54px);
+  color:#612b50;
+  background:linear-gradient(140deg,#ffe6ed,#ffc4d6 45%,#f5a4c5);
+  font-weight:800;
+  box-shadow:0 0 0 2px #ae6492,0 0 13px #ffc8cf90,
+    0 5px 13px #32162e78,inset 0 2px #fff8f4;
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+}
+body.ky-movie-palace .stage>.shell>.controls #newEntry::before{
+  content:"";
+  position:absolute;
+  left:9px;top:50%;
+  transform:translateY(-50%);
+  width:clamp(28px,4vw,36px);height:clamp(28px,4vw,36px);
+  background:url("./assets/all-memories/ky-add.webp") center / contain no-repeat;
+}
+body.ky-movie-palace .stage>.shell>.controls #newEntry:is(:hover,:focus-visible){
+  filter:brightness(1.07);
+  box-shadow:0 0 0 2px #ae6492,0 0 19px #ffe4d6cf,0 7px 15px #32162e78;
+}
+body.ky-movie-palace :is(button,input,select):focus-visible{
+  outline:3px solid #fff0ad;
+  outline-offset:3px;
+}
+
+/* Romantic lettering, but readable above the movie-poster grid. */
+body.ky-movie-palace .section-header h2{
+  color:#fff1d3;
+  font:700 clamp(23px,5.4vw,34px)/1.12 Georgia,serif;
+  text-shadow:0 2px 2px #3a1740,0 0 17px #ff8fb6bd;
+}
+body.ky-movie-palace .section-header h2::after{
+  content:"✧  ✦  ✧";
+  display:block;
+  width:auto;height:auto;
+  border:0;
+  background:none;
+  box-shadow:none;
+  margin:4px 0 0;
+  color:#ffe7a9;
+  letter-spacing:9px;
+  font:15px/1 Georgia,serif;
+  text-shadow:0 0 12px #ffe8b8;
+}
+body.ky-movie-palace .section-header>.section-count,
+body.ky-movie-palace #count,
+body.ky-movie-palace #sectionTime{color:#ffe9bd;text-shadow:0 1px 2px #3f1b40,0 0 8px #ffb4d2}
+
+/* Keep all eight existing tab targets; merely dress their buttons. */
+body.ky-movie-palace .stage>.shell>.section-header>.tabs{
+  background:none;
+  box-shadow:none;
+  border:0;
+  overflow:visible;
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip{
+  position:relative;
+  color:#fff0df;
+  border:1.5px solid #f8cfa9b8;
+  border-radius:15px;
+  background:linear-gradient(155deg,rgba(105,40,91,.92),rgba(145,62,115,.92));
+  box-shadow:0 0 0 1px #65305b,0 5px 9px #25122b85,inset 0 1px #fff0ee52;
+  text-shadow:0 1px 2px #391739;
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip::before{
+  filter:drop-shadow(0 1px 4px #ffe0c8);
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip::after{
+  color:#fff3ea;
+  font-weight:800;
+  text-shadow:0 1px 2px #3d1c40;
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip[data-tab="movie"].selected{
+  color:#622a51;
+  border-color:#fff8cf;
+  background:linear-gradient(145deg,#fff8d6,#ffcade 58%,#ffc09e);
+  box-shadow:0 0 0 2px #e5a76b,0 0 17px #ffe5bfbb,
+    0 6px 12px #35172f8a,inset 0 2px #fff;
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip[data-tab="movie"].selected::after{
+  color:#74314e;text-shadow:0 1px #fff5e7;
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip:not(.selected):hover{
+  filter:brightness(1.13);
+  transform:translateY(-2px);
+}
+body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip:focus-visible{outline:3px solid #fff1bc;outline-offset:3px}
+
+/* Pearl-edged cinema tickets: each is still the original working Polaroid. */
+body.ky-movie-palace .stage>.shell>#gallery{
+  gap:21px 15px;
+  padding:23px 8px 36px;
+  scrollbar-width:thin;
+  scrollbar-color:#f3b7d3 #54294c;
+}
+body.ky-movie-palace #gallery .polaroid{
+  position:relative;
+  isolation:isolate;
+  text-align:left;
+  min-width:0;
+  padding:13px 12px 19px;
+  border:3px solid #ffefd2;
+  border-radius:20px;
+  transform:rotate(0deg);
+  color:#693351;
+  background:
+    radial-gradient(circle at 91% 7%,#fffef7 0 3px,transparent 7px),
+    radial-gradient(circle at 8% 96%,#fff9f7 0 2px,transparent 7px),
+    linear-gradient(148deg,#fff3f5,#ffdbe9 49%,#f6c0da 100%);
+  box-shadow:0 0 0 2px #b67198,0 0 0 4px #eab3c4a8,
+    0 0 18px #ffd9d5bd,0 12px 22px #26112cbb,
+    inset 0 2px #fff,inset 0 0 18px #fff9fa;
+  transition:transform .25s ease,box-shadow .3s ease,filter .25s ease;
+}
+body.ky-movie-palace #gallery .polaroid::before{
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:3;
+  inset:5px;
+  pointer-events:none;
+  border:1px dashed #be789ac7;
+  border-radius:14px;
+  background:
+    radial-gradient(circle,#a76683 0 2px,transparent 2.4px) left 1px top 8px / 9px 22px repeat-y,
+    radial-gradient(circle,#a76683 0 2px,transparent 2.4px) right 1px top 8px / 9px 22px repeat-y;
+  box-shadow:inset 0 0 0 1px #fff7ef9e;
+}
+body.ky-movie-palace #gallery .polaroid::after{
+  content:"✦";
+  display:block;
+  position:absolute;
+  z-index:4;
+  top:6px;right:13px;
+  color:#fff8d6;
+  font:22px/1 Georgia,serif;
+  text-shadow:0 0 4px #d67a94,0 0 12px #d081c4;
+  pointer-events:none;
+}
+body.ky-movie-palace #gallery .polaroid:nth-child(-n+8)::after{
+  animation:movie-card-sparkle 4.6s ease-in-out infinite;
+}
+body.ky-movie-palace #gallery .polaroid:nth-child(3n+2)::after{animation-delay:-1.6s}
+body.ky-movie-palace #gallery .polaroid:nth-child(3n)::after{animation-delay:-3.1s}
+@keyframes movie-card-sparkle{
+  0%,66%,100%{opacity:.5;transform:scale(.82) rotate(-15deg)}
+  75%{opacity:1;transform:scale(1.2) rotate(12deg)}
+  85%{opacity:.76;transform:scale(.96) rotate(0deg)}
+}
+body.ky-movie-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-7px) rotate(-.35deg);
+  filter:brightness(1.035);
+  box-shadow:0 0 0 2px #e4a3ae,0 0 0 4px #ffefda,
+    0 0 26px #ffdec6ec,0 21px 28px #260d2fca,
+    inset 0 2px #fff;
+}
+body.ky-movie-palace #gallery .polaroid:active{transform:translateY(-2px) scale(.985)}
+body.ky-movie-palace #gallery .polaroid:focus-visible{outline:3px solid #fff3c5;outline-offset:5px}
+body.ky-movie-palace #gallery .poster{
+  position:relative;
+  overflow:hidden;
+  height:auto;
+  aspect-ratio:1.42/1;
+  border:2px solid #fff9ec;
+  border-radius:12px;
+  background:linear-gradient(147deg,#f0b4ce,#b77bac);
+  box-shadow:0 0 0 1px #a45a81,0 4px 11px #71436780;
+}
+body.ky-movie-palace #gallery .poster img{
+  display:block;width:100%;height:100%;object-fit:cover;
+}
+body.ky-movie-palace #gallery .poster::after{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 25%,#ffffff08 39%,#fffdf68b 49%,#ffffff08 58%,transparent 72%);
+  background-size:280% 100%;
+  background-position:120% 0;
+  box-shadow:inset 0 0 0 1px #fff4e4;
+  transition:background-position .8s ease;
+}
+body.ky-movie-palace #gallery .polaroid:is(:hover,:focus-visible) .poster::after{
+  background-position:-110% 0;
+}
+body.ky-movie-palace #gallery .poster .placeholder{
+  font-size:0!important;
+  display:flex;align-items:center;justify-content:center;
+  opacity:1;
+}
+body.ky-movie-palace #gallery .poster .placeholder::before{
+  content:"";
+  display:block;
+  width:clamp(56px,13vw,94px);
+  height:clamp(56px,13vw,94px);
+  background:url("./assets/all-memories/ky-movie.webp") center / contain no-repeat;
+  filter:drop-shadow(0 3px 7px #5b2b6894);
+}
+body.ky-movie-palace #gallery .corner-heart{
+  z-index:4;
+  color:#ffdaaf;
+  background:#862d65dd;
+  border:1px solid #ffe7b5;
+  box-shadow:0 0 8px #ffe6dbab;
+}
+body.ky-movie-palace #gallery .polaroid h3{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  min-height:2.22em;
+  margin:12px 2px 8px;
+  color:#703553;
+  text-shadow:0 1px #fff9f4;
+  font:700 clamp(15px,3.55vw,21px)/1.12 Georgia,serif;
+}
+body.ky-movie-palace #gallery .polaroid .rating-line{display:flex;flex-wrap:wrap;gap:5px;margin:0}
+body.ky-movie-palace #gallery .polaroid .score{
+  display:inline-flex;align-items:center;gap:4px;
+  border:1px solid #dd98b4;
+  border-radius:24px;
+  padding:4px 7px;
+  color:#743451;
+  background:linear-gradient(#fff8f4,#ffc6dd);
+  font:700 clamp(10px,2.5vw,13px)/1.16 Georgia,serif;
+  box-shadow:inset 0 1px #fff,0 2px 5px #b2779566;
+}
+body.ky-movie-palace #gallery .score .score-heart .rating-heart-shape{stroke:#a65378;fill:#fff1f5}
+body.ky-movie-palace #gallery .score .score-heart.filled .rating-heart-shape{fill:#ec72a4;stroke:#9a356b}
+body.ky-movie-palace #gallery .score .score-heart .rating-heart-shine{stroke:#fffdf6}
+body.ky-movie-palace #gallery .polaroid .time-line{
+  display:flex;align-items:center;gap:5px;
+  margin:8px 2px 0;
+  color:#713850;
+  font:700 clamp(11px,2.55vw,14px)/1.25 Georgia,serif;
+}
+body.ky-movie-palace #gallery .time-line::before{
+  content:"";
+  display:inline-block;flex:none;
+  width:22px;height:22px;
+  background:url("./assets/all-memories/ky-time.webp") center / contain no-repeat;
+}
+body.ky-movie-palace #gallery .polaroid .tagline{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+body.ky-movie-palace #gallery .polaroid .tag{
+  padding:5px 8px;
+  border:1px solid #dd9cb8;
+  border-radius:22px;
+  color:#6c3553;
+  background:linear-gradient(#ffedf3,#f9b7d0);
+  font:600 clamp(10px,2.4vw,12px)/1.2 Georgia,serif;
+  box-shadow:inset 0 1px #fff9ec;
+}
+/* Even an empty movie collection has its own theater look. */
+body.ky-movie-palace #empty{
+  color:#fff0e1;
+  border:2px solid #ffdcab;
+  background:linear-gradient(150deg,#8f4278ee,#552750f2);
+  box-shadow:0 0 17px #ffd4bb85,0 14px 23px #25102dba;
+}
+body.ky-movie-palace #empty h3{color:#ffe6b2}
+body.ky-movie-palace #empty .pop{
+  font-size:0!important;
+  width:78px;height:78px;
+  margin:auto;
+  background:url("./assets/all-memories/ky-movie.webp") center / contain no-repeat;
+}
+body.ky-movie-palace #empty .btn.primary{
+  color:#6b3355;
+  border:1px solid #ffebcd;
+  background:linear-gradient(#ffe3eb,#f7afcf);
+}
+body.ky-movie-palace .modal .dialog.glass{
+  color:#5b334c;
+  background:linear-gradient(150deg,#fff5f4,#f5dbea);
+}
+body.ky-movie-palace .modal .dialog .review{background:#fff9f8}
+body.ky-movie-palace .footer{color:#ffe3db}
+
+/* Keep the same two-column small-screen layout as every other category. */
+@media(max-width:700px){
+  body.ky-movie-palace .stage::before{
+    background-image:url("./assets/movies/movie-palace-portrait.svg")!important;
+    background-position:center top!important;
+    background-size:cover!important;
+  }
+  body.ky-movie-palace .stage>.shell>.topbar::before{width:66px;height:66px;top:-48px}
+  body.ky-movie-palace .stage>.shell>.topbar .palace-wordmark{font-size:clamp(14px,4.0vw,19px)}
+  body.ky-movie-palace .stage>.shell>.controls #newEntry{padding-left:44px}
+  body.ky-movie-palace .stage>.shell>.controls #newEntry::before{left:8px;width:28px;height:28px}
+  body.ky-movie-palace .section-header h2{font-size:clamp(20px,5.2vw,26px)}
+  body.ky-movie-palace #gallery{gap:18px 12px;padding:22px 5px 32px}
+  body.ky-movie-palace #gallery .polaroid{padding:10px 9px 14px;border-width:2px}
+  body.ky-movie-palace #gallery .polaroid h3{font-size:clamp(13px,3.5vw,17px)}
+  body.ky-movie-palace #gallery .polaroid::before{inset:3px;border-radius:15px}
+}
+@media(max-width:390px){
+  body.ky-movie-palace .stage>.shell>.topbar::before{width:57px;height:57px;top:-40px}
+  body.ky-movie-palace #gallery .polaroid{padding:9px 8px 13px}
+  body.ky-movie-palace #gallery .polaroid .score{padding:4px 5px}
+  body.ky-movie-palace #gallery .polaroid .tag{padding:4px 5px}
+}
+/* Match app-wide reduced-motion expectations. */
+@media(prefers-reduced-motion:reduce){
+  body.ky-movie-palace .stage::after,
+  body.ky-movie-palace .stage>.shell>.topbar::before,
+  body.ky-movie-palace .stage>.shell>.topbar::after,
+  body.ky-movie-palace #gallery .polaroid::after{animation:none!important}
+  body.ky-movie-palace #gallery .polaroid,
+  body.ky-movie-palace #gallery .poster::after,
+  body.ky-movie-palace .stage>.shell>.controls #newEntry,
+  body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip{transition:none!important}
+}
