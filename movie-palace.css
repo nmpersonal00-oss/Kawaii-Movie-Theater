@@ -1,579 +1,397 @@
 /*
- * COZY COUCH-POTATO MOVIE LOUNGE
- * Approved purple / lilac / glow concept, Movies tab ONLY.
- * Purely presentational. All existing collection, form, cloud, search,
- * rating, backup and navigation handlers stay as they are.
+ * MOVIES — THE ACTUAL APPROVED AI ART
+ * Hero, ticket card and illuminated Movies sign are directly cropped from
+ * the two AI mockups approved in this conversation. They are not SVG redraws.
+ * Only active while render() sets body.ky-movie-palace (tab === 'movie').
+ * Preserve real posters, all eight tabs, collection data, filters and cloud.
  */
 body.ky-movie-palace{
-  --movie-deep:#230d42;
-  --movie-purple:#61328f;
-  --movie-lilac:#cba0ff;
-  --movie-glow:#ecb7ff;
-  --movie-pink:#ffc4ef;
-  --movie-cream:#fff2d1;
-  color:#fff0ff;
-  background:#2a114a;
+  --movie-night:#281042;
+  --movie-purple:#713b9f;
+  --movie-lilac:#d9a9ff;
+  --movie-pink:#ffd0ff;
+  --movie-pearl:#fff2ff;
+  color:var(--movie-pearl);
+  background:
+    radial-gradient(circle at 50% 13%,#a658d391,transparent 54%),
+    radial-gradient(circle at 12% 78%,#7544aa91,transparent 48%),
+    radial-gradient(circle at 90% 88%,#b36bd07c,transparent 46%),
+    linear-gradient(155deg,#211036,#4d247a 48%,#230d42);
 }
-body.ky-movie-palace .stage{
-  isolation:isolate;
-  position:relative;
-  min-height:100dvh;
-  background:none!important;
-}
+body.ky-movie-palace .stage{isolation:isolate;position:relative;min-height:100dvh;background:none!important}
 body.ky-movie-palace .stage::before{
-  content:""!important;
-  display:block!important;
-  position:fixed!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  z-index:-1!important;
-  pointer-events:none!important;
-  border:0!important;
-  border-radius:0!important;
-  opacity:1!important;
-  filter:none!important;
-  transform:none!important;
-  animation:none!important;
-  background:#36145d url("./assets/movies/cozy-lounge-wallpaper-portrait.svg") center top/cover no-repeat!important;
+  content:""!important;display:block!important;position:fixed!important;
+  inset:-7%!important;width:114%!important;height:114%!important;
+  z-index:-1!important;pointer-events:none!important;
+  background:
+    linear-gradient(180deg,rgba(30,8,54,.62),rgba(42,13,69,.55)),
+    url("./assets/movies/real-ai-lounge-hero.webp") center / cover no-repeat!important;
+  opacity:.48!important;transform:none!important;
+  filter:blur(46px) saturate(1.3)!important;
+  border:0!important;border-radius:0!important;animation:none!important;
 }
 body.ky-movie-palace .stage::after{
-  content:""!important;
-  display:block!important;
-  position:fixed!important;
-  inset:0!important;
-  z-index:0!important;
-  pointer-events:none!important;
-  border:0!important;
-  border-radius:0!important;
-  opacity:.68!important;
-  filter:none!important;
-  transform:none!important;
+  content:""!important;display:block!important;position:fixed!important;
+  inset:0!important;z-index:0!important;pointer-events:none!important;
+  opacity:.65!important;border:0!important;border-radius:0!important;
+  filter:none!important;transform:none!important;
   background:
-    radial-gradient(circle,#fff3bc 0 1.6px,transparent 3px) 16px 38px/177px 189px repeat,
-    radial-gradient(circle,#f7cdff 0 1.2px,transparent 2.7px) 100px 77px/231px 224px repeat;
-  animation:movie-lounge-stardrift 23s linear infinite!important;
+    radial-gradient(circle,#fff1cb 0 1.5px,transparent 3px) 13px 22px / 173px 183px repeat,
+    radial-gradient(circle,#f4caff 0 1.1px,transparent 2.6px) 77px 92px / 227px 241px repeat;
+  animation:movie-ai-star-drift 27s linear infinite!important;
 }
-@keyframes movie-lounge-stardrift{
-  from{background-position:16px 38px,100px 77px}
-  to{background-position:193px -151px,-131px 301px}
+@keyframes movie-ai-star-drift{
+  from{background-position:13px 22px,77px 92px}
+  to{background-position:186px -161px,-150px 333px}
 }
-@media(min-width:701px){
-  body.ky-movie-palace .stage::before{
-    background-image:url("./assets/movies/cozy-lounge-wallpaper-landscape.svg")!important;
-  }
+body.ky-movie-palace .stage>.shell{position:relative;z-index:2}
+body.ky-movie-palace .stage>.shell::before{display:none!important}
+body.ky-movie-palace :is(.palace-wordmark,.stat strong,.section-header h2,.polaroid h3,.section-count){
+  font-family:"Iowan Old Style",Baskerville,Georgia,serif;
 }
-body.ky-movie-palace .stage>.shell{
-  position:relative;
-  z-index:2;
-}
-body.ky-movie-palace .shell::before{display:none!important}
-body.ky-movie-palace :is(.palace-wordmark,.stat strong,.section-header h2,#gallery .polaroid h3,.section-count){
-  font-family:"Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;
-}
-
-/* Lit lavender marquee; original account/cloud button remains usable. */
+/* A lighted purple picture-palace frame around the REAL cloud header. */
 body.ky-movie-palace .stage>.shell>.topbar{
-  position:relative;
-  isolation:isolate;
-  overflow:visible;
-  display:flex;
-  align-items:center;
-  justify-content:center!important;
+  position:relative;isolation:isolate;overflow:visible;
+  display:flex;align-items:center;justify-content:center!important;
+  border:3px solid #f3c7ff;border-radius:27px;
+  background:linear-gradient(145deg,#442068f5,#8149b5f1 48%,#54277dec);
+  box-shadow:0 0 0 2px #8e58b7,0 0 0 5px #3e1a68,
+    0 0 18px #d58bffb4,0 0 34px #ac66ec75,
+    0 12px 23px #130821a8,inset 0 2px #fff8ffb5;
   text-align:center;
-  padding:8px 11px;
-  border:3px solid #f5cbff;
-  border-radius:25px;
-  background:linear-gradient(145deg,#4b2173f7,#813eb1ec 50%,#522678f7);
-  box-shadow:0 0 0 2px #9851c3,0 0 0 5px #40215e,
-    0 0 16px #d68cffc2,0 0 32px #a955e481,
-    0 12px 22px #130722a3,inset 0 2px #fff9ffc7;
-  backdrop-filter:none!important;
 }
 body.ky-movie-palace .stage>.shell>.topbar::before{
-  content:""!important;
-  display:block!important;
-  position:absolute;
-  z-index:4;
-  top:-51px;
-  left:50%;
-  width:74px;
-  height:74px;
-  transform:translateX(-50%);
-  pointer-events:none;
-  background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat;
-  filter:drop-shadow(0 0 8px #ffb6ff);
-  animation:movie-lounge-bob 5s ease-in-out infinite!important;
+  content:""!important;display:block!important;
+  position:absolute;top:-37px;left:50%;width:65px;height:65px;
+  inset:auto auto auto 50%;transform:translateX(-50%);
+  z-index:3;pointer-events:none;
+  background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat!important;
+  filter:drop-shadow(0 0 7px #fbc2ff);
+  animation:movie-ai-mascot-bob 5.4s ease-in-out infinite!important;
 }
-@keyframes movie-lounge-bob{
+@keyframes movie-ai-mascot-bob{
   0%,100%{transform:translate(-50%,0)}
   50%{transform:translate(-50%,-5px)}
 }
 body.ky-movie-palace .stage>.shell>.topbar::after{
-  content:""!important;
-  display:block!important;
-  position:absolute;
-  inset:4px;
-  z-index:0;
-  pointer-events:none;
-  border:1px solid #ffe4ff91;
-  border-radius:18px;
-  background:
-    radial-gradient(circle,#fff9ef 0 2px,#e4a3fb 2.3px 4px,transparent 4.6px)
-    top left 7px/24px 8px repeat-x,
-    radial-gradient(circle,#fff9ef 0 2px,#e4a3fb 2.3px 4px,transparent 4.6px)
-    bottom left 7px/24px 8px repeat-x;
-  animation:movie-lounge-bulbs 4s ease-in-out infinite!important;
+  content:""!important;display:block!important;
+  position:absolute;inset:5px;z-index:0;pointer-events:none;
+  border:1px solid #fae1ffba;border-radius:18px;
+  background:radial-gradient(circle,#fff6df 0 2px,#d791fa 2.5px 4px,transparent 4.5px)
+    top left 5px/24px 9px repeat-x,
+    radial-gradient(circle,#fff6df 0 2px,#d791fa 2.5px 4px,transparent 4.5px)
+    bottom left 5px/24px 9px repeat-x;
+  animation:movie-ai-marquee-glow 4.5s ease-in-out infinite!important;
 }
-@keyframes movie-lounge-bulbs{
-  0%,100%{opacity:.66}50%{opacity:1}
-}
+@keyframes movie-ai-marquee-glow{0%,100%{opacity:.7}50%{opacity:1}}
 body.ky-movie-palace .shell>.topbar .palace-trigger{
-  position:relative;z-index:1;
-  width:100%;
-  min-width:0;
-  color:#fff7ff;
-  border:0;
-  background:none;
-  box-shadow:none;
-  text-shadow:0 2px 4px #210e37,0 0 12px #e2a0ff;
+  position:relative;z-index:1;width:100%;min-width:0;
+  background:none;border:0;box-shadow:none;
+  color:#fff0ff;text-shadow:0 0 10px #ffcaff;
 }
 body.ky-movie-palace .shell>.topbar .palace-wordmark{
-  color:#fff0ff;
-  font-size:clamp(15px,3.1vw,26px);
-  text-shadow:0 0 5px #ffddff,0 0 16px #e39eff,0 2px 2px #200c3d;
+  color:#fff2ff;
+  font-size:clamp(15px,3.2vw,27px);
+  text-shadow:0 0 6px #f6d1ff,0 0 16px #e5a1ff,0 2px 2px #28123c;
 }
 body.ky-movie-palace :is(.palace-heart,.palace-status){
-  color:#ffbdf9;
-  text-shadow:0 0 10px #ffe6ff;
+  color:#ffe3ff;text-shadow:0 0 9px #ffc1ff;
 }
-
-/* The collection statistics are real numbers, in glowing glass. */
+/* Live statistics, not text baked into the AI mockup. */
 body.ky-movie-palace .stage>.shell>.stats{
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  color:#fdf1ff;
-  border:2px solid #dca8ff;
-  border-radius:22px;
-  background:linear-gradient(142deg,#3c1e64ed,#7837a2e8 52%,#3b1b68ee);
-  box-shadow:0 0 0 2px #a866ce,0 0 20px #c575fd99,
-    0 9px 18px #150925ab,inset 0 1px #fff0ff99;
-  backdrop-filter:none!important;
+  isolation:isolate;position:relative;overflow:hidden;
+  color:#fff1ff;border:2px solid #e9baff;border-radius:24px;
+  background:linear-gradient(140deg,#482270ed,#8149b1e8 55%,#45216ded);
+  box-shadow:0 0 0 2px #8e58bb,0 0 16px #d594ffb0,
+    0 10px 20px #1e0e319e,inset 0 2px #fff9ffc4;
 }
 body.ky-movie-palace .stage>.shell>.stats::before{
   content:none!important;display:none!important;animation:none!important;
 }
 body.ky-movie-palace .stage>.shell>.stats::after{
-  content:"";
-  position:absolute;inset:5px;
-  pointer-events:none;
-  border:1px dashed #ffd5f293;
-  border-radius:15px;
-  background:none;
+  content:"";position:absolute;inset:4px;pointer-events:none;
+  border:1px dashed #ffe1ff85;border-radius:17px;background:none;
 }
-body.ky-movie-palace .stats-grid .stat:not(:first-child){
-  box-shadow:inset 1px 0 #f5c9ff45;
+body.ky-movie-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 #f3c4ff49}
+body.ky-movie-palace .stat strong{color:#fff0ce;text-shadow:0 0 10px #f7ccff,0 2px 2px #27113a}
+body.ky-movie-palace :is(.stat span,.stats-total-label){
+  color:#f9e5ff;text-shadow:0 1px 2px #2c1544;
 }
-body.ky-movie-palace .stat strong{
-  color:#fff2c8;
-  text-shadow:0 0 8px #ffdcfa,0 2px 3px #2b124e;
-}
-body.ky-movie-palace .stat span,
-body.ky-movie-palace .stats-total-label{
-  color:#f8e2ff;
-  text-shadow:0 1px 3px #261039;
-}
-body.ky-movie-palace .stats-total{border-top:1px solid #e7b6ff77}
-body.ky-movie-palace #overallTimeStat{
-  color:#fff1ca;
-  text-shadow:0 0 9px #ffc9ff;
-}
-
-/* The approved mascot scene floats in the existing decorative space.
-   This is part of the page background, never an overlay over controls. */
+body.ky-movie-palace .stats-total{border-top:1px solid #deb5ff7b}
+body.ky-movie-palace #overallTimeStat{color:#ffedca;text-shadow:0 0 7px #ffc1fa}
+/* Genuine AI lounge artwork, replacing the hand-drawn SVG furniture. */
 body.ky-movie-palace .stage>.shell>.controls{
-  position:relative;
-  z-index:1;
-  isolation:isolate;
-  overflow:visible;
-  border:0;
-  box-shadow:none;
-  background:none;
+  isolation:isolate;position:relative;z-index:1;overflow:visible;
+  border:0;background:none;box-shadow:none;
+  margin-top:clamp(150px,42vw,240px)!important;
 }
 body.ky-movie-palace .stage>.shell>.controls::before{
-  content:""!important;
-  display:block!important;
-  position:absolute!important;
-  inset:auto!important;
-  top:calc(-1 * clamp(123px,28vw,181px) + 4px)!important;
-  left:0!important;
-  right:0!important;
-  width:100%!important;
-  height:clamp(115px,26vw,165px)!important;
-  z-index:0!important;
+  content:""!important;display:block!important;
+  position:absolute!important;inset:auto!important;
+  top:calc(-1 * clamp(150px,42vw,240px) + 5px)!important;
+  left:-6px!important;right:-6px!important;
+  width:calc(100% + 12px)!important;
+  height:clamp(139px,40vw,224px)!important;
   pointer-events:none!important;
-  border:0!important;
-  border-radius:0!important;
-  background:url("./assets/movies/cozy-couch-mascots-mobile.svg") center bottom/contain no-repeat!important;
+  z-index:0!important;border:0!important;
+  border-radius:22px!important;
+  background-image:url("./assets/movies/real-ai-lounge-hero.webp")!important;
+  background-size:contain!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
   box-shadow:none!important;
-  filter:drop-shadow(0 0 9px #d18affa8)!important;
+  filter:drop-shadow(0 0 16px #e29af9be)!important;
   opacity:1!important;
-  animation:movie-lounge-couch-bob 6.8s ease-in-out infinite!important;
+  animation:movie-ai-lounge-float 7s ease-in-out infinite!important;
 }
-body.ky-movie-palace .stage>.shell>.controls::after{
-  content:none!important;display:none!important;
-}
-@keyframes movie-lounge-couch-bob{
+@keyframes movie-ai-lounge-float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-3px)}
 }
-body.ky-movie-palace .stage>.shell>.controls>*{
-  position:relative;
-  z-index:2;
-}
+body.ky-movie-palace .stage>.shell>.controls::after{content:none!important;display:none!important}
+body.ky-movie-palace .stage>.shell>.controls>*{position:relative;z-index:1}
 body.ky-movie-palace .stage>.shell>.controls .field-search{min-width:0}
 body.ky-movie-palace .stage>.shell>.controls :is(input,select){
-  color:#5c2d7a;
-  border:2px solid #e1aeff;
-  border-radius:16px;
-  background:linear-gradient(150deg,#fff3ff,#e9cdff);
-  font-weight:700;
-  box-shadow:0 0 0 2px #7535a7,0 0 14px #e1a1ff82,
-    0 5px 10px #25103c83,inset 0 2px #fff;
+  color:#4e2576;font-weight:700;border:2px solid #e7b6ff;
+  border-radius:17px;background:linear-gradient(145deg,#fff5ff,#e8c4ff);
+  box-shadow:0 0 0 2px #854bb6,0 0 13px #de9affaa,
+    0 6px 10px #2211369c,inset 0 2px #fff;
 }
-body.ky-movie-palace .stage>.shell>.controls input::placeholder{
-  color:#9563a8;opacity:1;
-}
-body.ky-movie-palace .stage>.shell>.controls :is(input,select):focus-visible{
-  outline:3px solid #ffe7ff;outline-offset:2px;
-}
+body.ky-movie-palace .stage>.shell>.controls input::placeholder{color:#9a6ba9;opacity:1}
 body.ky-movie-palace .stage>.shell>.controls #newEntry{
   position:relative;
-  padding-left:clamp(40px,5vw,56px);
-  border:2px solid #ffcfff;
-  border-radius:16px;
-  color:#51236d;
-  background:linear-gradient(145deg,#fff1fc,#eeb6ff 55%,#d48bec);
-  font-weight:800;
-  box-shadow:0 0 0 2px #9851c0,0 0 17px #eb9bffba,
-    0 7px 13px #3014428f,inset 0 2px #fff;
-  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+  padding-left:clamp(42px,5vw,55px);
+  color:#532570;font-weight:800;
+  border:2px solid #f5c4ff;border-radius:17px;
+  background:linear-gradient(145deg,#fff1ff,#e7b4ff,#c782eb);
+  box-shadow:0 0 0 2px #884bb9,0 0 16px #f2b7ffcd,
+    0 6px 12px #2f18479e,inset 0 2px #fff;
+  transition:transform .2s,box-shadow .2s,filter .2s;
 }
 body.ky-movie-palace .stage>.shell>.controls #newEntry::before{
-  content:"";
-  position:absolute;
-  width:clamp(27px,4vw,37px);
-  height:clamp(27px,4vw,37px);
-  left:9px;top:50%;
+  content:"";position:absolute;width:clamp(27px,4vw,37px);
+  height:clamp(27px,4vw,37px);left:8px;top:50%;
   transform:translateY(-50%);
-  pointer-events:none;
   background:url("./assets/all-memories/ky-add.webp") center/contain no-repeat;
+  pointer-events:none;
 }
-body.ky-movie-palace .stage>.shell>.controls #newEntry:is(:hover,:focus-visible){
-  filter:brightness(1.08);
-  transform:translateY(-2px);
-  box-shadow:0 0 0 2px #ae69d7,0 0 24px #f5beff,
-    0 9px 15px #3014428f,inset 0 2px #fff;
+body.ky-movie-palace .stage>.shell>.controls #newEntry:hover{
+  transform:translateY(-2px);filter:brightness(1.08);
+  box-shadow:0 0 0 2px #9c5ccc,0 0 25px #ffceff,0 8px 13px #2f18479e;
 }
-
-/* Sparkly Movies heading and readable real-time count. */
+/* "Movies" lettering uses the exact AI-generated neon marquee crop. */
+body.ky-movie-palace .stage>.shell>.section-header>.collection-heading{min-width:0}
 body.ky-movie-palace .section-header h2{
-  color:#fff0fe;
-  font:700 clamp(23px,5.3vw,34px)/1.16 Georgia,serif;
-  text-shadow:0 0 10px #eaacff,0 0 25px #c06dff,0 2px 3px #251034;
+  font-size:0!important;line-height:0!important;
+  text-shadow:none!important;color:transparent!important;
+  margin:0!important;padding:0!important;
 }
-body.ky-movie-palace .section-header h2::after{
-  content:"✦  ♡  ✦";
-  display:block;
-  width:auto;height:auto;
-  margin:3px 0 0;
-  border:0;
-  background:none;
-  box-shadow:none;
-  color:#ffc9f5;
-  font:14px/1 Georgia,serif;
-  letter-spacing:8px;
-  text-shadow:0 0 10px #ffa7fe;
+body.ky-movie-palace .section-header h2::before{
+  content:""!important;display:block!important;
+  width:clamp(150px,38vw,350px)!important;
+  max-width:100%;
+  height:clamp(37px,8vw,70px)!important;
+  background:url("./assets/movies/real-ai-movies-sign.webp") center/contain no-repeat!important;
+  filter:drop-shadow(0 0 10px #eda5ffbb);
 }
+body.ky-movie-palace .section-header h2::after{content:none!important;display:none!important}
 body.ky-movie-palace .section-header>.section-count,
 body.ky-movie-palace :is(#count,#sectionTime){
-  color:#ffe6fc;
-  text-shadow:0 0 9px #e19eff,0 2px 2px #210d36;
+  color:#fff0ff;text-shadow:0 0 9px #f4b1ff,0 2px 2px #27143c;
 }
-
-/* All eight original category tabs remain clickable and correctly labeled.
-   Icon+label layout comes from the existing global tab-proportions stylesheet. */
+/* Keep all eight existing destinations; no misleading mockup buttons. */
 body.ky-movie-palace .stage>.shell>.section-header>.tabs{
-  background:none;
-  box-shadow:none;
-  border:0;
-  overflow:visible;
+  border:0;background:none;box-shadow:none;overflow:visible;
 }
 body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip{
   position:relative;
-  color:#ffe9ff;
-  border:2px solid #b96bdf;
-  border-radius:17px;
-  background:linear-gradient(156deg,#512277ee,#803ba9eb 51%,#52277beb);
-  box-shadow:0 0 0 2px #432062,0 0 12px #b865ed68,
-    0 5px 10px #160b2685,inset 0 1px #efd2ff65;
-  text-shadow:0 1px 2px #2b123f;
-  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+  border:2px solid #b77ce3;border-radius:18px;
+  color:#fff0ff;
+  background:linear-gradient(150deg,#52277de9,#7942a6f1 58%,#46226ce9);
+  box-shadow:0 0 0 2px #341953,0 0 13px #d08afc99,
+    0 6px 12px #1c0b2e8b,inset 0 1px #fce2ff9a;
+  text-shadow:0 0 5px #f6c9ff;
+  transition:transform .2s,filter .2s,box-shadow .2s;
 }
 body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip::before{
-  filter:drop-shadow(0 0 4px #e1b3ff);
+  filter:drop-shadow(0 0 6px #f3c3ff);
 }
 body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip::after{
-  color:#fff3ff;
-  text-shadow:0 1px 2px #311448,0 0 4px #ffc8ff;
-  font-weight:800;
+  color:#fff4ff;text-shadow:0 1px 2px #24113b,0 0 6px #efa5ff;font-weight:800;
 }
 body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip[data-tab="movie"].selected{
-  border-color:#ffe0ff;
-  color:#56256f;
-  background:linear-gradient(150deg,#fff2ff,#e7b4ff 58%,#cd83ff);
-  box-shadow:0 0 0 2px #a464d0,0 0 19px #ffbfffe3,
-    0 6px 13px #2c1543a6,inset 0 2px #fff;
-  animation:movie-lounge-tab-glow 4.3s ease-in-out infinite;
+  border-color:#ffe1ff;
+  background:linear-gradient(150deg,#fff0ff,#e7b5ff 60%,#c682f1);
+  color:#50216e;
+  box-shadow:0 0 0 2px #b77bd9,0 0 23px #fbcafff0,
+    0 7px 13px #28143a93,inset 0 2px #fff;
+  animation:movie-ai-selected-glow 4.6s ease-in-out infinite;
 }
 body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip[data-tab="movie"].selected::after{
-  color:#502065;
-  text-shadow:0 1px #fff7ff;
+  color:#52246c;text-shadow:0 1px #fff;
 }
-@keyframes movie-lounge-tab-glow{
-  0%,100%{box-shadow:0 0 0 2px #a464d0,0 0 12px #e7a0ffa8,0 6px 13px #2c1543a6,inset 0 2px #fff}
-  50%{box-shadow:0 0 0 2px #c28ce7,0 0 24px #ffc5ff,0 6px 13px #2c1543a6,inset 0 2px #fff}
+@keyframes movie-ai-selected-glow{
+  0%,100%{box-shadow:0 0 0 2px #b77bd9,0 0 14px #e6abffd0,0 7px 13px #28143a93}
+  50%{box-shadow:0 0 0 2px #c995f1,0 0 27px #ffd9ff,0 7px 13px #28143a93}
 }
 body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip:not(.selected):hover{
-  filter:brightness(1.14);
-  transform:translateY(-2px);
+  transform:translateY(-2px);filter:brightness(1.1);
 }
-body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip:focus-visible{
-  outline:3px solid #ffe9ff;outline-offset:3px;
-}
-
-/* Kawaii movie cards inspired by the approved example:
-   luminous lavender frames with tall posters, hearts, tiny film details. */
+/* Real Polaroids are framed with the ACTUAL blank card from mockup one.
+   This is not a fabricated gradient approximation of the approved art. */
 body.ky-movie-palace .stage>.shell>#gallery{
-  gap:25px 16px;
-  padding:25px 8px 38px;
-  scrollbar-width:thin;
-  scrollbar-color:#c58af0 #3d1967;
-  align-items:start;
+  gap:23px 15px;padding:21px 7px 37px;
+  align-items:start;scrollbar-width:thin;
+  scrollbar-color:#c88dee #3e1a6b;
 }
 body.ky-movie-palace #gallery .polaroid{
-  position:relative;
-  isolation:isolate;
-  min-width:0;
-  width:100%;
-  overflow:visible;
-  text-align:left;
-  padding:11px 10px 19px;
-  border:3px solid #f9c8ff;
-  border-radius:24px;
+  position:relative;isolation:isolate;
+  overflow:visible;min-width:0;width:100%;
+  text-align:left;display:block;
+  padding:0 11px 17px;
   transform:none!important;
-  color:#4a236b;
-  background:
-    radial-gradient(circle at 8% 8%,#fff9ff 0 2px,transparent 5px),
-    radial-gradient(circle at 94% 91%,#fffaff 0 2px,transparent 5px),
-    linear-gradient(150deg,#f7d5ff,#dfb5ff 51%,#bd8de8);
-  box-shadow:0 0 0 2px #8e4fbd,0 0 0 4px #3c1a66,
-    0 0 16px #e18fffe3,0 0 29px #b05edc75,
-    0 13px 22px #14091fc7,inset 0 2px #fff;
-  transition:transform .25s ease,filter .25s ease,box-shadow .28s ease;
+  color:#4b2568;
+  border:2px solid #e3abff;
+  border-radius:25px;
+  background:linear-gradient(145deg,#e8bcff,#ce8fea 50%,#c28be8);
+  box-shadow:0 0 0 2px #8c4cb1,
+    0 0 20px #e6a6ffba,0 0 31px #b46bff77,
+    0 13px 22px #150820bc,inset 0 2px #fff8;
+  transition:filter .24s,box-shadow .24s,transform .24s;
 }
 body.ky-movie-palace #gallery .polaroid::before{
-  content:"";
-  position:absolute;
-  inset:4px;
-  z-index:3;
-  pointer-events:none;
-  border:1px solid #fff6ffb2;
-  border-radius:17px;
-  background:
-    radial-gradient(circle,#fff7ff 0 2px,transparent 2.7px)
-    left 1px top 16px/10px 24px repeat-y,
-    radial-gradient(circle,#fff7ff 0 2px,transparent 2.7px)
-    right 1px top 16px/10px 24px repeat-y;
-  box-shadow:inset 0 0 0 1px #a75ace47;
+  content:""!important;
+  display:block!important;
+  position:absolute;top:0;left:0;
+  z-index:0;pointer-events:none;
+  width:100%;height:auto;
+  aspect-ratio:230/289;
+  border:0;box-shadow:none;
+  background:url("./assets/movies/real-ai-movie-card.webp") center top/100% 100% no-repeat!important;
 }
 body.ky-movie-palace #gallery .polaroid::after{
-  content:"✦";
-  position:absolute;
-  z-index:4;
-  top:-10px;
-  right:8px;
-  pointer-events:none;
-  color:#fff0c9;
-  font:21px/1 Georgia,serif;
-  text-shadow:0 0 5px #ffe0fd,0 0 13px #ffb7ef;
+  content:"✦";position:absolute;top:-9px;right:6px;
+  z-index:3;pointer-events:none;
+  font:21px/1 Georgia,serif;color:#fff4ca;
+  text-shadow:0 0 8px #ffd4ff,0 0 13px #e6a5ff;
 }
 body.ky-movie-palace #gallery .polaroid:nth-child(-n+8)::after{
-  animation:movie-lounge-card-star 4.9s ease-in-out infinite;
+  animation:movie-ai-sparkle 5s ease-in-out infinite;
 }
 body.ky-movie-palace #gallery .polaroid:nth-child(3n+2)::after{animation-delay:-1.5s}
 body.ky-movie-palace #gallery .polaroid:nth-child(3n)::after{animation-delay:-3s}
-@keyframes movie-lounge-card-star{
-  0%,64%,100%{opacity:.52;transform:scale(.83) rotate(-16deg)}
-  75%{opacity:1;transform:scale(1.2) rotate(8deg)}
-  86%{opacity:.73;transform:scale(.94)}
+@keyframes movie-ai-sparkle{
+  0%,65%,100%{opacity:.45;transform:scale(.85)}
+  78%{opacity:1;transform:scale(1.2) rotate(15deg)}
+  87%{opacity:.8;transform:scale(.98)}
 }
 body.ky-movie-palace #gallery .polaroid:is(:hover,:focus-visible){
-  transform:translateY(-7px) scale(1.015)!important;
-  filter:brightness(1.055);
-  box-shadow:0 0 0 2px #f7d0ff,0 0 0 4px #713a9d,
-    0 0 30px #ffc8ff,0 18px 28px #160821db,inset 0 2px #fff;
+  transform:translateY(-6px) scale(1.01)!important;
+  filter:brightness(1.06);
+  box-shadow:0 0 0 2px #f9d3ff,0 0 28px #ffd0ff,
+    0 18px 28px #150820c9,inset 0 2px #fff;
 }
-body.ky-movie-palace #gallery .polaroid:active{
-  transform:scale(.99)!important;
+body.ky-movie-palace #gallery .polaroid:focus-visible,
+body.ky-movie-palace :is(button,input,select):focus-visible{
+  outline:3px solid #fff0cd;outline-offset:3px;
 }
-body.ky-movie-palace #gallery .polaroid:focus-visible{
-  outline:3px solid #fff1d2;outline-offset:6px;
-}
+/* Fit an actual uploaded poster INSIDE the art's blank inner window,
+   stopping above the illustrated popcorn and film-strip border. */
 body.ky-movie-palace .stage>.shell>#gallery .poster{
-  display:grid;
-  place-items:center;
-  position:relative;
+  position:relative;z-index:1;
+  width:70%!important;
   height:auto!important;
-  aspect-ratio:4/5!important;
+  aspect-ratio:.92!important;
+  margin:13% auto 30%;
   overflow:hidden;
-  border:2px solid #fff4ff;
-  border-radius:15px;
-  background:linear-gradient(145deg,#d6a1f6,#7648ba);
-  box-shadow:0 0 0 1px #aa65ce,0 3px 13px #48246b9e;
+  border:1px solid #f6dfff;
+  border-radius:10px;
+  background:linear-gradient(145deg,#d3a4f4,#9b62ce);
+  box-shadow:0 0 0 1px #ba80d5a3,0 2px 9px #502b6f80;
 }
 body.ky-movie-palace #gallery .poster img{
   display:block;width:100%;height:100%;object-fit:cover;
 }
 body.ky-movie-palace #gallery .poster::after{
-  content:"";
-  display:block;
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(113deg,transparent 17%,#ffffff08 35%,#fff4ff8f 47%,#ffffff08 59%,transparent 77%);
-  background-size:285% 100%;
-  background-position:125% 0;
-  box-shadow:inset 0 0 0 1px #f5d8ff99;
-  transition:background-position .8s ease;
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(110deg,transparent 23%,#fff5ff0c 36%,#fff2ff9c 49%,#fff5ff0c 61%,transparent 74%);
+  background-position:110% 0;background-size:290% 100%;
+  transition:background-position .8s;
 }
 body.ky-movie-palace #gallery .polaroid:is(:hover,:focus-visible) .poster::after{
-  background-position:-115% 0;
+  background-position:-100% 0;
 }
 body.ky-movie-palace #gallery .poster .placeholder{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:0!important;
-  opacity:1;
-}
-body.ky-movie-palace #gallery .poster .placeholder::before{
-  content:"";
-  display:block;
-  width:clamp(58px,13vw,91px);
-  height:clamp(58px,13vw,91px);
-  background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat;
-  filter:drop-shadow(0 0 11px #ffcaff);
+  display:grid;place-items:center;
+  font-size:clamp(19px,4vw,36px);opacity:.95;
 }
 body.ky-movie-palace #gallery .corner-heart{
-  z-index:4;
-  color:#ffc2ff;
-  background:#4c1c77e8;
-  border:1px solid #ffe2ff;
-  box-shadow:0 0 12px #d783ff;
+  z-index:2;color:#ffd1ff;background:#622e85db;
+  border:1px solid #ffdfff;box-shadow:0 0 8px #f5b5ff;
+}
+body.ky-movie-palace #gallery .polaroid>:not(.poster){
+  position:relative;z-index:1;
 }
 body.ky-movie-palace #gallery .polaroid h3{
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:2;
-  overflow:hidden;
-  white-space:normal;
-  overflow-wrap:anywhere;
-  min-height:2.15em;
-  margin:12px 2px 9px;
-  color:#4d236f;
-  text-shadow:0 1px #fff9ff;
-  font:700 clamp(14px,3.45vw,21px)/1.15 Georgia,serif;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;white-space:normal;overflow-wrap:anywhere;
+  min-height:2.2em;margin:0 2px 8px;
+  font:700 clamp(14px,3.4vw,20px)/1.16 Georgia,serif;
+  color:#50256e;text-shadow:0 1px #fff8ff;
 }
 body.ky-movie-palace #gallery .polaroid .rating-line{
   display:flex;flex-wrap:wrap;gap:5px;margin:0;
 }
 body.ky-movie-palace #gallery .polaroid .score{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  padding:4px 7px;
-  border:1px solid #b46ad7;
-  border-radius:25px;
-  color:#562b73;
-  background:linear-gradient(#fff3ff,#d9a4fa);
-  font:700 clamp(10px,2.5vw,13px)/1.1 Georgia,serif;
-  box-shadow:inset 0 1px #fff,0 2px 5px #7c3d9b6b;
+  display:inline-flex;align-items:center;gap:4px;
+  border:1px solid #a96cc9;border-radius:25px;
+  padding:4px 6px;color:#502774;
+  background:linear-gradient(#fff4ff,#dba9f7);
+  font:700 clamp(10px,2.4vw,13px)/1.1 Georgia,serif;
+  box-shadow:inset 0 1px #fff,0 2px 4px #7d48a478;
 }
 body.ky-movie-palace #gallery .score .score-heart .rating-heart-shape{
-  fill:#ffe7fb;stroke:#a35bce;
+  stroke:#994eb1;fill:#ffe6ff;
 }
 body.ky-movie-palace #gallery .score .score-heart.filled .rating-heart-shape{
-  fill:#db65d7;stroke:#823eae;
+  fill:#dc67cf;stroke:#8040a6;
 }
 body.ky-movie-palace #gallery .score .score-heart .rating-heart-shine{stroke:#fffaff}
 body.ky-movie-palace #gallery .polaroid .time-line{
-  display:flex;align-items:center;gap:4px;
-  margin:8px 2px 0;
-  color:#5b287c;
-  font:700 clamp(10px,2.55vw,14px)/1.2 Georgia,serif;
+  display:flex;align-items:center;gap:4px;margin:8px 1px 0;
+  color:#592f79;font:700 clamp(10px,2.5vw,14px)/1.2 Georgia,serif;
 }
 body.ky-movie-palace #gallery .time-line::before{
-  content:"";
-  display:inline-block;flex:none;
-  width:23px;height:23px;
+  content:"";display:inline-block;flex:none;width:21px;height:21px;
   background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat;
 }
-body.ky-movie-palace #gallery .polaroid .tagline{
-  display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;
-}
+body.ky-movie-palace #gallery .polaroid .tagline{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 body.ky-movie-palace #gallery .polaroid .tag{
-  padding:5px 7px;
-  border:1px solid #ba7bd7;
-  border-radius:20px;
-  color:#5a3375;
-  background:linear-gradient(#fcecff,#d3a0ec);
-  font:600 clamp(10px,2.3vw,12px)/1.16 Georgia,serif;
+  border:1px solid #b67ed5;border-radius:19px;
+  padding:4px 7px;color:#542d74;background:linear-gradient(#fbeeff,#d6a0ef);
+  font:600 clamp(10px,2.3vw,12px)/1.18 Georgia,serif;
   box-shadow:inset 0 1px #fff;
 }
 body.ky-movie-palace #empty{
-  color:#fff1ff;
-  border:2px solid #dca7ff;
-  background:linear-gradient(155deg,#7d43a6ed,#36185aee);
-  box-shadow:0 0 20px #d490ffab,0 14px 22px #1e0d2bd1;
+  color:#fff1ff;border:2px solid #dba7ff;
+  background:linear-gradient(155deg,#7744a7ea,#361959f3);
+  box-shadow:0 0 20px #d28effa1,0 12px 25px #1e0c30c0;
 }
-body.ky-movie-palace #empty h3{color:#ffe2ff}
-body.ky-movie-palace #empty .pop{
-  margin:auto;
-  width:77px;height:77px;
-  font-size:0!important;
-  background:url("./assets/all-memories/ky-movie.webp") center/contain no-repeat;
-}
+body.ky-movie-palace #empty h3{color:#fff1ff}
 body.ky-movie-palace #empty .btn.primary{
-  color:#54256f;
-  border:2px solid #f2ceff;
-  background:linear-gradient(#fff0ff,#dcaaee);
+  color:#582b78;background:linear-gradient(#f9dcff,#dfadf7);
 }
-body.ky-movie-palace .modal .dialog.glass{
-  color:#583b62;
-  background:linear-gradient(150deg,#fcf2ff,#ead9fa);
-}
-body.ky-movie-palace .modal .dialog .review{
-  color:#56375b;background:#fff7ff;
-}
-
-/* Same responsive structure and eight existing tabs as every other category. */
+body.ky-movie-palace .modal .dialog.glass{color:#54335e;background:linear-gradient(#fff7ff,#f1ddfa)}
+body.ky-movie-palace .modal .dialog .review{color:#50335b;background:#fff8ff}
+body.ky-movie-palace .footer{color:#f7dcff}
+/* Same authentic art on phones and computers; preserve existing tab proportions. */
 @media(min-width:701px){
+  body.ky-movie-palace .stage>.shell>.controls{
+    margin-top:clamp(265px,35vw,390px)!important;
+  }
   body.ky-movie-palace .stage>.shell>.controls::before{
-    top:calc(-1 * clamp(185px,17vw,255px) + 5px)!important;
-    height:clamp(164px,16vw,232px)!important;
-    background-image:url("./assets/movies/cozy-couch-mascots.svg")!important;
+    top:calc(-1 * clamp(265px,35vw,390px) + 6px)!important;
+    height:clamp(250px,33vw,375px)!important;
   }
   body.ky-movie-palace .stage>.shell>#gallery{
     grid-template-columns:repeat(auto-fill,minmax(205px,1fr));
@@ -581,61 +399,41 @@ body.ky-movie-palace .modal .dialog .review{
 }
 @media(max-width:700px){
   body.ky-movie-palace .stage>.shell>.topbar::before{
-    width:60px;height:60px;top:-42px;
+    top:-32px;width:55px;height:55px;
   }
-  body.ky-movie-palace .shell>.topbar .palace-wordmark{
-    font-size:clamp(14px,4.1vw,18px);
-  }
-  body.ky-movie-palace .stage>.shell>.controls #newEntry{
-    padding-left:43px;
-  }
-  body.ky-movie-palace .stage>.shell>.controls #newEntry::before{
-    width:29px;height:29px;left:7px;
-  }
-  body.ky-movie-palace .section-header h2{
-    font-size:clamp(21px,5.2vw,27px);
+  body.ky-movie-palace .shell>.topbar .palace-wordmark{font-size:clamp(14px,4vw,18px)}
+  body.ky-movie-palace .stage>.shell>.controls #newEntry{padding-left:43px}
+  body.ky-movie-palace .stage>.shell>.controls #newEntry::before{width:29px;height:29px;left:7px}
+  body.ky-movie-palace .section-header h2::before{
+    width:clamp(150px,40vw,220px)!important;height:43px!important;
   }
   body.ky-movie-palace .stage>.shell>#gallery{
-    gap:21px 10px;
-    padding:23px 5px 34px;
+    gap:19px 11px;padding:21px 5px 32px;
   }
   body.ky-movie-palace #gallery .polaroid{
-    padding:9px 8px 13px;
-    border-width:2px;
-    border-radius:19px;
+    padding:0 8px 12px;border-radius:19px;
   }
-  body.ky-movie-palace #gallery .polaroid::before{
-    inset:3px;border-radius:14px;
-  }
-  body.ky-movie-palace #gallery .polaroid h3{
-    font-size:clamp(13px,3.5vw,17px);
-  }
+  body.ky-movie-palace #gallery .polaroid h3{font-size:clamp(12px,3.5vw,17px)}
+  body.ky-movie-palace #gallery .polaroid .score{padding:3px 5px}
 }
 @media(max-width:390px){
-  body.ky-movie-palace .stage>.shell>.topbar::before{
-    width:52px;height:52px;top:-37px;
-  }
+  body.ky-movie-palace .stage>.shell>.controls{margin-top:145px!important}
   body.ky-movie-palace .stage>.shell>.controls::before{
-    height:113px!important;
+    top:-139px!important;height:132px!important;
   }
-  body.ky-movie-palace #gallery .polaroid .score{padding:4px 5px}
+  body.ky-movie-palace .stage>.shell>.topbar::before{width:48px;height:48px;top:-28px}
   body.ky-movie-palace #gallery .polaroid .tag{padding:4px 5px}
-  body.ky-movie-palace #gallery .polaroid .time-line{font-size:10px}
 }
-/* No decorative animation when the visitor requests reduced motion. */
+/* Honor system accessibility preferences and avoid perpetual idle effects. */
 @media(prefers-reduced-motion:reduce){
   body.ky-movie-palace .stage::after,
   body.ky-movie-palace .stage>.shell>.topbar::before,
   body.ky-movie-palace .stage>.shell>.topbar::after,
   body.ky-movie-palace .stage>.shell>.controls::before,
   body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip[data-tab="movie"].selected,
-  body.ky-movie-palace #gallery .polaroid::after{
-    animation:none!important;
-  }
+  body.ky-movie-palace #gallery .polaroid::after{animation:none!important}
   body.ky-movie-palace #gallery .polaroid,
   body.ky-movie-palace #gallery .poster::after,
   body.ky-movie-palace .stage>.shell>.controls #newEntry,
-  body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip{
-    transition:none!important;
-  }
+  body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip{transition:none!important}
 }
