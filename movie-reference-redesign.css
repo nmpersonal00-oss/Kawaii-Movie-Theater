@@ -1,633 +1,412 @@
 /*
- * KAWAII MOVIE THEATER · reference-aligned Movies presentation
- * Loaded after legacy style layers. Scoped to the Movies tab only.
- * Uses the owner's existing couch scene and card-frame art.
- * No forced fixed/cover wallpaper, no gallery scroll trap.
+ * MOVIES — matching TV Shows' exact portrait + landscape full-room layout.
+ * SINGLE active stylesheet: no boxed hero or duplicate immersive override.
+ * Uses the same fixed full-page background strategy as the Games tab.
+ * Styling only; original working data, search, ratings and other tabs intact.
  */
 body.ky-movie-palace{
-  --movie-hero-height:clamp(305px,28vw,425px);
-  background:#240d47!important;
-  color:#fff1ff;
+  --tv-ink:#351a57;
+  --tv-deep:#241039;
+  --tv-glow:#e7a5ff;
+  --tv-lilac:#e2bdff;
+  --tv-violet:#a95bf2;
+  --tv-ivory:#fff0fe;
+  background:#1d0a34;
+  color:var(--tv-ivory);
 }
-body.ky-movie-palace .stage{
-  isolation:isolate;
-  position:relative;
-  min-height:100dvh;
-  background:
-    radial-gradient(ellipse 62% 43% at 50% 53%,#7737aa88,transparent 78%),
-    radial-gradient(ellipse 50% 46% at 0% 72%,#a34bc766,transparent 80%),
-    radial-gradient(ellipse 50% 46% at 100% 76%,#903cb966,transparent 80%),
-    linear-gradient(180deg,#2e1250 0%,#401767 48%,#351351 100%)!important;
-}
+body.ky-movie-palace .stage{position:relative;isolation:isolate;min-height:100dvh;background:none!important}
+/* True full-viewport room wallpaper. Never a panel inside .controls. */
 body.ky-movie-palace .stage::before{
   content:""!important;
   display:block!important;
-  position:absolute!important;
-  top:0!important;left:0!important;right:0!important;
+  position:fixed!important;
+  inset:0!important;
   width:100%!important;
-  height:var(--movie-hero-height)!important;
+  height:100%!important;
+  z-index:-1!important;
   pointer-events:none!important;
-  z-index:0!important;
-  border:0!important;
-  border-radius:0!important;
   opacity:1!important;
-  filter:none!important;
   transform:none!important;
-  animation:none!important;
-  background-color:#37165f!important;
-  background-image:
-    linear-gradient(180deg,transparent 74%,#321452 100%),
-    url("./assets/movies/real-ai-lounge-hero.webp")!important;
-  background-size:100% 100%,cover!important;
-  background-position:center,center 47%!important;
-  background-repeat:no-repeat!important;
-}
-body.ky-movie-palace .stage::after{
-  content:""!important;
-  display:block!important;
-  position:absolute!important;
-  inset:var(--movie-hero-height) 0 0!important;
-  width:auto!important;height:auto!important;
-  z-index:0!important;
-  pointer-events:none!important;
-  opacity:.28!important;
-  border:0!important;
   filter:none!important;
-  transform:none!important;
   animation:none!important;
-  background:
-    radial-gradient(circle at 9% 14%,#fff0bd 0 2px,transparent 4px),
-    radial-gradient(circle at 85% 21%,#ffe5ff 0 2px,transparent 4px),
-    radial-gradient(circle at 72% 76%,#f9ccff 0 1px,transparent 3px),
-    radial-gradient(circle at 20% 84%,#ffe2ba 0 2px,transparent 4px)!important;
-  background-size:320px 310px,410px 390px,215px 240px,480px 415px!important;
-}
-body.ky-movie-palace .stage>.shell{
-  box-sizing:border-box;
-  isolation:isolate;
-  position:relative;
-  z-index:2;
-  display:flex!important;
-  flex-direction:column;
-  align-items:stretch;
-  width:100%!important;
-  max-width:1450px!important;
-  margin:0 auto!important;
-  padding:calc(var(--movie-hero-height) + 8px) clamp(14px,3.5vw,50px) 78px!important;
-  gap:0!important;
-}
-body.ky-movie-palace .stage>.shell::before{content:none!important;display:none!important}
-body.ky-movie-palace .stage>.shell>.topbar{
-  position:absolute!important;
-  top:18px;left:clamp(14px,4vw,56px);
-  display:flex!important;
-  justify-content:center!important;
-  width:auto!important;max-width:250px!important;
-  height:auto!important;min-height:0!important;
-  padding:12px 18px!important;
-  margin:0!important;
-  border:2px solid #f1c0ff!important;
-  border-radius:24px!important;
-  background:#3e145fc4!important;
-  box-shadow:0 0 0 2px #7b369d,0 0 22px #f2b2ffaf,inset 0 1px #fff7!important;
-  backdrop-filter:blur(8px)!important;
-}
-body.ky-movie-palace .stage>.shell>.topbar::before,
-body.ky-movie-palace .stage>.shell>.topbar::after{
-  display:none!important;content:none!important;
-}
-body.ky-movie-palace .stage>.shell>.topbar .palace-trigger{
-  display:flex!important;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:0;
-  padding:0!important;
-  min-width:0!important;
-  border:0!important;
-  background:none!important;
-  box-shadow:none!important;
-}
-body.ky-movie-palace .stage>.shell>.topbar .palace-wordmark{
-  font-size:0!important;
-  line-height:1;
-}
-body.ky-movie-palace .stage>.shell>.topbar .palace-wordmark::before{
-  content:"Kawaii ✦ Movie Theater";
-  display:block;
-  max-width:205px;
-  font:bold italic clamp(19px,2.1vw,29px)/1.05 Georgia,serif;
-  color:#ffe5ff;
-  text-shadow:0 0 6px #fff,0 0 19px #f08cff,0 2px #6e2d97;
-}
-body.ky-movie-palace .stage>.shell>.topbar .palace-heart,
-body.ky-movie-palace .stage>.shell>.topbar .palace-status{
-  display:none!important;
-}
-body.ky-movie-palace .stage>.shell>.stats{display:none!important}
-/* Unwrap the old section grid so navigation, filters and cards
- * can follow the mockup order without moving any JS-controlled element. */
-body.ky-movie-palace .stage>.shell>.section-header{
-  display:contents!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header::before,
-body.ky-movie-palace .stage>.shell>.section-header::after{
-  content:none!important;display:none!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header>.collection-heading{
-  order:0;
-  display:block!important;
-  height:0!important;min-height:0!important;
-  margin:0!important;
-  padding:0!important;
-  overflow:visible!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header h2{
-  display:block!important;
-  position:static!important;
-  padding:0!important;margin:0!important;
-  font-size:0!important;line-height:0!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header h2::before{
-  content:""!important;
-  position:absolute!important;
-  display:block!important;
-  left:50%!important;
-  top:calc(var(--movie-hero-height) - 91px)!important;
-  width:clamp(190px,32vw,345px)!important;
-  max-width:75%!important;
-  height:82px!important;
-  transform:translateX(-50%);
   border:0!important;
   border-radius:0!important;
-  pointer-events:none!important;
-  background:url("./assets/movies/real-ai-movies-sign.webp") center/contain no-repeat!important;
-  box-shadow:none!important;
-  filter:drop-shadow(0 0 13px #ffd8ff)!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header h2::after{
-  content:none!important;display:none!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs{
-  box-sizing:border-box!important;
-  display:flex!important;
-  flex-wrap:nowrap!important;
-  justify-content:flex-start!important;
-  align-items:stretch!important;
-  order:1;
-  width:100%!important;
-  max-width:none!important;
-  min-width:0!important;
-  gap:11px!important;
-  margin:0 0 17px!important;
-  padding:9px 4px!important;
-  overflow-x:auto!important;
-  overflow-y:hidden!important;
-  scrollbar-width:thin;
-  scrollbar-color:#bf7ce0 transparent;
-  border:0!important;
-  border-radius:30px!important;
-  background:rgba(52,17,82,.45)!important;
-  box-shadow:none!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip{
-  display:flex!important;
-  flex:1 0 auto!important;
-  flex-direction:row!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:10px!important;
-  width:auto!important;min-width:max-content!important;
-  height:65px!important;min-height:65px!important;
-  padding:11px clamp(13px,1.5vw,25px)!important;
-  border:2px solid #a75ccc!important;
-  border-radius:999px!important;
-  color:#fff0ff!important;
-  font:bold clamp(12px,1.2vw,17px)/1.2 'Trebuchet MS',sans-serif!important;
-  white-space:nowrap!important;
-  background:linear-gradient(135deg,#542278e8,#63288aef)!important;
-  box-shadow:inset 0 1px #f8d5ff6b,0 0 10px #c87be080!important;
-  text-shadow:0 1px 2px #351449!important;
-}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip::before{
-  content:""!important;
-  display:block!important;
-  flex:0 0 27px!important;
-  width:27px!important;height:27px!important;
-  background-size:contain!important;
-  background-position:center!important;
+  background-color:#41174e!important;
+  background-image:url('./assets/tv/tv-owner-lounge-portrait.webp')!important;
+  background-position:center top!important;
+  background-size:auto 125%!important;
   background-repeat:no-repeat!important;
 }
-body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip::after{
-  content:none!important;display:none!important;
+body.ky-movie-palace .stage::after{content:none!important;display:none!important}
+body.ky-movie-palace .shell{position:relative;z-index:2;width:100%;max-width:1130px;
+  margin:auto;padding:clamp(35px,9vw,76px) clamp(9px,2.7vw,26px) 65px}
+body.ky-movie-palace .shell::before{display:none!important}
+body.ky-movie-palace :is(.palace-wordmark,.stat strong,.section-header h2,.polaroid h3,.section-count){
+  font-family:'Iowan Old Style',Baskerville,'Palatino Linotype',Georgia,serif;
 }
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="movie"]{order:0}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="all"]{order:1}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="next"]{order:2}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="favorite"]{order:3}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="current"]{order:4}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="show"]{order:5}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="game"]{order:6}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs [data-tab="trash"]{order:7}
-body.ky-movie-palace .stage>.shell>.section-header>.tabs .chip.selected{
-  color:#55266d!important;
-  border-color:#fff0ff!important;
-  background:linear-gradient(155deg,#fbd1ff,#d78bef 65%,#efb3f9)!important;
-  box-shadow:0 0 0 2px #dd9bfa,0 0 22px #f9bbff,inset 0 2px #fff!important;
-  text-shadow:0 1px #fff9!important;
+/* Violet neon entrance plaque: centred wordmark and a separate KY cloud. */
+body.ky-movie-palace .shell>.topbar{
+  position:relative;isolation:isolate;display:flex;justify-content:center!important;align-items:center;
+  min-height:61px;margin:0 8px 12px;padding:10px 8px;
+  border:2px solid #ebb7ff;border-radius:100px;
+  background:linear-gradient(140deg,#73318acc,#35134ce8 57%,#7a369bbd);
+  box-shadow:0 0 0 2px #ca78ec66,0 0 17px #df7aff9c,
+    0 7px 24px #0c0415da,inset 0 1px #ffe4ffb3,inset 0 -4px 11px #2d063789;
 }
-body.ky-movie-palace .stage>.shell>.controls{
-  box-sizing:border-box!important;
-  display:grid!important;
-  grid-template-columns:minmax(180px,1.3fr) minmax(130px,.8fr) minmax(165px,.9fr) auto!important;
-  align-items:center!important;
-  order:2;
-  width:100%!important;
-  min-width:0!important;
-  gap:12px!important;
-  margin:0 0 6px!important;
-  padding:12px!important;
-  border:1px solid #9354b7!important;
-  border-radius:25px!important;
-  background:rgba(53,18,81,.77)!important;
-  box-shadow:0 14px 30px #16072d60!important;
+body.ky-movie-palace .shell>.topbar::before{
+  content:"";position:absolute;z-index:3;top:-16px;left:-7px;
+  height:61px;width:63px;pointer-events:none;
+  background:url('./assets/all-memories/ky-movie.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 8px #e59bffb5);
 }
-body.ky-movie-palace .stage>.shell>.controls::before,
-body.ky-movie-palace .stage>.shell>.controls::after{
-  content:none!important;display:none!important;
+body.ky-movie-palace .shell>.topbar::after{
+  content:"";position:absolute;inset:6px;border:1px dotted #ffdfffac;
+  border-radius:inherit;pointer-events:none;box-shadow:none;
 }
-body.ky-movie-palace .stage>.shell>.controls .field-search{
-  grid-column:auto!important;
-  min-width:0!important;
-  width:100%!important;
+body.ky-movie-palace .shell>.topbar .palace-trigger{
+  display:flex;justify-content:center!important;align-items:center;position:relative;z-index:4;
+  width:100%;min-width:0;min-height:40px;padding:3px clamp(34px,7vw,60px)!important;
+  gap:0!important;text-align:center!important;color:#fff4fc;
 }
-body.ky-movie-palace .stage>.shell>.controls :is(input,select){
-  width:100%!important;min-width:0!important;
-  height:49px!important;min-height:49px!important;
-  border:2px solid #bf7ae3!important;
-  border-radius:999px!important;
-  color:#fff4ff!important;
-  background:#542979!important;
-  box-shadow:inset 0 2px 9px #210e446e,0 0 8px #bd6bda44!important;
+body.ky-movie-palace .shell>.topbar .palace-wordmark{
+  display:block;flex:1 1 auto;min-width:0;width:100%;margin:0 auto;
+  text-align:center!important;white-space:normal!important;
+  font:700 clamp(16px,4.25vw,32px)/1.16 Georgia,serif;color:#fff3ff;
+  text-shadow:0 1px #271035,0 0 10px #f6b1ffaf;
 }
-body.ky-movie-palace .stage>.shell>.controls select option{background:#462162;color:#fff}
-body.ky-movie-palace .stage>.shell>.controls input::placeholder{color:#e9c5f7!important}
-body.ky-movie-palace .stage>.shell>.controls #newEntry{
-  grid-column:auto!important;
-  width:auto!important;min-width:0!important;
-  height:54px!important;min-height:54px!important;
-  padding:8px 17px 8px 49px!important;
-  border:2px solid #f4c6ff!important;
-  border-radius:999px!important;
-  color:#4a246b!important;
-  background:linear-gradient(140deg,#f7d5ff,#c883ea)!important;
-  box-shadow:0 0 14px #f5a5ffbd,inset 0 2px #fff!important;
-  white-space:nowrap!important;
+body.ky-movie-palace .shell>.topbar .palace-heart{color:#ffd6fa;text-shadow:0 0 9px #f89cff}
+body.ky-movie-palace .shell>.topbar .palace-status{
+  display:block;position:absolute!important;right:clamp(0px,2vw,14px);left:auto!important;
+  top:50%;transform:translateY(-50%)!important;
+  width:23px;height:23px;flex:none;font-size:0!important;pointer-events:none;
+  background:url('./assets/watch-next/ky-cloud.svg') center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #fff2ffb1);
 }
-body.ky-movie-palace .stage>.shell>.controls #newEntry::before{
-  width:34px!important;height:34px!important;
-  left:9px!important;
+/* Four real app totals, presented in one glowing lilac cushion-like strip. */
+body.ky-movie-palace .shell>.stats{
+  position:relative;display:block;overflow:visible;margin:0 4px;
+  padding:12px 8px 10px;border:2px solid #ffe1ff;border-radius:23px;
+  background:linear-gradient(145deg,#f3ddffef,#d6a6f7f5 51%,#ecd0ffed);
+  box-shadow:0 0 0 2px #b35dd775,0 0 19px #e18dff8a,
+    0 13px 22px #1a082cca,inset 0 2px #fff9;
 }
-body.ky-movie-palace .stage>.shell>.section-header>.section-count{
-  order:3;
-  align-self:flex-end!important;
-  display:flex!important;
-  justify-content:flex-end!important;
-  gap:8px!important;
-  width:auto!important;max-width:100%!important;
-  padding:8px 16px!important;
-  margin:8px 0 14px!important;
-  border:2px solid #a658d4!important;
-  border-radius:999px!important;
-  color:#fff1ff!important;
-  background:linear-gradient(120deg,#57257f,#8041ab)!important;
-  box-shadow:0 0 14px #e59bfa9a!important;
+body.ky-movie-palace .shell>.stats::before{content:none!important}
+body.ky-movie-palace .shell>.stats::after{
+  content:"";position:absolute;bottom:4px;left:25%;right:25%;height:1px;
+  background:linear-gradient(90deg,transparent,#fff9ff,transparent);pointer-events:none;
 }
-body.ky-movie-palace .stage>.shell>.section-header>.section-count :is(#count,#sectionTime){
-  color:#fff1ff!important;font:bold 15px 'Trebuchet MS',sans-serif!important;
+body.ky-movie-palace .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+body.ky-movie-palace .stats-grid .stat{
+  padding:4px 3px 8px;min-width:0;border:0;border-radius:0;background:none;box-shadow:none;
 }
-body.ky-movie-palace .stage>.shell>#gallery{
-  box-sizing:border-box!important;
-  display:grid!important;
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
-  align-items:start!important;
-  order:4;
-  width:100%!important;
-  max-height:none!important;
-  min-width:0!important;
-  gap:26px clamp(12px,2vw,25px)!important;
-  margin:0!important;
-  padding:14px 5px 35px!important;
-  overflow:visible!important;
+body.ky-movie-palace .stats-grid .stat:not(:first-child){box-shadow:inset 1px 0 #945baa52}
+body.ky-movie-palace .stat strong{
+  display:block;margin:0 0 2px;color:#4a166c;
+  font:700 clamp(20px,4.8vw,30px)/1 Georgia,serif;text-shadow:0 1px #fff7;
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid{
-  display:flex!important;
-  flex-direction:column;
-  width:100%!important;
-  min-width:0!important;
-  height:auto!important;
-  padding:9px 9px 13px!important;
-  overflow:hidden!important;
-  border:3px solid #eaaeff!important;
-  border-radius:30px!important;
-  background:linear-gradient(160deg,#eeb6fb,#c17ee4 60%,#b06cdb)!important;
-  box-shadow:0 0 0 2px #a85ecb,0 0 19px #f2b0ffac,0 12px 22px #20072a9c,inset 0 2px #fff8!important;
-  transform:none!important;
-  animation:none!important;
+body.ky-movie-palace .stat span{
+  display:block;max-width:120px;margin:auto;color:#582e6d;
+  font:500 clamp(9px,2.2vw,12px)/1.14 Georgia,serif;
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid:focus-visible{
-  outline:3px solid #fff4ad!important;
-  outline-offset:5px;
+body.ky-movie-palace .stats-total{margin-top:5px;padding-top:6px;border-top:1px solid #a666b05b;gap:6px}
+body.ky-movie-palace .stats-total-label{
+  color:#56276a;font:700 clamp(9px,2vw,12px)/1.2 Georgia,serif;text-transform:uppercase;
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid:is(:hover,:focus-visible){
-  transform:translateY(-4px)!important;
-  box-shadow:0 0 0 2px #d69cf5,0 0 25px #ffe0ff,0 15px 24px #20072a9c!important;
+body.ky-movie-palace #overallTimeStat{display:inline-flex;align-items:center;gap:4px;
+  color:#481968;font:700 clamp(13px,3.5vw,20px)/1.1 Georgia,serif}
+body.ky-movie-palace #overallTimeStat::before,body.ky-movie-palace #sectionTime::before{
+  content:"";display:inline-block;flex:none;width:24px;height:24px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #c381ff);
 }
-body.ky-movie-palace .stage>.shell>#gallery .poster{
-  display:block!important;
-  width:100%!important;
-  height:auto!important;
-  aspect-ratio:4/4.6!important;
-  margin:0 0 9px!important;
-  border:2px solid #fce8ff!important;
-  border-radius:20px!important;
-  background-color:#8650b9!important;
-  background-size:cover!important;
-  background-position:center!important;
+/* The opening room remains visible in the vertical breathing space: no added image layer. */
+body.ky-movie-palace .shell>.controls{
+  position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:10px;row-gap:10px;
+  margin:clamp(123px,28vw,181px) 3px 13px;
+  padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;
 }
-body.ky-movie-palace .stage>.shell>#gallery .poster img{
-  object-fit:cover!important;
-  border-radius:17px!important;
+body.ky-movie-palace .shell>.controls::before{content:none!important;display:none!important}
+body.ky-movie-palace .shell>.controls::after{content:none!important}
+body.ky-movie-palace .shell>.controls .field-search{
+  grid-column:1/-1;min-width:0;position:relative;width:100%;
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid h3{
-  font-size:clamp(13px,1.6vw,20px)!important;
-  margin:4px 3px 6px!important;
-  min-height:0!important;
+body.ky-movie-palace .shell>.controls .field-search::before{
+  content:"";position:absolute;z-index:2;left:12px;top:50%;transform:translateY(-50%);
+  width:31px;height:31px;pointer-events:none;
+  background:url('./assets/all-memories/ky-search.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 5px #d87dff);
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid :is(.rating-line,.tagline){
-  gap:5px!important;
-  flex-wrap:wrap!important;
+body.ky-movie-palace .shell>.controls .field-search::after{
+  content:"";position:absolute;z-index:2;right:12px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;pointer-events:none;
+  background:url('./assets/all-memories/ky-movie.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #e99dff);
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid .score{
-  background:#572481!important;color:#fff3ff!important;
-  border:1px solid #cb8be9!important;
+body.ky-movie-palace .shell>.controls :is(input,select){
+  appearance:none;-webkit-appearance:none;
+  width:100%;min-width:0;min-height:48px;padding:10px 34px 10px 47px;
+  border:2px solid #e8adfc;border-radius:22px;color:#ffe8ff;
+  background:#4c2166;
+  font:500 clamp(13px,3.5vw,18px)/1.2 Georgia,serif;
+  box-shadow:0 0 0 1px #8146a6,0 0 14px #d68bf7a1,
+    0 4px 14px #1a063bba,inset 0 1px #ffeaff63;
 }
-body.ky-movie-palace .stage>.shell>#gallery .polaroid .tag{
-  color:#592873!important;
-  background:#f5d1ff!important;
+body.ky-movie-palace .shell>.controls #search{
+  background:linear-gradient(145deg,#bd83daeb,#8154b9f5 85%);color:#fff4ff;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card{
-  cursor:pointer;
-  padding:9px 9px 12px!important;
+body.ky-movie-palace .shell>.controls input::placeholder{color:#ffe5ff;opacity:1}
+body.ky-movie-palace .shell>.controls #genreFilter{
+  background:url('./assets/all-memories/ky-movie.webp') left 9px center/34px 34px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 11px center/14px 12px no-repeat,
+    linear-gradient(#75318dbd,#4b2165ee);
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card::after{
-  content:"♡"!important;
-  display:grid!important;
-  place-items:center;
-  position:absolute;
-  top:18px;right:18px;
-  width:39px;height:39px;
-  border:1px solid #ffd6ff;
-  border-radius:100%;
-  color:#ffe6ff;
-  background:#4a1a72d9!important;
-  font:700 31px/1 Georgia,serif;
-  text-shadow:0 0 6px #e2a6f3;
-  box-shadow:0 0 8px #e0a5ff;
+body.ky-movie-palace .shell>.controls #sort{
+  background:url('./assets/all-memories/ky-sort.webp') left 10px center/32px 32px no-repeat,
+    url('./assets/watch-next/ky-chevron.svg') right 11px center/14px 12px no-repeat,
+    linear-gradient(#75318dbd,#4b2165ee);
+}
+body.ky-movie-palace .shell>.controls #newEntry{
+  grid-column:1/-1;position:relative;display:flex;align-items:center;justify-content:center;
+  width:100%;min-width:0;min-height:52px;padding:7px 14px;gap:8px;
+  border:2px dotted #ffe2fc;border-radius:22px;color:#fff0ff;
+  background:linear-gradient(140deg,#aa64cde9,#723faeea 56%,#9b5fc5e8);
+  font:700 clamp(17px,4.3vw,24px)/1.1 Georgia,serif;
+  text-shadow:0 1px #45235a,0 0 9px #ffe0f86a;
+  box-shadow:0 0 0 2px #b46be571,0 0 19px #df93ffb1,
+    0 5px 16px #220735b1,inset 0 1px #fff7;
+}
+body.ky-movie-palace .shell>.controls #newEntry::before{
+  content:"";display:block;flex:none;width:34px;height:34px;
+  background:url('./assets/all-memories/ky-add.webp') center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #e8baff);
+}
+body.ky-movie-palace .shell>.controls #newEntry::after{
+  content:"♡  ✦  ♡";position:absolute;inset:auto 14px -10px;pointer-events:none;
+  text-align:center;color:#fce9ff;font:14px/1 Georgia,serif;letter-spacing:14px;
+  text-shadow:0 0 8px #ffb1ff;
+}
+body.ky-movie-palace .shell>.controls #newEntry:is(:hover,:focus-visible){filter:brightness(1.1)}
+body.ky-movie-palace :is(button,select,input):focus-visible{outline:3px solid #ffe8ff;outline-offset:3px}
+/* True collection heading and real counts; not hard-coded sample figures. */
+body.ky-movie-palace .section-header{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  column-gap:8px;row-gap:12px;align-items:center;
+  margin:21px 3px 10px;
+}
+body.ky-movie-palace .section-header>.collection-heading{min-width:0}
+body.ky-movie-palace .section-header h2{
+  font:italic 600 clamp(24px,5.6vw,39px)/1.05 Georgia,serif;
+  letter-spacing:-.025em;color:#ffdcff;
+  text-shadow:0 0 4px #f6c2ff,0 0 15px #cc83ffac;
+}
+body.ky-movie-palace .section-header h2::after{
+  content:"";display:block;width:min(95%,420px);height:2px;margin-top:10px;
+  border-radius:2px;background:linear-gradient(90deg,#fff1ff,#d997fc 70%,transparent);
+  box-shadow:0 0 8px #e1a1ff;
+}
+body.ky-movie-palace .section-count{max-width:148px;align-items:flex-end;text-align:right;gap:3px}
+body.ky-movie-palace .section-count #count{color:#ffe5ff;font:700 clamp(13px,3.2vw,19px)/1.15 Georgia,serif;text-shadow:0 0 9px #e1a2ff}
+body.ky-movie-palace .section-count #sectionTime{display:inline-flex;align-items:center;gap:4px;
+  color:#eed5ff;font:700 clamp(13px,3.2vw,18px)/1.1 Georgia,serif}
+/* Existing eight filter buttons: original text remains for assistive tech;
+   new KY icons and labels are visual, eliminating platform emojis. */
+body.ky-movie-palace .section-header>.tabs{
+  grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;
+  margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;
+}
+body.ky-movie-palace .section-header>.tabs .chip,
+body.ky-movie-palace .section-header>.tabs .chip[data-tab="current"]{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  min-width:0;width:100%;min-height:61px;padding:5px 2px;margin:0;
+  border:1px solid #dc9cfa;border-radius:15px;color:#fff0ff;
+  background:linear-gradient(147deg,#7a399beb,#34164feb 76%,#603080ec);
+  box-shadow:0 0 8px #c37de875,inset 0 1px #ffe8ff6d,0 3px 9px #18082abb;
+  text-align:center;text-shadow:0 1px #221036;font-size:0!important;
+}
+body.ky-movie-palace .section-header>.tabs .chip::before{
+  content:""!important;display:block;flex:none;
+  width:clamp(24px,5.6vw,35px);height:clamp(24px,5.6vw,35px);
+  background-position:center;background-size:contain;background-repeat:no-repeat;
+  filter:drop-shadow(0 0 4px #ffdcff7f);
+}
+body.ky-movie-palace .section-header>.tabs .chip::after{
+  display:block;color:inherit;text-align:center;
+  font:700 clamp(9px,2.2vw,12px)/1.15 Georgia,serif;
+}
+body.ky-movie-palace .section-header>.tabs [data-tab="all"]::before{background-image:url('./assets/all-memories/ky-all.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="movie"]::before{background-image:url('./assets/all-memories/ky-movie.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="show"]::before{background-image:url('./assets/all-memories/ky-show.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="game"]::before{background-image:url('./assets/all-memories/ky-game.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="next"]::before{background-image:url('./assets/all-memories/ky-next.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="current"]::before{background-image:url('./assets/all-memories/ky-current.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="favorite"]::before{background-image:url('./assets/all-memories/ky-favorite.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="trash"]::before{background-image:url('./assets/all-memories/ky-trash.webp')}
+body.ky-movie-palace .section-header>.tabs [data-tab="all"]::after{content:"All memories"}
+body.ky-movie-palace .section-header>.tabs [data-tab="movie"]::after{content:"Movies"}
+body.ky-movie-palace .section-header>.tabs [data-tab="show"]::after{content:"TV shows"}
+body.ky-movie-palace .section-header>.tabs [data-tab="game"]::after{content:"Games"}
+body.ky-movie-palace .section-header>.tabs [data-tab="next"]::after{content:"Watch / Play Next"}
+body.ky-movie-palace .section-header>.tabs [data-tab="current"]::after{content:"Currently Watching / Playing"}
+body.ky-movie-palace .section-header>.tabs [data-tab="favorite"]::after{content:"Favorites"}
+body.ky-movie-palace .section-header>.tabs [data-tab="trash"]::after{content:"Trash"}
+body.ky-movie-palace .section-header>.tabs [data-tab="movie"].selected{
+  color:#351447;text-shadow:0 1px #fff9;
+  border:2px solid #fff1ff;
+  background:linear-gradient(145deg,#ffe0ff,#eab9ff 58%,#d58aff);
+  box-shadow:0 0 0 2px #a853c388,0 0 19px #e49affde,
+    0 5px 11px #23083fc8,inset 0 1px #fff;
+}
+body.ky-movie-palace .section-header>.tabs .chip:not(.selected):hover{filter:brightness(1.12)}
+/* Actual clickable movie posters, ratings, time and genres preserved. No bows. */
+body.ky-movie-palace #gallery{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px 13px;padding:20px 6px 33px;
+  max-height:85dvh;overflow-x:hidden;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:#d6a6ff #321b4d;
+}
+body.ky-movie-palace #gallery .polaroid{
+  position:relative;isolation:isolate;min-width:0;
+  display:block;width:100%;padding:11px 9px 15px;
+  transform:none;border:2px solid #f4c5ff;border-radius:23px;
+  background:
+    radial-gradient(circle at 94% 6%,#fff8ffbd 0 2px,transparent 4px),
+    radial-gradient(circle at 5% 94%,#fff8ff93 0 2px,transparent 4px),
+    repeating-linear-gradient(138deg,#f8e0ff19 0px 1px,transparent 2px 10px),
+    linear-gradient(160deg,#f0ceff 0%,#d6b0f4 60%,#ebc7ff 100%);
+  color:#421b58;text-align:left;
+  box-shadow:0 0 0 2px #a964d4bd,0 0 16px #ecaeff9c,
+    0 12px 23px #21062dd1,inset 0 1px #fff,inset 0 0 17px #fff6;
+  transition:transform .18s,filter .18s,box-shadow .18s;
+}
+body.ky-movie-palace #gallery .polaroid::before{
+  content:"";position:absolute;inset:4px;z-index:3;pointer-events:none;
+  border:1px dashed #fef1fff0;border-radius:18px;
+  box-shadow:inset 0 0 0 1px #d48ff56b;
+  background:radial-gradient(circle at 4% 4%,#fff 0 3px,transparent 5px),
+    radial-gradient(circle at 96% 4%,#fff 0 3px,transparent 5px),
+    radial-gradient(circle at 4% 96%,#fff 0 3px,transparent 5px),
+    radial-gradient(circle at 96% 96%,#fff 0 3px,transparent 5px);
+}
+body.ky-movie-palace #gallery .polaroid::after{
+  content:"✦";position:absolute;right:13px;bottom:7px;z-index:4;
+  color:#fff1ff;font:19px/1 Georgia,serif;text-shadow:0 0 7px #cb60e6;
   pointer-events:none;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card .poster{
-  aspect-ratio:4/4.7!important;
-  margin-bottom:9px!important;
+body.ky-movie-palace #gallery .polaroid:is(:hover,:focus-visible){
+  transform:translateY(-4px);filter:brightness(1.05);
+  box-shadow:0 0 0 2px #ab6ce0,0 0 22px #edc5ff,
+    0 18px 27px #21072dec,inset 0 1px #fff;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card:nth-child(4n+1) .poster{
-  background-image:url("./assets/movies/dream-poster-castle.svg")!important;
+body.ky-movie-palace #gallery .poster{
+  height:auto;aspect-ratio:1.28/1;overflow:hidden;position:relative;
+  border:2px solid #fff3ff;border-radius:14px;
+  background:linear-gradient(145deg,#d395ed,#7553a2);
+  box-shadow:0 0 0 1px #8e5eb5,0 0 11px #a050c264;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card:nth-child(4n+2) .poster{
-  background-image:url("./assets/movies/dream-poster-forest.svg")!important;
+body.ky-movie-palace #gallery .poster img{width:100%;height:100%;object-fit:cover}
+body.ky-movie-palace #gallery .poster::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(135deg,#ffffff1c,transparent 31%,#d59bff14 96%);
+  box-shadow:inset 0 0 0 1px #fff8;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card:nth-child(4n+3) .poster{
-  background-image:url("./assets/movies/dream-poster-balloon.svg")!important;
+body.ky-movie-palace #gallery .poster .placeholder{
+  font-size:0!important;display:flex;align-items:center;justify-content:center;opacity:1;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card:nth-child(4n+4) .poster{
-  background-image:url("./assets/movies/dream-poster-jellyfish.svg")!important;
+body.ky-movie-palace #gallery .poster .placeholder::before{
+  content:"";display:block;width:clamp(58px,12vw,92px);height:clamp(58px,12vw,92px);
+  background:url('./assets/all-memories/ky-movie.webp') center/contain no-repeat;
 }
-body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card .slot-foot{
-  align-self:center;
-  display:block;
-  border:1px solid #ddabff;
-  border-radius:999px;
-  padding:7px 15px;
-  color:#fff3ff;
-  background:#592583;
-  font:bold 12px 'Trebuchet MS',sans-serif;
+body.ky-movie-palace #gallery .corner-heart{
+  color:#f3bcff;background:#57186fd9;border:1px solid #f5ceff;
+  border-radius:100px;box-shadow:0 0 8px #de84ff;
 }
-body.ky-movie-palace .stage>.shell>#empty{
-  order:5;
-  max-width:600px!important;
-  margin:0 auto 20px!important;
-  color:#fff1ff!important;
-  background:#55227fbf!important;
+body.ky-movie-palace #gallery .polaroid h3{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  overflow:hidden;white-space:normal;overflow-wrap:anywhere;
+  min-height:2.18em;margin:11px 2px 8px;
+  font:700 clamp(15px,3.7vw,21px)/1.1 Georgia,serif;
+  color:#401752;text-shadow:0 1px #fff9;
 }
-body.ky-movie-palace .movie-mobile-dock{display:none!important}
-body.ky-movie-palace .modal{z-index:80!important}
-@media(max-width:1000px) and (min-width:701px){
-  body.ky-movie-palace .stage>.shell>#gallery{
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  }
-  body.ky-movie-palace .stage>.shell>.controls{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  }
+body.ky-movie-palace #gallery .polaroid .rating-line{display:flex;flex-wrap:wrap;gap:5px;margin:0}
+body.ky-movie-palace #gallery .polaroid .score{
+  display:inline-flex;align-items:center;gap:4px;padding:4px 7px;
+  border:1px solid #b974d4;border-radius:26px;
+  color:#4c185f;background:linear-gradient(#f9dfff,#d5a1ef);
+  font:700 clamp(11px,2.6vw,14px)/1.1 Georgia,serif;
+  box-shadow:inset 0 1px #fff8,0 1px 4px #6d379d67;
 }
-@media(max-width:700px){
-  body.ky-movie-palace{--movie-hero-height:35.5vw}
-  body.ky-movie-palace .stage{
-    min-height:100dvh;
-    padding-bottom:94px;
-    background:
-      radial-gradient(ellipse 85% 49% at 50% 55%,#7544ad91,transparent 80%),
-      linear-gradient(180deg,#34165a 0%,#552578 47%,#441662 100%)!important;
-  }
+body.ky-movie-palace #gallery .score .score-heart .rating-heart-shape{fill:#f1baff;stroke:#ab5bd3}
+body.ky-movie-palace #gallery .score .score-heart.filled .rating-heart-shape{fill:#dd66d5;stroke:#7e329f}
+body.ky-movie-palace #gallery .score .score-heart .rating-heart-shine{stroke:#fff4ff}
+body.ky-movie-palace #gallery .polaroid .time-line{
+  display:flex;align-items:center;gap:4px;margin-top:8px;
+  color:#60277c;font:700 clamp(11px,2.6vw,15px)/1.13 Georgia,serif;
+}
+body.ky-movie-palace #gallery .time-line::before{
+  content:"";display:inline-block;flex:none;width:22px;height:22px;
+  background:url('./assets/all-memories/ky-time.webp') center/contain no-repeat;
+}
+body.ky-movie-palace #gallery .polaroid .tagline{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+body.ky-movie-palace #gallery .polaroid .tag{
+  padding:5px 7px;border:1px solid #b783d5;border-radius:25px;
+  color:#58216d;background:linear-gradient(#ecd0fa,#ce9ce8);
+  font:500 clamp(10px,2.25vw,12px)/1.15 Georgia,serif;
+}
+body.ky-movie-palace #empty{
+  color:#fff2ff;border:2px solid #d998f3;
+  background:linear-gradient(155deg,#773c94e9,#32124de9);
+  box-shadow:0 0 18px #cf88ed96,0 14px 24px #10061ac9;
+}
+body.ky-movie-palace #empty h3{color:#ffddff}
+body.ky-movie-palace #empty .pop{
+  font-size:0!important;width:70px;height:70px;margin:auto;
+  background:url('./assets/all-memories/ky-movie.webp') center/contain no-repeat;
+}
+body.ky-movie-palace #empty .btn.primary{background:linear-gradient(145deg,#eecfff,#c688ee);color:#451d62}
+/* Keep edit/cloud modals clear and their original buttons untouched. */
+body.ky-movie-palace .modal .dialog.glass{color:#53375d;background:#f9eafa}
+body.ky-movie-palace .modal .dialog .review{background:#fff9fe}
+body.ky-movie-palace .footer{color:#f0d7fd}
+@media(min-width:701px){
   body.ky-movie-palace .stage::before{
-    height:var(--movie-hero-height)!important;
-    background-image:url("./assets/movies/real-ai-lounge-hero.webp")!important;
-    background-position:center top!important;
-    background-size:100% 100%!important;
+    /* Existing landscape asset contains this same exact artwork plus a
+       210px top extension; crop that extension in CSS for a full background. */
+    background-image:url('./assets/tv/tv-immersive-landscape.webp')!important;
+    background-position:center calc(-26.6vh)!important;
+    background-size:auto 145.5%!important;
   }
-  body.ky-movie-palace .stage::after{
-    inset:var(--movie-hero-height) 0 0!important;
-    opacity:.2!important;
+  body.ky-movie-palace .shell{padding-top:clamp(45px,6.5vw,80px)}
+  body.ky-movie-palace .shell>.topbar{min-height:68px}
+  body.ky-movie-palace .shell>.controls{
+    grid-template-columns:minmax(180px,1.4fr) minmax(140px,.9fr) minmax(140px,.9fr) minmax(160px,1fr);
+    margin-top:clamp(185px,17vw,255px);
   }
-  body.ky-movie-palace .stage>.shell{
-    padding:calc(var(--movie-hero-height) + 4px) clamp(8px,4vw,17px) 16px!important;
-  }
-  body.ky-movie-palace .stage>.shell>.topbar{display:none!important}
-  body.ky-movie-palace .stage>.shell>.section-header>.collection-heading{display:none!important}
-  body.ky-movie-palace .stage>.shell>.section-header>.tabs{display:none!important}
-  body.ky-movie-palace .stage>.shell>.section-header>.section-count{display:none!important}
-  body.ky-movie-palace .stage>.shell>#gallery{
-    order:1;
-    grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    gap:13px clamp(6px,2vw,12px)!important;
-    padding:0 2px 20px!important;
-    overflow:visible!important;
-    max-height:none!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid{
-    border-width:2px!important;
-    border-radius:16px!important;
-    padding:4px!important;
-    min-height:0!important;
-    box-shadow:0 0 0 1px #d88df8,0 0 9px #f1a5ff9c!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid .poster{
-    border-width:1px!important;
-    border-radius:13px!important;
-    aspect-ratio:2/3!important;
-    margin-bottom:3px!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid h3{
-    font-size:clamp(8px,2.2vw,11px)!important;
-    margin:2px 1px!important;
-    min-height:0!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid :is(.time-line,.tagline){
-    display:none!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid .rating-line{
-    margin:2px 0 0!important;
-    font-size:9px!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid .score{
-    font-size:8px!important;
-    padding:2px 4px!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card{
-    display:block!important;
-    aspect-ratio:230/321!important;
-    width:100%!important;
-    height:auto!important;
-    padding:0!important;
-    border:0!important;
-    border-radius:13px!important;
-    background:url("./assets/movies/real-ai-movie-card.webp") center/100% 100% no-repeat!important;
-    box-shadow:none!important;
-    filter:drop-shadow(0 3px 4px #210936a8)!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card .poster,
-  body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card .slot-foot,
-  body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card::after{
-    display:none!important;content:none!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .movie-placeholder-card:is(:hover,:focus-visible){
-    transform:translateY(-3px)!important;
-  }
-  body.ky-movie-palace .stage>.shell>.controls{
-    order:4;
-    display:grid!important;
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    align-items:center!important;
-    width:100%!important;
-    gap:8px!important;
-    margin:25px 0 0!important;
-    padding:11px 10px 19px!important;
-    background:#451c6abf!important;
-    border-radius:20px!important;
-  }
-  body.ky-movie-palace .stage>.shell>.controls .field-search{
-    grid-column:1/-1!important;
-  }
-  body.ky-movie-palace .stage>.shell>.controls :is(input,select){
-    height:43px!important;min-height:43px!important;
-    font-size:12px!important;
-    padding:7px 9px!important;
-  }
-  body.ky-movie-palace .stage>.shell>.controls #newEntry{
-    box-sizing:border-box!important;
-    position:fixed!important;
-    z-index:55!important;
-    right:16px!important;
-    bottom:101px!important;
-    left:auto!important;top:auto!important;
-    display:block!important;
-    width:64px!important;height:64px!important;
-    min-width:64px!important;min-height:64px!important;
-    padding:0!important;
-    border:3px solid #ffdbff!important;
-    border-radius:50%!important;
-    font-size:0!important;
-    color:transparent!important;
-    background:linear-gradient(135deg,#ad50d9,#63268e)!important;
-    box-shadow:0 0 0 3px #a252d8,0 0 20px #ffbbff,0 5px 12px #261037!important;
-  }
-  body.ky-movie-palace .stage>.shell>.controls #newEntry::before{
-    width:47px!important;height:47px!important;
-    left:50%!important;top:50%!important;
-    transform:translate(-50%,-50%)!important;
-  }
-  body.ky-movie-palace .stage>.shell>#empty{order:2}
-  body.ky-movie-palace .movie-mobile-dock{
-    display:flex!important;
-    box-sizing:border-box;
-    position:fixed;
-    z-index:56;
-    left:0;right:0;bottom:0;
-    align-items:center;
-    justify-content:space-around;
-    gap:4px;
-    height:88px;
-    padding:9px 17px max(11px,env(safe-area-inset-bottom));
-    border:2px solid #ad64ce;
-    border-bottom:0;
-    border-radius:32px 32px 0 0;
-    background:linear-gradient(180deg,#5d2c7af8,#3d195cfb)!important;
-    box-shadow:0 -5px 20px #f0a9f76b,inset 0 3px #cf83ec96;
-    backdrop-filter:blur(16px);
-  }
-  body.ky-movie-palace .movie-mobile-dock button{
-    display:grid;
-    place-items:center;
-    flex:1 1 0;
-    height:60px;
-    min-width:0;
-    max-width:70px;
-    padding:7px;
-    color:#f7d6ff;
-    background:none;
-    border:2px solid transparent;
-    border-radius:22px;
-    box-shadow:none;
-  }
-  body.ky-movie-palace .movie-mobile-dock button.selected{
-    color:#fff8ff;
-    border-color:#e8baff;
-    background:linear-gradient(145deg,#a64edf,#6f2aa2);
-    box-shadow:0 0 19px #ffbaff, inset 0 2px #fff8;
-  }
-  body.ky-movie-palace .movie-mobile-dock button svg{
-    display:block;
-    width:29px;height:29px;
-    fill:none;
-    stroke:currentColor;
-    stroke-width:2.3;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 0 4px #ef9fff);
-  }
+  body.ky-movie-palace .shell>.controls .field-search,
+  body.ky-movie-palace .shell>.controls #newEntry{grid-column:auto}
+  body.ky-movie-palace .shell>.controls #newEntry{min-height:49px;font-size:clamp(14px,1.5vw,19px)}
+  body.ky-movie-palace .shell>.controls #newEntry::before{width:29px;height:29px}
+  body.ky-movie-palace .section-header>.tabs .chip{min-height:67px}
+  body.ky-movie-palace #gallery{grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:24px 20px;padding:20px 8px 35px}
+  body.ky-movie-palace #gallery .polaroid{padding:13px 12px 19px}
 }
-@media(max-width:370px){
-  body.ky-movie-palace .stage>.shell>#gallery{
-    gap:10px 5px!important;
-  }
-  body.ky-movie-palace .stage>.shell>#gallery .polaroid{
-    border-radius:12px!important;
-  }
+@media(max-width:390px){
+  body.ky-movie-palace .shell{padding-top:35px;padding-left:9px;padding-right:9px}
+  body.ky-movie-palace .shell>.topbar{min-height:53px;margin-left:5px;margin-right:5px}
+  body.ky-movie-palace .shell>.topbar::before{width:46px;height:46px;top:-12px;left:-5px}
+  body.ky-movie-palace .shell>.topbar .palace-wordmark{font-size:clamp(14px,4.1vw,17px)}
+  body.ky-movie-palace .shell>.stats{padding:9px 4px}
+  body.ky-movie-palace .shell>.controls{margin-top:clamp(113px,28vw,128px);gap:8px}
+  body.ky-movie-palace .shell>.controls :is(input,select){min-height:43px;padding-left:42px;padding-right:24px}
+  body.ky-movie-palace .section-header h2{font-size:clamp(22px,5.9vw,27px)}
+  body.ky-movie-palace .section-header>.tabs{gap:5px}
+  body.ky-movie-palace .section-header>.tabs .chip{min-height:56px;padding:4px 1px}
+  body.ky-movie-palace .section-header>.tabs .chip::after{font-size:9px}
+  body.ky-movie-palace #gallery{gap:22px 10px;padding:20px 5px 30px}
+  body.ky-movie-palace #gallery .polaroid{padding:9px 7px 13px}
+  body.ky-movie-palace #gallery .polaroid .score{padding:4px 5px;gap:3px}
+  body.ky-movie-palace #gallery .polaroid .tag{padding:4px 5px}
 }
-@media(prefers-reduced-motion:reduce){
-  body.ky-movie-palace .stage *,
-  body.ky-movie-palace .stage::before,
-  body.ky-movie-palace .stage::after{
-    animation:none!important;
-    transition:none!important;
-  }
-}
+@media(prefers-reduced-motion:reduce){body.ky-movie-palace #gallery .polaroid{transition:none!important}}
+/* The superseded Movies-only dock must not obstruct the matching responsive layout. */
+body.ky-movie-palace .movie-mobile-dock{display:none!important}
