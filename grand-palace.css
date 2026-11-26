@@ -127,3 +127,82 @@ body :is(.shell button,.shell input,.shell select,.dialog button,.dialog input,.
 }
 @media(max-width:350px){body .stage>.shell{padding-inline:9px}body .shell>.section-header>.tabs .chip{font-size:9px;min-height:59px}body .shell>#gallery{gap:11px 8px}body .shell>#gallery .polaroid .score{padding:3px 4px;font-size:10px}body .shell>.topbar{padding-inline:10px}}
 @media(prefers-reduced-motion:reduce){body .shell *,body .shell *::before,body .shell *::after{animation:none!important;transition:none!important}body .shell>#gallery .polaroid:is(:hover,:focus-visible){transform:none}}
+
+/* Viewport repair: the original inline theme defined two small spotlight
+   pseudo-elements. Explicitly reset their inherited geometry for ALL tabs. */
+body .stage::before,body .stage::after{
+  position:fixed!important;inset:0!important;width:100%!important;height:100%!important;
+  min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;
+  border-radius:0!important;margin:0!important;padding:0!important;
+  pointer-events:none!important;
+}
+body .stage::before{background-position:center center;background-size:cover;background-repeat:no-repeat}
+body .stage::after{
+  background:radial-gradient(ellipse at 50% 53%,#12071150,transparent 80%),
+    linear-gradient(180deg,#1207110d 0%,#12071116 48%,#12071155 100%);
+}
+/* Keep the actual illustrated cinema visible beyond the collection. */
+body .stage>.shell{padding-top:clamp(56px,8vh,94px)}
+body .shell>.topbar{
+  background:radial-gradient(ellipse at 50% 0%,#ffe9bc40,transparent 80%),linear-gradient(165deg,var(--palace-accent),var(--palace-velvet) 40%,var(--palace-dark));
+  border:2px solid var(--palace-metal);
+  box-shadow:inset 0 0 0 3px #fff0c020,inset 0 1px #fff5d2b3,0 0 16px #ffd58b40,0 6px 22px #14060a99;
+}
+body .shell>.topbar::after{border:1px solid var(--palace-metal);box-shadow:0 0 7px #ffd58b66}
+body .shell>.stats{background:linear-gradient(155deg,var(--palace-velvet),var(--palace-dark));box-shadow:inset 0 1px #fff2cf66,0 5px 18px #10030d88}
+body .shell>.section-header>.collection-heading{
+  background:radial-gradient(ellipse at 18% 0%,#ffe5b838,transparent 85%),linear-gradient(145deg,var(--palace-velvet),var(--palace-dark));
+  border:1px solid var(--palace-metal);
+  padding-left:52px;
+}
+body .shell>.section-header>.collection-heading::before{
+  content:"";position:absolute;left:10px;top:50%;width:34px;height:34px;transform:translateY(-50%);
+  background:var(--palace-emblem) center/contain no-repeat;filter:drop-shadow(0 2px 3px #210713);pointer-events:none;
+}
+/* Illustrated tab icons already communicate their meaning; suppress the
+   duplicate emoji from the original text without changing accessible names. */
+body .shell>.section-header>.tabs .chip{font-size:0;gap:3px;min-height:68px}
+body .shell>.section-header>.tabs .chip::after{content:var(--tab-label);font:600 11px/1.16 "Avenir Next","Segoe UI",system-ui,sans-serif;white-space:normal;overflow-wrap:anywhere;text-align:center;color:inherit}
+body .shell>.section-header>.tabs [data-tab="all"]{--tab-label:"All memories"}
+body .shell>.section-header>.tabs [data-tab="movie"]{--tab-label:"Movies"}
+body .shell>.section-header>.tabs [data-tab="show"]{--tab-label:"TV shows"}
+body .shell>.section-header>.tabs [data-tab="game"]{--tab-label:"Games"}
+body .shell>.section-header>.tabs [data-tab="next"]{--tab-label:"Watch / Play Next"}
+body .shell>.section-header>.tabs [data-tab="current"]{--tab-label:"Currently Watching / Playing"}
+body .shell>.section-header>.tabs [data-tab="favorite"]{--tab-label:"Favorites"}
+body .shell>.section-header>.tabs [data-tab="trash"]{--tab-label:"Trash"}
+body .shell>#gallery .polaroid{
+  padding:8px 8px 14px;border:2px solid var(--palace-metal);border-radius:17px;
+  background:radial-gradient(ellipse at 12% 10%,#fffdfc 0%,transparent 65%),linear-gradient(145deg,#fff6e7,var(--palace-paper) 65%,#fff9ed);
+  box-shadow:inset 0 0 0 2px #fff9,0 0 0 1px #371b30aa,0 0 0 3px #ffedbd36,0 8px 22px #140610a8,0 0 12px #ffd59045;
+}
+body .shell>#gallery .polaroid::before{width:38px;height:38px;top:-10px;left:-8px}
+body .shell>#gallery .polaroid::after{inset:4px;border-color:#bd8e5f99;border-radius:12px;box-shadow:inset 0 0 0 1px #fff6;opacity:1}
+body .shell>#gallery .polaroid .poster{border:1px solid var(--palace-metal);box-shadow:0 1px 3px #2a111a55,inset 0 0 0 1px #fff0d5}
+body .shell>#gallery .poster::before{
+  content:"";position:absolute;right:3px;bottom:2px;z-index:2;width:31px;height:31px;
+  background:url("./assets/all-memories/ky-favorite.webp") center/contain no-repeat;
+  filter:drop-shadow(0 1px 3px #18040d99);opacity:.86;pointer-events:none;
+}
+body.ky-games-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-game.webp")}
+body.ky-next-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-next.webp")}
+body.ky-tv-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-show.webp")}
+body.ky-trash-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-trash.webp");filter:grayscale(.8) drop-shadow(0 1px 3px #18040d99)}
+body .shell>#gallery .polaroid h3{font:650 clamp(14px,2.2vw,18px)/1.24 "Avenir Next","Segoe UI",system-ui,sans-serif;letter-spacing:-.015em;margin:0 3px 8px}
+body .shell>#gallery .polaroid .rating-line{margin:0 3px 7px}
+body .shell>#gallery .polaroid .score{font-weight:650;font-size:12px}
+body .shell>#gallery .polaroid .time-line{font-weight:500;font-size:12px;margin-inline:3px}
+body .shell>#gallery .polaroid .tag{font-weight:550;font-size:11px}
+body .shell>#gallery .polaroid .tag:first-child{font-weight:650}
+@media(max-width:760px){
+  body .stage>.shell{padding-top:56px}
+  body .shell>.section-header>.collection-heading{padding-left:40px}
+  body .shell>.section-header>.collection-heading::before{left:7px;width:28px;height:28px}
+  body .shell>.section-header>.tabs .chip{min-height:62px;font-size:0}
+  body .shell>.section-header>.tabs .chip::after{font-size:10px}
+  body .shell>#gallery .polaroid{padding:6px 6px 12px}
+  body .shell>#gallery .polaroid::before{width:30px;height:30px;top:-7px;left:-5px}
+  body .shell>#gallery .poster::before{width:23px;height:23px}
+  body .shell>#gallery .polaroid .score{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){body .shell *,body .shell *::before,body .shell *::after{animation:none!important;transition:none!important}}
