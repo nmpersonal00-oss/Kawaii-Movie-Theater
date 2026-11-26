@@ -7,7 +7,7 @@ body.ky-tv-palace{--palace-wall:url("./assets/grand-palace/show.webp");--palace-
 body.ky-games-palace{--palace-wall:url("./assets/grand-palace/game.webp");--palace-wide:url("./assets/grand-palace/game.webp");--palace-emblem:url("./assets/all-memories/ky-game.webp");--palace-dark:#070e20;--palace-velvet:#102647;--palace-accent:#204b78;--palace-metal:#6eabed;--palace-light:#d9efff;--palace-paper:#e6f0ff;--palace-text:#173c65;--palace-art-filter:none;}
 body.ky-next-palace{--palace-wall:url("./assets/grand-palace/next.webp");--palace-wide:url("./assets/grand-palace/next.webp");--palace-emblem:url("./assets/all-memories/ky-next.webp");--palace-dark:#47341c;--palace-velvet:#75552d;--palace-accent:#a78343;--palace-metal:#e6c47c;--palace-light:#fff3d3;--palace-paper:#fff8e8;--palace-text:#664717;--palace-art-filter:none;}
 body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace){--palace-wall:url("./assets/grand-palace/current.webp");--palace-wide:url("./assets/grand-palace/current.webp");--palace-emblem:url("./assets/all-memories/ky-current.webp");--palace-dark:#26070b;--palace-velvet:#5e1119;--palace-accent:#b12230;--palace-metal:#f18d9b;--palace-light:#ffe4e7;--palace-paper:#ffeded;--palace-text:#721c2b;--palace-art-filter:none;}
-body.ky-favorites-palace{--palace-wall:url("./assets/grand-palace/favorite.webp");--palace-wide:url("./assets/grand-palace/favorite.webp");--palace-emblem:url("./assets/all-memories/ky-favorite.webp");--palace-dark:#572039;--palace-velvet:#983d65;--palace-accent:#cd6796;--palace-metal:#ffc7e1;--palace-light:#fff1f9;--palace-paper:#fff5fa;--palace-text:#77264f;--palace-art-filter:none;}
+body.ky-favorites-palace{--palace-wall:url("./assets/grand-palace/favorites-fullsize.webp");--palace-wide:url("./assets/grand-palace/favorites-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-favorite.webp");--palace-dark:#572039;--palace-velvet:#983d65;--palace-accent:#cd6796;--palace-metal:#ffc7e1;--palace-light:#fff1f9;--palace-paper:#fff5fa;--palace-text:#77264f;--palace-art-filter:none;}
 body.ky-trash-palace{--palace-wall:url("./assets/grand-palace/trash.webp");--palace-wide:url("./assets/grand-palace/trash.webp");--palace-emblem:url("./assets/all-memories/ky-trash.webp");--palace-dark:#090f06;--palace-velvet:#17250b;--palace-accent:#365818;--palace-metal:#9dce52;--palace-light:#e0f7a8;--palace-paper:#edf2dd;--palace-text:#34451c;--palace-art-filter:none;}
 html{background:#210d1c}
 html body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--palace-light);background:var(--palace-dark);min-height:100vh;overflow-x:hidden}
@@ -229,3 +229,16 @@ body:not(.memory-palace-all) .stage::after{
 body.ky-favorites-palace .shell>#gallery .polaroid{background:radial-gradient(ellipse at 15% 8%,#fff 0%,transparent 75%),linear-gradient(145deg,#fff9fd,#ffe4f1 80%,#fff)}
 body.ky-next-palace .shell>#gallery .polaroid{background:radial-gradient(ellipse at 15% 8%,#fffefb 0%,transparent 75%),linear-gradient(145deg,#fffdf4,#fff1cf 80%,#fff8e3)}
 @media(max-width:760px){body:not(.memory-palace-all) .stage::before{background-position:center center}}
+
+/* Full-resolution Favorites landscape: preserve the entire room at desktop
+   widths and keep the stage centered on narrower screens. No artificial zoom,
+   filtering, or changes to saved poster images. */
+body.ky-favorites-palace .stage::before{
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  filter:none!important;
+}
+@media(min-width:761px) and (min-aspect-ratio:16/9){
+  body.ky-favorites-palace .stage::before{background-size:100% auto;background-position:center center}
+}
