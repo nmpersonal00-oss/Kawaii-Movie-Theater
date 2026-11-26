@@ -1,0 +1,129 @@
+/* Grand Picture Palace — approved illustrated, jewel-toned visual system.
+   Presentation only. Existing owner artwork and saved poster images are never replaced.
+   No external fonts, images, scripts, data or network calls. */
+body.memory-palace-all{--palace-wall:url("./assets/all-memories/theater-portrait.webp");--palace-wide:url("./assets/all-memories/theater-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-all.webp");--palace-dark:#340a1b;--palace-velvet:#66172f;--palace-accent:#a6344f;--palace-metal:#efbc76;--palace-light:#ffdca4;--palace-paper:#fbe7d5;--palace-text:#592337;--palace-art-filter:none;}
+body.ky-movie-palace{--palace-wall:url("./assets/all-memories/theater-portrait.webp");--palace-wide:url("./assets/all-memories/theater-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-movie.webp");--palace-dark:#30070e;--palace-velvet:#720d20;--palace-accent:#b5293d;--palace-metal:#f3be68;--palace-light:#ffe1a5;--palace-paper:#ffead4;--palace-text:#612029;--palace-art-filter:none;}
+body.ky-tv-palace{--palace-wall:url("./assets/tv/tv-immersive-portrait.webp");--palace-wide:url("./assets/tv/tv-immersive-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-show.webp");--palace-dark:#26102f;--palace-velvet:#4d215b;--palace-accent:#8c387e;--palace-metal:#eaa5cc;--palace-light:#ffe0f0;--palace-paper:#fbe6f5;--palace-text:#542c62;--palace-art-filter:none;}
+body.ky-games-palace{--palace-wall:url("./assets/games/gaming-room-portrait.webp");--palace-wide:url("./assets/games/gaming-room-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-game.webp");--palace-dark:#10112e;--palace-velvet:#29204e;--palace-accent:#6237a3;--palace-metal:#ae9dff;--palace-light:#e8dfff;--palace-paper:#efe9ff;--palace-text:#402b78;--palace-art-filter:hue-rotate(12deg) saturate(1.12);}
+body.ky-next-palace{--palace-wall:url("./assets/watch-next/watch-next-portrait.webp");--palace-wide:url("./assets/watch-next/watch-next-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-next.webp");--palace-dark:#331914;--palace-velvet:#73342e;--palace-accent:#b55748;--palace-metal:#f5b477;--palace-light:#ffe1b5;--palace-paper:#fff0dd;--palace-text:#713629;--palace-art-filter:sepia(.23) saturate(1.25);}
+body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace){--palace-wall:url("./assets/tv/tv-immersive-portrait.webp");--palace-wide:url("./assets/tv/tv-immersive-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-current.webp");--palace-dark:#0c1734;--palace-velvet:#1e3565;--palace-accent:#3865a5;--palace-metal:#96c9ff;--palace-light:#e0efff;--palace-paper:#e8f1ff;--palace-text:#254775;--palace-art-filter:hue-rotate(290deg) saturate(.85);}
+body.ky-favorites-palace{--palace-wall:url("./assets/favorites/favorites-portrait.webp");--palace-wide:url("./assets/favorites/favorites-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-favorite.webp");--palace-dark:#3b1029;--palace-velvet:#791c48;--palace-accent:#b93d73;--palace-metal:#ffc0ce;--palace-light:#ffe2df;--palace-paper:#fff0ef;--palace-text:#852f54;--palace-art-filter:none;}
+body.ky-trash-palace{--palace-wall:url("./assets/trash/trash-portrait.webp");--palace-wide:url("./assets/trash/trash-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-trash.webp");--palace-dark:#211a25;--palace-velvet:#3e293b;--palace-accent:#685064;--palace-metal:#c4a5b9;--palace-light:#ead6e5;--palace-paper:#f1e8eb;--palace-text:#584354;--palace-art-filter:grayscale(.94) sepia(.24) hue-rotate(275deg) saturate(.72);}
+html{background:#210d1c}
+html body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--palace-light);background:var(--palace-dark);min-height:100vh;overflow-x:hidden}
+body .stage{position:relative;isolation:isolate;min-height:100dvh;background:none}
+body .stage::before{content:"";display:block!important;position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:1!important;filter:var(--palace-art-filter)!important;transform:none!important;animation:none!important;background:var(--palace-wall) center top/cover no-repeat; border-radius:0}
+body .stage::after{content:"";display:block!important;position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1!important;background:linear-gradient(180deg,transparent 0%,var(--palace-dark) 86%),linear-gradient(90deg,#10071122,transparent 25%,transparent 75%,#10071122);filter:none!important;transform:none!important;animation:none!important}
+body .stage>.shell{max-width:1120px;width:100%;margin:auto;padding:clamp(48px,10vw,106px) clamp(12px,3vw,34px) 60px;position:relative;z-index:2}
+body .stage>.shell::before,body .stage>.shell::after{display:none!important;content:none!important}
+body .shell>.topbar,body .shell>.stats,body .shell>.controls,body .shell>.section-header>.tabs{position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 0%,#fff5df24,transparent 70%),linear-gradient(155deg,var(--palace-velvet),var(--palace-dark));border:1px solid var(--palace-metal);box-shadow:inset 0 1px #fff1c54d,inset 0 -2px #0005,0 0 0 1px #190d1766,0 6px 20px #10030d60,0 0 15px #ffe0b01c;backdrop-filter:none!important}
+body .shell>.topbar::before,body .shell>.stats::before,body .shell>.controls::before{content:none!important;display:none!important}
+body .shell>.topbar::after,body .shell>.stats::after,body .shell>.controls::after{content:"";display:block;position:absolute;inset:4px;border:1px solid #fff2c33b;border-radius:inherit;pointer-events:none;z-index:0;background:none;box-shadow:none}
+body .shell>.topbar{display:flex;align-items:center;justify-content:center;min-height:84px;margin:0 0 12px;padding:12px 20px;border-radius:24px;text-align:center;overflow:visible}
+body .shell>.topbar .palace-trigger{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:46px;max-width:100%;margin:0;padding:5px 0;border:0;border-radius:8px;background:transparent;color:var(--palace-light);box-shadow:none;text-shadow:0 2px 3px #14040a,0 0 12px #ffd79577;letter-spacing:0}
+body .palace-trigger::before{content:"";flex:0 0 auto;width:clamp(42px,10vw,61px);height:clamp(42px,10vw,61px);background:var(--palace-emblem) center/contain no-repeat;filter:drop-shadow(0 2px 4px #16040b);pointer-events:none}
+body .palace-wordmark{white-space:normal;overflow:visible;text-overflow:clip;color:var(--palace-light);font:700 italic clamp(22px,4.8vw,36px)/1.08 "Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;letter-spacing:-.025em;text-shadow:0 2px 2px #240817,0 0 12px #ffd28d60}
+body .palace-trigger:hover .palace-wordmark{color:var(--palace-light)}
+body .palace-heart,body .palace-status{color:var(--palace-light);text-shadow:0 0 9px var(--palace-metal)}
+body .shell>.stats{display:block;margin:0 0 14px;padding:12px 9px 10px;border-radius:19px;overflow:hidden;color:var(--palace-light)}
+body .shell>.stats .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;align-items:start}
+body .shell>.stats .stat{padding:4px 4px 6px;min-width:0;text-align:center;background:none;border:0;box-shadow:none}
+body .shell>.stats .stat:not(:first-child){border-left:1px solid #fff2cf36}
+body .shell>.stats .stat strong{display:block;color:var(--palace-light);font:700 clamp(21px,4.5vw,31px)/1.1 Georgia,serif;text-shadow:0 2px 4px #1d0715,0 0 8px #ffcb7a44}
+body .shell>.stats .stat span{display:block;color:#fff3e9;font:600 clamp(9px,2.4vw,12px)/1.25 "Avenir Next","Segoe UI",system-ui,sans-serif;text-shadow:0 1px 2px #1e0715;overflow-wrap:anywhere}
+body .shell>.stats .stats-total{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin:5px 0 0;padding:8px 0 0;border-top:1px solid #fff2cf33}
+body .shell>.stats .stats-total-label{color:#fff2e4;font-size:10px;letter-spacing:.055em;font-weight:600}
+body .shell>.stats #overallTimeStat{color:var(--palace-light);font:700 16px/1.2 Georgia,serif}
+body .shell>.controls{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr);gap:9px;align-items:stretch;margin:0 0 18px;padding:12px;border-radius:19px;overflow:visible}
+body .shell>.controls>*{position:relative;z-index:1;min-width:0;margin:0}
+body .shell>.controls .field-search{width:100%;display:block}
+body .shell>.controls :is(input,select){display:block;width:100%;min-width:0;height:45px;min-height:45px;margin:0;padding:9px 11px;border:1px solid var(--palace-metal);border-radius:12px;background:linear-gradient(150deg,#fffdfa,var(--palace-paper));color:var(--palace-text);font:600 13px/1.2 "Avenir Next","Segoe UI",system-ui,sans-serif;box-shadow:inset 0 2px 4px #47202b16,0 2px 4px #1c081c33;text-shadow:none}
+body .shell>.controls input::placeholder{color:var(--palace-text);opacity:.8}
+body .shell>.controls #newEntry{width:100%;min-height:45px;margin:0;padding:9px 10px;border:1px solid var(--palace-light);border-radius:12px;background:linear-gradient(150deg,var(--palace-light),var(--palace-metal));color:var(--palace-text);font:750 13px/1.2 "Avenir Next","Segoe UI",system-ui,sans-serif;box-shadow:inset 0 1px #fff,0 3px 8px #10030d60;text-shadow:none}
+body .shell>.section-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 12px;margin:0 0 9px;padding:0;background:none;border:0;box-shadow:none}
+body .shell>.section-header>.collection-heading{position:relative;min-width:0;padding:10px 12px 11px;border:1px solid var(--palace-metal);border-radius:15px;background:radial-gradient(ellipse at top,#fff2d522,transparent 70%),linear-gradient(135deg,var(--palace-velvet),var(--palace-dark));box-shadow:inset 0 0 0 3px #ffedc21b,0 4px 13px #17071577;color:var(--palace-light);overflow:hidden}
+body .shell>.section-header h2{margin:0;color:var(--palace-light);font:700 italic clamp(22px,4.7vw,34px)/1.1 "Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;letter-spacing:-.035em;text-shadow:0 2px 3px #190514,0 0 10px #ffe6a644;overflow-wrap:anywhere}
+body .shell>.section-header h2::after{content:"";display:block;width:80px;max-width:70%;height:1px;margin-top:7px;background:linear-gradient(90deg,var(--palace-metal),transparent);box-shadow:0 0 6px var(--palace-metal);border:0}
+body .shell>.section-header>.section-count{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:3px;padding:8px 10px;min-width:0;max-width:160px;color:#fff5e9;background:var(--palace-dark);border:1px solid #fff0cf55;border-radius:13px;box-shadow:0 3px 12px #10061544;text-align:right}
+body .shell>.section-header #count{font:700 clamp(12px,3.1vw,16px)/1.15 "Avenir Next","Segoe UI",system-ui,sans-serif;color:#fff6ed;text-shadow:none;overflow-wrap:anywhere}
+body .shell>.section-header #sectionTime{color:var(--palace-light);font:700 clamp(12px,3vw,15px)/1.2 Georgia,serif;text-shadow:none}
+body .shell>.section-header>.tabs{grid-column:1/-1;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin:0;padding:7px;border-radius:18px;overflow:visible}
+body .shell>.section-header>.tabs .chip{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:100%;min-width:0;min-height:65px;margin:0;padding:5px 3px;border:1px solid #fff0cc55;border-radius:12px;background:linear-gradient(160deg,#fff7dc16,#0003);color:#fff6ed;font:700 10px/1.17 "Avenir Next","Segoe UI",system-ui,sans-serif;text-shadow:0 1px 2px #200715;box-shadow:inset 0 1px #fff2d21a;white-space:normal;overflow-wrap:anywhere;hyphens:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+body .shell>.section-header>.tabs .chip::before{content:"";display:block;flex:none;width:30px;height:30px;background:var(--tab-icon) center/contain no-repeat;filter:drop-shadow(0 1px 2px #1b0514);pointer-events:none}
+body .shell>.section-header>.tabs [data-tab="all"]{--tab-icon:url("./assets/all-memories/ky-all.webp")}
+body .shell>.section-header>.tabs [data-tab="movie"]{--tab-icon:url("./assets/all-memories/ky-movie.webp")}
+body .shell>.section-header>.tabs [data-tab="show"]{--tab-icon:url("./assets/all-memories/ky-show.webp")}
+body .shell>.section-header>.tabs [data-tab="game"]{--tab-icon:url("./assets/all-memories/ky-game.webp")}
+body .shell>.section-header>.tabs [data-tab="next"]{--tab-icon:url("./assets/all-memories/ky-next.webp")}
+body .shell>.section-header>.tabs [data-tab="current"]{--tab-icon:url("./assets/all-memories/ky-current.webp")}
+body .shell>.section-header>.tabs [data-tab="favorite"]{--tab-icon:url("./assets/all-memories/ky-favorite.webp")}
+body .shell>.section-header>.tabs [data-tab="trash"]{--tab-icon:url("./assets/all-memories/ky-trash.webp")}
+body .shell>.section-header>.tabs .chip.selected,body .shell>.section-header>.tabs .chip[data-tab="current"].selected{background:radial-gradient(ellipse at 50% 0%,#fff7e74d,transparent 85%),linear-gradient(145deg,var(--palace-accent),var(--palace-velvet));color:#fff9ef;border-color:var(--palace-light);text-shadow:0 1px 3px #230a16;box-shadow:inset 0 0 8px #ffe9bc44,0 0 10px var(--palace-metal),0 2px 8px #0005}
+body .shell>.section-header>.tabs .chip:not(.selected):hover{background:linear-gradient(145deg,var(--palace-accent),var(--palace-velvet));border-color:var(--palace-metal);transform:translateY(-1px)}
+/* Real Polaroids, real poster images, two existing rating scales and progress.
+   Decorative owner art is a non-interactive overlay; never becomes card content. */
+body .shell>#gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:18px 15px;width:100%;min-width:0;max-height:none;height:auto;overflow:visible;padding:10px 2px 18px;margin:0;align-items:stretch;scrollbar-width:auto}
+body .shell>#gallery .polaroid{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;width:100%;min-width:0;height:100%;padding:7px 7px 13px;margin:0;transform:none;rotate:none;overflow:visible;cursor:pointer;text-align:left;border:2px solid var(--palace-metal);border-radius:17px;background:linear-gradient(155deg,#fffdf7 0%,var(--palace-paper) 78%,#fff8eb);color:var(--palace-text);box-shadow:inset 0 0 0 2px #fff8,0 0 0 1px #35192788,0 7px 19px #13071188,0 0 12px #ffe8a834;transition:transform .22s ease,box-shadow .22s ease;animation:none!important}
+body .shell>#gallery .polaroid::before{content:"";display:block;position:absolute;z-index:4;pointer-events:none;width:clamp(26px,8vw,40px);height:clamp(26px,8vw,40px);top:-8px;left:-7px;background:var(--palace-emblem) center/contain no-repeat;filter:drop-shadow(0 2px 3px #43162f70);transform-origin:50% 70%;animation:none}
+body .shell>#gallery .polaroid::after{content:"";display:block;position:absolute;inset:3px;z-index:2;border:1px solid #fff5dabb;border-radius:12px;pointer-events:none;background:none;box-shadow:none;opacity:1;transform:none;animation:none}
+body .shell>#gallery .polaroid .poster{position:relative;display:grid;place-items:center;width:100%;height:auto;aspect-ratio:1.36/1;min-height:0;max-height:none;margin:0 0 8px;overflow:hidden;border:1px solid var(--palace-metal);border-radius:11px;background:radial-gradient(ellipse at 48% 45%,var(--palace-accent),var(--palace-velvet) 68%,var(--palace-dark));box-shadow:inset 0 0 10px #14071166}
+body .shell>#gallery .poster img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:none;opacity:1;border-radius:0}
+body .shell>#gallery .poster .placeholder{position:relative;display:grid;place-items:center;width:64%;height:64%;min-height:0;font-size:0;background:var(--palace-emblem) center/contain no-repeat;filter:drop-shadow(0 3px 7px #13071a77)}
+body .shell>#gallery .poster[data-kind="movie"] .placeholder{background-image:url("./assets/all-memories/ky-movie.webp")}
+body .shell>#gallery .poster[data-kind="show"] .placeholder{background-image:url("./assets/all-memories/ky-show.webp")}
+body .shell>#gallery .poster[data-kind="game"] .placeholder{background-image:url("./assets/all-memories/ky-game.webp")}
+body .shell>#gallery .poster::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(135deg,#fff8da4d,transparent 23%,transparent 78%,#ffda8b30);border-radius:inherit;box-shadow:inset 0 0 0 1px #ffefc54d;opacity:.8;transform:none}
+body .shell>#gallery .poster .corner-heart{position:absolute;z-index:3;right:5px;top:5px;display:grid;place-items:center;width:29px;height:29px;padding:0;border:1px solid #ffe3ad;border-radius:50%;background:linear-gradient(150deg,#fff1e3,#e8a6b3);color:#a51846;font:700 18px/1 Georgia,serif;text-shadow:0 1px #fff;box-shadow:0 2px 5px #22061280;backdrop-filter:none}
+body .shell>#gallery .polaroid h3{position:relative;margin:0 2px 7px;min-width:0;color:var(--palace-text);font:750 clamp(13px,3.3vw,17px)/1.2 "Avenir Next","Segoe UI",system-ui,sans-serif;text-shadow:none;letter-spacing:-.025em;overflow-wrap:anywhere;white-space:normal}
+body .shell>#gallery .polaroid .rating-line{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin:0 1px 7px}
+body .shell>#gallery .polaroid .score{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;padding:4px 5px;color:var(--palace-text);font:750 11px/1.1 "Avenir Next","Segoe UI",system-ui,sans-serif;border:1px solid #b77b9955;border-radius:999px;background:linear-gradient(150deg,#fff9f5,var(--palace-paper));box-shadow:inset 0 1px #fff}
+body .shell>#gallery .score .score-heart{width:13px;height:13px;flex:0 0 13px}
+body .shell>#gallery .score-heart .rating-heart-shape{fill:#fff4ed;stroke:var(--palace-accent)}
+body .shell>#gallery .score-heart.filled .rating-heart-shape{fill:#d33b72;stroke:#922349}
+body .shell>#gallery .score-heart .rating-heart-shine{stroke:#fff7ed}
+body .shell>#gallery .polaroid .time-line{display:block;min-width:0;margin:0 2px 6px;color:var(--palace-text);font:650 11px/1.25 "Avenir Next","Segoe UI",system-ui,sans-serif;overflow-wrap:anywhere;text-shadow:none}
+body .shell>#gallery .polaroid .time-line::before{content:"";display:inline-block;width:15px;height:15px;margin:0 4px 0 0;vertical-align:-3px;background:url("./assets/all-memories/ky-time.webp") center/contain no-repeat}
+body .shell>#gallery .polaroid .tagline{display:flex;flex-wrap:wrap;gap:4px;margin:auto 1px 0;padding-top:3px}
+body .shell>#gallery .polaroid .tag{display:inline-block;max-width:100%;padding:4px 6px;border:1px solid #a35e7c44;border-radius:8px;background:linear-gradient(150deg,#fff9f6,var(--palace-paper));color:var(--palace-text);font:650 10px/1.15 "Avenir Next","Segoe UI",system-ui,sans-serif;white-space:normal;overflow-wrap:anywhere;box-shadow:none;text-shadow:none}
+body .shell>#gallery .polaroid .tag:first-child{background:linear-gradient(150deg,var(--palace-velvet),var(--palace-dark));color:#fff7ee;border-color:var(--palace-metal);font-weight:700}
+@keyframes grand-palace-glint{0%,100%{opacity:.55}48%{opacity:1}65%{opacity:.75}}
+@keyframes grand-palace-charm{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-3px) rotate(4deg)}}
+@keyframes grand-palace-sweep{0%,100%{background-position:110% 0}48%,58%{background-position:-100% 0}}
+/* Limit continuous decoration to visible first-row candidates, not hundreds of cards. */
+body .shell>#gallery .polaroid:nth-child(-n+4) .poster::after{background:linear-gradient(120deg,transparent 20%,#fff5d025 40%,#fff7df68 48%,transparent 58%);background-size:240% 100%;animation:grand-palace-sweep 7s ease-in-out infinite}
+body .shell>#gallery .polaroid:nth-child(2n) .poster::after{animation-delay:1.7s}
+body .shell>#gallery .polaroid:nth-child(-n+4)::before{animation:grand-palace-charm 4.8s ease-in-out infinite}
+body .shell>#gallery .polaroid:nth-child(2n)::before{animation-delay:-2.2s}
+body .shell>#gallery .polaroid:is(:hover,:focus-visible){transform:translateY(-3px);box-shadow:inset 0 0 0 2px #fff8,0 0 0 1px var(--palace-light),0 9px 25px #10061588,0 0 15px var(--palace-metal)}
+body .shell>#gallery .polaroid:active{transform:scale(.986)}
+body .shell>#gallery .polaroid:is(:hover,:focus-visible)::before{animation:grand-palace-charm 2.8s ease-in-out infinite}
+body .shell>.topbar::after{animation:grand-palace-glint 5s ease-in-out infinite}
+body .shell>.empty.glass{color:var(--palace-light);border:1px solid var(--palace-metal);background:linear-gradient(145deg,var(--palace-velvet),var(--palace-dark));box-shadow:inset 0 0 0 3px #fff0d522,0 8px 24px #16071580}
+body .shell>.empty.glass .pop{font-size:0}
+body .shell>.empty.glass .pop::before{content:"";display:inline-block;width:64px;height:64px;background:var(--palace-emblem) center/contain no-repeat}
+body .shell>.empty.glass h3,body .shell>.empty.glass p{color:#fff2e9}
+body .shell>.empty .btn.primary{background:linear-gradient(145deg,var(--palace-light),var(--palace-metal));color:var(--palace-text);border:1px solid var(--palace-light);text-shadow:none}
+body .movie-mobile-dock{display:none}
+body .modal .dialog.glass{background:linear-gradient(150deg,#fffaf3,var(--palace-paper));border:2px solid var(--palace-metal);box-shadow:0 18px 70px #120711aa,inset 0 0 0 3px #fff8;color:var(--palace-text);--ink:var(--palace-text);--muted:var(--palace-text)}
+body .modal .dialog h2{color:var(--palace-text);font-family:"Iowan Old Style",Baskerville,Georgia,serif}
+body .modal .dialog :is(.form label,.form p,.form .group,.tiny,#formMessage,#signedEmail,#cloudError,.review p,.review strong){color:var(--palace-text)}
+body .modal .dialog :is(input:not([type="checkbox"]):not([type="file"]),textarea,select){background:#fffdf8;color:var(--palace-text);border-color:#a9789a80}
+body .modal .dialog .btn.primary{background:linear-gradient(150deg,var(--palace-light),var(--palace-metal));color:var(--palace-text);border-color:var(--palace-metal);text-shadow:none}
+body .modal .dialog .review{background:#fffaf5;color:var(--palace-text);border-color:#c99c9e66}
+body .modal .dialog .chip:not(.danger){background:linear-gradient(145deg,#fffdfa,var(--palace-paper));color:var(--palace-text);border-color:#b77b9955;text-shadow:none}
+body :is(.shell button,.shell input,.shell select,.dialog button,.dialog input,.dialog select,.dialog textarea):focus-visible{outline:3px solid var(--palace-metal);outline-offset:3px}
+@media (min-width:760px) and (min-aspect-ratio:4/3){body .stage::before{background-image:var(--palace-wide)}}
+@media (max-width:760px){
+  body .shell>.controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:9px;margin-bottom:13px}
+  body .shell>.controls .field-search,body .shell>.controls #newEntry{grid-column:1/-1}
+  body .shell>.controls :is(input,select){height:44px;min-height:44px;font-size:16px}
+  body .shell>.controls #newEntry{min-height:44px}
+  body .shell>.section-header>.tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;padding:6px}
+  body .shell>.section-header>.tabs .chip{min-height:62px;font-size:10px}
+  body .shell>.section-header>.tabs .chip::before{width:27px;height:27px}
+  body .shell>#gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 11px;padding:9px 2px 15px}
+  body .shell>#gallery .polaroid{padding:6px 6px 11px;border-radius:15px}
+  body .shell>#gallery .polaroid:nth-child(n+3) .poster::after,body .shell>#gallery .polaroid:nth-child(n+3)::before{animation:none}
+}
+@media(max-width:350px){body .stage>.shell{padding-inline:9px}body .shell>.section-header>.tabs .chip{font-size:9px;min-height:59px}body .shell>#gallery{gap:11px 8px}body .shell>#gallery .polaroid .score{padding:3px 4px;font-size:10px}body .shell>.topbar{padding-inline:10px}}
+@media(prefers-reduced-motion:reduce){body .shell *,body .shell *::before,body .shell *::after{animation:none!important;transition:none!important}body .shell>#gallery .polaroid:is(:hover,:focus-visible){transform:none}}
