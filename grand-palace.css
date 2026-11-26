@@ -2,13 +2,13 @@
    Presentation only. Existing owner artwork and saved poster images are never replaced.
    No external fonts, images, scripts, data or network calls. */
 body.memory-palace-all{--palace-wall:url("./assets/all-memories/theater-portrait.webp");--palace-wide:url("./assets/all-memories/theater-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-all.webp");--palace-dark:#340a1b;--palace-velvet:#66172f;--palace-accent:#a6344f;--palace-metal:#efbc76;--palace-light:#ffdca4;--palace-paper:#fbe7d5;--palace-text:#592337;--palace-art-filter:none;}
-body.ky-movie-palace{--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-movie.webp");--palace-dark:#2c0713;--palace-velvet:#5b1025;--palace-accent:#962d48;--palace-metal:#e5b77b;--palace-light:#ffe1b3;--palace-paper:#fff0e6;--palace-text:#602034;--palace-art-filter:none;--room-col:1;--room-row:0;}
-body.ky-tv-palace{--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-show.webp");--palace-dark:#210e30;--palace-velvet:#4a1e60;--palace-accent:#8d3a89;--palace-metal:#e7a1d9;--palace-light:#ffddf6;--palace-paper:#faeafb;--palace-text:#57255f;--palace-art-filter:none;--room-col:0;--room-row:1;}
-body.ky-games-palace{--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-game.webp");--palace-dark:#070e20;--palace-velvet:#102647;--palace-accent:#204b78;--palace-metal:#6eabed;--palace-light:#d9efff;--palace-paper:#e6f0ff;--palace-text:#173c65;--palace-art-filter:none;--room-col:1;--room-row:1;}
-body.ky-next-palace{--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-next.webp");--palace-dark:#47341c;--palace-velvet:#75552d;--palace-accent:#a78343;--palace-metal:#e6c47c;--palace-light:#fff3d3;--palace-paper:#fff8e8;--palace-text:#664717;--palace-art-filter:none;--room-col:0;--room-row:2;}
-body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace){--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-current.webp");--palace-dark:#26070b;--palace-velvet:#5e1119;--palace-accent:#b12230;--palace-metal:#f18d9b;--palace-light:#ffe4e7;--palace-paper:#ffeded;--palace-text:#721c2b;--palace-art-filter:none;--room-col:1;--room-row:2;}
-body.ky-favorites-palace{--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-favorite.webp");--palace-dark:#572039;--palace-velvet:#983d65;--palace-accent:#cd6796;--palace-metal:#ffc7e1;--palace-light:#fff1f9;--palace-paper:#fff5fa;--palace-text:#77264f;--palace-art-filter:none;--room-col:0;--room-row:3;}
-body.ky-trash-palace{--palace-wall:url("./assets/grand-palace/rooms-ai.png");--palace-wide:var(--palace-wall);--palace-emblem:url("./assets/all-memories/ky-trash.webp");--palace-dark:#090f06;--palace-velvet:#17250b;--palace-accent:#365818;--palace-metal:#9dce52;--palace-light:#e0f7a8;--palace-paper:#edf2dd;--palace-text:#34451c;--palace-art-filter:none;--room-col:1;--room-row:3;}
+body.ky-movie-palace{--palace-wall:url("./assets/grand-palace/movie.webp");--palace-wide:url("./assets/grand-palace/movie.webp");--palace-emblem:url("./assets/all-memories/ky-movie.webp");--palace-dark:#2d0917;--palace-velvet:#62142e;--palace-accent:#a12f4c;--palace-metal:#eebd83;--palace-light:#ffe2b6;--palace-paper:#fff0e4;--palace-text:#64243a;--palace-art-filter:none;}
+body.ky-tv-palace{--palace-wall:url("./assets/grand-palace/show.webp");--palace-wide:url("./assets/grand-palace/show.webp");--palace-emblem:url("./assets/all-memories/ky-show.webp");--palace-dark:#210e30;--palace-velvet:#4a1e60;--palace-accent:#8d3a89;--palace-metal:#e7a1d9;--palace-light:#ffddf6;--palace-paper:#faeafb;--palace-text:#57255f;--palace-art-filter:none;}
+body.ky-games-palace{--palace-wall:url("./assets/grand-palace/game.webp");--palace-wide:url("./assets/grand-palace/game.webp");--palace-emblem:url("./assets/all-memories/ky-game.webp");--palace-dark:#070e20;--palace-velvet:#102647;--palace-accent:#204b78;--palace-metal:#6eabed;--palace-light:#d9efff;--palace-paper:#e6f0ff;--palace-text:#173c65;--palace-art-filter:none;}
+body.ky-next-palace{--palace-wall:url("./assets/grand-palace/next.webp");--palace-wide:url("./assets/grand-palace/next.webp");--palace-emblem:url("./assets/all-memories/ky-next.webp");--palace-dark:#47341c;--palace-velvet:#75552d;--palace-accent:#a78343;--palace-metal:#e6c47c;--palace-light:#fff3d3;--palace-paper:#fff8e8;--palace-text:#664717;--palace-art-filter:none;}
+body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace){--palace-wall:url("./assets/grand-palace/current.webp");--palace-wide:url("./assets/grand-palace/current.webp");--palace-emblem:url("./assets/all-memories/ky-current.webp");--palace-dark:#26070b;--palace-velvet:#5e1119;--palace-accent:#b12230;--palace-metal:#f18d9b;--palace-light:#ffe4e7;--palace-paper:#ffeded;--palace-text:#721c2b;--palace-art-filter:none;}
+body.ky-favorites-palace{--palace-wall:url("./assets/grand-palace/favorite.webp");--palace-wide:url("./assets/grand-palace/favorite.webp");--palace-emblem:url("./assets/all-memories/ky-favorite.webp");--palace-dark:#572039;--palace-velvet:#983d65;--palace-accent:#cd6796;--palace-metal:#ffc7e1;--palace-light:#fff1f9;--palace-paper:#fff5fa;--palace-text:#77264f;--palace-art-filter:none;}
+body.ky-trash-palace{--palace-wall:url("./assets/grand-palace/trash.webp");--palace-wide:url("./assets/grand-palace/trash.webp");--palace-emblem:url("./assets/all-memories/ky-trash.webp");--palace-dark:#090f06;--palace-velvet:#17250b;--palace-accent:#365818;--palace-metal:#9dce52;--palace-light:#e0f7a8;--palace-paper:#edf2dd;--palace-text:#34451c;--palace-art-filter:none;}
 html{background:#210d1c}
 html body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--palace-light);background:var(--palace-dark);min-height:100vh;overflow-x:hidden}
 body .stage{position:relative;isolation:isolate;min-height:100dvh;background:none}
@@ -187,7 +187,7 @@ body .shell>#gallery .poster::before{
 body.ky-games-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-game.webp")}
 body.ky-next-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-next.webp")}
 body.ky-tv-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-show.webp")}
-body.ky-trash-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-trash.webp");filter:grayscale(.8) drop-shadow(0 1px 3px #18040d99)}
+body.ky-trash-palace .shell>#gallery .poster::before{background-image:url("./assets/all-memories/ky-trash.webp");filter:drop-shadow(0 1px 3px #18040d99)}
 body .shell>#gallery .polaroid h3{font:650 clamp(14px,2.2vw,18px)/1.24 "Avenir Next","Segoe UI",system-ui,sans-serif;letter-spacing:-.015em;margin:0 3px 8px}
 body .shell>#gallery .polaroid .rating-line{margin:0 3px 7px}
 body .shell>#gallery .polaroid .score{font-weight:650;font-size:12px}
@@ -207,50 +207,25 @@ body .shell>#gallery .polaroid .tag:first-child{font-weight:650}
 }
 @media(prefers-reduced-motion:reduce){body .shell *,body .shell *::before,body .shell *::after{animation:none!important;transition:none!important}}
 
-/* One picture palace, eight atmospheres. All Memories retains the original
-   unfiltered red/gold artwork. Every other room uses that identical image
-   recolored in-place, including on narrow portrait displays. */
-body.ky-movie-palace .stage::after{background:radial-gradient(ellipse at 7% 72%,#184c3324,transparent 51%),radial-gradient(ellipse at 92% 30%,#234b2028,transparent 48%),linear-gradient(180deg,#091b100d,#06190f33)}
-body.ky-tv-palace .stage::after{background:radial-gradient(ellipse at 15% 34%,#a92b8720,transparent 46%),radial-gradient(ellipse at 89% 65%,#723c9a28,transparent 55%),linear-gradient(180deg,#1e0a3010,#1c092b38)}
-body.ky-games-palace .stage::after{background:radial-gradient(ellipse at 12% 55%,#143d792c,transparent 55%),linear-gradient(180deg,#06112410,#03081544)}
-body.ky-next-palace .stage::after{background:radial-gradient(ellipse at 50% 15%,#fff4c623,transparent 65%),linear-gradient(180deg,#e8c76d13,#d3ab6128)}
-body.ky-favorites-palace .stage::after{background:radial-gradient(ellipse at 12% 14%,#ffe7f94d,transparent 54%),radial-gradient(ellipse at 90% 65%,#ff90cd38,transparent 55%),linear-gradient(180deg,#ffd6ef20,#f4a0c832)}
-body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace) .stage::after{background:radial-gradient(ellipse at 50% 10%,#ff304b26,transparent 60%),linear-gradient(180deg,#35030b10,#20050945)}
-/* The black-and-green Trash room retains the same palace architecture.
-   A soft, localized animated haze suggests stench; it stays behind controls
-   and does not touch saved artwork. */
-body.ky-trash-palace .stage::after{
-  background:radial-gradient(ellipse at 8% 70%,#86b92345,transparent 32%),radial-gradient(ellipse at 94% 80%,#709c254f,transparent 34%),radial-gradient(ellipse at 5% 30%,#a4d03125,transparent 25%),linear-gradient(180deg,#03060008,#07100566);
-  animation:palace-trash-haze 7s ease-in-out infinite alternate!important;
-}
-@keyframes palace-trash-haze{from{opacity:.65}to{opacity:1}}
-body.ky-trash-palace .palace-trigger::before,body.ky-trash-palace .collection-heading::before,body.ky-trash-palace .shell>#gallery .polaroid::before,body.ky-trash-palace .shell>#gallery .poster::before{filter:grayscale(1) sepia(1) saturate(3) hue-rotate(45deg) drop-shadow(0 1px 4px #6eaa29aa)}
-body.ky-movie-palace .palace-trigger::before,body.ky-movie-palace .collection-heading::before,body.ky-movie-palace .shell>#gallery .polaroid::before{filter:grayscale(.65) sepia(.6) hue-rotate(75deg) saturate(1.7) drop-shadow(0 2px 3px #071c0b88)}
-body.ky-games-palace .palace-trigger::before,body.ky-games-palace .collection-heading::before,body.ky-games-palace .shell>#gallery .polaroid::before{filter:grayscale(.85) sepia(.85) hue-rotate(165deg) saturate(2.5) drop-shadow(0 1px 4px #80c8ff66)}
-body.ky-tv-palace .palace-trigger::before,body.ky-tv-palace .collection-heading::before,body.ky-tv-palace .shell>#gallery .polaroid::before{filter:grayscale(.6) sepia(.75) hue-rotate(245deg) saturate(2.3) drop-shadow(0 1px 4px #d399e766)}
-body.ky-next-palace .palace-trigger::before,body.ky-next-palace .collection-heading::before,body.ky-next-palace .shell>#gallery .polaroid::before{filter:sepia(.75) saturate(1.25) brightness(1.12) drop-shadow(0 2px 3px #7d562d66)}
-body.ky-favorites-palace .palace-trigger::before,body.ky-favorites-palace .collection-heading::before,body.ky-favorites-palace .shell>#gallery .polaroid::before,body.ky-favorites-palace .shell>#gallery .poster::before{filter:grayscale(.7) sepia(.6) hue-rotate(285deg) saturate(2.1) brightness(1.25) drop-shadow(0 1px 4px #ffe0f699)}
-body.ky-favorites-palace .shell>#gallery .polaroid{background:radial-gradient(ellipse at 15% 8%,#fff 0%,transparent 75%),linear-gradient(145deg,#fff9fd,#ffe4f1 80%,#fff)}
-body.ky-next-palace .shell>#gallery .polaroid{background:radial-gradient(ellipse at 15% 8%,#fffefb 0%,transparent 75%),linear-gradient(145deg,#fffdf4,#fff1cf 80%,#fff8e3)}
-@media(prefers-reduced-motion:reduce){body.ky-trash-palace .stage::after{animation:none!important}}
 
-/* Original AI-generated individual theater paintings, stored losslessly in one
-   atlas. No color filters. Each viewport clips exactly one painted room. */
+/* Seven individually generated theater illustrations, not color treatments of
+   All Memories. Each file contains its own architecture, objects, lighting,
+   curtains and seating. Original All Memories artwork and styling are retained. */
 body:not(.memory-palace-all) .stage::before{
-  --room-w:max(100vw,300dvh);
-  --room-h:max(100dvh,calc(100vw / 3));
-  background-image:url("./assets/grand-palace/rooms-ai.png");
-  background-size:calc(2 * var(--room-w)) calc(4 * var(--room-h));
-  background-position:calc((100vw - var(--room-w)) / 2 - var(--room-col) * var(--room-w)) calc((100dvh - var(--room-h)) / 2 - var(--room-row) * var(--room-h));
-  background-repeat:no-repeat;
   filter:none!important;
+  opacity:1!important;
+  background-position:center 38%;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-color:var(--palace-dark);
 }
 body:not(.memory-palace-all) .stage::after{
-  background:linear-gradient(180deg,#08040b12,#08040b10 50%,#08040b32);
+  background:none!important;
+  display:none!important;
+  animation:none!important;
 }
-body.ky-trash-palace .stage::after{
-  background:radial-gradient(ellipse at 5% 72%,#75b92520,transparent 35%),radial-gradient(ellipse at 95% 65%,#75b92520,transparent 35%),linear-gradient(180deg,#03060005,#03060025);
-}
-body.ky-favorites-palace .stage::after{background:linear-gradient(180deg,#fff2fa0d,#4c153b17)}
-/* The source artwork is not stretched. On portrait devices, the center
-   stage remains visible; desktop shows the full decorative architecture. */
+/* The complete artwork is visible without any tint. Real UI surfaces remain
+   opaque for contrast; saved images are never used as decor or altered. */
+body.ky-favorites-palace .shell>#gallery .polaroid{background:radial-gradient(ellipse at 15% 8%,#fff 0%,transparent 75%),linear-gradient(145deg,#fff9fd,#ffe4f1 80%,#fff)}
+body.ky-next-palace .shell>#gallery .polaroid{background:radial-gradient(ellipse at 15% 8%,#fffefb 0%,transparent 75%),linear-gradient(145deg,#fffdf4,#fff1cf 80%,#fff8e3)}
+@media(max-width:760px){body:not(.memory-palace-all) .stage::before{background-position:center center}}
