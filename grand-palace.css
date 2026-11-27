@@ -2,13 +2,13 @@
    Presentation only. Existing owner artwork and saved poster images are never replaced.
    No external fonts, images, scripts, data or network calls. */
 body.memory-palace-all{--palace-wall:url("./assets/all-memories/theater-portrait.webp");--palace-wide:url("./assets/all-memories/theater-landscape.webp");--palace-emblem:url("./assets/all-memories/ky-all.webp");--palace-dark:#340a1b;--palace-velvet:#66172f;--palace-accent:#a6344f;--palace-metal:#efbc76;--palace-light:#ffdca4;--palace-paper:#fbe7d5;--palace-text:#592337;--palace-art-filter:none;}
-body.ky-movie-palace{--palace-wall:url("./assets/grand-palace/movie.webp");--palace-wide:url("./assets/grand-palace/movie.webp");--palace-emblem:url("./assets/all-memories/ky-movie.webp");--palace-dark:#2d0917;--palace-velvet:#62142e;--palace-accent:#a12f4c;--palace-metal:#eebd83;--palace-light:#ffe2b6;--palace-paper:#fff0e4;--palace-text:#64243a;--palace-art-filter:none;}
-body.ky-tv-palace{--palace-wall:url("./assets/grand-palace/show.webp");--palace-wide:url("./assets/grand-palace/show.webp");--palace-emblem:url("./assets/all-memories/ky-show.webp");--palace-dark:#210e30;--palace-velvet:#4a1e60;--palace-accent:#8d3a89;--palace-metal:#e7a1d9;--palace-light:#ffddf6;--palace-paper:#faeafb;--palace-text:#57255f;--palace-art-filter:none;}
-body.ky-games-palace{--palace-wall:url("./assets/grand-palace/game.webp");--palace-wide:url("./assets/grand-palace/game.webp");--palace-emblem:url("./assets/all-memories/ky-game.webp");--palace-dark:#070e20;--palace-velvet:#102647;--palace-accent:#204b78;--palace-metal:#6eabed;--palace-light:#d9efff;--palace-paper:#e6f0ff;--palace-text:#173c65;--palace-art-filter:none;}
-body.ky-next-palace{--palace-wall:url("./assets/grand-palace/next.webp");--palace-wide:url("./assets/grand-palace/next.webp");--palace-emblem:url("./assets/all-memories/ky-next.webp");--palace-dark:#47341c;--palace-velvet:#75552d;--palace-accent:#a78343;--palace-metal:#e6c47c;--palace-light:#fff3d3;--palace-paper:#fff8e8;--palace-text:#664717;--palace-art-filter:none;}
-body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace){--palace-wall:url("./assets/grand-palace/current.webp");--palace-wide:url("./assets/grand-palace/current.webp");--palace-emblem:url("./assets/all-memories/ky-current.webp");--palace-dark:#26070b;--palace-velvet:#5e1119;--palace-accent:#b12230;--palace-metal:#f18d9b;--palace-light:#ffe4e7;--palace-paper:#ffeded;--palace-text:#721c2b;--palace-art-filter:none;}
+body.ky-movie-palace{--palace-wall:url("./assets/grand-palace/movie-fullsize.webp");--palace-wide:url("./assets/grand-palace/movie-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-movie.webp");--palace-dark:#2d0917;--palace-velvet:#62142e;--palace-accent:#a12f4c;--palace-metal:#eebd83;--palace-light:#ffe2b6;--palace-paper:#fff0e4;--palace-text:#64243a;--palace-art-filter:none;}
+body.ky-tv-palace{--palace-wall:url("./assets/grand-palace/show-fullsize.webp");--palace-wide:url("./assets/grand-palace/show-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-show.webp");--palace-dark:#210e30;--palace-velvet:#4a1e60;--palace-accent:#8d3a89;--palace-metal:#e7a1d9;--palace-light:#ffddf6;--palace-paper:#faeafb;--palace-text:#57255f;--palace-art-filter:none;}
+body.ky-games-palace{--palace-wall:url("./assets/grand-palace/game-fullsize.webp");--palace-wide:url("./assets/grand-palace/game-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-game.webp");--palace-dark:#070e20;--palace-velvet:#102647;--palace-accent:#204b78;--palace-metal:#6eabed;--palace-light:#d9efff;--palace-paper:#e6f0ff;--palace-text:#173c65;--palace-art-filter:none;}
+body.ky-next-palace{--palace-wall:url("./assets/grand-palace/next-fullsize.webp");--palace-wide:url("./assets/grand-palace/next-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-next.webp");--palace-dark:#47341c;--palace-velvet:#75552d;--palace-accent:#a78343;--palace-metal:#e6c47c;--palace-light:#fff3d3;--palace-paper:#fff8e8;--palace-text:#664717;--palace-art-filter:none;}
+body:not(.memory-palace-all):not(.ky-movie-palace):not(.ky-tv-palace):not(.ky-games-palace):not(.ky-next-palace):not(.ky-favorites-palace):not(.ky-trash-palace){--palace-wall:url("./assets/grand-palace/current-fullsize.webp");--palace-wide:url("./assets/grand-palace/current-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-current.webp");--palace-dark:#26070b;--palace-velvet:#5e1119;--palace-accent:#b12230;--palace-metal:#f18d9b;--palace-light:#ffe4e7;--palace-paper:#ffeded;--palace-text:#721c2b;--palace-art-filter:none;}
 body.ky-favorites-palace{--palace-wall:url("./assets/grand-palace/favorites-fullsize.webp");--palace-wide:url("./assets/grand-palace/favorites-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-favorite.webp");--palace-dark:#572039;--palace-velvet:#983d65;--palace-accent:#cd6796;--palace-metal:#ffc7e1;--palace-light:#fff1f9;--palace-paper:#fff5fa;--palace-text:#77264f;--palace-art-filter:none;}
-body.ky-trash-palace{--palace-wall:url("./assets/grand-palace/trash.webp");--palace-wide:url("./assets/grand-palace/trash.webp");--palace-emblem:url("./assets/all-memories/ky-trash.webp");--palace-dark:#090f06;--palace-velvet:#17250b;--palace-accent:#365818;--palace-metal:#9dce52;--palace-light:#e0f7a8;--palace-paper:#edf2dd;--palace-text:#34451c;--palace-art-filter:none;}
+body.ky-trash-palace{--palace-wall:url("./assets/grand-palace/trash-fullsize.webp");--palace-wide:url("./assets/grand-palace/trash-fullsize.webp");--palace-emblem:url("./assets/all-memories/ky-trash.webp");--palace-dark:#090f06;--palace-velvet:#17250b;--palace-accent:#365818;--palace-metal:#9dce52;--palace-light:#e0f7a8;--palace-paper:#edf2dd;--palace-text:#34451c;--palace-art-filter:none;}
 html{background:#210d1c}
 html body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;color:var(--palace-light);background:var(--palace-dark);min-height:100vh;overflow-x:hidden}
 body .stage{position:relative;isolation:isolate;min-height:100dvh;background:none}
@@ -241,4 +241,17 @@ body.ky-favorites-palace .stage::before{
 }
 @media(min-width:761px) and (min-aspect-ratio:16/9){
   body.ky-favorites-palace .stage::before{background-size:100% auto;background-position:center center}
+}
+
+/* Full-resolution, original 16:9 AI paintings for the remaining six rooms.
+   Match the approved Favorites sizing. No sprite crops, tint or zoom effects.
+   A centered crop fills portrait screens without distorting the image. */
+body:not(.memory-palace-all):not(.ky-favorites-palace) .stage::before{
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  filter:none!important;
+}
+@media(min-width:761px) and (min-aspect-ratio:16/9){
+  body:not(.memory-palace-all):not(.ky-favorites-palace) .stage::before{background-size:100% auto;background-position:center center}
 }
