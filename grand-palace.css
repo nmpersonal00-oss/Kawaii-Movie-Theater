@@ -255,3 +255,99 @@ body:not(.memory-palace-all):not(.ky-favorites-palace) .stage::before{
 @media(min-width:761px) and (min-aspect-ratio:16/9){
   body:not(.memory-palace-all):not(.ky-favorites-palace) .stage::before{background-size:100% auto;background-position:center center}
 }
+
+/* Trash shelf — original AI illustrated toxic-charms. Presentation only.
+   Transparent art stays on decorative pseudo-elements, never saved covers. */
+body.ky-trash-palace{
+  --palace-emblem:url("./assets/grand-palace/trash-can.webp");
+  --trash-fumes:url("./assets/grand-palace/trash-fumes.webp");
+  --trash-corner:url("./assets/grand-palace/trash-slime-corner.webp");
+}
+body .shell>.section-header>.tabs [data-tab="trash"]{
+  --tab-icon:url("./assets/grand-palace/trash-can.webp");
+}
+body.ky-trash-palace .palace-trigger::before,
+body.ky-trash-palace .shell>.section-header>.collection-heading::before{
+  filter:drop-shadow(0 2px 3px #040900) drop-shadow(0 0 5px #a7f52a88);
+}
+body.ky-trash-palace .shell>#gallery .polaroid{
+  border-color:#789f2c;
+  box-shadow:inset 0 0 0 2px #f1ffcc99,0 0 0 1px #182307,0 0 0 3px #75991e44,0 8px 22px #050b04bb,0 0 12px #80ce2555;
+}
+body.ky-trash-palace .shell>#gallery .polaroid::before{
+  width:clamp(43px,5vw,62px);
+  height:clamp(51px,6vw,74px);
+  top:-13px;
+  left:-10px;
+  background:var(--palace-emblem) center/contain no-repeat;
+  filter:drop-shadow(0 2px 3px #061000cc) drop-shadow(0 0 4px #a1ea4570);
+  transform-origin:50% 85%;
+  animation:none;
+}
+body.ky-trash-palace .shell>#gallery .polaroid::after{
+  border-color:#66822588;
+  box-shadow:inset 0 0 0 1px #eaffc450;
+}
+body.ky-trash-palace .shell>#gallery .polaroid .poster{
+  border-color:#7b9d34;
+}
+body.ky-trash-palace .shell>#gallery .polaroid .poster::before{
+  content:"";
+  inset:auto -1px -1px auto;
+  width:clamp(30px,4vw,43px);
+  height:clamp(30px,4vw,43px);
+  z-index:2;
+  background:var(--trash-corner) center/contain no-repeat;
+  transform:rotate(90deg);
+  filter:drop-shadow(0 1px 2px #061000cc);
+  opacity:.98;
+  pointer-events:none;
+}
+body.ky-trash-palace .shell>#gallery .polaroid .poster::after{
+  content:"";
+  top:auto;
+  right:auto;
+  bottom:3px;
+  left:3px;
+  width:clamp(25px,3.5vw,39px);
+  height:clamp(40px,5vw,62px);
+  z-index:1;
+  background:var(--trash-fumes) center bottom/contain no-repeat;
+  border-radius:0;
+  box-shadow:none;
+  opacity:.73;
+  transform-origin:50% 100%;
+  transform:none;
+  animation:none;
+  pointer-events:none;
+}
+@keyframes trash-charm-bob{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-2px) rotate(2deg)}
+}
+@keyframes trash-fumes-rise{
+  0%,100%{transform:translateY(2px) scale(.92, .96);opacity:.55}
+  50%{transform:translateY(-5px) scale(1.05,1.08);opacity:.88}
+}
+@media(prefers-reduced-motion:no-preference){
+  body.ky-trash-palace .shell>#gallery .polaroid:nth-child(-n+4)::before,
+  body.ky-trash-palace .shell>#gallery .polaroid:is(:hover,:focus-visible)::before{
+    animation:trash-charm-bob 4.6s ease-in-out infinite;
+  }
+  body.ky-trash-palace .shell>#gallery .polaroid:nth-child(-n+4) .poster::after,
+  body.ky-trash-palace .shell>#gallery .polaroid:is(:hover,:focus-visible) .poster::after{
+    animation:trash-fumes-rise 3.8s ease-in-out infinite;
+  }
+  body.ky-trash-palace .shell>#gallery .polaroid:nth-child(2n) .poster::after{animation-delay:-1.9s}
+}
+@media(max-width:760px){
+  body.ky-trash-palace .shell>#gallery .polaroid::before{width:40px;height:48px;top:-10px;left:-6px}
+  body.ky-trash-palace .shell>#gallery .polaroid .poster::before{width:29px;height:29px}
+  body.ky-trash-palace .shell>#gallery .polaroid .poster::after{width:23px;height:37px}
+  body.ky-trash-palace .shell>#gallery .polaroid:nth-child(n+3):not(:hover):not(:focus-visible)::before,
+  body.ky-trash-palace .shell>#gallery .polaroid:nth-child(n+3):not(:hover):not(:focus-visible) .poster::after{animation:none}
+}
+@media(prefers-reduced-motion:reduce){
+  body.ky-trash-palace .shell>#gallery .polaroid::before,
+  body.ky-trash-palace .shell>#gallery .polaroid .poster::after{animation:none!important;transform:none}
+}
